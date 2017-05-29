@@ -1,0 +1,10 @@
+
+.idea
+
+dist
+node_modules
+.npmrc
+test/coverage
+npm-debug.log
+.vscode
+scripts/elasticsearch/auditBulkLoad.json

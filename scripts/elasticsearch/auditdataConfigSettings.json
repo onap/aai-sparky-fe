@@ -1,0 +1,82 @@
+{
+  "mappings": {
+    "default": {
+      "properties": {
+        "entityId": {
+          "type": "nested"
+        },
+        "entityLink": {
+          "type": "string"
+        },
+        "entityType": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "resourceVersion": {
+          "type": "string"
+        },
+        "validationId": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "validationTimestamp": {
+          "type": "date",
+          "format": "MMM d y HH:m:s||dd-MM-yyyy HH:mm:ss||yyyy-MM-dd'T'HH:mm:ss.SSSZZ||MM/dd/yyyy||yyyyMMdd'T'HHmmssZ"
+        },
+        "violations": {
+          "type": "nested",
+          "properties": {
+            "category": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "errorMessage": {
+              "type": "string"
+            },
+            "modelName": {
+              "type": "string"
+            },
+            "severity": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "validationRule": {
+              "type": "string"
+            },
+            "violationDetails": {
+              "type": "nested",
+              "properties": {
+                "MISSING_REL": {
+                  "type": "string"
+                },
+                "entityId": {
+                  "type": "nested"
+                },
+                "entityType": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                },
+                "modelName": {
+                  "type": "string"
+                }
+              }
+            },
+            "violationId": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "violationTimestamp": {
+              "type": "date",
+              "format": "MMM d y HH:m:s||dd-MM-yyyy HH:mm:ss||yyyy-MM-dd'T'HH:mm:ss.SSSZZ||MM/dd/yyyy||yyyyMMdd'T'HHmmssZ"
+            },
+            "violationType": {
+              "type": "string",
+              "index": "not_analyzed"
+            }
+          }
+        }
+      }
+    }
+
+  }
+}

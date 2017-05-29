@@ -1,0 +1,205 @@
+
+ElasticSearch Configuration:
+============================
+
+1. Verify that your ElasticSearch instance configuation contains the following cors parameters in the elasticsearch.yaml file.  The CORS
+   workaround has proven to work for Firefox, Chrome, and Opera.
+
+http.cors.enabled: true
+http.cors.allow-origin: "/.*/"
+http.cors.allow-headers: ["X-Requested-With", "Content-Type", "Content-Length"]
+http.cors.allow-credentials: true
+
+2. Start up Elastic Search by running running the elasticsearch.bat in the elasticsearch 2.3.1 bin folder.
+
+If you want to do a cleanup before running these instructions, then you can execute this
+optional command which will destroy the index settings and data.
+
+curl -XDELETE "http://localhost:9200/auditdata?pretty"
+
+Expected Result:
+{
+  "acknowledged" : true
+}
+
+
+ElasticSearch Index Setup and Bulk Load Instructions:
+=====================================================
+
+1.   Configure Elastic Search Index
+
+curl -XPUT localhost:9200/auditdata?pretty --data-binary @auditdataConfigSettings.json
+
+Expected Result:
+{
+  "acknowledged" : true
+}
+
+2.   Prepare elastic search bulk import:
+
+prepareElasticSearchBulkImport.pl sampleAuditLog5.csv auditBulkLoad.json
+
+curl -XPUT localhost:9200/_bulk?pretty --data-binary @auditBulkLoad.json
+
+At the top of the output verify if there any import errors by looking at the errors field.
+
+Expected Result:
+{
+  "took" : 103,
+  "errors" : false,  <-------- this field is important.  if true you need to look at the output, otherwise you can ignore it
+  "items" : [ {
+    "create" : {
+      "_index" : "auditdata",
+      "_type" : "everything",
+      "_id" : "AVXN0g6Ve6sNoEtMKGxy",
+      "_version" : 1,
+      "_shards" : {
+        "total" : 2,
+        "successful" : 1,
+        "failed" : 0
+      },
+      "status" : 201
+    }
+
+
+
+3.   Verify that auditdata index contains data
+
+curl -XGET http://localhost:9200/_cat/indices?v
+
+Expected Result:
+
+health status index                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   auditdata                 5   1        250            0     85.2kb         85.2kb
+
+4.   Verify configuration of elastic search index parameter settings:
+
+curl -XGET http://localhost:9200/auditdata?pretty
+
+Expected Result:
+{
+  "auditdata" : {
+    "aliases" : { },
+    "mappings" : {
+      "everything" : {
+        "properties" : {
+          "date" : {
+            "type" : "date",
+            "format" : "MMM d y HH:m:s||dd-MM-yyyy HH:mm:ss||yyyy-MM-dd'T'HH:mm:ss.SSSZZ||MM/dd/yyyy"
+          },
+          "entityKey" : {
+            "type" : "string"
+          },
+          "entityType" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "severity" : {
+            "type" : "string"
+          },
+          "status" : {
+            "type" : "string"
+          }
+        }
+      },
+      "auditdata" : {
+        "properties" : {
+          "date" : {
+            "type" : "date",
+            "format" : "MMM d y HH:m:s||dd-MM-yyyy HH:mm:ss||yyyy-MM-dd'T'HH:mm:ss.SSSZZ||MM/dd/yyyy"
+          },
+          "entityKey" : {
+            "type" : "string"
+          },
+          "entityType" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "severity" : {
+            "type" : "string"
+          },
+          "status" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "settings" : {
+      "index" : {
+        "creation_date" : "1468250773569",
+        "number_of_shards" : "5",
+        "number_of_replicas" : "1",
+        "uuid" : "IgJe5PZyQmSfCLzuxm3Ulw",
+        "version" : {
+          "created" : "2030199"
+        }
+      }
+    },
+    "warmers" : { }
+  }
+}
+
+5.   Test that you can retrieve data:
+
+curl -XGET "http://localhost:9200/auditdata/_search/?size=3&pretty"
+
+Expected Result:
+{
+  "took" : 8,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 250,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "auditdata",
+      "_type" : "everything",
+      "_id" : "AVXakQNNe6sNoEtMKG1y",
+      "_score" : 1.0,
+      "_source" : {
+        "date" : "May 26 2016 15:24:13",
+        "severity" : "CRITICAL",
+        "entityType" : "vpls-pe",
+        "entityKey" : "sfcca303vr1",
+        "status" : "prov-status=[ACTIVE]",
+        "message" : "Invalid prov-status value. Must have a value not equal to ACTIVE/active."
+      }
+    },{
+      "_index" : "auditdata",
+      "_type" : "everything",
+      "_id" : "AVXakQNNe6sNoEtMKG13",
+      "_score" : 1.0,
+      "_source" : {
+        "date" : "May 26 2016 15:24:13",
+        "severity" : "CRITICAL",
+        "entityType" : "vpe",
+        "entityKey" : "VPESAT-ashah401me6",
+        "status" : "prov-status=[NULL]",
+        "message" : "Invalid prov-status value. Must have a value not equal to ACTIVE/active."
+      }
+    },{
+      "_index" : "auditdata",
+      "_type" : "everything",
+      "_id" : "AVXakQNNe6sNoEtMKG17",
+      "_score" : 1.0,
+      "_source" : {
+        "date" : "May 26 2016 15:24:13",
+        "severity" : "CRITICAL",
+        "entityType" : "vpe",
+        "entityKey" : "VPESAT-eshah401me6",
+        "status" : "prov-status=[]",
+        "message" : "Invalid prov-status value. Must have a value not equal to ACTIVE/active."
+      }
+    } ]
+  }
+}
+
+

@@ -1,0 +1,106 @@
+/*
+* ============LICENSE_START=======================================================
+* SPARKY (AAI UI service)
+* ================================================================================
+* Copyright © 2017 AT&T Intellectual Property.
+* Copyright © 2017 Amdocs
+* All rights reserved.
+* ================================================================================
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+* ============LICENSE_END=========================================================
+*
+* ECOMP and OpenECOMP are trademarks
+* and service marks of AT&T Intellectual Property.
+*/
+
+/* Fonts */
+
+$base-font-regular: Arial;
+$base-font-light: Arial;
+$base-font-medium: Arial;
+$base-font-bold: Arial;
+
+$heading-font-1: 36px;
+$heading-font-2: 24px;
+$heading-font-3: 18px;
+$heading-font-4: 16px;
+
+$body-font-1: 14px;
+$body-font-2: 13px;
+$body-font-3: 12px;
+
+$focus-font-1: 55px;
+$focus-font-2: 50px;
+$focus-font-3: 45px;
+$focus-font-4: 40px;
+
+.heading-1 {
+  font-family: $base-font-light;
+  font-size: $heading-font-1;
+}
+
+.heading-2 {
+  font-family: $base-font-light;
+  font-size: $heading-font-2;
+}
+
+.heading-3 {
+  font-family: $base-font-regular;
+  font-size: $heading-font-3;
+}
+
+.heading-3-medium {
+  font-family: $base-font-medium;
+  font-size: $heading-font-3;
+}
+
+.heading-4 {
+  font-family: $base-font-regular;
+  font-size: $heading-font-4;
+}
+
+.heading-4-medium {
+  font-family: $base-font-medium;
+  font-size: $heading-font-4;
+}
+
+.body-1 {
+  font-family: $base-font-regular;
+  font-size: $body-font-1;
+}
+
+.body-1-medium {
+  font-family: $base-font-medium;
+  font-size: $body-font-1;
+}
+
+.body-2 {
+  font-family: $base-font-regular;
+  font-size: $body-font-2;
+}
+
+.body-2-medium {
+  font-family: $base-font-medium;
+  font-size: $body-font-2;
+}
+
+.body-3 {
+  font-family: $base-font-regular;
+  font-size: $body-font-3;
+}
+
+.body-3-medium {
+  font-family: $base-font-medium;
+  font-size: $body-font-3;
+}
+
