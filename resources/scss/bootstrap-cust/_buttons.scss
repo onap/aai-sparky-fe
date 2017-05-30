@@ -1,0 +1,7 @@
+.btn-default .fa {
+  color: $brand-primary;
+}
+
+.btn-info {
+  @include button-variant($text-black, $tlv-gray, $light-gray);
+}
