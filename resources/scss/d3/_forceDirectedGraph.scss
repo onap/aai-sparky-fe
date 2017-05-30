@@ -1,0 +1,150 @@
+/*
+* ============LICENSE_START=======================================================
+* SPARKY (AAI UI service)
+* ================================================================================
+* Copyright © 2017 AT&T Intellectual Property.
+* Copyright © 2017 Amdocs
+* All rights reserved.
+* ================================================================================
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+* ============LICENSE_END=========================================================
+*
+* ECOMP and OpenECOMP are trademarks
+* and service marks of AT&T Intellectual Property.
+*/
+
+.ts-force-selected-graph {
+  padding: 0px;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+}
+
+.aai-entity-node{
+  font-family: Arial;
+  font-size: 12px;
+  line-height: 14px;
+  text-anchor: middle;
+}
+
+.aai-entity-node > .id-type-label {
+  fill:#404f5a;
+  font-weight: bold;
+}
+
+.aai-entity-node > .id-value-label {
+  fill:#8b9399;
+}
+
+.aai-entity-link {
+  stroke: #d9dada;
+  stroke-width: 2px;
+}
+
+.general-node > .inner {
+  fill: #626668;
+}
+
+.general-node > .outer {
+  fill: #ffffff;
+  stroke: #009fdb;
+  stroke-width: 2px;
+}
+
+.search-node > .inner {
+  fill: #009fdb;
+}
+
+.search-node > .outer {
+  fill: #ffffff;
+  stroke: #009fdb;
+  stroke-width: 2px;
+}
+
+.selected-node > .inner {
+  fill: #626668;
+}
+
+.selected-node > .outer {
+  fill: #d9dada;
+  stroke: #009fdb;
+  stroke-width: 3px;
+  filter: url(#selected-node-drop-shadow);
+}
+
+.selected-search-node > .inner {
+  fill: #009fdb;
+}
+
+.selected-search-node > .outer {
+  fill: #d9dada;
+  stroke: #009fdb;
+  stroke-width: 3px;
+  filter: url(#selected-node-drop-shadow);
+}
+
+@-moz-document url-prefix() {
+  .selected-search-node > .outer {
+    fill: #d9dada;
+    stroke: #009fdb;
+    stroke-width: 3px;
+    filter: drop-shadow(-1px 1px 3px rgba(0,0,0,0.5));
+  }
+
+  .selected-node > .outer {
+    fill: #d9dada;
+    stroke: #009fdb;
+    stroke-width: 3px;
+    filter: drop-shadow(-1px 1px 3px rgba(0,0,0,0.5));
+  }
+}
+
+.background-unselected {
+  fill: #626668;
+}
+
+.background-selected {
+  fill: #009fdb;
+}
+
+.ellipses-ellipse {
+  fill: #FFFFFF;
+}
+
+.triangle-warning {
+  fill: #FFFFFF;
+  fill-rule: evenodd;
+}
+
+.icon_tick_circle{
+  fill: #9DC742;
+}
+
+.icon_tick_path {
+  fill-rule: evenodd;
+  fill: #FFFFFF;
+  stroke: #FFFFFF;
+  strokeWidth: 0.8;
+}
+
+.icon_warning_circle{
+  fill: #FF0000;
+}
+
+.icon_warning_path {
+  fill-rule: evenodd;
+  fill: #FFFFFF;
+  stroke: #FFFFFF;
+  strokeWidth: 0.5;
+}

@@ -1,0 +1,66 @@
+/*
+* ============LICENSE_START=======================================================
+* SPARKY (AAI UI service)
+* ================================================================================
+* Copyright © 2017 AT&T Intellectual Property.
+* Copyright © 2017 Amdocs
+* All rights reserved.
+* ================================================================================
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+* ============LICENSE_END=========================================================
+*
+* ECOMP and OpenECOMP are trademarks
+* and service marks of AT&T Intellectual Property.
+*/
+
+.dep-titled-container {
+  border: solid 1px $black;
+  -webkit-box-shadow: 3px 3px 10px $dark-gray;
+  -moz-box-shadow: 3px 3px 10px $dark-gray;
+  box-shadow: 3px 3px 10px $dark-gray;
+  border-radius: 0px 0px 5px 5px;
+  margin: 20px 5px;
+
+  .header {
+    border-bottom: solid 1px $black;
+    padding: 5px;
+    background-color: $light-gray;
+    font-weight: bold;
+    font-size: $heading-font-3;
+
+    .toggle-visibility-button, .toggle-visibility-button:focus {
+      float: right;
+      background-color: $light-gray;
+      border: none;
+      margin-top: -2px;
+    }
+
+    .toggle-visibility-button:hover {
+      background-color: $light-gray;
+      border: none;
+
+      .fa {
+        color: $black;
+      }
+    }
+
+    .header-title {
+      width: 100%;
+    }
+  }
+
+  .contents {
+    padding: 5px;
+    text-align: center;
+  }
+}
