@@ -1,0 +1,28 @@
+.titled-container {
+  margin: 5px;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 30px;
+}
+
+.titled-container-boarders {
+  border: solid 1px $black;
+  -webkit-box-shadow: 3px 3px 10px DarkGrey;
+  -moz-box-shadow: 3px 3px 10px DarkGrey;
+  box-shadow: 3px 3px 10px DarkGrey;
+}
+
+.titled-container-header {
+  padding: 0px 5px;
+  font-weight: bold;
+  font-size: 17px;
+  min-height: 25px;
+}
+
+.header-title {
+  width: 100%;
+}
+
+.titled-container > .contents {
+  padding: 5px;
+}
