@@ -1,0 +1,70 @@
+/*
+* ============LICENSE_START=======================================================
+* SPARKY (AAI UI service)
+* ================================================================================
+* Copyright © 2017 AT&T Intellectual Property.
+* Copyright © 2017 Amdocs
+* All rights reserved.
+* ================================================================================
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+* ============LICENSE_END=========================================================
+*
+* ECOMP and OpenECOMP are trademarks
+* and service marks of AT&T Intellectual Property.
+*/
+
+// primary colors
+$blue: #009fdb;
+$dark-blue: #0568ae;
+$light-blue: #71c5e8;
+$green: #4ca90c;
+$dark-green: #007a3e;
+$light-green: #b5bd00;
+$orange: #ea7400;
+$yellow: #ffb81c;
+$dark-purple: #702f8a;
+$purple: #9063cd;
+$light-purple: #caa2dd;
+$black: #000000;
+$dark-gray: #5a5a5a;
+$gray: #959595;
+$light-gray: #d2d2d2;
+$white: #ffffff;
+
+// Secondary Colors
+$red: #cf2a2a;
+$background-gray: #f2f2f2;
+$text-black: #191919;
+$link-blue: #056bae;
+$functional-green: #007a3e;
+$functional-yellow: #ffb81c;
+$tlv-gray: #f8f8f8;
+$tlv-light-gray: #eaeaea;
+$di-light-grey: #91a2ae;
+$tlv-hover: #e6f6fb;
+
+
+$scroll-bar-color: $dark-gray;
+
+//responsive @media params
+$tablet-max-width: 1024px;
+$laptop-min-width: 1224px;
+$desktop-min-width: 1824px;
+
+/* Textures */
+$images-folder-name: "../images";
+$plus-circle-icon: $images-folder-name + "/plus-circle-icon.svg";
+$interface-icon: $images-folder-name + "/interface.svg";
+$sdc-logo: $images-folder-name + "/logo.svg";
+$warning-icon: $images-folder-name + "/warning.svg";
+$icons-folder-path: $images-folder-name + "/icons";
