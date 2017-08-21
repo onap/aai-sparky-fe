@@ -78,7 +78,7 @@
                         </goals>
                         <phase>generate-resources</phase>
                         <configuration>
-                            <arguments>config set cache node\npm-cache</arguments>
+                            <arguments>config set cache node${file.separator}npm-cache</arguments>
                         </configuration>
                     </execution>
                     <execution>
