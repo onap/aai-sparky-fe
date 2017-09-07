@@ -9,7 +9,6 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build",
-    "attBuild": "gulp attBuild",
     "test": "karma start"
   },
   "author": "",
