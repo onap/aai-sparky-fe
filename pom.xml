@@ -29,7 +29,7 @@
     <artifactId>sparky-fe</artifactId>
     <packaging>war</packaging>
     <version>1.0.0-SNAPSHOT</version>
-    <name>AAI - sparky-fe</name>
+    <name>aai-sparky-fe</name>
     <url>http://maven.apache.org</url>
 
     <properties>
