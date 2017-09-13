@@ -35,7 +35,7 @@
     </dependencies>
 
     <properties>
-       <nexusproxy>${nexusTarget}</nexusproxy>
+        <nexusproxy>${nexusTarget}</nexusproxy>
     </properties>
 
 
@@ -43,39 +43,51 @@
         <plugins>
 
             <!-- license plugin -->
-			<plugin>
-				<groupId>com.mycila</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-				<version>3.0</version>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>3.0</version>
 
-				<configuration>
-					<header>LICENSE</header>
+                <configuration>
+                    <header>LICENSE</header>
                     <excludes>
                         <exclude>resources/scss/bootstrap/**</exclude>
                         <exclude>resources/scss/bootstrap-cust/**</exclude>
+                        <exclude>.idea/**</exclude>
+                        <exclude>dist/**</exclude>
+                        <exclude>node_modules/**</exclude>
+                        <exclude>.npmrc/**</exclude>
+                        <exclude>test/coverage/**</exclude>
+                        <exclude>.vscode/**</exclude>
+                        <exclude>node/**</exclude>
+                        <exclude>target/**</exclude>
                     </excludes>
-					<includes>
-						<include>src/**/*.js</include>
+                    <includes>
+                        <include>src/**/*.js</include>
                         <include>src/**/*.jsx</include>
                         <include>src/**/*.html</include>
+                        <include>test/**/*.js</include>
+                        <include>test/**/*.jsx</include>
+                        <include>test/**/*.html</include>
+                        <include>tools/**/*.js</include>
                         <include>*.js</include>
                         <include>*.xml</include>
                         <include>resources/scss/**/*.scss</include>
-					</includes>
+                    </includes>
                     <mapping>
                         <JSX>SLASHSTAR_STYLE</JSX>
                         <SCSS>JAVADOC_STYLE</SCSS>
                     </mapping>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>format</goal>
-						</goals>
-						<phase>process-sources</phase>
-					</execution>
-				</executions>
-			</plugin>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                        <phase>process-sources</phase>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
     </build>
