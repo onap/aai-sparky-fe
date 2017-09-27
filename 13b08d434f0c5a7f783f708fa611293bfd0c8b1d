@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_c9004cad",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2017-09-27T21:01:41Z",
+      "side": 1,
+      "message": "This group ID is wrong. \nIt needs to be org.onap.aai-sparky-fe",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "13b08d434f0c5a7f783f708fa611293bfd0c8b1d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_09741466",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2017-09-27T21:01:41Z",
+      "side": 1,
+      "message": "Remove this change (I think is just an indentation change)",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "13b08d434f0c5a7f783f708fa611293bfd0c8b1d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_a9fd08b3",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2017-09-27T21:01:41Z",
+      "side": 1,
+      "message": "You might also need to mention the repositories:\n                \u003crepository\u003e\n                        \u003cid\u003eecomp-staging\u003c/id\u003e\n                        \u003cname\u003eStaging Repository\u003c/name\u003e\n                        \u003curl\u003e${nexusproxy}/content/repositories/staging/\u003c/url\u003e\n                \u003c/repository\u003e\n\nTake any other pom.xml as an example (so/pom.xml or vid/pom.xml)",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 21
+      },
+      "revId": "13b08d434f0c5a7f783f708fa611293bfd0c8b1d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
