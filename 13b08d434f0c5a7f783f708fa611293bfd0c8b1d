@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9a437d4f_49245c5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2017-09-27T21:02:15Z",
+      "side": 1,
+      "message": "Use imperative tense \"Fix\"\n\nAlso, we can add a small description on what are we fixing.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "13b08d434f0c5a7f783f708fa611293bfd0c8b1d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_c9004cad",
         "filename": "pom.xml",
         "patchSetId": 1
