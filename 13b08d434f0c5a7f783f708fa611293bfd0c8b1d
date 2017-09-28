@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9a437d4f_d63344a9",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2017-09-28T08:29:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a437d4f_c9004cad",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "13b08d434f0c5a7f783f708fa611293bfd0c8b1d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_09741466",
         "filename": "pom.xml",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2017-09-27T21:01:41Z",
       "side": 1,
       "message": "Remove this change (I think is just an indentation change)",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "13b08d434f0c5a7f783f708fa611293bfd0c8b1d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_f62e4842",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2017-09-28T08:29:20Z",
+      "side": 1,
+      "message": "Yes this is an indentation change, but why remove it?",
+      "parentUuid": "9a437d4f_09741466",
       "range": {
         "startLine": 53,
         "startChar": 0,
