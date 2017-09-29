@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Jessica Wagantall <jwagantall@linuxfoundation.org>
+Code-Review+2: Steven Blimkie <Steven.Blimkie@amdocs.com>
+Submitted-by: Steven Blimkie <Steven.Blimkie@amdocs.com>
+Submitted-at: Fri, 29 Sep 2017 13:08:29 +0000
+Reviewed-on: http://gerrit.onap.org/r/16275
+Project: aai/sparky-fe
+Branch: refs/heads/master
