@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9a437d4f_cf6042a7",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2017-09-29T11:43:53Z",
+      "side": 1,
+      "message": "This indentation change was wrong :(\n\nI know that in general this file is all over the place, but let\u0027s try not to add more indentation issues. \n\n\u003cresources\u003e and \n\u003c/resources\u003e should be aligned",
+      "parentUuid": "9a437d4f_f62e4842",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "13b08d434f0c5a7f783f708fa611293bfd0c8b1d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_a9fd08b3",
         "filename": "pom.xml",
         "patchSetId": 1
