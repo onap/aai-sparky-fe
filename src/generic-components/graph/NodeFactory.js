@@ -1,25 +1,28 @@
 /*
- * ============LICENSE_START=======================================================
- * org.onap.aai
- * ================================================================================
- * Copyright © 2017 AT&T Intellectual Property. All rights reserved.
+ * ============LICENSE_START===================================================
+ * SPARKY (AAI UI service)
+ * ============================================================================
+ * Copyright © 2017 AT&T Intellectual Property.
  * Copyright © 2017 Amdocs
- * ================================================================================
+ * All rights reserved.
+ * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=========================================================
+ * ============LICENSE_END=====================================================
  *
- * ECOMP is a trademark and service mark of AT&T Intellectual Property.
+ * ECOMP and OpenECOMP are trademarks
+ * and service marks of AT&T Intellectual Property.
  */
+
 import React from 'react';
 
 import NodeVisualElementConstants from './NodeVisualElementConstants.js';
@@ -38,11 +41,11 @@ class NodeFactory {
     this.graphMeta = metaObject;
     this.visualElementFactory.setVisualElementMeta(metaObject);
   }
-
-  buildNode(nodeType, nodeProps) {
+ // hideButton a temporary solution to not display the button.
+  buildNode(nodeType, nodeProps, hideButton) {
 
     let translate = `translate(
-                              ${nodeProps.renderProps.x},
+                              ${nodeProps.renderProps.x}, 
                               ${nodeProps.renderProps.y})`;
     let finalProps = {
       ...nodeProps.renderProps,
@@ -51,14 +54,20 @@ class NodeFactory {
     };
 
     let nodeVisualElementsData = this.extractVisualElementArrayFromMeta(
-      nodeType);
+      nodeType, hideButton);
     let nodeVisualElements = undefined;
     if (nodeVisualElementsData) {
       nodeVisualElements = [];
       nodeVisualElementsData.map((elementData, index) => {
         if (elementData.type === NodeVisualElementConstants.BUTTON) {
           if (nodeProps.buttons) {
-            let isButtonSelected = true;
+            let isButtonSelected = false;
+            if (index === 4) {
+              isButtonSelected = nodeProps.buttons[0];
+            }
+            if (index === 5) {
+              isButtonSelected = nodeProps.buttons[1];
+            }
             elementData = {
               ...elementData,
               isSelected: isButtonSelected
@@ -99,11 +108,20 @@ class NodeFactory {
     return React.createElement('g', finalProps);
   }
 
-  extractVisualElementArrayFromMeta(nodeClassName) {
+  extractVisualElementArrayFromMeta(nodeClassName, hideButton) {
     let nodeVisualElements = undefined;
     if (this.graphMeta.aaiEntityNodeDescriptors) {
       nodeVisualElements =
         this.graphMeta.aaiEntityNodeDescriptors[nodeClassName].visualElements;
+      if(hideButton) {
+         // temp, until BE not sent the triangle button
+        for (var i = 0; i < nodeVisualElements.length; i++) {
+          if (nodeVisualElements[i].type === 'button' && nodeVisualElements[i].name === 'icon_triangle_warning') {
+            nodeVisualElements.splice(i, 1);
+            return;
+          }
+        }
+      }
     }
     return nodeVisualElements;
   }

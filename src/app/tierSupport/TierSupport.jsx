@@ -1,31 +1,40 @@
 /*
- * ============LICENSE_START=======================================================
- * org.onap.aai
- * ================================================================================
- * Copyright © 2017 AT&T Intellectual Property. All rights reserved.
+ * ============LICENSE_START===================================================
+ * SPARKY (AAI UI service)
+ * ============================================================================
+ * Copyright © 2017 AT&T Intellectual Property.
  * Copyright © 2017 Amdocs
- * ================================================================================
+ * All rights reserved.
+ * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=========================================================
+ * ============LICENSE_END=====================================================
  *
- * ECOMP is a trademark and service mark of AT&T Intellectual Property.
+ * ECOMP and OpenECOMP are trademarks
+ * and service marks of AT&T Intellectual Property.
  */
+
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import SplitPane from 'react-split-pane';
 
+import {setSecondaryTitle} from 'app/MainScreenWrapperActionHelper.js';
 import ForceDirectedGraph from 'generic-components/graph/ForceDirectedGraph.jsx';
 import SelectedNodeDetails from 'app/tierSupport/selectedNodeDetails/SelectedNodeDetails.jsx';
+
+
+import overlaysDetails from 'resources/overlays/overlaysDetails.json';
+import * as Overlays from 'app/overlays/OverlayImports.js';
+
 import i18n from 'utils/i18n/i18n';
 import {
   onNodeDetailsChange,
@@ -39,7 +48,7 @@ import {
   TSUI_TITLE,
   TSUI_NODE_DETAILS_INITIAL_WIDTH,
   TSUI_NODE_DETAILS_MIN_WIDTH,
-  TSUI_GRAPH_MENU_NODE_DETAILS
+  TSUI_GRAPH_MENU_NODE_DETAILS,
 } from './TierSupportConstants.js';
 
 let mapStateToProps = (
@@ -61,7 +70,8 @@ let mapStateToProps = (
         windowHeight = 500,
         graphNodeSelectedMenu = TSUI_GRAPH_MENU_NODE_DETAILS,
         feedbackMsgText = '',
-        feedbackMsgSeverity = ''
+        feedbackMsgSeverity = '',
+        nodeData = {}
       } = tierSupportReducer;
 
   let {
@@ -76,12 +86,16 @@ let mapStateToProps = (
     performPrepareVisualization,
     selectedSuggestion,
     feedbackMsgText,
-    feedbackMsgSeverity
+    feedbackMsgSeverity,
+    nodeData
   };
 };
 
 let mapActionToProps = (dispatch) => {
   return {
+    onSetViewTitle: (title) => {
+      dispatch(setSecondaryTitle(title));
+    },
     onNodeSelected: (requestObject) => {
       dispatch(onNodeDetailsChange(requestObject));
     },
@@ -110,7 +124,8 @@ class TierSupport extends Component {
     windowHeight: React.PropTypes.number,
     graphNodeSelectedMenu: React.PropTypes.string,
     feedbackMsgText: React.PropTypes.string,
-    feedbackMsgSeverity: React.PropTypes.string
+    feedbackMsgSeverity: React.PropTypes.string,
+    nodeData: React.PropTypes.object
   };
 
   componentWillReceiveProps(nextProps) {
@@ -118,6 +133,10 @@ class TierSupport extends Component {
       nextProps.match.params.viParam !==
       this.props.match.params.viParam) {
       this.props.onNewVIParam(nextProps.match.params.viParam);
+    }
+    if(nextProps.match.params.viParam === undefined && nextProps.match.params.viParam !==
+      this.props.match.params.viParam) {
+      this.props.onRequestClearData();
     }
 
     if (nextProps.feedbackMsgText !== this.props.feedbackMsgText) {
@@ -127,6 +146,7 @@ class TierSupport extends Component {
   }
 
   componentWillMount() {
+    this.props.onSetViewTitle(i18n(TSUI_TITLE));
     if (this.props.match.params.viParam) {
       this.props.onNewVIParam(this.props.match.params.viParam);
     } else {
@@ -144,6 +164,7 @@ class TierSupport extends Component {
   }
 
   render() {
+
     const {
             forceDirectedGraphRawData,
             onNodeSelected,
@@ -152,17 +173,35 @@ class TierSupport extends Component {
             onSplitPaneResize,
             onNodeMenuSelect
           } = this.props;
-    let currentSelectedMenu = this.getCurrentSelectedMenu();
+
+
+    let availableOverlay;
+    let overlayComponent;
+    // Currently only ONE overlay can be added to each view.
+    // todo: need to make it array if more than one overlay can be used. No need now.
+    overlaysDetails.forEach(function(overlay){
+      if(overlay.view === 'schema') {
+        availableOverlay = overlay.key;
+        overlayComponent = overlay.componentName;
+      }
+    });
 
     //Temp code for a demo, will be removed as Vis library is updated
-    let currentNodeButton = 'NODE_DETAILS';
+    let currentNodeButton;
+    if(this.props.graphNodeSelectedMenu ===
+      TSUI_GRAPH_MENU_NODE_DETAILS ) {
+      currentNodeButton = 'NODE_DETAILS';
+    } else if(availableOverlay) {
+      currentNodeButton = availableOverlay;
+    }
     // End temp code
-
+    let dataOverlayButtons = ['NODE_DETAILS'];
+    if(availableOverlay) {
+      dataOverlayButtons.push(availableOverlay);
+    }
+    let currentSelectedMenu = this.getCurrentSelectedMenu(overlayComponent);
     return (
       <div className='tier-support-ui'>
-        <div className='secondary-header'>
-          <span className='secondary-title'>{i18n(TSUI_TITLE)}</span>
-        </div>
         <SplitPane
           split='vertical'
           enableResizing='true'
@@ -184,7 +223,9 @@ class TierSupport extends Component {
               nodeButtonSelectedCallback={(selectedMenuId) => {
                 onNodeMenuSelect(selectedMenuId);
               }}
+              dataOverlayButtons={dataOverlayButtons}
               currentlySelectedNodeView={currentNodeButton}/>
+
           </div>
           <div>
             {currentSelectedMenu}
@@ -194,15 +235,34 @@ class TierSupport extends Component {
     );
   }
 
-  getCurrentSelectedMenu() {
-    switch (this.props.graphNodeSelectedMenu) {
-      case TSUI_GRAPH_MENU_NODE_DETAILS:
-        if (!this.nodeDetails) {
-          this.nodeDetails = <SelectedNodeDetails/>;
+  isNotEmpty(obj) {
+    for(var prop in obj) {
+      if(obj.hasOwnProperty(prop)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  getCurrentSelectedMenu(overlayComponent) {
+    let secondOverlay;
+    if (this.props.graphNodeSelectedMenu === TSUI_GRAPH_MENU_NODE_DETAILS) {
+      if (!this.nodeDetails) {
+        this.nodeDetails = <SelectedNodeDetails/>;
+      }
+      return this.nodeDetails;
+    }
+    else {
+      if (this.isNotEmpty(this.props.nodeData) && overlayComponent) {
+        if (Overlays.default.hasOwnProperty(overlayComponent)) {
+          let OverlayComponent = Overlays.default[overlayComponent];
+          secondOverlay = <OverlayComponent nodeDetails={this.props.nodeData}/>;
         }
-        return this.nodeDetails;
+      }
+      return secondOverlay;
     }
   }
+
 }
 
 export default connect(mapStateToProps, mapActionToProps)(TierSupport);

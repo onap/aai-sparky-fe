@@ -1,25 +1,28 @@
 /*
- * ============LICENSE_START=======================================================
- * org.onap.aai
- * ================================================================================
- * Copyright © 2017 AT&T Intellectual Property. All rights reserved.
+ * ============LICENSE_START===================================================
+ * SPARKY (AAI UI service)
+ * ============================================================================
+ * Copyright © 2017 AT&T Intellectual Property.
  * Copyright © 2017 Amdocs
- * ================================================================================
+ * All rights reserved.
+ * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=========================================================
+ * ============LICENSE_END=====================================================
  *
- * ECOMP is a trademark and service mark of AT&T Intellectual Property.
+ * ECOMP and OpenECOMP are trademarks
+ * and service marks of AT&T Intellectual Property.
  */
+
 
 import {tierSupportActionTypes,
   TS_BACKEND_SEARCH_SELECTED_NODE_URL} from 'app/tierSupport/TierSupportConstants.js';
@@ -33,7 +36,7 @@ import networkCall from 'app/networking/NetworkCalls.js';
 import {
   getSetGlobalMessageEvent,
   getClearGlobalMessageEvent
-} from 'app/GlobalInlineMessageBar/GlobalInlineMessageBarActions.js';
+} from 'app/globalInlineMessageBar/GlobalInlineMessageBarActions.js';
 import {
   STATUS_CODE_204_NO_CONTENT,
   STATUS_CODE_3XX_REDIRECTION,
@@ -86,6 +89,20 @@ function createNodeDetailsFoundEvent(nodeDetails) {
   };
 }
 
+function createSelectedNodeDetails(nodeDetails) {
+  var selectedNodeDetail;
+  for(let i = 0; i < nodeDetails.nodes.length; i++) {
+    if(nodeDetails.nodes[i].nodeMeta.className === 'selectedSearchedNodeClass') {
+      selectedNodeDetail = nodeDetails.nodes[i];
+      break;
+    }
+  }
+  return {
+    type: tierSupportActionTypes.TS_GRAPH_NODE_SELECTED,
+    data: selectedNodeDetail
+  };
+}
+
 function noNodeDetailsFoundEvent(errorText) {
   return {
     type: tierSupportActionTypes.TS_NODE_SEARCH_NO_RESULTS,
@@ -121,6 +138,7 @@ export function fetchSelectedNodeElement(fetchRequestCallback) {
       (responseJson) => {
         if (responseJson.nodes.length > 0) {
           dispatch(createNodeDetailsFoundEvent(responseJson));
+          dispatch(createSelectedNodeDetails(responseJson));
         } else {
           dispatch(noNodeDetailsFoundEvent(NO_RESULTS_FOUND));
         }

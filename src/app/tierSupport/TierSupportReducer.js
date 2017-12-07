@@ -1,25 +1,28 @@
 /*
- * ============LICENSE_START=======================================================
- * org.onap.aai
- * ================================================================================
- * Copyright © 2017 AT&T Intellectual Property. All rights reserved.
+ * ============LICENSE_START===================================================
+ * SPARKY (AAI UI service)
+ * ============================================================================
+ * Copyright © 2017 AT&T Intellectual Property.
  * Copyright © 2017 Amdocs
- * ================================================================================
+ * All rights reserved.
+ * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=========================================================
+ * ============LICENSE_END=====================================================
  *
- * ECOMP is a trademark and service mark of AT&T Intellectual Property.
+ * ECOMP and OpenECOMP are trademarks
+ * and service marks of AT&T Intellectual Property.
  */
+
 import {combineReducers} from 'redux';
 import ForceDirectedGraph from 'generic-components/graph/ForceDirectedGraph.jsx';
 import {aaiActionTypes} from 'app/MainScreenWrapperConstants.js';
@@ -43,7 +46,7 @@ export default combineReducers({
       case tierSupportActionTypes.TS_NODE_SEARCH_RESULTS:
         let graphData = ForceDirectedGraph.generateNewProps(action.data.nodes, action.data.links,
           action.data.graphMeta);
-        
+
         return {
           ...state,
           forceDirectedGraphRawData: graphData,
@@ -81,6 +84,11 @@ export default combineReducers({
           feedbackMsgText: '',
           feedbackMsgSeverity: ''
         };
+      case tierSupportActionTypes.TS_GRAPH_NODE_SELECTED:
+        return {
+          ...state,
+          nodeData: action.data
+        };
       case globalAutoCompleteSearchBarActionTypes.SEARCH_WARNING_EVENT:
         let emptyNodesAndLinksWarningEvent = ForceDirectedGraph.generateNewProps([], [], {});
         return {
@@ -93,7 +101,7 @@ export default combineReducers({
         let splitPaneLeftSideElement = document.getElementsByClassName('Pane1');
         if (splitPaneLeftSideElement.length > 0) {
           let width = splitPaneLeftSideElement[0].offsetWidth;
-          
+
           return {
             ...state, windowWidth: width, windowHeight: splitPaneLeftSideElement[0].offsetHeight
           };
@@ -101,7 +109,7 @@ export default combineReducers({
           return state;
         }
     }
-    
+
     return state;
   }
 });

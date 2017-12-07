@@ -1,35 +1,38 @@
 /*
- * ============LICENSE_START=======================================================
- * org.onap.aai
- * ================================================================================
- * Copyright © 2017 AT&T Intellectual Property. All rights reserved.
+ * ============LICENSE_START===================================================
+ * SPARKY (AAI UI service)
+ * ============================================================================
+ * Copyright © 2017 AT&T Intellectual Property.
  * Copyright © 2017 Amdocs
- * ================================================================================
+ * All rights reserved.
+ * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=========================================================
+ * ============LICENSE_END=====================================================
  *
- * ECOMP is a trademark and service mark of AT&T Intellectual Property.
+ * ECOMP and OpenECOMP are trademarks
+ * and service marks of AT&T Intellectual Property.
  */
-import {
-  vnfActionTypes,
-  VNF_RESULT_URL
-} from 'app/vnfSearch/VnfSearchConstants.js';
 
 import {
-  getVnfProvStatusQueryString,
-  getVnfOrchStatusQueryString,
-  getVnfCountQueryString
-} from 'app/networking/NetworkUtil.js';
+  vnfActionTypes,
+  VNF_FILTER_AGGREGATION_URL,
+  CHART_PROV_STATUS,
+  CHART_ORCH_STATUS,
+  CHART_NF_TYPE,
+  CHART_NF_ROLE,
+  TOTAL_VNF_COUNT,
+  VNF_FILTER_EMPTY_RESULT
+} from 'app/vnfSearch/VnfSearchConstants.js';
 import {
   POST,
   POST_HEADER,
@@ -38,7 +41,8 @@ import {
 import {
   getSetGlobalMessageEvent,
   getClearGlobalMessageEvent
-} from 'app/GlobalInlineMessageBar/GlobalInlineMessageBarActions.js';
+} from 'app/globalInlineMessageBar/GlobalInlineMessageBarActions.js';
+import {MESSAGE_LEVEL_WARNING} from 'utils/GlobalConstants.js';
 
 let fetch = require('node-fetch');
 fetch.Promise = require('es6-promise').Promise;
@@ -52,102 +56,174 @@ function getInvalidQueryEvent() {
     data: {errorMsg: ERROR_RETRIEVING_DATA}
   };
 }
-/*it is a vertical bar chart then y and x are switched */
-function getProvStatusEvent(responseJson) {
-  if (responseJson && responseJson.groupby_aggregation &&
-    responseJson.groupby_aggregation.buckets &&
-    responseJson.groupby_aggregation.buckets.length > 0) {
-    let groupByProvStatusBucket;
-    let dataPoints = [];
-    for (groupByProvStatusBucket of
-      responseJson.groupby_aggregation.buckets) {
-      dataPoints.push({
-        'x': groupByProvStatusBucket[itemKeyWord].split('=', 1)[0],
-        'y': groupByProvStatusBucket[countKeyWord]
-      });
-    }
 
-    let newProvStatusChartData = [
+function processProvData(provDataList) {
+  let dataPoints = [];
+  let newProvStatusChartData = CHART_PROV_STATUS.emptyData;
+  for (let provData of provDataList) {
+    dataPoints.push(
       {
-        'values': dataPoints
+        'x': provData[itemKeyWord],
+        'y': provData[countKeyWord]
       }
-    ];
+    );
+  }
 
-    let provStatusCountChartData = {
-      chartData: newProvStatusChartData
-    };
-    return {
-      type: vnfActionTypes.COUNT_BY_PROV_STATUS_RECEIVED,
-      data: {provStatusCountChartData}
+  if (dataPoints.length > 0) {
+    newProvStatusChartData = {
+      'values': dataPoints
     };
   }
-  else {
-    return {
-      type: vnfActionTypes.ERROR_NO_DATA_FOR_PROV_STATUS_IN_SEARCH_RANGE_RECEIVED
-    };
-  }
+
+  return newProvStatusChartData;
 }
 
-function getOrchStatusEvent(responseJson) {
-  if (responseJson && responseJson.groupby_aggregation &&
-    responseJson.groupby_aggregation.buckets &&
-    responseJson.groupby_aggregation.buckets.length > 0) {
-    let groupByOrchStatusBucket;
-    let dataPoints = [];
-    for (groupByOrchStatusBucket of
-      responseJson.groupby_aggregation.buckets) {
-      dataPoints.push({
-        'x': groupByOrchStatusBucket[itemKeyWord].split('=', 1)[0],
-        'y': groupByOrchStatusBucket[countKeyWord]
-      });
-    }
-
-    let newOrchStatusChartData = [
+function processOrchData(orchDataList) {
+  let dataPoints = [];
+  let newOrchStatusChartData = CHART_ORCH_STATUS.emptyData;
+  for (let orchData of orchDataList) {
+    dataPoints.push(
       {
-        'values': dataPoints
+        'x': orchData[itemKeyWord],
+        'y': orchData[countKeyWord]
       }
-    ];
+    );
+  }
 
-    let orchStatusCountChartData = {
-      chartData: newOrchStatusChartData
-    };
-    return {
-      type: vnfActionTypes.COUNT_BY_ORCH_STATUS_RECEIVED,
-      data: {orchStatusCountChartData}
+  if (dataPoints.length > 0) {
+    newOrchStatusChartData = {
+      'values': dataPoints
     };
   }
-  else {
-    return {
-      type: vnfActionTypes.ERROR_NO_DATA_FOR_ORCH_STATUS_IN_SEARCH_RANGE_RECEIVED
-    };
-  }
+
+  return newOrchStatusChartData;
 }
 
-function getTotalVnfEvent(responseJson) {
-  if (responseJson && responseJson.count && responseJson.count > 0) {
-    return {
-      type: vnfActionTypes.TOTAL_VNF_COUNT_RECEIVED,
-      data: {count: responseJson.count}
+function processNfTypeData(nfDataList) {
+  let dataPoints = [];
+  let newNfTypeChartData = CHART_NF_TYPE.emptyData;
+  for (let nfData of nfDataList) {
+    dataPoints.push(
+      {
+        'x': nfData[itemKeyWord],
+        'y': nfData[countKeyWord]
+      }
+    );
+  }
+
+  if (dataPoints.length > 0) {
+    newNfTypeChartData = {
+      'values': dataPoints
     };
   }
-  else {
-    return {
-      type: vnfActionTypes.ERROR_NO_COUNT_RECEIVED
-    };
-  }
+
+  return newNfTypeChartData;
 }
 
-export function processProvStatusVisualizationOnSearchChange(requestObject) {
+function processNfRoleData(nfDataList) {
+  let dataPoints = [];
+  let newNfRoleChartData = CHART_NF_ROLE.emptyData;
+  for (let nfData of nfDataList) {
+    dataPoints.push(
+      {
+        'x': nfData[itemKeyWord],
+        'y': nfData[countKeyWord]
+      }
+    );
+  }
+
+  if (dataPoints.length > 0) {
+    newNfRoleChartData = {
+      'values': dataPoints
+    };
+  }
+
+  return newNfRoleChartData;
+}
+
+function getVnfFilterAggregationQueryString(filterValueMap) {
+  let filterList = [];
+
+  for (let filter in filterValueMap) {
+    if (filterValueMap[filter] !== '') {
+      filterList.push(
+        {
+          'filterId': filter,
+          'filterValue': filterValueMap[filter]
+        }
+      );
+    } else {
+      filterList.push(
+        {
+          'filterId': filter
+        }
+      );
+    }
+  }
+
+  return {
+    'filters': filterList
+  };
+}
+
+function getVnfVisualizationsResultsEvent(results) {
+  let count = TOTAL_VNF_COUNT.emptyData;
+  let provData = CHART_PROV_STATUS.emptyData;
+  let orchData = CHART_ORCH_STATUS.emptyData;
+  let netFuncTypeData = CHART_NF_TYPE.emptyData;
+  let netFuncRoleData = CHART_NF_ROLE.emptyData;
+
+  if (results.total) {
+    count = results.total;
+  }
+
+  if (results['aggregations'] && results['aggregations']['prov-status']) {
+    provData = processProvData(results['aggregations']['prov-status']);
+  }
+
+  if (results['aggregations'] &&
+    results['aggregations']['orchestration-status']) {
+    orchData = processOrchData(results['aggregations']['orchestration-status']);
+  }
+
+  if (results['aggregations'] &&
+    results['aggregations']['nf-type']) {
+    netFuncTypeData = processNfTypeData(results['aggregations']['nf-type']);
+  }
+
+  if (results['aggregations'] &&
+    results['aggregations']['nf-role']) {
+    netFuncRoleData = processNfRoleData(results['aggregations']['nf-role']);
+  }
+
+  return {
+    type: vnfActionTypes.VNF_SEARCH_RESULTS_RECEIVED,
+    data: {
+      count: count,
+      provStatusData: provData,
+      orchStatusData: orchData,
+      nfTypeData: netFuncTypeData,
+      nfRoleData: netFuncRoleData
+    }
+  };
+}
+
+export function processVnfVisualizationsOnFilterChange(filterValueMap) {
   return dispatch => {
-    return fetch(VNF_RESULT_URL, {
+    return fetch(VNF_FILTER_AGGREGATION_URL, {
       method: POST,
       headers: POST_HEADER,
-      body: JSON.stringify(getVnfProvStatusQueryString(requestObject))
+      body: JSON.stringify(getVnfFilterAggregationQueryString(filterValueMap))
     }).then(
       (response) => response.json()
     ).then(
       (responseJson) => {
-        dispatch(getProvStatusEvent(responseJson));
+        if(responseJson.total === 0) {
+          dispatch(getSetGlobalMessageEvent(VNF_FILTER_EMPTY_RESULT, MESSAGE_LEVEL_WARNING));
+        } else {
+          dispatch(getClearGlobalMessageEvent());
+        }
+        dispatch(getVnfVisualizationsResultsEvent(responseJson));
       }
     ).catch(
       () => {
@@ -157,44 +233,18 @@ export function processProvStatusVisualizationOnSearchChange(requestObject) {
   };
 }
 
-export function processOrchStatusVisualizationOnSearchChange(requestObject) {
-  return dispatch => {
-    return fetch(VNF_RESULT_URL, {
-      method: POST,
-      headers: POST_HEADER,
-      body: JSON.stringify(getVnfOrchStatusQueryString(requestObject))
-    }).then(
-      (response) => response.json()
-    ).then(
-      (responseJson) => {
-        dispatch(getOrchStatusEvent(responseJson));
-      }
-    ).catch(
-      () => {
-        dispatch(getInvalidQueryEvent());
-      }
-    );
-  };
-}
+export function processVnfFilterPanelCollapse(isOpen) {
+  let vnfVisualizationPanelClass = 'collapsible-panel-main-panel';
 
-export function processTotalVnfVisualizationOnSearchChange(requestObject) {
-  return dispatch => {
-    return fetch(VNF_RESULT_URL + '/count', {
-      method: POST,
-      headers: POST_HEADER,
-      body: JSON.stringify(
-        getVnfCountQueryString(requestObject))
-    }).then(
-      (response) => response.json()
-    ).then(
-      (responseJson) => {
-        dispatch(getTotalVnfEvent(responseJson));
-      }
-    ).catch(
-      () => {
-        dispatch(getInvalidQueryEvent());
-      }
-    );
+  if (isOpen) {
+    vnfVisualizationPanelClass += ' vertical-filter-panel-is-open';
+  }
+
+  return {
+    type: vnfActionTypes.VNF_FILTER_PANEL_TOGGLED,
+    data: {
+      vnfVisualizationPanelClass: vnfVisualizationPanelClass
+    }
   };
 }
 
@@ -209,4 +259,17 @@ export function setNotificationText(msgText, msgSeverity) {
       dispatch(getClearGlobalMessageEvent());
     };
   }
+}
+
+export function clearVnfSearchData() {
+  return {
+    type: vnfActionTypes.VNF_SEARCH_RESULTS_RECEIVED,
+    data: {
+      count: '',
+      provStatusData: CHART_PROV_STATUS.emptyData,
+      orchStatusData: CHART_ORCH_STATUS.emptyData,
+      nfTypeData: CHART_NF_TYPE.emptyData,
+      nfRoleData: CHART_NF_ROLE.emptyData
+    }
+  };
 }

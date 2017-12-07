@@ -1,25 +1,28 @@
 /*
- * ============LICENSE_START=======================================================
- * org.onap.aai
- * ================================================================================
- * Copyright © 2017 AT&T Intellectual Property. All rights reserved.
+ * ============LICENSE_START===================================================
+ * SPARKY (AAI UI service)
+ * ============================================================================
+ * Copyright © 2017 AT&T Intellectual Property.
  * Copyright © 2017 Amdocs
- * ================================================================================
+ * All rights reserved.
+ * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=========================================================
+ * ============LICENSE_END=====================================================
  *
- * ECOMP is a trademark and service mark of AT&T Intellectual Property.
+ * ECOMP and OpenECOMP are trademarks
+ * and service marks of AT&T Intellectual Property.
  */
+
 import {drag} from 'd3-drag';
 import {forceSimulation, forceLink, forceManyBody, forceCenter} from 'd3-force';
 import {interpolateNumber} from 'd3-interpolate';
@@ -44,7 +47,7 @@ class ForceDirectedGraph extends Component {
     nodeButtonSelectedCallback: PropTypes.func,
     currentlySelectedNodeView: PropTypes.string
   };
-  
+
   static defaultProps = {
     viewWidth: 0,
     viewHeight: 0,
@@ -57,16 +60,16 @@ class ForceDirectedGraph extends Component {
     nodeButtonSelectedCallback: undefined,
     currentlySelectedNodeView: ''
   };
-  
+
   constructor(props) {
     super(props);
-    
+
     this.state = {
       nodes: [], links: [], mainGroupTransform: zoomIdentity
     };
-    
+
     this.updateSimulationForce = this.updateSimulationForce.bind(this);
-    this.resetTransform = this.resetTransform.bind(this);
+    this.resetState = this.resetState.bind(this);
     this.applyBufferDataToState = this.applyBufferDataToState.bind(this);
     this.createNodePropForState = this.createNodePropForState.bind(this);
     this.createLinkPropForState = this.createLinkPropForState.bind(this);
@@ -74,118 +77,138 @@ class ForceDirectedGraph extends Component {
     this.simulationComplete = this.simulationComplete.bind(this);
     this.simulationTick = this.simulationTick.bind(this);
     this.nodeSelected = this.nodeSelected.bind(this);
+    this.nodeButtonSelected = this.nodeButtonSelected.bind(this);
     this.onZoom = this.onZoom.bind(this);
     this.onGraphDrag = this.onGraphDrag.bind(this);
     this.onNodeDrag = this.onNodeDrag.bind(this);
     this.addNodeInterpolator = this.addNodeInterpolator.bind(this);
     this.runInterpolators = this.runInterpolators.bind(this);
-    
+
     this.nodeBuffer = [];
     this.linkBuffer = [];
     this.nodeDatum = [];
     this.nodeButtonDatum = [];
     this.nodeFactory = new NodeFactory();
     this.visualElementFactory = new NodeVisualElementFactory();
-    
+
     this.isGraphMounted = false;
-    
+
     this.listenerGraphCounter = -1;
     this.nodeIndexTracker = new Map();
     this.interpolators = new Map();
     this.areInterpolationsRunning = false;
-    
+
     this.newNodeSelected = true;
     this.currentlySelectedNodeButton = undefined;
-    
+
     this.intervalTimer = interval(this.applyBufferDataToState, simulationKeys.DATA_COPY_INTERVAL);
     this.intervalTimer.stop();
-    
+
     this.interpolationTimer = interval(this.runInterpolators, simulationKeys.DATA_COPY_INTERVAL);
     this.interpolationTimer.stop();
-    
+
     this.simulation = forceSimulation();
     this.simulation.on('end', this.simulationComplete);
     this.simulation.stop();
-    
+
     this.svgZoom =
       zoom().scaleExtent([NodeConstants.SCALE_EXTENT_MIN, NodeConstants.SACEL_EXTENT_MAX]);
     this.svgZoom.clickDistance(2);
     this.nodeDrag = drag().clickDistance(2);
-    
+
     this.updateSimulationForce();
-    
+    // Temporary code until backend supports NOT displaying the button in the response.
+    if(props.dataOverlayButtons.length === 1) {
+      this.hideButton = true;
+    } else {
+      this.hideButton  = false;
+    }
     if (props.graphData) {
       if (props.graphData.graphCounter !== -1) {
-        this.startSimulation(props.graphData);
+        this.startSimulation(props.graphData, props.currentlySelectedNodeView, props.dataOverlayButtons);
       }
     }
   }
-  
+
   componentDidMount() {
     this.isGraphMounted = true;
   }
-  
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.graphData.graphCounter !== this.props.graphData.graphCounter) {
       this.listenerGraphCounter = this.props.graphData.graphCounter;
       this.newNodeSelected = true;
-      this.resetTransform();
-      this.startSimulation(nextProps.graphData);
+      this.resetState();
+      this.startSimulation(nextProps.graphData, nextProps.currentlySelectedNodeView, nextProps.dataOverlayButtons);
     }
   }
-  
+
+
   componentDidUpdate(prevProps) {
     let hasNewGraphDataRendered = (prevProps.graphData.graphCounter ===
     this.props.graphData.graphCounter);
     let shouldAttachListeners = (this.listenerGraphCounter !== this.props.graphData.graphCounter);
     let nodeCount = this.state.nodes.length;
-    
+
     if (nodeCount > 0) {
       if (hasNewGraphDataRendered && shouldAttachListeners) {
-        
         let nodes = select('.fdgMainSvg').select('.fdgMainG')
                                          .selectAll('.aai-entity-node')
                                          .data(this.nodeDatum);
-        
         nodes.on('click', (d) => {
           this.nodeSelected(d);
         });
-        
+
         nodes.call(this.nodeDrag.on('drag', (d) => {
           let xAndY = [currentEvent.x, currentEvent.y];
           this.onNodeDrag(d, xAndY);
         }));
-        
+
         let mainSVG = select('.fdgMainSvg');
         let mainView = mainSVG.select('.fdgMainView');
         this.svgZoom.transform(mainSVG, zoomIdentity);
         this.svgZoom.transform(mainView, zoomIdentity);
-        
+
         mainSVG.call(this.svgZoom.on('zoom', () => { // D3 Zoom also handles panning
           this.onZoom(currentEvent.transform);
         })).on('dblclick.zoom', null); // Ignore the double-click zoom event
-        
+
         this.listenerGraphCounter = this.props.graphData.graphCounter;
+      }
+
+      if (this.newNodeSelected) {
+        let nodeButtons = select('.fdgMainSvg').select('.fdgMainG')
+                                               .selectAll('.aai-entity-node')
+                                               .selectAll('.node-button')
+                                               .data(this.nodeButtonDatum);
+        if (!nodeButtons.empty()) {
+          nodeButtons.on('click', (d) => {
+            this.nodeButtonSelected(d);
+          });
+          if (hasNewGraphDataRendered && shouldAttachListeners) {
+            this.newNodeSelected = false;
+          }
+        }
       }
     }
   }
-  
+
   componentWillUnmount() {
     this.isGraphMounted = false;
-    
+
     let nodes = select('.fdgMainSvg').select('.fdgMainG')
                                      .selectAll('.aai-entity-node');
     let nodeButtons = nodes.selectAll('.node-button');
-    
+
     nodes.on('click', null);
     nodeButtons.on('click', null);
-    
+
     let mainSVG = select('.fdgMainSvg');
-    
+
     mainSVG.call(this.svgZoom.on('zoom', null)).on('dblclick.zoom', null);
     mainSVG.call(drag().on('drag', null));
   }
-  
+
   updateSimulationForce() {
     this.simulation.force('link', forceLink());
     this.simulation.force('link').id((d) => {
@@ -193,55 +216,65 @@ class ForceDirectedGraph extends Component {
     });
     this.simulation.force('link').strength(0.3);
     this.simulation.force('link').distance(100);
-    
+
     this.simulation.force('charge', forceManyBody());
     this.simulation.force('charge').strength(-1250);
     this.simulation.alpha(1);
-    
+
     this.simulation.force('center',
       forceCenter(this.props.viewWidth / 2, this.props.viewHeight / 2));
   }
-  
-  resetTransform() {
+
+  resetState() {
     if (this.isGraphMounted) {
       this.setState(() => {
         return {
-          mainGroupTransform: zoomIdentity
+          mainGroupTransform: zoomIdentity,
+          nodes: [], links: []
         };
       });
     }
   }
-  
+
   applyBufferDataToState() {
     this.nodeIndexTracker.clear();
-    
+
     let newNodes = [];
     this.nodeBuffer.map((node, i) => {
       let nodeProps = this.createNodePropForState(node);
-      
-      if (nodeProps.meta.nodeMeta.className === NodeConstants.SELECTED_NODE_CLASS_NAME ||
-        nodeProps.meta.nodeMeta.className === NodeConstants.SELECTED_SEARCHED_NODE_CLASS_NAME) {
-        
+
+      if (nodeProps.meta.nodeMeta.className ===
+        NodeConstants.SELECTED_NODE_CLASS_NAME ||
+        nodeProps.meta.nodeMeta.className ===
+        NodeConstants.SELECTED_SEARCHED_NODE_CLASS_NAME) {
+
         this.nodeButtonDatum[0].data = nodeProps.meta;
-        
-        nodeProps = {
-          ...nodeProps,
-          buttons: [this.nodeButtonDatum[0].isSelected]
-        };
+        if(this.nodeButtonDatum.length > 1) {
+          this.nodeButtonDatum[1].data = nodeProps.meta;
+          nodeProps = {
+            ...nodeProps,
+            buttons: [this.nodeButtonDatum[0].isSelected, this.nodeButtonDatum[1].isSelected]
+          };
+        } else {
+          nodeProps = {
+            ...nodeProps,
+            buttons: [this.nodeButtonDatum[0].isSelected]
+          };
+        }
       }
-      
-      newNodes.push(this.nodeFactory.buildNode(nodeProps.meta.nodeMeta.className, nodeProps));
-      
+
+      newNodes.push(this.nodeFactory.buildNode(nodeProps.meta.nodeMeta.className, nodeProps, this.hideButton));
+
       this.nodeIndexTracker.set(node.id, i);
     });
-    
+
     let newLinks = [];
     this.linkBuffer.map((link) => {
       let key = link.id;
       let linkProps = this.createLinkPropForState(link);
       newLinks.push(this.visualElementFactory.createSvgLine(linkProps, key));
     });
-    
+
     if (this.isGraphMounted) {
       this.setState(() => {
         return {
@@ -250,7 +283,7 @@ class ForceDirectedGraph extends Component {
       });
     }
   }
-  
+
   createNodePropForState(nodeData) {
     return {
       renderProps: {
@@ -260,7 +293,7 @@ class ForceDirectedGraph extends Component {
       }
     };
   }
-  
+
   createLinkPropForState(linkData) {
     return {
       className: 'aai-entity-link',
@@ -270,10 +303,10 @@ class ForceDirectedGraph extends Component {
       y2: linkData.target.y
     };
   }
-  
-  startSimulation(graphData) {
+
+  startSimulation(graphData, currentView, overlayButtons) {
     this.nodeFactory.setNodeMeta(graphData.graphMeta);
-    
+
     // Experiment with removing length = 0... might not be needed as new array
     // assignment will likely destroy old reference
     this.nodeBuffer.length = 0;
@@ -282,45 +315,60 @@ class ForceDirectedGraph extends Component {
     this.linkBuffer = Array.from(graphData.linkDataArray);
     this.nodeDatum.length = 0;
     this.nodeDatum = Array.from(graphData.nodeDataArray);
-    
+
     this.nodeButtonDatum.length = 0;
-    
-    let isNodeDetailsSelected = true;
+
+    let isNodeDetailsSelected = (currentView ===
+    overlayButtons[0] ||
+    currentView ===
+    '');
     this.nodeButtonDatum.push({
-      name: NodeConstants.ICON_ELLIPSES, isSelected: isNodeDetailsSelected
+      name: NodeConstants.ICON_ELLIPSES, isSelected: isNodeDetailsSelected, overlayName: overlayButtons[0]
     });
-    
+
+
+    if(overlayButtons.length > 1 ) {
+      let isSecondButtonSelected = (currentView === overlayButtons[1]);
+
+      this.nodeButtonDatum.push({
+        name: NodeConstants.ICON_TRIANGLE_WARNING, isSelected: isSecondButtonSelected, overlayName: overlayButtons[1]
+      });
+    }
+
+
     if (isNodeDetailsSelected) {
       this.currentlySelectedNodeButton = NodeConstants.ICON_ELLIPSES;
+    } else {
+      this.currentlySelectedNodeButton = NodeConstants.ICON_TRIANGLE_WARNING;
     }
-    
+
     this.updateSimulationForce();
-    
+
     this.simulation.nodes(this.nodeBuffer);
     this.simulation.force('link').links(this.linkBuffer);
     this.simulation.on('tick', this.simulationTick);
     this.simulation.restart();
   }
-  
+
   simulationComplete() {
     this.intervalTimer.stop();
     this.applyBufferDataToState();
   }
-  
+
   simulationTick() {
     this.intervalTimer.restart(this.applyBufferDataToState, simulationKeys.DATA_COPY_INTERVAL);
     this.simulation.on('tick', null);
   }
-  
+
   nodeSelected(datum) {
     if (this.props.nodeSelectedCallback) {
       this.props.nodeSelectedCallback(datum);
     }
-    
+
     let didUpdateNew = false;
     let didUpdatePrevious = false;
     let isSameNodeSelected = true;
-    
+
     // Check to see if a default node was previously selected
     let selectedDefaultNode = select('.fdgMainSvg').select('.fdgMainG')
                                                    .selectAll('.aai-entity-node')
@@ -333,7 +381,7 @@ class ForceDirectedGraph extends Component {
         isSameNodeSelected = false;
       }
     }
-    
+
     // Check to see if a searched node was previously selected
     let selectedSearchedNode = select('.fdgMainSvg').select('.fdgMainG')
                                                     .selectAll('.aai-entity-node')
@@ -346,7 +394,7 @@ class ForceDirectedGraph extends Component {
         isSameNodeSelected = false;
       }
     }
-    
+
     if (!isSameNodeSelected) {
       let newlySelectedNode = select('.fdgMainSvg').select('.fdgMainG')
                                                    .selectAll('.aai-entity-node')
@@ -354,7 +402,7 @@ class ForceDirectedGraph extends Component {
                                                      return (datum.id === d.id);
                                                    });
       if (!newlySelectedNode.empty()) {
-        
+
         if (newlySelectedNode.datum().nodeMeta.searchTarget) {
           this.nodeBuffer[newlySelectedNode.datum().index].nodeMeta.className =
             NodeConstants.SELECTED_SEARCHED_NODE_CLASS_NAME;
@@ -365,9 +413,31 @@ class ForceDirectedGraph extends Component {
         didUpdateNew = true;
       }
     }
-    
+
     if (didUpdatePrevious && didUpdateNew) {
       this.newNodeSelected = true;
+      this.applyBufferDataToState();
+    }
+  }
+
+  nodeButtonSelected(datum) {
+    if (this.props.nodeButtonSelectedCallback) {
+      let buttonClickEvent = {
+        buttonId: datum.overlayName
+      };
+      this.props.nodeButtonSelectedCallback(buttonClickEvent);
+    }
+
+    if (this.currentlySelectedNodeButton !== datum.name) {
+      if (datum.name === this.nodeButtonDatum[0].name) {
+        this.nodeButtonDatum[0].isSelected = true;
+        this.nodeButtonDatum[1].isSelected = false;
+      }
+      if (datum.name === this.nodeButtonDatum[1].name) {
+        this.nodeButtonDatum[0].isSelected = false;
+        this.nodeButtonDatum[1].isSelected = true;
+      }
+      this.currentlySelectedNodeButton = datum.name;
       this.applyBufferDataToState();
     }
   }
@@ -381,7 +451,7 @@ class ForceDirectedGraph extends Component {
       });
     }
   }
-  
+
   onGraphDrag(xAndYCoords) {
     let translate = `translate(${xAndYCoords.x}, ${xAndYCoords.y})`;
     let oldTransform = this.state.mainGroupTransform;
@@ -393,7 +463,7 @@ class ForceDirectedGraph extends Component {
       });
     }
   }
-  
+
   onNodeDrag(datum, xAndYCoords) {
     let nodeIndex = this.nodeIndexTracker.get(datum.id);
     if (this.nodeBuffer[nodeIndex]) {
@@ -402,7 +472,7 @@ class ForceDirectedGraph extends Component {
       this.applyBufferDataToState();
     }
   }
-  
+
   addNodeInterpolator(nodeId, key, startingValue, endingValue, duration) {
     let numberInterpolator = interpolateNumber(startingValue, endingValue);
     let timeNow = now();
@@ -410,20 +480,20 @@ class ForceDirectedGraph extends Component {
       nodeId: nodeId, key: key, duration: duration, timeCreated: timeNow, method: numberInterpolator
     };
     this.interpolators.set(nodeId, interpolationObject);
-    
+
     if (!this.areInterpolationsRunning) {
       this.interpolationTimer.restart(this.runInterpolators, simulationKeys.DATA_COPY_INTERVAL);
       this.areInterpolationsRunning = true;
     }
   }
-  
+
   runInterpolators() {
     // If we have no more interpolators to run then shut'r down!
     if (this.interpolators.size === 0) {
       this.interpolationTimer.stop();
       this.areInterpolationsRunning = false;
     }
-    
+
     let iterpolatorsComplete = [];
     // Apply interpolation values
     this.interpolators.forEach((interpolator) => {
@@ -439,22 +509,22 @@ class ForceDirectedGraph extends Component {
         this.nodeBuffer[nodeIndex][interpolator.key] = interpolator.method(t);
       }
     });
-    
+
     // Remove any interpolators that are complete
     if (iterpolatorsComplete.length > 0) {
       for (let i = 0; i < iterpolatorsComplete.length; i++) {
         this.interpolators.delete(iterpolatorsComplete[i]);
       }
     }
-    
+
     this.applyBufferDataToState();
   }
-  
+
   render() {
     // We will be using these values veru shortly, commenting out for eslint
     // reasons so we can build for PV let {viewWidth, viewHeight} = this.props;
     let {nodes, links, mainGroupTransform} = this.state;
-    
+
     return (
       <div className='ts-force-selected-graph'>
         <svg className={'fdgMainSvg'} width='100%' height='100%'>
@@ -478,9 +548,9 @@ class ForceDirectedGraph extends Component {
       </div>
     );
   }
-  
+
   static graphCounter = 0;
-  
+
   static generateNewProps(nodeArray, linkArray, metaData) {
     ForceDirectedGraph.graphCounter += 1;
     return {

@@ -1,26 +1,28 @@
+/* eslint-disable max-len,max-len,max-len,max-len,max-len,max-len */
 /*
- * ============LICENSE_START=======================================================
- * org.onap.aai
- * ================================================================================
- * Copyright © 2017 AT&T Intellectual Property. All rights reserved.
+ * ============LICENSE_START===================================================
+ * SPARKY (AAI UI service)
+ * ============================================================================
+ * Copyright © 2017 AT&T Intellectual Property.
  * Copyright © 2017 Amdocs
- * ================================================================================
+ * All rights reserved.
+ * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=========================================================
+ * ============LICENSE_END=====================================================
  *
- * ECOMP is a trademark and service mark of AT&T Intellectual Property.
+ * ECOMP and OpenECOMP are trademarks
+ * and service marks of AT&T Intellectual Property.
  */
-/* eslint-disable max-len,max-len,max-len,max-len,max-len,max-len */
 
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
@@ -51,7 +53,7 @@ let mapStateToProps = ({vnfSearch}) => {
 
 class VnfSearchProvStatusVisualization extends Component {
   static propTypes = {
-    processedProvStatusCountChartData: React.PropTypes.array
+    processedProvStatusCountChartData: React.PropTypes.object
   };
 
   render() {
@@ -60,9 +62,9 @@ class VnfSearchProvStatusVisualization extends Component {
 				} = this.props;
 
     let visualizationClass = 'visualizations';
-    if (processedProvStatusCountChartData[0].values ===
+    if (processedProvStatusCountChartData.values ===
       null ||
-      processedProvStatusCountChartData[0].values.size <=
+      processedProvStatusCountChartData.values.size <=
       0) {
       visualizationClass = 'visualizations hidden';
     }
@@ -76,7 +78,7 @@ class VnfSearchProvStatusVisualization extends Component {
             <h3>{i18n(CHART_PROV_STATUS.title)}</h3>
             <ResponsiveContainer width='100%' height={300}>
               <BarChart
-                data={processedProvStatusCountChartData[0].values}>
+                data={processedProvStatusCountChartData.values}>
                 <XAxis dataKey={xAxisAttrName}/>
                 <YAxis  />
                 <CartesianGrid strokeDasharray='3 3'/>
