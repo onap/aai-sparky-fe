@@ -90,7 +90,7 @@ class MainScreenWrapper extends Component {
     } = this.props;
 
     let customViewList = [];
-    extensibleViews.forEach(function(view,key){
+    extensibleViews.forEach(function(view,key) {
       var renderComponent = (props) => {
         let viewParams = {};
         if(props.match.params.extensibleViewParams !== undefined) {
@@ -102,11 +102,11 @@ class MainScreenWrapper extends Component {
           return (
             <Component
               {...props}
-              networkingCallback={(apiUrl, body, paramName,curViewData) => {
+              networkingCallback={(apiUrl, body, paramName, curViewData) => {
                 onExtensibleViewNetworkCallback(apiUrl, body, paramName, curViewData);
               }}
-              messagingCallback ={(message, messageSevirity) => {
-                onExtensibleViewMessageCallback(message, messageSevirity);
+              messagingCallback ={(message, messageSeverity) => {
+                onExtensibleViewMessageCallback(message, messageSeverity);
               }}
               changeRouteCallback = {(routeParam, historyObj) => {
                 changeUrlAddress(routeParam, historyObj);

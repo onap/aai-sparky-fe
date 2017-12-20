@@ -20,10 +20,33 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
-
+/*
+* ============LICENSE_START=======================================================
+* SPARKY (AAI UI service)
+* ================================================================================
+* Copyright © 2017 AT&T Intellectual Property.
+* Copyright © 2017 Amdocs
+* All rights reserved.
+* ================================================================================
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+* ============LICENSE_END=========================================================
+*
+* ECOMP and OpenECOMP are trademarks
+* and service marks of AT&T Intellectual Property.
+*/
 
 #audit-visualizations {
-  padding: 10px;
+  padding: 0px 10px 10px 25px;
 }
 
 #visualization-violation-severities {
@@ -31,29 +54,37 @@
 }
 
 #visualization-severity-minor {
-  border: solid 2px $yellow;
+  border: solid 2px $border-color7;
   font-size: 14px;
   margin: 0px 10px;
-  padding: 6px 10px 0px 10px;
+  padding: 3px 10px;
 }
 
 #visualization-severity-major {
-  border: solid 2px $orange;
+  border: solid 2px $border-color12;
   font-size: 14px;
   margin: 0px 10px;
-  padding: 6px 10px 0px 10px;
+  padding: 3px 10px;
 }
 
 #visualization-severity-critical {
-  border: solid 2px $red;
+  border: solid 2px $border-color10;
   font-size: 14px;
-  margin: 10px 14px;
-  padding: 9px 10px 0px 10px;
+  margin: 0px 10px;
+  padding: 3px 10px;
 }
 
 .visualization-title {
   text-align: center;
   margin-bottom: 15px;
+}
+
+.visualization-violation-count {
+  margin-bottom: 15px;
+}
+
+.visualization-charts {
+  margin-top: 0px;
 }
 
 .visualization-chart-side-by-side {

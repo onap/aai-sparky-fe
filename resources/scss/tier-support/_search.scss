@@ -20,7 +20,30 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
-
+/*
+* ============LICENSE_START=======================================================
+* SPARKY (AAI UI service)
+* ================================================================================
+* Copyright © 2017 AT&T Intellectual Property.
+* Copyright © 2017 Amdocs
+* All rights reserved.
+* ================================================================================
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+* ============LICENSE_END=========================================================
+*
+* ECOMP and OpenECOMP are trademarks
+* and service marks of AT&T Intellectual Property.
+*/
 
 .auto-complete-search {
   display: inline-block;
@@ -31,9 +54,9 @@
   float: left;
 }
 
-.auto-complete-search-button-group{
-  position: absolute;
-  width: 90px;
+.auto-complete-search-button-group {
+  position: absolute !important;
+  padding-top: 3px;
 }
 
 .auto-complete-search input.form-control {
@@ -41,36 +64,35 @@
 }
 
 .auto-complete-search-button, .auto-complete-search-button:focus {
-  background-color: $light-gray;
-  padding-bottom: 8px;
+  background-color: $search-button-background-color;
   width: 45px;
   height: 30px;
-  border: solid 1px $gray;
+  border: solid 1px $search-border-color1;
 }
 
 .auto-complete-search button:hover {
-  background-color: $blue;
+  background-color: $search-background-color1;
 }
 
 .auto-complete-search .fa-lg {
   font-size: 1em;
   line-height: 1em;
-  background-color: $light-gray;
+  background-color: $search-button-background-color;
 }
 
 .auto-complete-search button:hover .fa-search {
-  color: $white;
-  background-color: $blue;
+  color: $primary-background-color;
+  background-color: $search-background-color1;
 }
 
 .auto-complete-search .btn-group .auto-complete-clear-button {
   border: none;
-  margin-left: -35px;
-  margin-top: 2px;
-  padding: 5px 12px 8px 12px;
+  margin-left: -35px !important;
+  height: 30px;
+  background-color: transparent;
 
   i {
-    color: #009fdb;
+    color: $search-text-color1;
     opacity: 0.3;
     filter: alpha(opacity=30);
     background-color: transparent;
@@ -81,26 +103,28 @@
   background-color: transparent;
 
   i.fa-times {
-    color: #009fdb;
+    color: $search-text-color1;
     opacity: 1;
     background-color: transparent;
   }
 }
 
 .auto-complete-search button:hover .fa-times {
-  color: $white;
-  background-color: $blue;
+  color: $primary-background-color;
+  background-color: $search-background-color1;
 }
 
 .react-autosuggest__container {
   display: inline-block;
   position: relative;
+  padding-top: 3px;
 }
 
-.react-autosuggest__input{
+.react-autosuggest__input {
   width: 655px;
   height: 30px;
   display: inline-block;
+  padding-top: 10px;
 }
 
 .react-autosuggest__input:focus {
@@ -117,20 +141,19 @@
   overflow-y: scroll;
   height: 200px;
   border:1px ;
-
 }
 
-.react-autosuggest__suggestions-containerCopy{
+.react-autosuggest__suggestions-containerCopy {
   display: none;
   display: block;
   position: absolute;
   top: 30px;
   width: 655px;
-  border: 1px solid #aaa;
-  background-color: #fff;
+  border: 1px solid $search-border-color1;
+  background-color: $primary-background-color;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  z-index: 2;
+  z-index: 90;
   overflow-y: hidden;
 }
 
@@ -139,11 +162,11 @@
   position: absolute;
   top: 30px;
   width: 655px;
-  border: 1px solid #aaa;
-  background-color: #fff;
+  border: 1px solid $search-border-color1;
+  background-color: $primary-background-color;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  z-index: 2;
+  z-index: 99;
   overflow-x: hidden;
 }
 
@@ -161,14 +184,14 @@
 }
 
 .react-autosuggest__suggestion--focused {
-  background-color: #ddd;
+  background-color: $search-background-color3;
 }
 
 .react-autosuggest__section-title {
   padding: 10px 0 0 10px;
   font-size: 12px;
-  color: #777;
-  border-top: 1px dashed #ccc;
+  color: $search-background-color2;
+  border-top: 1px dashed $search-border-color1;
 }
 
 .react-autosuggest__section-container:first-child .react-autosuggest__section-title {
@@ -185,10 +208,11 @@
   flex: 20;
 }
 
-.suggestionColumnTwo{
+.suggestionColumnTwo {
   flex: 80;
 }
-.highlight{
+
+.highlight {
   font-weight: bolder;
   background-color:inherit;
   padding: 0px;

@@ -20,16 +20,38 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
-
+/*
+* ============LICENSE_START=======================================================
+* SPARKY (AAI UI service)
+* ================================================================================
+* Copyright © 2017 AT&T Intellectual Property.
+* Copyright © 2017 Amdocs
+* All rights reserved.
+* ================================================================================
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+* ============LICENSE_END=========================================================
+*
+* ECOMP and OpenECOMP are trademarks
+* and service marks of AT&T Intellectual Property.
+*/
 
 .SplitPane {
-  min-width: 1280px;
-  //108 is the height of the header in tsui
-  height: calc(100% - 108px) !important;
+  min-width: $minimum-application-width;
+  height: calc(100% - #{$total-header-height}) !important;
 }
 
 .Resizer {
-  background: #000;
+  background: $border-color1;
   opacity: .2;
   z-index: 1;
   -moz-box-sizing: border-box;
@@ -48,28 +70,28 @@
 .Resizer.horizontal {
   height: 11px;
   margin: -5px 0;
-  border-top: 5px solid rgba(255, 255, 255, 0);
-  border-bottom: 5px solid rgba(255, 255, 255, 0);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
   cursor: row-resize;
   width: 100%;
 }
 
 .Resizer.horizontal:hover {
-  border-top: 5px solid rgba(0, 0, 0, 0.5);
-  border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+  border-top: 5px solid $border-color2;
+  border-bottom: 5px solid $border-color2;
 }
 
 .Resizer.vertical {
   width: 11px;
   margin: 0 -5px;
-  border-left: 5px solid rgba(255, 255, 255, 0);
-  border-right: 5px solid rgba(255, 255, 255, 0);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
   cursor: col-resize;
 }
 
 .Resizer.vertical:hover {
-  border-left: 5px solid rgba(0, 0, 0, 0.5);
-  border-right: 5px solid rgba(0, 0, 0, 0.5);
+  border-left: 5px solid $border-color2;
+  border-right: $border-color2;
 }
 Resizer.disabled {
   cursor: not-allowed;
@@ -79,7 +101,7 @@ Resizer.disabled:hover {
 }
 
 .Pane2 {
-  background-color: $tlv-light-gray;
-  border-left: solid 2px $light-gray;
-  overflow: hidden;
+  background-color: $background-color4;
+  border-left: solid 2px $border-color5;
+  overflow: auto;
 }

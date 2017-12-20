@@ -20,9 +20,8 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
- 
-import {vnfActionTypes} from 'app/vnfSearch/VnfSearchConstants.js';
 import {
+  vnfActionTypes,
   CHART_ORCH_STATUS,
   CHART_PROV_STATUS,
   CHART_NF_ROLE,
@@ -30,13 +29,13 @@ import {
   TOTAL_VNF_COUNT
 } from 'app/vnfSearch/VnfSearchConstants.js';
 import {ERROR_RETRIEVING_DATA} from 'app/networking/NetworkConstants.js';
-import {MESSAGE_LEVEL_DANGER} from 'utils/GlobalConstants.js';
+import {
+  filterBarActionTypes,
+  MESSAGE_LEVEL_DANGER
+} from 'utils/GlobalConstants.js';
 import {
   globalAutoCompleteSearchBarActionTypes
 } from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBarConstants.js';
-import {
-  filterBarActionTypes
-} from 'generic-components/filterBar/FilterBarConstants.js';
 
 export default (state = {}, action) => {
   let data = action.data;

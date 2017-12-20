@@ -20,7 +20,6 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
-
 var testContext = require.context('./test', true, /.test\.js$/);
 testContext.keys().forEach(testContext);
 

@@ -20,7 +20,30 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
-
+/*
+* ============LICENSE_START=======================================================
+* SPARKY (AAI UI service)
+* ================================================================================
+* Copyright © 2017 AT&T Intellectual Property.
+* Copyright © 2017 Amdocs
+* All rights reserved.
+* ================================================================================
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+* ============LICENSE_END=========================================================
+*
+* ECOMP and OpenECOMP are trademarks
+* and service marks of AT&T Intellectual Property.
+*/
 
 $plus-circle-icon-size: 18px;
 .plus-icon-button {
@@ -38,8 +61,8 @@ $plus-circle-icon-size: 18px;
 
 .primary-btn{
   border: 1px solid;
-  border-color: $blue;
-  color: $blue;
+  border-color: $border-color3;
+  color: $text-color4;
   font-weight: bolder;
   @extend .body-1;
   text-align: center;
@@ -47,23 +70,23 @@ $plus-circle-icon-size: 18px;
   border-radius: 5px;
   cursor: pointer;
   align-self: center;
-  background-color: $white;
+  background-color: $primary-background-color;
   .primary-btn-text {
     width: 100%;
   }
   &:hover {
-    color: $blue;
-    border-color: $blue;
-    background-color: $tlv-hover;
+    color: $background-color5;
+    border-color: $border-color3;
+    background-color: $background-color12;
     &:active {
-      color: $blue;
-      border-color: $blue;
+      color: $background-color5;
+      border-color: $border-color3;
     }
   }
 
   &:focus:not(:hover) {
-    color: $blue;
-    border-color: $blue;
-    background-color: $white;
+    color: $background-color5;
+    border-color: $border-color3;
+    background-color: $primary-background-color;
   }
 }

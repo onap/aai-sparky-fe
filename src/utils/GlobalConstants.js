@@ -20,6 +20,11 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
+import {FilterBarConstants} from 'filter-bar-utils';
+
+import {BASE_URL} from 'app/networking/NetworkConstants.js';
+import keyMirror from 'utils/KeyMirror.js';
+
 // Message Levels
 export const MESSAGE_LEVEL_SUCCESS = 'success';
 export const MESSAGE_LEVEL_WARNING = 'warning';
@@ -34,3 +39,7 @@ export const STATUS_CODE_204_NO_CONTENT = 204;
 export const STATUS_CODE_3XX_REDIRECTION = 300;
 export const STATUS_CODE_4XX_CLIENT_ERROR = 400;
 export const STATUS_CODE_5XX_SERVER_ERROR = 500;
+
+export const filterBarActionTypes = keyMirror(FilterBarConstants.FILTER_BAR_ACTION_TYPES);
+
+export const UNIFIED_FILTERS_URL = BASE_URL + '/rest/search/unifiedFilterRequest';

@@ -1,0 +1,146 @@
+/**
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright © 2017 AT&T Intellectual Property. All rights reserved.
+ * Copyright © 2017 Amdocs
+ * ================================================================================
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============LICENSE_END=========================================================
+ *
+ * ECOMP is a trademark and service mark of AT&T Intellectual Property.
+ */
+/*
+* ============LICENSE_START=======================================================
+* SPARKY (AAI UI service)
+* ================================================================================
+* Copyright © 2017 AT&T Intellectual Property.
+* Copyright © 2017 Amdocs
+* All rights reserved.
+* ================================================================================
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+* ============LICENSE_END=========================================================
+*
+* ECOMP and OpenECOMP are trademarks
+* and service marks of AT&T Intellectual Property.
+*/
+
+html {
+  font-family: $base-font-regular;
+}
+
+form {
+  margin: 50px 20px 20px 20px;
+  font-size: $body-font-1;
+}
+
+div.attribute-field, div.centre {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  margin: 10px 5px;
+}
+
+form > div > h2,
+div.centre > span.error-message{
+  min-width: 550px;
+  margin: 15px 0px 5px 0px;
+}
+
+div.attribute-field > label {
+  font-weight: bold;
+  margin-right: 10px;
+  min-width: 170px;
+  text-align: right;
+  padding: 6px 9px;
+}
+
+div.attribute-field > div {
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  flex-flow: column;
+  position: relative;
+}
+
+div.attribute-field > div > * {
+  flex: 1;
+  padding: 5px 8px;
+  border: solid 1px $border-color5;
+}
+
+div.attribute-field > div > select {
+  min-height: 30px;
+}
+
+div > span.error-message {
+  font-weight: bold;
+  color: $background-color10;
+  border: none;
+}
+
+div > span.error-message:before {
+  display: inline-block;
+  text-rendering: auto;
+  content: '\F06A';
+  margin-right: 5px;
+  font: normal normal normal 14px/1 FontAwesome;
+}
+
+form > div > button {
+  margin: 10px;
+  border-radius: 5px;
+  padding: 10px 5px 5px 5px;
+  font-weight: bold;
+  font-size: $heading-font-3;
+}
+
+form > div > button[type=submit] {
+  color: $primary-background-color;
+  background-image: linear-gradient($background-color12, $background-color5);
+  border: solid 1px $border-color3;
+}
+
+form > div > button[type=submit]:before {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  text-rendering: auto;
+  content: '\F1D8';
+  margin-right: 5px;
+}
+
+form>div button[type=submit][disabled] {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+form > div > button[type=button] {
+  color: $text-color3;
+  background-image: linear-gradient($primary-background-color, $background-color8);
+  border: solid 1px $border-color5;
+}
+
+form>div button[type=button][disabled] {
+  opacity: .6;
+  cursor: not-allowed;
+}

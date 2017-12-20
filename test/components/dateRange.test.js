@@ -21,7 +21,7 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 import React from 'react';
-import TestUtils from 'react-dom/lib/ReactTestUtils';
+import TestUtils from 'react-dom/test-utils';
 import {Provider} from 'react-redux';
 import {expect} from 'chai';
 import i18n from 'utils/i18n/i18n';

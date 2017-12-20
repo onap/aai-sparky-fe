@@ -3,5 +3,5 @@
 }
 
 .btn-info {
-  @include button-variant($text-black, $tlv-gray, $light-gray);
+  @include button-variant($text-color1, $background-color12, $text-color7);
 }
