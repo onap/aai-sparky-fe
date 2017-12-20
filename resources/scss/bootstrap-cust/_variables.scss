@@ -3,32 +3,34 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 
-$gray-darker: $dark-gray;
-$gray-dark: $dark-gray;
-$gray: $gray;
-$gray-light: $light-gray;
-$gray-lighter: $light-gray;
+$gray-darker: $background-color2;
+$gray-dark: $background-color2;
+$gray: $background-color13;
+$gray-light: $text-color7;
+$gray-lighter: $text-color7;
 
-$brand-primary: $blue;
-$brand-success: $green;
-$brand-info: $light-gray;
-$brand-warning: $yellow;
-$brand-danger: $red;
+$brand-primary: $background-color5;
+$brand-success: $background-color11;
+$brand-info: $text-color7;
+$brand-warning: $text-color9;
+$brand-danger: $text-color10;
 
 
 //== Scaffolding
 //
 //## Settings for some of the most global styles.
 
-$body-bg: $white;
-$text-color: $text-black;
-$link-color: $link-blue;
-$link-hover-color: $blue;
+$body-bg: $primary-background-color;
+$text-color: $text-color1;
+$link-color: $border-color11;
+$link-hover-color: $border-color3;
 
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
-
+// This variable never used. Maybe delete!!!!
+$font-family-sans-serif: omnes-regular, "Omnes-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+//$font-family-base: $font-family-sans-serif !default;
 $font-size-base: $body-font-2;
 $font-size-large: $body-font-1;
 $font-size-small: $body-font-3;
@@ -53,10 +55,10 @@ $border-radius-small: 0;
 
 // $btn-font-weight: normal !default;
 $btn-default-color: $text-color;
-$btn-default-bg: $white;
-$btn-default-border: $light-gray;
+$btn-default-bg: $primary-background-color;
+$btn-default-border: $border-color5;
 
-$btn-success-color: $white;
+$btn-success-color: $primary-background-color;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius-base: 2px;
@@ -65,19 +67,19 @@ $btn-border-radius-small: 2px;
 
 //== Dropdowns
 //
-$dropdown-bg: $white;
-$dropdown-border: $link-blue;
-$dropdown-link-color: $text-black;
+$dropdown-bg: $primary-background-color;
+$dropdown-border: $background-color3;
+$dropdown-link-color: $text-color1;
 $dropdown-divider-bg: $gray;
 //** Hover color for dropdown links.
-$dropdown-link-hover-color: $black;
+$dropdown-link-hover-color: $text-color3;
 //** Hover background for dropdown links.
-$dropdown-link-hover-bg: $tlv-hover;
+$dropdown-link-hover-bg: $background-color12;
 
 //** Active dropdown menu item text color.
-$dropdown-link-active-color: $black;
+$dropdown-link-active-color: $text-color3;
 //** Active dropdown menu item background color.
-$dropdown-link-active-bg: $tlv-hover;
+$dropdown-link-active-bg: $background-color12;
 
 //== Forms
 //
@@ -85,16 +87,16 @@ $dropdown-link-active-bg: $tlv-hover;
 $form-group-margin-bottom: 24px;
 
 
-$input-bg: $white;
-$input-bg-disabled: $tlv-light-gray;
-$input-color: $dark-gray;
-$input-border: $light-gray;
-$input-border-focus: $dark-blue;
+$input-bg: $primary-background-color;
+$input-bg-disabled: $background-color4;
+$input-color:$text-color6;
+$input-border: $text-color7;
+$input-border-focus: $border-color4;
 
 //== Modals
 //
 //##
-$modal-content-bg: $white;
+$modal-content-bg: $primary-background-color;
 $modal-inner-padding: 0 15px;
 $modal-title-padding: 30px 25px 10px 25px;
 
@@ -102,7 +104,7 @@ $modal-title-padding: 30px 25px 10px 25px;
 //== Close
 //
 //##
-$close-color: $tlv-light-gray;
+$close-color: $background-color4;
 
 //== Navs
 //
@@ -116,11 +118,11 @@ $navbar-inverse-bg: $gray;
 $nav-tabs-border-color: transparent;
 $nav-tabs-link-hover-border-color: transparent;
 $nav-tabs-active-link-hover-bg: transparent;
-$nav-tabs-active-link-hover-color: $text-black;
+$nav-tabs-active-link-hover-color: $text-color1;
 $nav-tabs-active-link-hover-border-color: transparent;
 
 
 //== Popovers
 //
 //##
-$popover-bg: $background-gray;
+$popover-bg: $background-color1;

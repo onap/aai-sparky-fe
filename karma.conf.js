@@ -20,7 +20,6 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
-
 var path = require('path');
 var webpack = require('webpack');
 var isparta = require('isparta');

@@ -21,9 +21,8 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 
-
 #audit-visualizations {
-  padding: 10px;
+  padding: 0px 10px 10px 25px;
 }
 
 #visualization-violation-severities {
@@ -31,29 +30,37 @@
 }
 
 #visualization-severity-minor {
-  border: solid 2px $yellow;
+  border: solid 2px $border-color7;
   font-size: 14px;
   margin: 0px 10px;
-  padding: 6px 10px 0px 10px;
+  padding: 3px 10px;
 }
 
 #visualization-severity-major {
-  border: solid 2px $orange;
+  border: solid 2px $border-color12;
   font-size: 14px;
   margin: 0px 10px;
-  padding: 6px 10px 0px 10px;
+  padding: 3px 10px;
 }
 
 #visualization-severity-critical {
-  border: solid 2px $red;
+  border: solid 2px $border-color10;
   font-size: 14px;
-  margin: 10px 14px;
-  padding: 9px 10px 0px 10px;
+  margin: 0px 10px;
+  padding: 3px 10px;
 }
 
 .visualization-title {
   text-align: center;
   margin-bottom: 15px;
+}
+
+.visualization-violation-count {
+  margin-bottom: 15px;
+}
+
+.visualization-charts {
+  margin-top: 0px;
 }
 
 .visualization-chart-side-by-side {

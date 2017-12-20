@@ -20,7 +20,6 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
-
 'use strict';
 
 var path = require('path');
@@ -32,6 +31,11 @@ module.exports = {
 	entry: {
 		'aai/bundle': [
 			'app/main.app.jsx',
+			`webpack-dev-server/client?https://localhost:${devPort}`,
+			'webpack/hot/only-dev-server'
+		],
+		'editAttributes/editAttributesBundle': [
+			'editAttributes/main.app.jsx',
 			`webpack-dev-server/client?https://localhost:${devPort}`,
 			'webpack/hot/only-dev-server'
 		]
@@ -47,7 +51,8 @@ module.exports = {
 			app: 'src/app',
 			'generic-components': 'src/generic-components',
 			utils: 'src/utils',
-			images: 'resources/images'
+			images: 'resources/images',
+			editAttributes: 'src/editAttributes'
 		}
 	},
 	devServer: {

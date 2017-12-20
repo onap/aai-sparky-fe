@@ -20,8 +20,7 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
-
-
+ 
 .notification-modal {
 
   .modal-content {
@@ -45,7 +44,7 @@
 
   &.warning {
     .modal-content .modal-header {
-      border-top: 3px solid $yellow;
+      border-top: 3px solid $border-color7;
     }
   }
 

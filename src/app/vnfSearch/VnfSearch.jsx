@@ -22,10 +22,12 @@
  */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+
 import {
   isEqual,
   isEmpty
 } from 'lodash';
+
 import {VerticalFilterBar} from 'vertical-filter-bar';
 import {CollapsibleSlidingPanel} from 'collapsible-sliding-panel';
 
@@ -36,12 +38,14 @@ import {
   VNFS_ROUTE,
   VNF_SEARCH_FILTER_NAME
 } from 'app/vnfSearch/VnfSearchConstants.js';
+
 import {
   processVnfVisualizationsOnFilterChange,
   processVnfFilterPanelCollapse,
   setNotificationText,
   clearVnfSearchData
 } from 'app/vnfSearch/VnfSearchActions.js';
+
 import VnfSearchOrchStatusVisualizations from 'app/vnfSearch/VnfSearchOrchestratedStatusVisualization.jsx';
 import VnfSearchProvStatusVisualizations from 'app/vnfSearch/VnfSearchProvStatusVisualization.jsx';
 import VnfSearchNfTypeVisualizations from 'app/vnfSearch/VnfSearchNfTypeVisualization.jsx';
@@ -49,27 +53,37 @@ import VnfSearchNfRoleVisualizations from 'app/vnfSearch/VnfSearchNfRoleVisualiz
 import VnfSearchTotalCountVisualization from 'app/vnfSearch/VnfSearchTotalCountVisualization.jsx';
 import i18n from 'utils/i18n/i18n';
 import {changeUrlAddress, buildRouteObjWithFilters} from 'utils/Routes.js';
+
 import {
-  getUnifiedFilters,
+  FilterBarConstants,
   processFilterSelection,
-  setNonConvertedFilterValues,
-  convertNonConvertedValues,
+  getUnifiedFilters,
   buildFilterValueMap,
+  setNonConvertedFilterValues,
   setFilterSelectionsToDefaults,
-  FILTER_BAR_TITLE
-} from 'generic-components/filterBar/FilterBarUtils.js';
+  convertNonConvertedValues
+} from 'filter-bar-utils';
+
+import {
+  globalInlineMessageBarActionTypes
+} from 'app/globalInlineMessageBar/GlobalInlineMessageBarConstants.js';
+
+import {
+  UNIFIED_FILTERS_URL,
+  filterBarActionTypes
+} from 'utils/GlobalConstants.js';
 
 const mapStateToProps = ({vnfSearch}) => {
   let {
-        feedbackMsgText = '',
-        feedbackMsgSeverity = '',
-        vnfFilters = {},
-        selectedFilterValues = {},
-        vnfFilterValues = {},
-        vnfVisualizationPanelClass = 'collapsible-panel-main-panel',
-        unifiedFilterValues = {},
-        nonConvertedFilters = {}
-      } = vnfSearch;
+    feedbackMsgText = '',
+    feedbackMsgSeverity = '',
+    vnfFilters = {},
+    selectedFilterValues = {},
+    vnfFilterValues = {},
+    vnfVisualizationPanelClass = 'collapsible-panel-main-panel',
+    unifiedFilterValues = {},
+    nonConvertedFilters = {}
+  } = vnfSearch;
 
   return {
     feedbackMsgText,
@@ -90,7 +104,8 @@ let mapActionToProps = (dispatch) => {
     },
     onInitializeVnfSearchFilters: () => {
       // first time to the page, need to get the list of available filters
-      dispatch(getUnifiedFilters(VNF_SEARCH_FILTER_NAME, vnfActionTypes.VNF_SEARCH_FILTERS_RECEIVED));
+      dispatch(getUnifiedFilters(UNIFIED_FILTERS_URL, VNF_SEARCH_FILTER_NAME,
+        vnfActionTypes.VNF_SEARCH_FILTERS_RECEIVED, globalInlineMessageBarActionTypes.SET_GLOBAL_MESSAGE));
     },
     onFilterPanelCollapse: (isOpen) => {
       // expand/collapse the filter panel
@@ -103,7 +118,7 @@ let mapActionToProps = (dispatch) => {
         // only process the selection if allFilters has values (possible that
         // filter bar is sending back the default filter selections before
         // we have received the list of available filters i.e. allFilters)
-        dispatch(processFilterSelection(selectedFilters, allFilters));
+        dispatch(processFilterSelection(filterBarActionTypes.NEW_SELECTIONS, selectedFilters, allFilters));
       }
     },
     onFilterValueChange: (convertedFilterValues) => {
@@ -116,13 +131,14 @@ let mapActionToProps = (dispatch) => {
       // and update the VNF visualizations
       let filterValueMap =  buildFilterValueMap(filterValueString);
 
-      dispatch(setNonConvertedFilterValues(filterValueMap));
+      dispatch(setNonConvertedFilterValues(filterBarActionTypes.SET_NON_CONVERTED_VALUES, filterValueMap));
       dispatch(processVnfVisualizationsOnFilterChange(filterValueMap));
 
       // incase url param was changed manually, need to update vnfFilterValues
     },
     onResetFilterBarToDefaults: (filters, filterValues) => {
-      dispatch(setFilterSelectionsToDefaults(filters, filterValues));
+      dispatch(setFilterSelectionsToDefaults(filterBarActionTypes.SET_UNIFIED_VALUES,
+        filterBarActionTypes.SET_NON_CONVERTED_VALUES, filters, filterValues));
     },
     onPrepareToUnmount: () => {
       // clean things up:
@@ -134,7 +150,8 @@ let mapActionToProps = (dispatch) => {
     onConvertFilterValues: (nonConvertedValues, allFilters, currentlySetFilterValues) => {
       // we have saved non-converted filter values received from URL params,
       // time to convert them so can update filter bar selections programatically
-      dispatch(convertNonConvertedValues(nonConvertedValues, allFilters, currentlySetFilterValues));
+      dispatch(convertNonConvertedValues(filterBarActionTypes.SET_CONVERTED_VALUES, nonConvertedValues,
+        allFilters, currentlySetFilterValues));
     },
     onMessageStateChange: (msgText, msgSeverity) => {
       dispatch(setNotificationText(msgText, msgSeverity));
@@ -171,19 +188,14 @@ class vnfSearch extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.feedbackMsgText &&
-      nextProps.feedbackMsgText !==
-      this.props.feedbackMsgText) {
-      this.props.onMessageStateChange(nextProps.feedbackMsgText,
-        nextProps.feedbackMsgSeverity);
+    if (nextProps.feedbackMsgText && nextProps.feedbackMsgText !== this.props.feedbackMsgText) {
+      this.props.onMessageStateChange(nextProps.feedbackMsgText, nextProps.feedbackMsgSeverity);
     }
 
-    if (nextProps.vnfFilterValues &&
-      !isEqual(nextProps.vnfFilterValues, this.props.vnfFilterValues) &&
+    if (nextProps.vnfFilterValues && !isEqual(nextProps.vnfFilterValues, this.props.vnfFilterValues) &&
       this.props.vnfFilters) {
       this.props.onFilterValueChange(nextProps.vnfFilterValues);
-      changeUrlAddress(buildRouteObjWithFilters(VNFS_ROUTE, nextProps.vnfFilterValues),
-        this.props.history);
+      changeUrlAddress(buildRouteObjWithFilters(VNFS_ROUTE, nextProps.vnfFilterValues), this.props.history);
     }
 
     if (nextProps.match &&
@@ -196,8 +208,8 @@ class vnfSearch extends Component {
     } else if (Object.keys(nextProps.nonConvertedFilters).length > 0 &&
       !isEqual(this.props.nonConvertedFilters, nextProps.nonConvertedFilters)) {
       if (Object.keys(this.props.vnfFilters).length > 0) {
-        this.props.onConvertFilterValues(
-          nextProps.nonConvertedFilters, this.props.vnfFilters, this.props.vnfFilterValues);
+        this.props.onConvertFilterValues(nextProps.nonConvertedFilters, this.props.vnfFilters,
+          this.props.vnfFilterValues);
       }
     } else if ((!nextProps.match || !nextProps.match.params || !nextProps.match.params.filters) &&
       this.props.match.params.filters && this.props.vnfFilters && this.props.vnfFilterValues) {
@@ -210,8 +222,10 @@ class vnfSearch extends Component {
       Object.keys(this.props.nonConvertedFilters).length > 0) {
       // just received list of available filters and there is are nonConvertedFilters (previously
       // set from url params), need to convert those values and update the filter bar selections
-      this.props.onConvertFilterValues(
-        this.props.nonConvertedFilters, nextProps.vnfFilters, this.props.vnfFilterValues);
+
+      this.props.onConvertFilterValues(this.props.nonConvertedFilters, nextProps.vnfFilters,
+        this.props.vnfFilterValues);
+
     } else if (nextProps.vnfFilters && !isEqual(nextProps.vnfFilters, this.props.vnfFilters) &&
       isEmpty(this.props.vnfFilterValues)) {
       // filter bar previously returned the default filter selections (but we didn't have the list
@@ -232,7 +246,7 @@ class vnfSearch extends Component {
       <VerticalFilterBar
         filtersConfig={this.props.vnfFilters}
         filterValues={this.props.unifiedFilterValues}
-        filterTitle={FILTER_BAR_TITLE}
+        filterTitle={FilterBarConstants.FILTER_BAR_TITLE}
         onFilterChange={(selectedFilters) =>
           this.props.onFilterSelection(selectedFilters, this.props.vnfFilters)} />    );
   }
