@@ -21,17 +21,17 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 import React from 'react';
-import TestUtils from 'react-dom/lib/ReactTestUtils';
+import TestUtils from 'react-dom/test-utils';
 import {storeCreator} from 'app/AppStore.js';
 import {Provider} from 'react-redux';
 import { expect } from 'chai';
-import VnfSearchOrchStatusVisualizations from 'app/vnfSearch/vnfSearchVisualizations/VnfSearchOrchestratedStatusVisualization.jsx';
-import VnfSearchProvStatusVisualizations from 'app/vnfSearch/vnfSearchVisualizations/VnfSearchProvStatusVisualization.jsx';
-import VnfSearchTotalCountVisualization from 'app/vnfSearch/vnfSearchVisualizations/VnfSearchTotalCountVisualization.jsx';
+import VnfSearchOrchStatusVisualizations from 'app/vnfSearch/VnfSearchOrchestratedStatusVisualization.jsx';
+import VnfSearchProvStatusVisualizations from 'app/vnfSearch/VnfSearchProvStatusVisualization.jsx';
+import VnfSearchTotalCountVisualization from 'app/vnfSearch/VnfSearchTotalCountVisualization.jsx';
 import {
   CHART_PROV_STATUS,
   CHART_ORCH_STATUS,
-  TOTAL_VNF_COUNT} from 'app/vnfSearch/vnfSearchVisualizations/VnfSearchVisualizationsConstants.js';
+  TOTAL_VNF_COUNT} from 'app/vnfSearch/VnfSearchConstants.js';
 
 describe('VNF Visualizations Structure Tests', function () {
 

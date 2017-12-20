@@ -2,11 +2,11 @@
 .idea
 
 dist
+node
+target
 node_modules
 .npmrc
 test/coverage
 npm-debug.log
 .vscode
 scripts/elasticsearch/auditBulkLoad.json
-node
-target

@@ -20,7 +20,6 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
- 
 import {
   vnfActionTypes,
   VNF_FILTER_AGGREGATION_URL,

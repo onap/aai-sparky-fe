@@ -22,10 +22,10 @@
  */
 import React from 'react';
 import { expect } from 'chai';
-import reducer from 'app/vnfSearch/vnfSearchVisualizations/VnfSearchVisualizationsReducer.js';
+import reducer from 'app/vnfSearch/VnfSearchReducer.js';
 import {
   CHART_ORCH_STATUS,
-  CHART_PROV_STATUS, vnfSearchVisualizationsActionTypes} from 'app/vnfSearch/vnfSearchVisualizations/VnfSearchVisualizationsConstants.js';
+  CHART_PROV_STATUS, vnfSearchVisualizationsActionTypes} from 'app/vnfSearch/VnfSearchConstants.js';
 
 
 

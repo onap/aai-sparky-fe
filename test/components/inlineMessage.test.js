@@ -22,7 +22,7 @@
  */
 import { expect } from 'chai';
 import React from 'react';
-import TestUtils from 'react-dom/lib/ReactTestUtils';
+import TestUtils from 'react-dom/test-utils';
 import InlineMessage from 'generic-components/InlineMessage/InlineMessage.jsx';
 import InlineMessageConstants from 'generic-components/InlineMessage/InlineMessageConstants.js';
 

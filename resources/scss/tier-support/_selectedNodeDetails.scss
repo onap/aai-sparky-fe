@@ -21,14 +21,13 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 
-
 .ts-selected-node-details {
   padding: 20px;
-  color: $dark-gray;
+  color: $border-color2;
   font-family: $body-font-1;
 
   h1 {
-    color: $blue;
+    color: $selected-node-details-color1;
     font-size: $heading-font-2;
     margin-bottom: 5px;
   }
@@ -40,7 +39,7 @@
   margin-top: 15px;
 
   th {
-    color: $gray;
+    color: $border-color2;
   }
 
   td {
@@ -49,14 +48,14 @@
 
   .left-column-cell {
     padding: 7px 5px 5px 0px;
-    border-bottom: solid 1px $light-gray;
-    border-right: solid 1px $light-gray;
+    border-bottom: solid 1px $border-color5;
+    border-right: solid 1px $border-color5;
     width: 50%;
   }
 
   .right-column-cell {
     padding: 7px 5px 5px 15px;
-    border-bottom: solid 1px $light-gray;
+    border-bottom: solid 1px $border-color5;
   }
 }
 

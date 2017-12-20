@@ -21,22 +21,26 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 
-
-// DOX CORE
+// ONAP CORE
 @import "common/variables";
+
+// Import Typography Section 
 @import "common/typography";
+
+
+
 
 // Core variables and mixins
 @import "bootstrap-cust/variables";
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
 // Reset and dependencies
-@import "bootstrap/normalize";
+//@import "bootstrap/normalize";
 //@import "bootstrap/print";
 //@import "bootstrap/glyphicons";
 
 // Core CSS
-@import "bootstrap/scaffolding";
+@import "bootstrap-cust/scaffolding";
 @import "bootstrap/type";
 @import "bootstrap/code";
 @import "bootstrap/grid";

@@ -23,14 +23,14 @@
 import {expect} from 'chai';
 import React from 'react';
 import {Provider} from 'react-redux';
-import TestUtils from 'react-dom/lib/ReactTestUtils';
+import TestUtils from 'react-dom/test-utils';
 import {tierSupportActionTypes} from 'app/tierSupport/TierSupportConstants.js';
-import reducer from 'app/tierSupport/autoCompleteSearchBar/AutoCompleteSearchBarReducer.js';
+import reducer from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBarReducer.js';
 import {MESSAGE_LEVEL_WARNING, MESSAGE_LEVEL_DANGER} from 'utils/GlobalConstants.js';
 import {
     autoCompleteSearchBarActionTypes,
     NO_MATCHES_FOUND,
-    ERROR_INVALID_SEARCH_TERMS} from 'app/tierSupport/autoCompleteSearchBar/AutoCompleteSearchBarConstants.js';
+    ERROR_INVALID_SEARCH_TERMS} from 'generic-components/autoCompleteSearchBar/AutoCompleteSearchBarConstants.js';
 import {
     ERROR_RETRIEVING_DATA} from 'app/networking/NetworkConstants.js';
 

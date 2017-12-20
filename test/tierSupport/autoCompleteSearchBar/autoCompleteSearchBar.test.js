@@ -27,7 +27,7 @@ import sinon from 'sinon';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import {storeCreator} from 'app/AppStore.js';
-import TestUtils from 'react-dom/lib/ReactTestUtils';
+import TestUtils from 'react-dom/test-utils';
 import {
 	autoCompleteSearchBarActionTypes,
 	ERROR_INVALID_SEARCH_TERMS,
@@ -47,7 +47,7 @@ import {
 	onSuggestionsClearRequested,
 	querySelectedNodeElement,
 	getInvalidSearchInputEvent
-} from 'app/tierSupport/autoCompleteSearchBar/AutoCompleteSearchBarActions.js';
+} from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBarActions.js';
 import * as networkCall from 'app/networking/NetworkCalls.js';
 import autoCompleteSearchBarTestConstants from './autoCompleteSearchBarTestConstants';
 

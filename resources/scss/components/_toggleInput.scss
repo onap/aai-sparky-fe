@@ -21,7 +21,6 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 
-
 .toggle-input-wrapper {
   $toggle-width: 40px;
   $toggle-height: 20px;
@@ -48,7 +47,7 @@
     padding: 1px;
     width: $toggle-width;
     height: $toggle-height;
-    background-color: $dark-gray;
+    background-color: $background-color2;
     border-radius: $toggle-height;
     transition: background 0.4s;
   }
@@ -63,7 +62,7 @@
     left: 1px;
     bottom: 1px;
     right: 1px;
-    background-color: $white;
+    background-color: $primary-background-color;
     border-radius: $toggle-height;
     transition: background 0.4s;
   }
@@ -72,15 +71,15 @@
     left: 4px;
     bottom: 4px;
     width: $toggle-height - 8;
-    background-color: $dark-gray;
+    background-color: $background-color2;
     border-radius: $toggle-height - 8;
     transition: margin 0.4s, background 0.4s;
   }
   input.toggle-round-flat:checked + label {
-    background-color: $link-blue;
+    background-color: $background-color3;
   }
   input.toggle-round-flat:checked + label:after {
     margin-left: $toggle-height;
-    background-color: $link-blue;
+    background-color: $background-color3;
   }
 }
