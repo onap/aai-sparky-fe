@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_db41af0c",
+        "filename": "pom_deploy.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 651
+      },
+      "writtenOn": "2017-12-20T21:58:26Z",
+      "side": 1,
+      "message": "Remove  this file from the review",
+      "revId": "30d4860cb41fb6db5a93dd1fc9f91e62633b18d3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_fb46eb22",
+        "filename": "pom_install.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 651
+      },
+      "writtenOn": "2017-12-20T21:58:26Z",
+      "side": 1,
+      "message": "remove this file from the review",
+      "revId": "30d4860cb41fb6db5a93dd1fc9f91e62633b18d3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_9b4b272b",
+        "filename": "resources/scss/_common.scss",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 651
+      },
+      "writtenOn": "2017-12-20T21:58:26Z",
+      "side": 1,
+      "message": "license is not correct (duplicate)",
+      "revId": "30d4860cb41fb6db5a93dd1fc9f91e62633b18d3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
