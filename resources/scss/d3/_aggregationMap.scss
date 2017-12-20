@@ -21,19 +21,18 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 
-
 .land-features {
-	fill: $light-gray;
+	fill: $background-color8;
 }
 
 .boundary-mesh {
 	fill: none;
-	stroke: $black;
+	stroke: $text-color3;
 	stroke-width: 0.75;
 	stroke-linejoin: round;
 	stroke-linecap: round;
 }
 
 .plot-point {
-	fill: $blue;
+	fill: $background-color5;
 }

@@ -20,7 +20,6 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
-
 'use strict';
 
 var localPath = require('path');
@@ -40,24 +39,30 @@ let dist = 'dist/';
 let path = {
 	output: dist,
 	aaiOutput: dist + '/aai/',
+	saOutput: dist + '/editAttributes/',
 	assets: './resources/**/*.{css,png,svg,eot,ttf,woff,woff2,otf}',
 	json: './src/**/*.json',
 	aaiIndex: './src/index.html',
+	saIndex: './src/editAttributes/index.html',
 	scss: './resources/scss/**/*.scss',
 	aaiCss: dist + '/css',
+	saCss: dist + '/editAttributes/css',
 	war: [dist + '**/*.html', dist + '**/*.js', dist + '**/*.{css,png,svg,eot,ttf,woff,woff2,otf}', dist + '**/*.json', 'webapp/**'],
 	wardest: dist
 };
 
 taskMaker.defineTask('clean', {taskName: 'clean', src: path.output});
 taskMaker.defineTask('copy', {taskName: 'copy-aai-index.html', src: path.aaiIndex, dest: path.output, rename: 'index.html'});
+taskMaker.defineTask('copy', {taskName: 'copy-sa-index.html', src: path.saIndex, dest: path.saOutput, rename: 'index.html'});
+/** Uncomment the loine below to generate a .war file with a local build */
+// taskMaker.defineTask('compress', {taskName: 'compress-war', src: path.war, filename: appName + '.war', dest: path.wardest})
 
 gulp.task('copy-dev-stuff', callback => {
-	return runSequence(['copy-aai-index.html'], callback);
+	return runSequence(['copy-aai-index.html', 'copy-sa-index.html'], callback);
 });
 
 gulp.task('copy-stuff', callback => {
-	return runSequence(['copy-aai-index.html'], callback);
+	return runSequence(['copy-aai-index.html', 'copy-sa-index.html'], callback);
 });
 
 gulp.task('dev', callback => {
@@ -67,7 +72,10 @@ gulp.task('dev', callback => {
 // Production build
 gulp.task('build', callback => {
 	return runSequence('clean', ['copy-stuff'], 'prod', callback);
+	/** Uncomment the loine below to generate a .war file with a local build */
+	//return runSequence('clean', ['copy-stuff'], 'prod', 'compress-war', callback);
 });
+
 
 gulp.task('default', ['dev']);
 
@@ -136,6 +144,7 @@ gulp.task('prod', () => {
 	});
 
 });
+
 
 gulp.task('webpack-dev-server', () => {
 	let myConfig = Object.create(devWebpackConfig);

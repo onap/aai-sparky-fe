@@ -26,7 +26,6 @@ import GlobalAutoCompleteSearchBarReducer from 'app/globalAutoCompleteSearchBar/
 import TierSupportReducer from 'app/tierSupport/TierSupportReducer.js';
 import MainScreenWrapperReducer from './MainScreenWrapperReducer.js';
 import InventoryReducer from './inventory/InventoryReducer.js';
-import DynamicViewLoaderReducer from 'generic-components/dynamicViewLoader/DynamicViewLoaderReducer.js';
 import VnfSearchReducer from './vnfSearch/VnfSearchReducer.js';
 import GlobalInlineMessageBarReducer from 'app/globalInlineMessageBar/GlobalInlineMessageBarReducer.js';
 import ExtensibilityReducer from 'app/extensibility/ExtensibilityReducer.js';
@@ -46,7 +45,6 @@ export const storeCreator = (initialState) => createStore(
     globalAutoCompleteSearchBarReducer:  GlobalAutoCompleteSearchBarReducer,
     tierSupport: TierSupportReducer,
     inventoryReducer: InventoryReducer,
-    dynamicViewReducer: DynamicViewLoaderReducer,
     vnfSearch: VnfSearchReducer,
     globalInlineMessageBar: GlobalInlineMessageBarReducer,
     extensibility: ExtensibilityReducer

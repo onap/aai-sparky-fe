@@ -21,44 +21,148 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 
+$minimum-application-width: 1000px;
+$primary-header-height: 47px;
+$secondary-header-height: 42px;
+$total-header-height: $primary-header-height + $secondary-header-height;
 
-// primary colors
-$blue: #009fdb;
-$dark-blue: #0568ae;
-$light-blue: #71c5e8;
-$green: #4ca90c;
-$dark-green: #007a3e;
-$light-green: #b5bd00;
-$orange: #ea7400;
-$yellow: #ffb81c;
-$dark-purple: #702f8a;
-$purple: #9063cd;
-$light-purple: #caa2dd;
-$black: #000000;
-$dark-gray: #5a5a5a;
-$gray: #959595;
-$light-gray: #d2d2d2;
-$white: #ffffff;
+// primary colors: DO NOT USE these out side of this file
+$turquoise-blue: #01afd1;
+$dark-turquoise: #12798e;
+$dark-blue: #004b68;
+$darkest: #323b3f;
+$white: #fff;
+$very-light-gray: #eff2f3;
+$pacific-blue: #009fdb;
+$acadia-brown: #5a5a5a;
 
-// Secondary Colors
-$red: #cf2a2a;
-$background-gray: #f2f2f2;
-$text-black: #191919;
-$link-blue: #056bae;
-$functional-green: #007a3e;
-$functional-yellow: #ffb81c;
-$tlv-gray: #f8f8f8;
-$tlv-light-gray: #eaeaea;
-$di-light-grey: #91a2ae;
-$tlv-hover: #e6f6fb;
+// Secondary Colors: DO NOT USE these out side of this file
+$light-gray: #cfd6d9;
+$light-gray-2: #d2d2d2;
+$neutral-gray: #b7bfc3;
+$dark-gray: #7c8388;
+$t-blue: #0396b4;
+$light-green: #d1de42;
+$amber: #fab32b;
+$red: #d03d3c;
+$lime-green: #aadc1f;
+$redish-orange: #fe7550;
+$light-bluish-gray: #dbeaed;
+$bluish-gray: #72848c;
+$dark-bluish-gray: #404f5a;
+$very-light-bluish-gray: #f3f6f6;
+$nero-gray: #191919;
+$derby-yellow: #faebcc;
+$mckenzie-orange: #8a6d3b;
+$fern-green: #3c763d;
+$hint-of-green: #dff0d8;
+$astral-blue: #31708f;
+$lavender-violet: #d9edf7;
+$roof-terracotta-red: #a94442;
+$pale-rode-red: #f2dede;
 
+
+// Variables:
+// still investigate $background-gray: $very-light-gray;
+$background-color1: $very-light-gray;
+$background-header-color1: $pacific-blue;
+$background-header-color2: $very-light-gray;
+$search-background-color3: $very-light-gray;
+
+$text-color1: $acadia-brown;
+$text-color2: $acadia-brown;
+$text-color3: $acadia-brown;
+$text-color4: $pacific-blue;
+$text-color11: $white;
+$border-color1: $acadia-brown;
 
 $scroll-bar-color: $dark-gray;
+$border-color2: $dark-gray;
+$shadow-color1: $dark-gray;
+$background-color2: $dark-gray;
+$graph-border-color1: $dark-gray;
+$graph-background-color1: $dark-gray;
+$search-background-color2: $dark-gray;
+
+//$t-blue-link: $t-blue;
+$background-color3: $t-blue;
+$border-color11: $t-blue;
+
+$background-color4: $very-light-bluish-gray;
+
+//$turquoise-blue
+$background-color5: $pacific-blue;
+$border-color3: $pacific-blue;
+$graph-border-color2: $pacific-blue;
+$graph-background-color2: $pacific-blue;
+$search-background-color1: $pacific-blue;
+$search-text-color1: $pacific-blue;
+$selected-node-details-color1: $pacific-blue;
+
+// $dark-turquoise: #12798e;
+$text-color5: $dark-turquoise;
+$background-color6: $dark-turquoise;
+
+// $dark-blue
+$text-color6: $dark-blue;
+$background-color7: $dark-blue;
+$border-color4: $dark-blue;
+
+
+// $white: #fff;
+$primary-background-color: $white;
+$graph-background-color3: $white;
+$graph-border-color3: $white;
+
+
+//light-gray
+$text-color7: $light-gray-2;
+$background-color8: $light-gray-2;
+$border-color5: $light-gray-2;
+$graph-background-color4: $light-gray-2;
+
+//light-green
+$text-color8: $light-green;
+
+// $neutral-gray
+
+$border-color6: $neutral-gray;
+$search-border-color1: $neutral-gray;
+$graph-border-color4: $neutral-gray;
+
+// $amber: #fab32b;
+$border-color7: $amber;
+$background-color9: $amber;
+$text-color9: $amber;
+
+
+// $red:
+$background-color10: $red;
+$text-color10: $red;
+$border-color10: $red;
+
+
+// $lime-green: #aadc1f;
+$graph-background-color5: $lime-green;
+$background-color11: $lime-green;
+
+// $redish-orange
+$border-color12: $redish-orange;
+
+
+//$light-bluish-gray: #dbeaed;
+$background-color12: $light-bluish-gray;
+
+// $bluish-gray;
+$background-color13: $bluish-gray;
 
 //responsive @media params
 $tablet-max-width: 1024px;
 $laptop-min-width: 1224px;
 $desktop-min-width: 1824px;
+
+// light-gray-2
+$search-button-background-color: $light-gray-2;
 
 /* Textures */
 $images-folder-name: "../images";

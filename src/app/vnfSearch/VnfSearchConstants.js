@@ -20,7 +20,6 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
-
 import keyMirror from 'utils/KeyMirror.js';
 import {BASE_URL} from 'app/networking/NetworkConstants.js';
 

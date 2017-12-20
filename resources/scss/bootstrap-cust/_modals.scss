@@ -1,6 +1,6 @@
 .modal-content {
   .modal-header {
-    border-top: 3px solid $blue;
+    border-top: 3px solid $border-color3;
     .modal-title {
       @extend .heading-2;
     }
@@ -13,6 +13,6 @@
   .modal-footer {
     padding: 15px;
     border-top: 0;
-    background-color: $tlv-gray;
+    background-color: $background-color12;
   }
 }

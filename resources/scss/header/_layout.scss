@@ -20,15 +20,13 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
-
-
+ 
 .header {
-  padding: 0px;
-  background-color: $blue;
+  background-color: $background-header-color1;
   //display: flex;
   align-items: center;
   margin: 0px;
-  padding: 5px 5px 1px 5px;
+  padding: 5px 0px 0px 0px;
 
   .dropdown-toggle {
     border: none;
@@ -39,57 +37,75 @@
 
   .application-title {
     font-size: $heading-font-1;
-    color: $white;
+    color: $text-color11;
     width: 127px;
-    height: 45px;
     margin-right: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding: 2px 20px 0 20px;
-    border-right: solid 1px $light-gray;
+    padding: 2px 20px 0 10px;
+    border-right: solid 1px $border-color5;
+  }
+
+  .data-integrity-search-bar-wrapper {
+    display: flex;
+    align-items: center;
+    .inline-message-alert {
+      padding: 0;
+      margin: 0 0 0 10px;
+      height: 32px;
+    }
   }
 }
 
 .secondary-header {
-  background-color: $tlv-light-gray;
+  background-color: $background-header-color2;
   margin: 0px;
   padding: 10px 20px 5px 20px;
-  border-top: solid 2px $light-gray;
-  border-bottom: solid 2px $light-gray;
+  border-top: solid 2px $border-color5;
+  border-bottom: solid 2px $border-color5;
+  width: 100%;
 
   .secondary-title {
-    color: $black;
-    font-size: $heading-font-2;
+    color: $text-color2;
+    font-size: $heading-font-3;
+    font-weight: bold;
     padding: 5px 20px 0px 0px;
-    border-right: solid 1px $light-gray;
+    border-right: solid 1px $border-color5;
     margin: 0px 25px 0px 0px;
   }
 }
 
 .toggle-view-button {
-  color: $white;
+  color: $text-color11;
   background-color: transparent;
   font-size: 20px;
-  padding: 10px 15px;
+  padding: 2px 5px;
+  margin-left: 10px;
   border: none;
   vertical-align: text-bottom;
 }
 
-.toggle-view-button:hover, .toggle-view-button:focus {
-  color: #3C4143;
+.toggle-view-button:hover {
+  color: $text-color3;
+  outline: none;
+}
+
+.toggle-view-button:focus {
+  color: $primary-background-color;
+  outline: none;
 }
 
 .toggle-view-button-active {
-  color: $blue;
-  background-color: $white;
+  color: $text-color11;
+  background-color: transparent;
   font-size: 20px;
-  padding: 10px 15px;
+  padding: 2px 5px;
+  margin-left: 10px;
+  outline: none;
   border: none;
   vertical-align: text-bottom;
 }
 
  .modal {
-   top: 56px;
+   top: 43px;
  }
 
 .modal-backdrop.in{
@@ -107,7 +123,7 @@
   .modal-content {
     height: 100%;
     box-shadow: none;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: $background-color2;
 
     .modal-body {
       margin: 0px;
@@ -127,7 +143,7 @@
   .main-menu-button {
     background-color: transparent;
     border: none;
-    color: #F8F8F8;
+    color: $primary-background-color;
     font-size: 16px;
     line-height: 13px;
     width: 100%;
@@ -148,7 +164,7 @@
   }
 
   .main-menu-button:hover, .main-menu-button:focus {
-    color: $blue;
+    color: $text-color4;
     modal-backdrop.in
     .view-inspect-button-icon {
       background-image: url($icons-folder-path + '/binocularicon_hover.png');
@@ -164,9 +180,9 @@
   }
 
   .main-menu-button-active {
-    background-color: $blue;
+    background-color: $turquoise-blue;
     border: none;
-    color: #3C4143;
+    color: $text-color3;
     font-size: 16px;
     line-height: 13px;
     width: 100%;
