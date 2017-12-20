@@ -18,23 +18,32 @@
   > tbody + tbody {
 	border-top: none;
   }
+	.table {
+		-webkit-border-horizontal-spacing: 0px !important;
+		-webkit-border-vertical-spacing:0px !important;
+	}
 }
 
 .table-striped {
 	> tbody > tr:nth-of-type( odd ) {
-		background-color: $background-gray;
+		background-color: $background-color1;
 	}
 }
 
 .table-striped {
 	> tbody > tr:nth-of-type( even ) {
-		background-color: $gray;
+		background-color: $neutral-gray;
 	}
 }
 
 .table-hover {
 	> tbody > tr:hover {
-		background-color: $tlv-hover;
+		background-color: $background-color12;
 		cursor: pointer;
 	}
+}
+
+table {
+	-webkit-border-horizontal-spacing: 0px !important;
+	-webkit-border-vertical-spacing:0px !important;
 }

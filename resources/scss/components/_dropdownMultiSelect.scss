@@ -20,20 +20,19 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
-
-
+ 
 .dropdown-multi-select {
   .Select {
     display: block;
     width: 100%;
     &.Select--multi {
       .Select-value {
-        color: $text-black;
+        color: $text-color1;
         background-color: transparent;
-        border-color: $light-gray;
+        border-color: $border-color5;
       }
       .Select-value-icon {
-        border-right-color: $light-gray;
+        border-right-color: $border-color5;
       }
       .Select-arrow-zone {
         vertical-align: top;

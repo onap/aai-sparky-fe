@@ -21,7 +21,6 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 
-
 .ts-force-selected-graph {
   padding: 0px;
   -webkit-user-select: none;  /* Chrome all / Safari all */
@@ -31,119 +30,119 @@
 }
 
 .aai-entity-node{
-  font-family: Arial;
-  font-size: 12px;
-  line-height: 14px;
+  font-family: $base-font-regular;
+  font-size: $body-font-4;
+  line-height: $body-font-2;
   text-anchor: middle;
 }
 
 .aai-entity-node > .id-type-label {
-  fill:#404f5a;
+  fill: $text-color1;
   font-weight: bold;
 }
 
 .aai-entity-node > .id-value-label {
-  fill:#8b9399;
+  fill: $background-color2;
 }
 
 .aai-entity-link {
-  stroke: #d9dada;
+  stroke: $graph-border-color4;
   stroke-width: 2px;
 }
 
 .general-node > .inner {
-  fill: #626668;
+  fill: $background-color2;
 }
 
 .general-node > .outer {
-  fill: #ffffff;
-  stroke: #009fdb;
+  fill: $graph-background-color3;
+  stroke: $graph-border-color2;
   stroke-width: 2px;
 }
 
 .search-node > .inner {
-  fill: #009fdb;
+  fill: $graph-background-color1;
 }
 
 .search-node > .outer {
-  fill: #ffffff;
-  stroke: #009fdb;
+  fill: $graph-background-color3;
+  stroke: $graph-border-color2;
   stroke-width: 2px;
 }
 
 .selected-node > .inner {
-  fill: #626668;
+  fill: $graph-background-color1;
 }
 
 .selected-node > .outer {
-  fill: #d9dada;
-  stroke: #009fdb;
+  fill: $graph-background-color4;
+  stroke: $graph-border-color2;
   stroke-width: 3px;
   filter: url(#selected-node-drop-shadow);
 }
 
 .selected-search-node > .inner {
-  fill: #009fdb;
+  fill: $border-color3;
 }
 
 .selected-search-node > .outer {
-  fill: #d9dada;
-  stroke: #009fdb;
+  fill: $graph-background-color4;
+  stroke: $graph-border-color2;
   stroke-width: 3px;
   filter: url(#selected-node-drop-shadow);
 }
 
 @-moz-document url-prefix() {
   .selected-search-node > .outer {
-    fill: #d9dada;
-    stroke: #009fdb;
+    fill: $graph-background-color4;
+    stroke: $graph-border-color2;
     stroke-width: 3px;
     filter: drop-shadow(-1px 1px 3px rgba(0,0,0,0.5));
   }
 
   .selected-node > .outer {
-    fill: #d9dada;
-    stroke: #009fdb;
+    fill: $graph-background-color4;
+    stroke: $graph-border-color2;
     stroke-width: 3px;
     filter: drop-shadow(-1px 1px 3px rgba(0,0,0,0.5));
   }
 }
 
 .background-unselected {
-  fill: #626668;
+  fill: $background-color2;
 }
 
 .background-selected {
-  fill: #009fdb;
+  fill: $graph-border-color2;
 }
 
 .ellipses-ellipse {
-  fill: #FFFFFF;
+  fill: $graph-background-color3;
 }
 
 .triangle-warning {
-  fill: #FFFFFF;
+  fill: $graph-background-color3;
   fill-rule: evenodd;
 }
 
 .icon_tick_circle{
-  fill: #9DC742;
+  fill: $graph-background-color5;
 }
 
 .icon_tick_path {
   fill-rule: evenodd;
-  fill: #FFFFFF;
-  stroke: #FFFFFF;
+  fill: $graph-background-color3;
+  stroke: $graph-border-color3;
   strokeWidth: 0.8;
 }
 
 .icon_warning_circle{
-  fill: #FF0000;
+  fill: $red;
 }
 
 .icon_warning_path {
   fill-rule: evenodd;
-  fill: #FFFFFF;
-  stroke: #FFFFFF;
+  fill: $graph-background-color3;
+  stroke: $graph-border-color3;
   strokeWidth: 0.5;
 }

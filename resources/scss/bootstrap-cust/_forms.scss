@@ -5,7 +5,7 @@
   &.required {
     label:before {
       content: "*";
-      color: $red;
+      color: $text-color10;
     }
   }
 }
@@ -17,7 +17,7 @@
     @include box-shadow(none);
   }
   &:hover {
-    border-color: $gray;
+    border-color: $neutral-gray;
   }
 }
 
@@ -47,7 +47,7 @@ input[type="radio"], input[type="checkbox"] {
     left: -1px;
     bottom: -1px;
     background-color: $white;
-    border: 1px solid $blue;
+    border: 1px solid $border-color3;
   }
 }
 
@@ -69,7 +69,7 @@ input[type="radio"], input[type="checkbox"] {
 
 input[type=radio]:checked:before {
   content: "\2022";
-  color: $blue;
+  color: $background-color5;
   font-size: 32px;
   text-align: center;
   line-height: 16px;
@@ -78,7 +78,7 @@ input[type=radio]:checked:before {
 input[type=checkbox]:checked:before {
   content: "\2713";
   font-size: 12px;
-  color: $blue;
+  color: $background-color5;
   text-align: center;
   line-height: 16px;
 }

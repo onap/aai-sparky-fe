@@ -21,12 +21,13 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 
-
 @import "header/layout";
-@import "audit-table/layout";
 @import "visualizations/layout";
 @import "tier-support/search";
 @import "tier-support/selectedNodeDetails";
 @import "tier-support/splitPane";
 @import "d3/_forceDirectedGraph.scss";
 @import "d3/_aggregationMap.scss";
+@import "setAttribute/editAttributeform.scss";
+@import "inventory/inventory.scss";
+@import "vnfSearch/vnfSearch.scss";

@@ -32,7 +32,7 @@ import {
 	TS_BACKEND_SEARCH_SELECTED_NODE_URL,
 	ERROR_INVALID_SEARCH_TERMS,
 	TIER_SUPPORT_NETWORK_ERROR
-} from "app/tierSupport/autoCompleteSearchBar/AutoCompleteSearchBarConstants.js";
+} from 'generic-components/autoCompleteSearchBar/AutoCompleteSearchBarConstants.js';
 import {
 	searchResultsFound,
 	clearSuggestionsTextField,
@@ -42,7 +42,7 @@ import {
 	fetchRequestedValues,
 	fetchSelectedNodeElement,
 	queryRequestedValues
-} from "app/tierSupport/autoCompleteSearchBar/AutoCompleteSearchBarActions.js";
+} from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBarActions.js';
 import {tierSupportActionTypes, TSUI_SEARCH_URL} from "app/tierSupport/TierSupportConstants.js";
 import {TABLE_DATA} from "app/tierSupport/selectedNodeDetails/SelectedNodeDetailsConstants.js";
 import {getDynamicTSUISearchURL} from "app/tierSupport/TierSupportActions.js";

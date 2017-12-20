@@ -23,6 +23,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import FontAwesome from 'react-fontawesome';
+import {clearFilters} from 'filter-bar-utils';
 import Button from 'react-bootstrap/lib/Button.js';
 import Modal from 'react-bootstrap/lib/Modal.js';
 import GlobalAutoCompleteSearchBar from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBar.jsx';
@@ -30,6 +31,10 @@ import {postAnalyticsData} from 'app/analytics/AnalyticsActions.js';
 import GlobalInlineMessageBar from 'app/GlobalInlineMessageBar/GlobalInlineMessageBar.jsx';
 import {getClearGlobalMessageEvent} from 'app/globalInlineMessageBar/GlobalInlineMessageBarActions.js';
 import {externalUrlRequest, externalMessageRequest} from 'app/contextHandler/ContextHandlerActions.js';
+
+import {
+  filterBarActionTypes
+} from 'utils/GlobalConstants.js';
 
 import {
   Route,
@@ -51,7 +56,8 @@ import {
 import {clearSuggestionsTextField} from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBarActions.js';
 import {changeUrlAddress} from 'utils/Routes.js';
 import extensibleViews from 'resources/views/extensibleViews.json';
-import {clearFilters} from 'generic-components/filterBar/FilterBarUtils.js';
+
+
 const mapStateToProps = ({mainWrapper}) => {
   let {
     showMenu = false,
@@ -81,7 +87,7 @@ const mapActionsToProps = (dispatch) => {
       dispatch(getClearGlobalMessageEvent());
       dispatch(clearSuggestionsTextField());
       dispatch(clearExtensibleViewData());
-      dispatch(clearFilters());
+      dispatch(clearFilters(filterBarActionTypes.CLEAR_FILTERS));
       dispatch(setSecondaryTitle(undefined));
     },
     onExternalUrlRequest: (urlParamString) => {
