@@ -28,7 +28,7 @@ import Button from 'react-bootstrap/lib/Button.js';
 import Modal from 'react-bootstrap/lib/Modal.js';
 import GlobalAutoCompleteSearchBar from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBar.jsx';
 import {postAnalyticsData} from 'app/analytics/AnalyticsActions.js';
-import GlobalInlineMessageBar from 'app/GlobalInlineMessageBar/GlobalInlineMessageBar.jsx';
+import GlobalInlineMessageBar from 'app/globalInlineMessageBar/GlobalInlineMessageBar.jsx';
 import {getClearGlobalMessageEvent} from 'app/globalInlineMessageBar/GlobalInlineMessageBarActions.js';
 import {externalUrlRequest, externalMessageRequest} from 'app/contextHandler/ContextHandlerActions.js';
 
