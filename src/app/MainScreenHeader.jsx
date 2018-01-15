@@ -20,6 +20,7 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
+
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import FontAwesome from 'react-fontawesome';
@@ -30,7 +31,7 @@ import GlobalAutoCompleteSearchBar from 'app/globalAutoCompleteSearchBar/GlobalA
 import {postAnalyticsData} from 'app/analytics/AnalyticsActions.js';
 import GlobalInlineMessageBar from 'app/globalInlineMessageBar/GlobalInlineMessageBar.jsx';
 import {getClearGlobalMessageEvent} from 'app/globalInlineMessageBar/GlobalInlineMessageBarActions.js';
-import {externalUrlRequest, externalMessageRequest} from 'app/contextHandler/ContextHandlerActions.js';
+import {externalUrlRequest, externalMessageRequest, getSubscriptionPayload} from 'app/contextHandler/ContextHandlerActions.js';
 
 import {
   filterBarActionTypes
@@ -63,14 +64,18 @@ const mapStateToProps = ({mainWrapper}) => {
     showMenu = false,
     toggleButtonActive = false,
     externalRequestFound = {},
-    secondaryTitle = ''
+    secondaryTitle = '',
+    subscriptionPayload = {},
+    subscriptionEnabled = false
   } = mainWrapper;
 
   return {
     showMenu,
     toggleButtonActive,
     externalRequestFound,
-    secondaryTitle
+    secondaryTitle,
+    subscriptionPayload,
+    subscriptionEnabled
   };
 };
 
@@ -95,6 +100,9 @@ const mapActionsToProps = (dispatch) => {
     },
     onExternalMessageRecieved: (messageJson) => {
       dispatch(externalMessageRequest(messageJson));
+    },
+    onGetSubscriptionPayload: () => {
+      dispatch(getSubscriptionPayload());
     }
   };
 };
@@ -104,7 +112,8 @@ class MainScreenHeader extends Component {
     showMenu: React.PropTypes.bool,
     toggleButtonActive: React.PropTypes.bool,
     externalRequestFound: React.PropTypes.object,
-    secondaryTitle: React.PropTypes.string
+    secondaryTitle: React.PropTypes.string,
+    subscriptionPayload: React.PropTypes.object
   };
 
   navigationLinkAndCurrentPathMatch(location, to) {
@@ -134,6 +143,7 @@ class MainScreenHeader extends Component {
     }
   }
   componentWillMount() {
+    this.props.onGetSubscriptionPayload();
     if(this.props.match.params.externalUrl !== undefined &&
       this.isValidExternalURL(this.props.match.params.externalUrl)) {
       this.props.onExternalUrlRequest(this.props.match.params.externalUrl);
@@ -164,9 +174,22 @@ class MainScreenHeader extends Component {
       nextProps.externalRequestFound !== undefined && nextProps.externalRequestFound.suggestion !== undefined) {
       changeUrlAddress(nextProps.externalRequestFound.suggestion, nextProps.history);
     }
+
+    if (nextProps.subscriptionEnabled) {
+      if (nextProps.subscriptionPayload !== this.props.subscriptionPayload &&
+        Object.keys(nextProps.subscriptionPayload).length > 0) {
+        var getWindowUrl = function (url) {
+          var split = url.split('/');
+          return split[0] + '//' + split[2];
+        };
+        window.parent.postMessage(
+          JSON.stringify(nextProps.subscriptionPayload),
+          getWindowUrl(document.referrer));
+      }
+    }
   }
 
-  receiveMessage(event) {
+  receiveMessage(event, $this) {
     function isJson(str) {
       try {
         JSON.parse(str);
@@ -175,16 +198,33 @@ class MainScreenHeader extends Component {
       }
       return true;
     }
-    let messageData = event.data.message;
-    if(isJson(messageData)) {
-      this.props.onExternalMessageRecieved(JSON.parse(messageData));
+    if(isJson(event.data)) {
+      let messageData = JSON.parse(event.data);
+      if(isJson(messageData.message)) {
+        $this.props.onExternalMessageRecieved(messageData.message);
+      }
     }
+
   }
   componentDidMount() {
-    window.addEventListener('message', this.receiveMessage, false);
+    //TODO Move this logic to the component will receive props.
+    //Check if the event lister is available and if the subscription is
+    // enabled before registering for it
+    if(document.referrer) {
+      var $this = this;
+      window.addEventListener('message', function (e) {
+        $this.receiveMessage(e, $this);
+      }, false);
+    }
   }
   componentWillUnmount() {
-    window.removeEventListener('message', this.receiveMessage);
+    if(this.props.subscriptionEnabled) {
+      var $this = this;
+      window.removeEventListener('message', function (e) {
+        $this.receiveMessage(e, $this);
+      }
+      );
+    }
   }
 
   render() {

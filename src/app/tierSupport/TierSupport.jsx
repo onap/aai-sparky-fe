@@ -20,6 +20,7 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
+
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import SplitPane from 'react-split-pane';
@@ -131,7 +132,7 @@ class TierSupport extends Component {
       this.props.match.params.viParam) {
       this.props.onNewVIParam(nextProps.match.params.viParam);
     }
-    if(nextProps.match.params.viParam === undefined && nextProps.match.params.viParam !==
+    if(nextProps.match.params.viParam && nextProps.match.params.viParam !==
       this.props.match.params.viParam) {
       this.props.onRequestClearData();
     }

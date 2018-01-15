@@ -20,7 +20,7 @@
     "collapsible-sliding-panel": "1.0.0",
     "core-js": "^2.4.0",
     "crypto-js": "^3.1.9-1",
-    "d3": "^4.9.1",
+    "d3": "^4.12.0",
     "es6-promise": "^3.2.1",
     "filter-bar-utils": "1.0.0",
     "jquery": "^2.2.2",

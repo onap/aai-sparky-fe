@@ -20,9 +20,11 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
+
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import Table from 'react-bootstrap/lib/Table';
+import LaunchInContext from 'app/tierSupport/launchExternalResource/LaunchExternalResource.jsx';
 import i18n from 'utils/i18n/i18n';
 import {
   SELECTED_NODE_TITLE,
@@ -82,7 +84,7 @@ class SelectedNodeDetails extends Component {
       <div className='ts-selected-node-details'>
         <h1>{i18n(SELECTED_NODE_TITLE)}</h1>
         <h2>{nodeType}</h2>
-        <span>{uid}</span>
+        <span>{uid} <LaunchInContext /></span>
         <Table bsClass={tableClass}>
           <thead>
           <tr>

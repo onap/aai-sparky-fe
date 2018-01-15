@@ -20,6 +20,7 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
+
 import {drag} from 'd3-drag';
 import {forceSimulation, forceLink, forceManyBody, forceCenter} from 'd3-force';
 import {interpolateNumber} from 'd3-interpolate';
@@ -108,8 +109,19 @@ class ForceDirectedGraph extends Component {
     this.simulation.on('end', this.simulationComplete);
     this.simulation.stop();
 
+
+    function myDelta() {
+      var deltaY = 2.5;
+      var deltaMode = 1;
+      if(currentEvent.deltaY < 0 ) {
+        deltaY = -2.5;
+      }
+      return -deltaY * (deltaMode ? 120 : 1) / 1500;
+    }
+
+
     this.svgZoom =
-      zoom().scaleExtent([NodeConstants.SCALE_EXTENT_MIN, NodeConstants.SACEL_EXTENT_MAX]);
+      zoom().scaleExtent([NodeConstants.SCALE_EXTENT_MIN, NodeConstants.SACEL_EXTENT_MAX]).wheelDelta(myDelta);;
     this.svgZoom.clickDistance(2);
     this.nodeDrag = drag().clickDistance(2);
 
@@ -120,6 +132,7 @@ class ForceDirectedGraph extends Component {
     } else {
       this.hideButton  = false;
     }
+
     if (props.graphData) {
       if (props.graphData.graphCounter !== -1) {
         this.startSimulation(props.graphData, props.currentlySelectedNodeView, props.dataOverlayButtons);
@@ -140,7 +153,6 @@ class ForceDirectedGraph extends Component {
     }
   }
 
-
   componentDidUpdate(prevProps) {
     let hasNewGraphDataRendered = (prevProps.graphData.graphCounter ===
     this.props.graphData.graphCounter);
@@ -152,6 +164,7 @@ class ForceDirectedGraph extends Component {
         let nodes = select('.fdgMainSvg').select('.fdgMainG')
                                          .selectAll('.aai-entity-node')
                                          .data(this.nodeDatum);
+
         nodes.on('click', (d) => {
           this.nodeSelected(d);
         });
@@ -246,6 +259,7 @@ class ForceDirectedGraph extends Component {
         NodeConstants.SELECTED_SEARCHED_NODE_CLASS_NAME) {
 
         this.nodeButtonDatum[0].data = nodeProps.meta;
+
         if(this.nodeButtonDatum.length > 1) {
           this.nodeButtonDatum[1].data = nodeProps.meta;
           nodeProps = {
@@ -261,6 +275,7 @@ class ForceDirectedGraph extends Component {
       }
 
       newNodes.push(this.nodeFactory.buildNode(nodeProps.meta.nodeMeta.className, nodeProps, this.hideButton));
+
 
       this.nodeIndexTracker.set(node.id, i);
     });
@@ -302,6 +317,7 @@ class ForceDirectedGraph extends Component {
   }
 
   startSimulation(graphData, currentView, overlayButtons) {
+
     this.nodeFactory.setNodeMeta(graphData.graphMeta);
 
     // Experiment with removing length = 0... might not be needed as new array
@@ -322,7 +338,6 @@ class ForceDirectedGraph extends Component {
     this.nodeButtonDatum.push({
       name: NodeConstants.ICON_ELLIPSES, isSelected: isNodeDetailsSelected, overlayName: overlayButtons[0]
     });
-
 
     if(overlayButtons.length > 1 ) {
       let isSecondButtonSelected = (currentView === overlayButtons[1]);
@@ -399,7 +414,6 @@ class ForceDirectedGraph extends Component {
                                                      return (datum.id === d.id);
                                                    });
       if (!newlySelectedNode.empty()) {
-
         if (newlySelectedNode.datum().nodeMeta.searchTarget) {
           this.nodeBuffer[newlySelectedNode.datum().index].nodeMeta.className =
             NodeConstants.SELECTED_SEARCHED_NODE_CLASS_NAME;

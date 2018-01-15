@@ -21,6 +21,7 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 
+ 
 @import "components/validationForm";
 @import "components/slidePanel";
 @import "components/toggleInput";
@@ -31,6 +32,7 @@
 @import "components/titledComponent";
 @import "components/containerPanel";
 @import "components/filterBar";
+@import "components/launchExternalResource/launchExternalResource";
 
 %noselect {
   -webkit-touch-callout: none;
@@ -72,4 +74,5 @@
     color: $background-color2;
   }
 }
+
 

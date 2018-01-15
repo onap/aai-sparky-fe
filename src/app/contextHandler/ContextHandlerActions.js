@@ -20,14 +20,21 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
+
 import {
   POST,
-  POST_HEADER
+  POST_HEADER,
+  GET
 } from 'app/networking/NetworkConstants.js';
 import networkCall from 'app/networking/NetworkCalls.js';
 import {EXTERNAL_REQ_ENTITY_SEARCH_URL,
 WRONG_EXTERNAL_REQUEST_MESSAGE,
-  WRONG_RESULT
+  WRONG_RESULT,
+  ZERO_RESULT,
+  MULTIPLE_RESULT,
+  FAILED_REQUEST,
+  SUBSCRIPTION_FAILED_MESSAGE,
+  SUBSCRIPTION_PAYLOAD_URL
 } from 'app/contextHandler/ContextHandlerConstants';
 import {
   getSetGlobalMessageEvent,
@@ -36,7 +43,8 @@ import {
 
 import {  STATUS_CODE_204_NO_CONTENT,
   STATUS_CODE_3XX_REDIRECTION,
-  MESSAGE_LEVEL_DANGER
+  MESSAGE_LEVEL_DANGER,
+  MESSAGE_LEVEL_WARNING
 } from 'utils/GlobalConstants.js';
 
 
@@ -56,6 +64,55 @@ function getExternalParamValues(urlParams) {
 
 }
 
+function createSubscriptionPayloadEvent(payload) {
+  return {
+    type: contextHandlerActionTypes.SUBSCRIPTION_PAYLOAD_FOUND,
+    data: payload
+  };
+}
+
+function createSubscriptionIsEmptyEvent() {
+  return {
+    type: contextHandlerActionTypes.SUBSCRIPTION_PAYLOAD_EMPTY,
+    data: {}
+  };
+}
+
+function fetchSubscriptionPayload(fetchRequestCallback) {
+  return dispatch => {
+    return fetchRequestCallback().then(
+      (response) => {
+        if (response.status >= STATUS_CODE_3XX_REDIRECTION) {
+          return Promise.reject(new Error(response.status));
+        } else {
+          // assume 200 status
+          return response;
+        }
+      }
+    ).then(
+      (results)=> {
+        dispatch(createSubscriptionPayloadEvent(results));
+
+      }
+    ).catch(
+      (e) => {
+        if(e.name === 'EmptyResponseException'){
+          dispatch(getClearGlobalMessageEvent());
+          dispatch(createSubscriptionIsEmptyEvent());
+        } else{
+          dispatch(getSetGlobalMessageEvent(SUBSCRIPTION_FAILED_MESSAGE , MESSAGE_LEVEL_WARNING));
+        }
+      }
+    );
+  };
+}
+export function getSubscriptionPayload() {
+  let externalfetchRequest =
+    () => networkCall.getRequest(SUBSCRIPTION_PAYLOAD_URL, GET);
+  return dispatch => {
+    dispatch(fetchSubscriptionPayload(externalfetchRequest));
+  };
+}
 function validateExternalParams(externalURLParams) {
   if(externalURLParams.view && externalURLParams.entityId && externalURLParams.entityType) {
     return true;
@@ -86,16 +143,21 @@ function fetchDataForExternalRequest(fetchRequestCallback) {
       }
     ).then(
       (results)=> {
-        if (results.suggestions !== undefined && results.suggestions.length === 1) {
-          dispatch(getClearGlobalMessageEvent());
-          dispatch(createSuggestionFoundEvent({suggestion: results.suggestions[0]}));
+        if (results.suggestions !== undefined) {
+          if( results.suggestions.length === 1) {
+            dispatch(getClearGlobalMessageEvent());
+            dispatch(createSuggestionFoundEvent({suggestion: results.suggestions[0]}));
+          } else if(results.totalFound === 0 ) {
+            dispatch(getSetGlobalMessageEvent(ZERO_RESULT, MESSAGE_LEVEL_DANGER));
+          } else {
+            dispatch(getSetGlobalMessageEvent(MULTIPLE_RESULT, MESSAGE_LEVEL_DANGER));          }
         } else {
-          dispatch(getSetGlobalMessageEvent(WRONG_RESULT , MESSAGE_LEVEL_DANGER));
+          dispatch(getSetGlobalMessageEvent(WRONG_RESULT, MESSAGE_LEVEL_DANGER));
         }
       }
     ).catch(
       () => {
-        dispatch(getSetGlobalMessageEvent(WRONG_RESULT , MESSAGE_LEVEL_DANGER));
+        dispatch(getSetGlobalMessageEvent(FAILED_REQUEST , MESSAGE_LEVEL_DANGER));
       }
     );
   };

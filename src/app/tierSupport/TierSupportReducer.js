@@ -20,6 +20,7 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
+
 import {combineReducers} from 'redux';
 import ForceDirectedGraph from 'generic-components/graph/ForceDirectedGraph.jsx';
 import {aaiActionTypes} from 'app/MainScreenWrapperConstants.js';
@@ -28,6 +29,7 @@ import {
 } from 'app/tierSupport/TierSupportConstants.js';
 import SelectedNodeDetailsReducer from 'app/tierSupport/selectedNodeDetails/SelectedNodeDetailsReducer.js';
 import GlobalAutoCompleteSearchBarReducer from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBarReducer.js';
+import LaunchInContextReducer from 'app/tierSupport/launchExternalResource/LaunchExternalResourceReducer.js';
 import {
   MESSAGE_LEVEL_DANGER, MESSAGE_LEVEL_WARNING
 } from 'utils/GlobalConstants.js';
@@ -37,6 +39,7 @@ import {
 
 export default combineReducers({
   selectedNodeDetails: SelectedNodeDetailsReducer,
+  launchExternalResourceReducer: LaunchInContextReducer,
   globalAutoCompleteSearchBar: GlobalAutoCompleteSearchBarReducer,
   tierSupportReducer: (state = {}, action) => {
     switch (action.type) {

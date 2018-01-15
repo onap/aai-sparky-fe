@@ -20,6 +20,7 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
+
 import {aaiActionTypes} from './MainScreenWrapperConstants.js';
 import {
   globalAutoCompleteSearchBarActionTypes
@@ -61,10 +62,22 @@ export default (state = {}, action) => {
         ...state,
         externalRequestFound: action.data
       };
+
     case aaiActionTypes.SET_SECONDARY_TITLE:
       return {
         ...state,
         secondaryTitle: action.data
+      };
+    case contextHandlerActionTypes.SUBSCRIPTION_PAYLOAD_FOUND:
+      return {
+        ...state,
+        subscriptionPayload: action.data,
+        subscriptionEnabled: true
+      };
+    case contextHandlerActionTypes.SUBSCRIPTION_PAYLOAD_EMPTY:
+      return {
+        ...state,
+        subscriptionEnabled: false
       };
   }
   return state;

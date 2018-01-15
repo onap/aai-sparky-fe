@@ -40,7 +40,7 @@ export default (state = {}, action) => {
       }
       return {
         ...state,
-        nodeData: [],
+        nodeData: {},
         nodeType: '',
         uid: ''
       };
@@ -60,7 +60,7 @@ export default (state = {}, action) => {
     case tierSupportActionTypes.TS_NODE_SEARCH_NO_RESULTS:
       return {
         ...state,
-        nodeData: [],
+        nodeData: {},
         nodeType: '',
         uid: ''
       };

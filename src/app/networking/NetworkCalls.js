@@ -21,6 +21,9 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 
+function EmptyResponseException(){
+  this.name = 'EmptyResponseException';
+}
 function fetchRequest(URL, POST, POST_HEADER, BODY) {
   return fetch(URL, {
     credentials: 'same-origin',
@@ -41,9 +44,31 @@ function fetchRequestObj(URL, POST, POST_HEADER, BODY) {
   });
 }
 
+function processResponse(response){
+  if(response.status === 204){
+    throw new EmptyResponseException();
+  }
+  return response.json();
+}
+function getRequest(URL, GET) {
+  return fetch(URL, {
+    credentials: 'same-origin',
+    method: GET
+  }).then(
+    (response) => {
+      try{
+        response.json();
+      } catch (e){
+        response.isValidJson = false;
+      }
+      return processResponse(response);
+    }
+  );
+}
 module.exports = {
   fetchRequest: fetchRequest,
-  fetchRequestObj: fetchRequestObj
+  fetchRequestObj: fetchRequestObj,
+  getRequest: getRequest
 };
 
 
