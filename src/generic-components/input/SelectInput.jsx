@@ -36,11 +36,12 @@
 	*/
 import React, {Component} from 'react';
 import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 class SelectInput extends Component {
-		
+
 		inputValue = [];
-		
+
 		render() {
 				let {label, value, ...other} = this.props;
 				return (
@@ -54,20 +55,20 @@ class SelectInput extends Component {
 						</div>
 				);
 		}
-		
+
 		getValue() {
 				return this.inputValue && this.inputValue.length ? this.inputValue : '';
 		}
-		
+
 		onSelectChanged(value) {
 				this.props.onMultiSelectChanged(value);
 		}
-		
+
 		componentDidMount() {
 				let {value} = this.props;
 				this.inputValue = value ? value : [];
 		}
-		
+
 		componentDidUpdate() {
 				if (this.inputValue !== this.props.value) {
 						this.inputValue = this.props.value;
