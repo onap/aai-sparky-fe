@@ -71,7 +71,7 @@ export default (state = {}, action) => {
     case contextHandlerActionTypes.SUBSCRIPTION_PAYLOAD_FOUND:
       return {
         ...state,
-        subscriptionPayload: action.data,
+        subscriptionPayload: action.data.subscriptionDetails,
         subscriptionEnabled: true
       };
     case contextHandlerActionTypes.SUBSCRIPTION_PAYLOAD_EMPTY:

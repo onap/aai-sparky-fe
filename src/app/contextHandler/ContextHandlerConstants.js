@@ -39,7 +39,7 @@ export const FAILED_REQUEST = 'Failed to pull result for the request.';
 export const ZERO_RESULT = 'No result has been found for this request.';
 export const MULTIPLE_RESULT = 'Multiple results were found for this request so none got selected.';
 export const SUBSCRIPTION_FAILED_MESSAGE = 'Failed to fetch subscription payload.';
-export const SUBSCRIPTION_PAYLOAD_URL = BASE_URL + '/subscription/getsubscription';
+export const SUBSCRIPTION_PAYLOAD_URL = BASE_URL + '/rest/subscription/getsubscription';
 
 
 

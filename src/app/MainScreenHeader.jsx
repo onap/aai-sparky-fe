@@ -135,6 +135,7 @@ class MainScreenHeader extends Component {
       return false;
     }
   }
+  
   isValidExternalURL(url) {
     if(decodeURIComponent(url).indexOf('&') > 0 ) {
       return true;
@@ -142,6 +143,7 @@ class MainScreenHeader extends Component {
       return false;
     }
   }
+
   componentWillMount() {
     this.props.onGetSubscriptionPayload();
     if(this.props.match.params.externalUrl !== undefined &&
@@ -149,6 +151,7 @@ class MainScreenHeader extends Component {
       this.props.onExternalUrlRequest(this.props.match.params.externalUrl);
     }
   }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.location &&
       this.props.location.pathname !==

@@ -65,17 +65,22 @@ function getExternalParamValues(urlParams) {
 }
 
 function createSubscriptionPayloadEvent(payload) {
-  return {
-    type: contextHandlerActionTypes.SUBSCRIPTION_PAYLOAD_FOUND,
-    data: payload
-  };
-}
 
-function createSubscriptionIsEmptyEvent() {
-  return {
-    type: contextHandlerActionTypes.SUBSCRIPTION_PAYLOAD_EMPTY,
-    data: {}
-  };
+  let event = undefined;
+
+  if (payload.subscriptionEnabled) {
+    event = {
+      type: contextHandlerActionTypes.SUBSCRIPTION_PAYLOAD_FOUND,
+      data: payload
+    };
+  } else {
+    event = {
+      type: contextHandlerActionTypes.SUBSCRIPTION_PAYLOAD_EMPTY,
+      data: {}
+    };
+  }
+
+  return event;
 }
 
 function fetchSubscriptionPayload(fetchRequestCallback) {
@@ -86,26 +91,21 @@ function fetchSubscriptionPayload(fetchRequestCallback) {
           return Promise.reject(new Error(response.status));
         } else {
           // assume 200 status
-          return response;
+          return response.json();
         }
       }
     ).then(
       (results)=> {
         dispatch(createSubscriptionPayloadEvent(results));
-
       }
     ).catch(
-      (e) => {
-        if(e.name === 'EmptyResponseException'){
-          dispatch(getClearGlobalMessageEvent());
-          dispatch(createSubscriptionIsEmptyEvent());
-        } else{
-          dispatch(getSetGlobalMessageEvent(SUBSCRIPTION_FAILED_MESSAGE , MESSAGE_LEVEL_WARNING));
-        }
+      () => {
+        dispatch(getSetGlobalMessageEvent(SUBSCRIPTION_FAILED_MESSAGE , MESSAGE_LEVEL_WARNING));
       }
     );
   };
 }
+
 export function getSubscriptionPayload() {
   let externalfetchRequest =
     () => networkCall.getRequest(SUBSCRIPTION_PAYLOAD_URL, GET);
@@ -113,6 +113,7 @@ export function getSubscriptionPayload() {
     dispatch(fetchSubscriptionPayload(externalfetchRequest));
   };
 }
+
 function validateExternalParams(externalURLParams) {
   if(externalURLParams.view && externalURLParams.entityId && externalURLParams.entityType) {
     return true;
@@ -120,7 +121,6 @@ function validateExternalParams(externalURLParams) {
   return false;
 
 }
-
 
 function createSuggestionFoundEvent(suggestion) {
   return {
