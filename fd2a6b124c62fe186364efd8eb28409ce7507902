@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_c971bb45",
+        "filename": "src/app/networking/NetworkCalls.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 2957
+      },
+      "writtenOn": "2018-01-19T14:16:15Z",
+      "side": 0,
+      "message": "Not sure why this is deleted?",
+      "revId": "fd2a6b124c62fe186364efd8eb28409ce7507902",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
