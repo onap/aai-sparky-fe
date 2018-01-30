@@ -19,6 +19,41 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_62abcb1d",
+        "filename": "resources/scss/common/_layout.scss",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2018-01-30T20:53:45Z",
+      "side": 1,
+      "message": "I am not sure what the question is. I normally find the right CSS by experimenting with it. That is the same steps I followed here.",
+      "parentUuid": "5a93c517_a2555351",
+      "revId": "f42261a2cd0582e0209018c23816681e146ea97d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_e2a03b45",
+        "filename": "src/app/tierSupport/TierSupport.jsx",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2018-01-30T20:53:45Z",
+      "side": 1,
+      "message": "Test comment",
+      "revId": "f42261a2cd0582e0209018c23816681e146ea97d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_821cd7c2",
         "filename": "src/app/tierSupport/TierSupport.jsx",
         "patchSetId": 1
@@ -36,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_e2b7db84",
+        "filename": "src/app/tierSupport/TierSupport.jsx",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2018-01-30T20:53:45Z",
+      "side": 1,
+      "message": "We dont have that kind of control over a component. Initially i went with only using CSS and not a react component and I was able to do that. Now with the component in place, we will have to work around its limitations.",
+      "parentUuid": "5a93c517_821cd7c2",
+      "revId": "f42261a2cd0582e0209018c23816681e146ea97d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_e2d27bd1",
         "filename": "src/app/vnfSearch/VnfSearchActions.js",
         "patchSetId": 1
@@ -47,6 +100,24 @@
       "writtenOn": "2018-01-30T20:46:41Z",
       "side": 1,
       "message": "If we are having one specific event to enable/disable the spinner state, why do we put separate spinners on individual VNF components? I would expect a single spinner if it\u0027s a single call/event ... if it were individual backend calls per visualization, then lets put a flag for each one and a spinner associated with each flag",
+      "revId": "f42261a2cd0582e0209018c23816681e146ea97d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_c2ac1f38",
+        "filename": "src/app/vnfSearch/VnfSearchActions.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2018-01-30T20:53:45Z",
+      "side": 1,
+      "message": "If we have only one spinner, then it was clearing the whole screen and the spinner was top of that. I did not like the feel of it. I preferred the look where I can see the container title and layout and then the spinner was within the container. It was more of my preference on how I liked things to look. It is still only one state variable, only thing is individual jsx are responsible for making use of it.",
+      "parentUuid": "5a93c517_e2d27bd1",
       "revId": "f42261a2cd0582e0209018c23816681e146ea97d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
