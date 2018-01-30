@@ -36,25 +36,35 @@ import i18n from 'utils/i18n/i18n';
 
 import {CHART_ORCH_STATUS} from 'app/vnfSearch/VnfSearchConstants.js';
 import {COLOR_BLUE} from 'utils/GlobalConstants.js';
-
+import { ClipLoader } from 'react-spinners';
 
 let mapStateToProps = ({vnfSearch}) => {
   let {
-        processedOrchStatusCountChartData = CHART_ORCH_STATUS.emptyData
+        processedOrchStatusCountChartData = CHART_ORCH_STATUS.emptyData,
+        enableBusyFeedback = false
       } = vnfSearch;
 
   return {
-    processedOrchStatusCountChartData
+    processedOrchStatusCountChartData,
+    enableBusyFeedback
   };
 };
 
 class VnfSearchOrchStatusVisualizations extends Component {
+  static propTypes = {
+    processedOrchStatusCountChartData: React.PropTypes.object,
+    enableBusyFeedback: React.PropTypes.bool
+  };
 
   render() {
     let {
-						processedOrchStatusCountChartData
+						processedOrchStatusCountChartData,
+            enableBusyFeedback
 				} = this.props;
-
+    let componentVisibitliyClassName = 'showContainer';
+    if(enableBusyFeedback){
+      componentVisibitliyClassName = 'hideContainer';
+    }
     let visualizationClass = 'visualizations';
     if (processedOrchStatusCountChartData.values ===
       null ||
@@ -70,16 +80,21 @@ class VnfSearchOrchStatusVisualizations extends Component {
         <div className='visualization-charts'>
           <div >
             <h3>{i18n(CHART_ORCH_STATUS.title)}</h3>
-            <ResponsiveContainer width='100%' height={300}>
-              <BarChart data={processedOrchStatusCountChartData.values}>
-                <XAxis dataKey={xAxisAttrName}/>
-                <YAxis   />
-                <CartesianGrid strokeDasharray='3 3'/>
-                <Tooltip/>
-                <Bar name={i18n(CHART_ORCH_STATUS.yAxisLabel)}
-                     dataKey={yAxisAttrName} fill={COLOR_BLUE}/>
-              </BarChart>
-            </ResponsiveContainer>
+            <div className='spinner'>
+              <ClipLoader color={COLOR_BLUE} loading={enableBusyFeedback} />
+            </div>
+            <div className={componentVisibitliyClassName}>
+              <ResponsiveContainer width='100%' height={300}>
+                <BarChart data={processedOrchStatusCountChartData.values}>
+                  <XAxis dataKey={xAxisAttrName}/>
+                  <YAxis   />
+                  <CartesianGrid strokeDasharray='3 3'/>
+                  <Tooltip/>
+                  <Bar name={i18n(CHART_ORCH_STATUS.yAxisLabel)}
+                       dataKey={yAxisAttrName} fill={COLOR_BLUE}/>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </div>
       </div>

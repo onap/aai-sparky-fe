@@ -36,27 +36,35 @@ import i18n from 'utils/i18n/i18n';
 
 import {CHART_NF_ROLE} from 'app/vnfSearch/VnfSearchConstants.js';
 import {COLOR_BLUE} from 'utils/GlobalConstants.js';
+import { ClipLoader } from 'react-spinners';
 
 let mapStateToProps = ({vnfSearch}) => {
   let {
-        processedNfRoleCountChartData = CHART_NF_ROLE.emptyData
+        processedNfRoleCountChartData = CHART_NF_ROLE.emptyData,
+        enableBusyFeedback = false
       } = vnfSearch;
 
   return {
-    processedNfRoleCountChartData
+    processedNfRoleCountChartData,
+    enableBusyFeedback
   };
 };
 
 class VnfSearchNfRoleVisualization extends Component {
   static propTypes = {
-    processedNfRoleCountChartData: React.PropTypes.object
+    processedNfRoleCountChartData: React.PropTypes.object,
+    enableBusyFeedback: React.PropTypes.bool
   };
 
   render() {
     let {
-          processedNfRoleCountChartData
+          processedNfRoleCountChartData,
+          enableBusyFeedback
         } = this.props;
-
+    let componentVisibitliyClassName = 'showContainer';
+    if(enableBusyFeedback){
+      componentVisibitliyClassName = 'hideContainer';
+    }
     let visualizationClass = 'visualizations';
 
     if (processedNfRoleCountChartData.values ===
@@ -74,16 +82,21 @@ class VnfSearchNfRoleVisualization extends Component {
         <div className='visualization-charts'>
           <div>
             <h3>{i18n(CHART_NF_ROLE.title)}</h3>
-            <ResponsiveContainer width='100%' height={300}>
-              <BarChart data={processedNfRoleCountChartData.values}>
-                <XAxis dataKey={xAxisAttrName}/>
-                <YAxis/>
-                <CartesianGrid strokeDasharray='3 3'/>
-                <Tooltip/>
-                <Bar name={i18n(CHART_NF_ROLE.yAxisLabel)}
-                     dataKey={yAxisAttrName} fill={COLOR_BLUE}/>
-              </BarChart>
-            </ResponsiveContainer>
+            <div className='spinner'>
+              <ClipLoader color={COLOR_BLUE} loading={enableBusyFeedback} />
+            </div>
+            <div className={componentVisibitliyClassName}>
+              <ResponsiveContainer width='100%' height={300}>
+                <BarChart data={processedNfRoleCountChartData.values}>
+                  <XAxis dataKey={xAxisAttrName}/>
+                  <YAxis/>
+                  <CartesianGrid strokeDasharray='3 3'/>
+                  <Tooltip/>
+                  <Bar name={i18n(CHART_NF_ROLE.yAxisLabel)}
+                       dataKey={yAxisAttrName} fill={COLOR_BLUE}/>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </div>
       </div>

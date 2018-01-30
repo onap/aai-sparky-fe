@@ -30,7 +30,9 @@ export const vnfActionTypes = keyMirror({
   VNF_NETWORK_ERROR: null,
   VNF_SEARCH_RESULTS_RECEIVED: null,
   VNF_SEARCH_FILTERS_RECEIVED: null,
-  VNF_FILTER_PANEL_TOGGLED: null
+  VNF_FILTER_PANEL_TOGGLED: null,
+  VNF_ACTIVATE_BUSY_FEEDBACK: null,
+  VNF_DISABLE_BUSY_FEEDBACK: null
 });
 
 export const CHART_PROV_STATUS = {

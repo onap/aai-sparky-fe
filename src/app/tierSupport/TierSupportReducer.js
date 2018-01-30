@@ -89,6 +89,16 @@ export default combineReducers({
           ...state,
           nodeData: action.data
         };
+      case tierSupportActionTypes.TIER_SUPPORT_ACTIVATE_BUSY_FEEDBACK:
+        return {
+          ...state,
+          enableBusyFeedback: true
+        };
+      case tierSupportActionTypes.TIER_SUPPORT_DISABLE_BUSY_FEEDBACK:
+        return {
+          ...state,
+          enableBusyFeedback: false
+        };  
       case globalAutoCompleteSearchBarActionTypes.SEARCH_WARNING_EVENT:
         let emptyNodesAndLinksWarningEvent = ForceDirectedGraph.generateNewProps([], [], {});
         return {

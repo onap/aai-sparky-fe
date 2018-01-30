@@ -24,6 +24,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import SplitPane from 'react-split-pane';
+import { ClipLoader } from 'react-spinners';
+import {COLOR_BLUE} from 'utils/GlobalConstants.js';
 
 import {setSecondaryTitle} from 'app/MainScreenWrapperActionHelper.js';
 import ForceDirectedGraph from 'generic-components/graph/ForceDirectedGraph.jsx';
@@ -69,7 +71,8 @@ let mapStateToProps = (
         graphNodeSelectedMenu = TSUI_GRAPH_MENU_NODE_DETAILS,
         feedbackMsgText = '',
         feedbackMsgSeverity = '',
-        nodeData = {}
+        nodeData = {},
+        enableBusyFeedback = false
       } = tierSupportReducer;
 
   let {
@@ -85,7 +88,8 @@ let mapStateToProps = (
     selectedSuggestion,
     feedbackMsgText,
     feedbackMsgSeverity,
-    nodeData
+    nodeData,
+    enableBusyFeedback
   };
 };
 
@@ -123,7 +127,8 @@ class TierSupport extends Component {
     graphNodeSelectedMenu: React.PropTypes.string,
     feedbackMsgText: React.PropTypes.string,
     feedbackMsgSeverity: React.PropTypes.string,
-    nodeData: React.PropTypes.object
+    nodeData: React.PropTypes.object,
+    enableBusyFeedback: React.PropTypes.bool
   };
 
   componentWillReceiveProps(nextProps) {
@@ -169,10 +174,14 @@ class TierSupport extends Component {
             windowWidth,
             windowHeight,
             onSplitPaneResize,
-            onNodeMenuSelect
+            onNodeMenuSelect,
+            enableBusyFeedback
           } = this.props;
 
-
+    let componentVisibitliyClassName = 'showContainer';
+    if(enableBusyFeedback){
+      componentVisibitliyClassName = 'hideContainer';
+    }
     let availableOverlay;
     let overlayComponent;
     // Currently only ONE overlay can be added to each view.
@@ -200,35 +209,40 @@ class TierSupport extends Component {
     let currentSelectedMenu = this.getCurrentSelectedMenu(overlayComponent);
     return (
       <div className='tier-support-ui'>
-        <SplitPane
-          split='vertical'
-          enableResizing='true'
-          onDragFinished={ () => {
-            onSplitPaneResize(false);
-          } }
-          defaultSize={TSUI_NODE_DETAILS_INITIAL_WIDTH}
-          minSize={TSUI_NODE_DETAILS_MIN_WIDTH}
-          maxSize={-200}
-          primary='second'>
-          <div>
-            <ForceDirectedGraph
-              viewWidth={windowWidth}
-              viewHeight={windowHeight}
-              graphData={forceDirectedGraphRawData}
-              nodeSelectedCallback={(nodeData) => {
-                onNodeSelected(nodeData);
-              }}
-              nodeButtonSelectedCallback={(selectedMenuId) => {
-                onNodeMenuSelect(selectedMenuId);
-              }}
-              dataOverlayButtons={dataOverlayButtons}
-              currentlySelectedNodeView={currentNodeButton}/>
+          <div className='spinner'>
+              <ClipLoader color={COLOR_BLUE} loading={enableBusyFeedback} />
+            </div>
+          <div className={componentVisibitliyClassName}>
+            <SplitPane
+              split='vertical'
+              enableResizing='true'
+              onDragFinished={ () => {
+                onSplitPaneResize(false);
+              } }
+              defaultSize={TSUI_NODE_DETAILS_INITIAL_WIDTH}
+              minSize={TSUI_NODE_DETAILS_MIN_WIDTH}
+              maxSize={-200}
+              primary='second'>
+              <div>
+                <ForceDirectedGraph
+                  viewWidth={windowWidth}
+                  viewHeight={windowHeight}
+                  graphData={forceDirectedGraphRawData}
+                  nodeSelectedCallback={(nodeData) => {
+                    onNodeSelected(nodeData);
+                  }}
+                  nodeButtonSelectedCallback={(selectedMenuId) => {
+                    onNodeMenuSelect(selectedMenuId);
+                  }}
+                  dataOverlayButtons={dataOverlayButtons}
+                  currentlySelectedNodeView={currentNodeButton}/>
 
+              </div>
+              <div>
+                {currentSelectedMenu}
+              </div>
+            </SplitPane>
           </div>
-          <div>
-            {currentSelectedMenu}
-          </div>
-        </SplitPane>
       </div>
     );
   }

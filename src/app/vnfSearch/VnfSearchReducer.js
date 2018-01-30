@@ -105,6 +105,16 @@ export default (state = {}, action) => {
         vnfFilterValues: data.nonConvertedValues  // launching DI view via menu button requires this
                                                   // to be set so visualizations and table will populate themselves
       };
+    case vnfActionTypes.VNF_ACTIVATE_BUSY_FEEDBACK:
+      return {
+        ...state,
+        enableBusyFeedback: true
+      };
+    case vnfActionTypes.VNF_DISABLE_BUSY_FEEDBACK:
+      return {
+        ...state,
+        enableBusyFeedback: false
+      }; 
     case filterBarActionTypes.CLEAR_FILTERS:
       return {
         ...state,

@@ -41,6 +41,7 @@
     "react-redux": "^4.4.1",
     "react-router-dom": "^4.1.1",
     "react-select": "^1.0.0-beta13",
+    "react-spinners": "^0.2.5",
     "react-split-pane": "^0.1.51",
     "redux": "^3.3.1",
     "redux-form": "^6.2.1",

@@ -26,14 +26,18 @@ import {connect} from 'react-redux';
 import i18n from 'utils/i18n/i18n';
 
 import {TOTAL_VNF_COUNT} from 'app/vnfSearch/VnfSearchConstants.js';
+import {COLOR_BLUE} from 'utils/GlobalConstants.js';
+import { ClipLoader } from 'react-spinners';
 
 let mapStateToProps = ({vnfSearch}) => {
   let {
-        count = TOTAL_VNF_COUNT.emptyValue
+        count = TOTAL_VNF_COUNT.emptyValue,
+        enableBusyFeedback = false
       } = vnfSearch;
 
   return {
-    count
+    count,
+    enableBusyFeedback
   };
 };
 
@@ -42,14 +46,19 @@ class VnfSearchTotalCountVisualization extends Component {
     count: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.number
-    ])
+    ]),
+    enableBusyFeedback: React.PropTypes.bool
   };
 
   render() {
     let {
-          count
+          count,
+          enableBusyFeedback
         } = this.props;
-
+    let componentVisibitliyClassName = 'showContainer';
+    if(enableBusyFeedback){
+      componentVisibitliyClassName = 'hideContainer';
+    }
     let visualizationClass = 'visualizations';
     if (count === null) {
       visualizationClass = 'visualizations hidden';
@@ -61,8 +70,13 @@ class VnfSearchTotalCountVisualization extends Component {
           <div className='visualization-side-by-side-30'>
             <span>&nbsp;</span>
             <h3>{i18n(TOTAL_VNF_COUNT.title)}</h3>
-            <div className='total-box-entity-count'>
-              <span>{count}</span>
+            <div className='spinner'>
+              <ClipLoader color={COLOR_BLUE} loading={enableBusyFeedback} />
+            </div>
+            <div className={componentVisibitliyClassName}>
+              <div className='total-box-entity-count'>
+                <span>{count}</span>
+              </div>
             </div>
           </div>
         </div>

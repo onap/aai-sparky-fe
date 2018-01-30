@@ -205,8 +205,21 @@ function getVnfVisualizationsResultsEvent(results) {
   };
 }
 
+function setBusyFeedback(){
+  return {
+    type: vnfActionTypes.VNF_ACTIVATE_BUSY_FEEDBACK
+  };
+}
+
+function disableBusyFeedback(){
+  return {
+    type: vnfActionTypes.VNF_DISABLE_BUSY_FEEDBACK
+  };
+}
+
 export function processVnfVisualizationsOnFilterChange(filterValueMap) {
   return dispatch => {
+    dispatch(setBusyFeedback());
     return fetch(VNF_FILTER_AGGREGATION_URL, {
       method: POST,
       headers: POST_HEADER,
@@ -222,8 +235,13 @@ export function processVnfVisualizationsOnFilterChange(filterValueMap) {
         }
         dispatch(getVnfVisualizationsResultsEvent(responseJson));
       }
+    ).then(
+      () => {
+        dispatch(disableBusyFeedback());
+      }
     ).catch(
       () => {
+        dispatch(disableBusyFeedback());
         dispatch(getInvalidQueryEvent());
       }
     );

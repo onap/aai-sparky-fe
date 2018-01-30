@@ -120,6 +120,18 @@ export function clearVIData() {
   };
 }
 
+function setBusyFeedback(){
+  return {
+    type: tierSupportActionTypes.TIER_SUPPORT_ACTIVATE_BUSY_FEEDBACK
+  };
+}
+
+function disableBusyFeedback(){
+  return {
+    type: tierSupportActionTypes.TIER_SUPPORT_DISABLE_BUSY_FEEDBACK
+  };
+}
+
 export function fetchSelectedNodeElement(fetchRequestCallback) {
   return dispatch => {
     return fetchRequestCallback().then(
@@ -140,8 +152,13 @@ export function fetchSelectedNodeElement(fetchRequestCallback) {
           dispatch(noNodeDetailsFoundEvent(NO_RESULTS_FOUND));
         }
       }
+    ).then(
+      () => {
+        dispatch(disableBusyFeedback());
+      }
     ).catch(
       (errorCode) => {
+        dispatch(disableBusyFeedback());
         if (errorCode.message >= STATUS_CODE_5XX_SERVER_ERROR) {
           dispatch(getInvalidSelectedNodeSearchEvent(ERROR_RETRIEVING_DATA));
         } else {
@@ -169,6 +186,7 @@ export function querySelectedNodeElement(
   }
 
   return dispatch => {
+    dispatch(setBusyFeedback());
     dispatch(fetchSelectedNodeElement(selectedNodeFetchRequest));
   };
 }
