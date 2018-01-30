@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_a2555351",
+        "filename": "resources/scss/common/_layout.scss",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-01-30T20:46:41Z",
+      "side": 1,
+      "message": "how is this styling ensuring the spinner is centered in the containing component?",
+      "revId": "f42261a2cd0582e0209018c23816681e146ea97d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_821cd7c2",
+        "filename": "src/app/tierSupport/TierSupport.jsx",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-01-30T20:46:41Z",
+      "side": 1,
+      "message": "why are we hiding things when the spinner is shown? Can\u0027t we just lay the spinner overtop of the content? If anything, perhaps set the transparency of the content to 50%?",
+      "revId": "f42261a2cd0582e0209018c23816681e146ea97d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_e2d27bd1",
+        "filename": "src/app/vnfSearch/VnfSearchActions.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-01-30T20:46:41Z",
+      "side": 1,
+      "message": "If we are having one specific event to enable/disable the spinner state, why do we put separate spinners on individual VNF components? I would expect a single spinner if it\u0027s a single call/event ... if it were individual backend calls per visualization, then lets put a flag for each one and a spinner associated with each flag",
+      "revId": "f42261a2cd0582e0209018c23816681e146ea97d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
