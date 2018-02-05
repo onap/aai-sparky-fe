@@ -36,7 +36,7 @@ import i18n from 'utils/i18n/i18n';
 
 import {CHART_NF_TYPE} from 'app/vnfSearch/VnfSearchConstants.js';
 import {COLOR_BLUE} from 'utils/GlobalConstants.js';
-import { ClipLoader } from 'react-spinners';
+import Spinner from 'utils/SpinnerContainer.jsx';
 
 let mapStateToProps = ({vnfSearch}) => {
   let {
@@ -61,10 +61,7 @@ class VnfSearchNfTypeVisualization extends Component {
           processedNfTypeCountChartData,
           enableBusyFeedback
         } = this.props;
-    let componentVisibitliyClassName = 'showContainer';
-    if(enableBusyFeedback){
-      componentVisibitliyClassName = 'hideContainer';
-    }
+
     let visualizationClass = 'visualizations';
     if (processedNfTypeCountChartData.values ===
       null ||
@@ -80,10 +77,7 @@ class VnfSearchNfTypeVisualization extends Component {
         <div className='visualization-charts'>
           <div >
             <h3>{i18n(CHART_NF_TYPE.title)}</h3>
-            <div className='spinner'>
-              <ClipLoader color={COLOR_BLUE} loading={enableBusyFeedback} />
-            </div>
-            <div className={componentVisibitliyClassName}>
+            <Spinner loading={enableBusyFeedback}>
               <ResponsiveContainer width='100%' height={300}>
                 <BarChart data={processedNfTypeCountChartData.values}>
                   <XAxis dataKey={xAxisAttrName}/>
@@ -94,7 +88,7 @@ class VnfSearchNfTypeVisualization extends Component {
                        dataKey={yAxisAttrName} fill={COLOR_BLUE}/>
                 </BarChart>
               </ResponsiveContainer>
-            </div>
+            </Spinner>
           </div>
         </div>
       </div>

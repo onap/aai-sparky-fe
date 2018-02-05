@@ -24,8 +24,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import SplitPane from 'react-split-pane';
-import { ClipLoader } from 'react-spinners';
-import {COLOR_BLUE} from 'utils/GlobalConstants.js';
+import Spinner from 'utils/SpinnerContainer.jsx';
 
 import {setSecondaryTitle} from 'app/MainScreenWrapperActionHelper.js';
 import ForceDirectedGraph from 'generic-components/graph/ForceDirectedGraph.jsx';
@@ -177,11 +176,6 @@ class TierSupport extends Component {
             onNodeMenuSelect,
             enableBusyFeedback
           } = this.props;
-
-    let componentVisibitliyClassName = 'showContainer';
-    if(enableBusyFeedback){
-      componentVisibitliyClassName = 'hideContainer';
-    }
     let availableOverlay;
     let overlayComponent;
     // Currently only ONE overlay can be added to each view.
@@ -209,10 +203,7 @@ class TierSupport extends Component {
     let currentSelectedMenu = this.getCurrentSelectedMenu(overlayComponent);
     return (
       <div className='tier-support-ui'>
-          <div className='spinner'>
-              <ClipLoader color={COLOR_BLUE} loading={enableBusyFeedback} />
-            </div>
-          <div className={componentVisibitliyClassName}>
+          <Spinner loading={enableBusyFeedback}>
             <SplitPane
               split='vertical'
               enableResizing='true'
@@ -242,7 +233,7 @@ class TierSupport extends Component {
                 {currentSelectedMenu}
               </div>
             </SplitPane>
-          </div>
+          </Spinner>
       </div>
     );
   }

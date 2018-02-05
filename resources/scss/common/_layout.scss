@@ -20,7 +20,7 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
- 
+
 .hidden {
 	display: none;
 }
@@ -41,14 +41,18 @@
 .showContainer {
 }
 
+.spinner-container {
+	overflow: hidden;
+	position: relative;
+}
+
 .spinner {
-	position: fixed;
+	position: absolute;
 	z-index: 999;
-	height: 2em;
-	width: 2em;
-	margin: auto;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
+	left: 50%;
+	top: 49%;
+}
+
+.spinner-content {
+	opacity: 0.2;
 }

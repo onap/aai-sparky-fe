@@ -36,7 +36,7 @@ import i18n from 'utils/i18n/i18n';
 
 import {CHART_PROV_STATUS} from 'app/vnfSearch/VnfSearchConstants.js';
 import {COLOR_BLUE} from 'utils/GlobalConstants.js';
-import { ClipLoader } from 'react-spinners';
+import Spinner from 'utils/SpinnerContainer.jsx';
 
 let mapStateToProps = ({vnfSearch}) => {
   let {
@@ -62,10 +62,6 @@ class VnfSearchProvStatusVisualization extends Component {
             enableBusyFeedback
 				} = this.props;
 
-    let componentVisibitliyClassName = 'showContainer';
-    if(enableBusyFeedback){
-      componentVisibitliyClassName = 'hideContainer';
-    }
     let visualizationClass = 'visualizations';
     if (processedProvStatusCountChartData.values ===
       null ||
@@ -81,22 +77,19 @@ class VnfSearchProvStatusVisualization extends Component {
         <div className='visualization-charts'>
           <div className='visualization-side-by-side-70'>
             <h3>{i18n(CHART_PROV_STATUS.title)}</h3>
-            <div className='spinner'>
-              <ClipLoader color={COLOR_BLUE} loading={enableBusyFeedback} />
-            </div>
-            <div className={componentVisibitliyClassName}>
+            <Spinner loading={enableBusyFeedback}>
               <ResponsiveContainer width='100%' height={345} >
-                  <BarChart
-                    data={processedProvStatusCountChartData.values}>
-                    <XAxis dataKey={xAxisAttrName}/>
-                    <YAxis  />
-                    <CartesianGrid strokeDasharray='3 3'/>
-                    <Tooltip/>
-                    <Bar name={i18n(CHART_PROV_STATUS.xAxisLabel)}
-                         dataKey={yAxisAttrName} fill={COLOR_BLUE}/>
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
+                <BarChart
+                  data={processedProvStatusCountChartData.values}>
+                  <XAxis dataKey={xAxisAttrName}/>
+                  <YAxis  />
+                  <CartesianGrid strokeDasharray='3 3'/>
+                  <Tooltip/>
+                  <Bar name={i18n(CHART_PROV_STATUS.xAxisLabel)}
+                       dataKey={yAxisAttrName} fill={COLOR_BLUE}/>
+                </BarChart>
+              </ResponsiveContainer>
+            </Spinner>
           </div>
         </div>
       </div>

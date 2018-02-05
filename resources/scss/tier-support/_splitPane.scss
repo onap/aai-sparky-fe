@@ -21,9 +21,12 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 
+div.SplitPane.vertical {
+  position: initial !important;
+}
+
 .SplitPane {
   min-width: $minimum-application-width;
-  height: calc(100% - #{$total-header-height}) !important;
 }
 
 .Resizer {
