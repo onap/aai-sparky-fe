@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_b636ec50",
+        "filename": "resources/scss/tier-support/_splitPane.scss",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 2957
+      },
+      "writtenOn": "2018-02-05T18:50:29Z",
+      "side": 0,
+      "message": "why do we delete the height?",
+      "revId": "f42261a2cd0582e0209018c23816681e146ea97d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}

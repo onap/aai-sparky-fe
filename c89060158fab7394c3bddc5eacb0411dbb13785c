@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_b60d8c92",
+        "filename": "src/utils/SpinnerContainer.jsx",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 2957
+      },
+      "writtenOn": "2018-02-05T18:50:29Z",
+      "side": 1,
+      "message": "Do not we decide to have the spinner in a separate repository so we can just import it it different views?",
+      "revId": "c89060158fab7394c3bddc5eacb0411dbb13785c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
