@@ -16,6 +16,24 @@
       "revId": "f42261a2cd0582e0209018c23816681e146ea97d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_96697027",
+        "filename": "resources/scss/tier-support/_splitPane.scss",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-02-05T19:11:39Z",
+      "side": 0,
+      "message": "It was moved ... it is not the split pane that needs this height, it is teh VI view itself... just put the style on the proper element",
+      "parentUuid": "5a93c517_b636ec50",
+      "revId": "f42261a2cd0582e0209018c23816681e146ea97d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }

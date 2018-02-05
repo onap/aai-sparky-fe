@@ -16,6 +16,24 @@
       "revId": "c89060158fab7394c3bddc5eacb0411dbb13785c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_5673e814",
+        "filename": "src/utils/SpinnerContainer.jsx",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-02-05T19:11:39Z",
+      "side": 1,
+      "message": "yes... there is a separate story to create an actual component ... for now this was put into the ONAP code-base to close this story quickly... we will move this code out next story",
+      "parentUuid": "5a93c517_b60d8c92",
+      "revId": "c89060158fab7394c3bddc5eacb0411dbb13785c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
