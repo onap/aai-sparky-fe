@@ -16,6 +16,24 @@
       "revId": "693159f2b81b064054ecf15bd71a49cd88e5356b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_86c0597d",
+        "filename": "src/app/tierSupport/selectedNodeDetails/SelectedNodeDetailsConstants.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2018-02-06T18:43:03Z",
+      "side": 0,
+      "message": "Its being removed not added so there is no impact",
+      "parentUuid": "5a93c517_06d52942",
+      "revId": "693159f2b81b064054ecf15bd71a49cd88e5356b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
