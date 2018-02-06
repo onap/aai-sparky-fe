@@ -44,7 +44,6 @@ import {
 	queryRequestedValues
 } from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBarActions.js';
 import {tierSupportActionTypes, TSUI_SEARCH_URL} from "app/tierSupport/TierSupportConstants.js";
-import {TABLE_DATA} from "app/tierSupport/selectedNodeDetails/SelectedNodeDetailsConstants.js";
 import {getDynamicTSUISearchURL} from "app/tierSupport/TierSupportActions.js";
 import * as networkCall from "app/networking/NetworkCalls.js";
 import {POST,

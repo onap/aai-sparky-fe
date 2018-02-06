@@ -37,7 +37,7 @@ import {
 import {AutoCompleteSearchBar} from 'generic-components/autoCompleteSearchBar/AutoCompleteSearchBar.jsx';
 import {ERROR_RETRIEVING_DATA, POST, POST_HEADER} from 'app/networking/NetworkConstants.js';
 import {tierSupportActionTypes, TSUI_SEARCH_URL} from 'app/tierSupport/TierSupportConstants.js';
-import {TABLE_DATA} from 'app/tierSupport/selectedNodeDetails/SelectedNodeDetailsConstants.js';
+
 import {mount, shallow} from 'enzyme';
 import i18n from 'utils/i18n/i18n';
 import {
