@@ -21,6 +21,8 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 // Import section (used as anchor to add overlay imports)
+import {DataIntegrityOverlay} from 'data-integrity-overlay';
 let overlays = {};
 // Overlays section (used as an anchor to add overlay components)
+overlays['DataIntegrityOverlay'] = DataIntegrityOverlay;
 export default overlays;

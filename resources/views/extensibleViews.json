@@ -1,2 +1,8 @@
 [
+	{
+		"viewName": "structuredView",
+		"componentName": "StructuredView",
+		"displayName": "Structured View",
+		"iconClass": "structured-view-button-icon"
+	}
 ]

@@ -98,7 +98,7 @@ export default combineReducers({
         return {
           ...state,
           enableBusyFeedback: false
-        };  
+        };
       case globalAutoCompleteSearchBarActionTypes.SEARCH_WARNING_EVENT:
         let emptyNodesAndLinksWarningEvent = ForceDirectedGraph.generateNewProps([], [], {});
         return {
@@ -118,6 +118,13 @@ export default combineReducers({
         } else {
           return state;
         }
+      case tierSupportActionTypes.TS_OVERLAY_NETWORK_CALLBACK_RESPONSE_RECEIVED:
+        let newNodeData = JSON.parse(JSON.stringify(action.data.curData));
+        newNodeData[action.data.paramName] = action.data.overlayData;
+        return {
+          ...state,
+          nodeData: newNodeData
+        };
     }
 
     return state;

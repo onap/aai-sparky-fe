@@ -39,6 +39,7 @@ import {
 import {
   windowResize,
   extensibleViewNetworkCallback,
+  overlayNetworkCallback,
   extensibleViewMessageCallback
 } from './MainScreenWrapperActionHelper.js';
 
@@ -66,6 +67,9 @@ const mapActionsToProps = (dispatch) => {
     },
     onExtensibleViewMessageCallback: (message, messageSevirity) => {
       dispatch(extensibleViewMessageCallback(message, messageSevirity));
+    },
+    onOverlayNetworkCallback: (apiUrl, body, viewName, curViewData, responseEventKey) =>  {
+      dispatch(overlayNetworkCallback(apiUrl, body, viewName, curViewData, responseEventKey));
     }
   };
 };
@@ -86,7 +90,8 @@ class MainScreenWrapper extends Component {
     const {
       onExtensibleViewNetworkCallback,
       extensibleViewNetworkCallbackData,
-      onExtensibleViewMessageCallback
+      onExtensibleViewMessageCallback,
+      onOverlayNetworkCallback
     } = this.props;
 
     let customViewList = [];
@@ -104,6 +109,9 @@ class MainScreenWrapper extends Component {
               {...props}
               networkingCallback={(apiUrl, body, paramName, curViewData) => {
                 onExtensibleViewNetworkCallback(apiUrl, body, paramName, curViewData);
+              }}
+              overlayCallback={(apiUrl, body, paramName, curOverlayData,responseEventKey) => {
+                onOverlayNetworkCallback(apiUrl, body, paramName, curOverlayData, responseEventKey);
               }}
               messagingCallback ={(message, messageSeverity) => {
                 onExtensibleViewMessageCallback(message, messageSeverity);

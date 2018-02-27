@@ -1,2 +1,7 @@
 [
+	{
+		"componentName": "DataIntegrityOverlay",
+		"view": "schema",
+		"key": "DATA_INTEGRITY"
+	}
 ]
