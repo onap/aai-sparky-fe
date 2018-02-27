@@ -31,6 +31,10 @@ import ForceDirectedGraph from 'generic-components/graph/ForceDirectedGraph.jsx'
 import SelectedNodeDetails from 'app/tierSupport/selectedNodeDetails/SelectedNodeDetails.jsx';
 
 
+import {
+  overlayNetworkCallback,
+} from '../MainScreenWrapperActionHelper.js';
+
 import overlaysDetails from 'resources/overlays/overlaysDetails.json';
 import * as Overlays from 'app/overlays/OverlayImports.js';
 
@@ -48,6 +52,7 @@ import {
   TSUI_NODE_DETAILS_INITIAL_WIDTH,
   TSUI_NODE_DETAILS_MIN_WIDTH,
   TSUI_GRAPH_MENU_NODE_DETAILS,
+  tierSupportActionTypes
 } from './TierSupportConstants.js';
 
 let mapStateToProps = (
@@ -114,6 +119,9 @@ let mapActionToProps = (dispatch) => {
     },
     onRequestClearData: () => {
       dispatch(clearVIData());
+    },
+    onOverlayNetworkCallback: (apiUrl, body, viewName, curViewData, responseEventKey) =>  {
+      dispatch(overlayNetworkCallback(apiUrl, body, viewName, curViewData, responseEventKey));
     }
   };
 };
@@ -259,7 +267,17 @@ class TierSupport extends Component {
       if (this.isNotEmpty(this.props.nodeData) && overlayComponent) {
         if (Overlays.default.hasOwnProperty(overlayComponent)) {
           let OverlayComponent = Overlays.default[overlayComponent];
-          secondOverlay = <OverlayComponent nodeDetails={this.props.nodeData}/>;
+          secondOverlay = <OverlayComponent
+            nodeDetails={this.props.nodeData}
+            networkingCallback={(apiUrl, body, paramName, curViewData) => {
+              this.props.onOverlayNetworkCallback(
+                apiUrl,
+                body,
+                paramName,
+                curViewData,
+                tierSupportActionTypes.TS_OVERLAY_NETWORK_CALLBACK_RESPONSE_RECEIVED);
+            }} />;
+
         }
       }
       return secondOverlay;

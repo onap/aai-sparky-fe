@@ -64,7 +64,7 @@ module.exports = {
 		progress: true,
 		inline: true,
 		debug: true,
-  https: true,
+  	https: true,
 		stats: {
 			colors: true
 		}
