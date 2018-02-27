@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_b9d21d5a",
+        "filename": "resources/overlays/overlaysDetails.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-02-27T19:36:23Z",
+      "side": 1,
+      "message": "fixed as part of next commit",
+      "parentUuid": "5a93c517_ce807dc2",
+      "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_6e8129c2",
         "filename": "resources/views/extensibleViews.json",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-02-27T18:05:03Z",
       "side": 1,
       "message": "Should this be in ONAP?",
+      "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_d9d7e949",
+        "filename": "resources/views/extensibleViews.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-02-27T19:36:23Z",
+      "side": 1,
+      "message": "fixed as part of next commit",
+      "parentUuid": "5a93c517_6e8129c2",
       "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_79c815a8",
+        "filename": "src/app/extensibility/ExtensibilityReducer.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-02-27T19:36:23Z",
+      "side": 1,
+      "message": "fixed as part of next commit",
+      "parentUuid": "5a93c517_2e56c15c",
+      "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_aec97127",
         "filename": "src/app/extensibility/index.js",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_39c60d9b",
+        "filename": "src/app/extensibility/index.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-02-27T19:36:23Z",
+      "side": 1,
+      "message": "fixed as part of next commit",
+      "parentUuid": "5a93c517_aec97127",
+      "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_2edd61e0",
         "filename": "src/app/overlays/OverlayImports.js",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2018-02-27T18:05:03Z",
       "side": 1,
       "message": "DI shouldn\u0027t be in ONAP. File is populated at build time. Should be reverted.",
+      "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_59c3d988",
+        "filename": "src/app/overlays/OverlayImports.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-02-27T19:36:23Z",
+      "side": 1,
+      "message": "fixed as part of next commit",
+      "parentUuid": "5a93c517_2edd61e0",
       "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
