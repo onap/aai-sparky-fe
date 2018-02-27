@@ -21,12 +21,8 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 import {combineReducers} from 'redux';
-import {StructuredViewReducer} from 'structuredView';
-import {SVSelectedNodeDetailsReducer} from 'structuredView';
 
 export default combineReducers({
-  extStructuredView: StructuredViewReducer,
-  svExtSelectedNodeDetails: SVSelectedNodeDetailsReducer,
   extensible: (state = {}) => {
     return state;
   }

@@ -33,7 +33,7 @@ import SelectedNodeDetails from 'app/tierSupport/selectedNodeDetails/SelectedNod
 
 import {
   overlayNetworkCallback,
-} from '../MainScreenWrapperActionHelper.js';
+} from 'app/MainScreenWrapperActionHelper.js';
 
 import overlaysDetails from 'resources/overlays/overlaysDetails.json';
 import * as Overlays from 'app/overlays/OverlayImports.js';

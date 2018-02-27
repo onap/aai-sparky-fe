@@ -21,11 +21,9 @@
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
 // Import section (used as anchor to add extension imports)
-import {StructuredView} from 'structuredView';
 
 let components = {};
 
 // Components section (used as an anchor to add extension components)
-components['StructuredView'] = StructuredView;
 
 export default components;
