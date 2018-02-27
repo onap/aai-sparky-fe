@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a93c517_ce807dc2",
+        "filename": "resources/overlays/overlaysDetails.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061
+      },
+      "writtenOn": "2018-02-27T18:05:03Z",
+      "side": 1,
+      "message": "I don\u0027t think this is supposed to be in ONAP",
+      "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_6e8129c2",
+        "filename": "resources/views/extensibleViews.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061
+      },
+      "writtenOn": "2018-02-27T18:05:03Z",
+      "side": 1,
+      "message": "Should this be in ONAP?",
+      "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_2e56c15c",
+        "filename": "src/app/extensibility/ExtensibilityReducer.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061
+      },
+      "writtenOn": "2018-02-27T18:05:03Z",
+      "side": 1,
+      "message": "This file is supposed to be edited a build time. We shouldn\u0027t have these other reducers in here (leftover from testing?).",
+      "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_aec97127",
+        "filename": "src/app/extensibility/index.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061
+      },
+      "writtenOn": "2018-02-27T18:05:03Z",
+      "side": 1,
+      "message": "This file is supposed to be edited at build time. It should be reverted.",
+      "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_2edd61e0",
+        "filename": "src/app/overlays/OverlayImports.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061
+      },
+      "writtenOn": "2018-02-27T18:05:03Z",
+      "side": 1,
+      "message": "DI shouldn\u0027t be in ONAP. File is populated at build time. Should be reverted.",
+      "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_2e4d613e",
         "filename": "src/app/tierSupport/TierSupport.jsx",
         "patchSetId": 1
