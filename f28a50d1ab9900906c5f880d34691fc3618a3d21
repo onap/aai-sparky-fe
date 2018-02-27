@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_8e127507",
+        "filename": "src/app/tierSupport/TierSupport.jsx",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-02-27T17:05:41Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "5a93c517_2e4d613e",
+      "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_4e4a2d27",
         "filename": "webpack.devConfig.js",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-02-27T16:56:55Z",
       "side": 1,
       "message": "Not important, but should it not be indented once more, because the reason for this change seems to increase the indentation, if we are doing that we should do it properly.",
+      "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_ae0731c9",
+        "filename": "webpack.devConfig.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-02-27T17:05:41Z",
+      "side": 1,
+      "message": "it\u0027s indented properly in the actual file...not sure why it looks different here",
+      "parentUuid": "5a93c517_4e4a2d27",
       "revId": "f28a50d1ab9900906c5f880d34691fc3618a3d21",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
