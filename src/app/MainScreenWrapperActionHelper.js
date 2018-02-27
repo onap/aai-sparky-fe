@@ -20,7 +20,6 @@
  *
  * ECOMP is a trademark and service mark of AT&T Intellectual Property.
  */
-import {aaiActionTypes} from './MainScreenWrapperConstants.js';
 import {
   POST,
   POST_HEADER,
@@ -36,6 +35,7 @@ import {
   getSetGlobalMessageEvent,
   getClearGlobalMessageEvent
 } from 'app/globalInlineMessageBar/GlobalInlineMessageBarActions.js';
+import {aaiActionTypes} from 'app/MainScreenWrapperConstants.js';
 
 function createWindowSizeChangeEvent() {
   return {
@@ -61,6 +61,45 @@ export function windowResize() {
 export function showMainMenu(show) {
   return dispatch => {
     dispatch(createShowMenuEvent(show));
+  };
+}
+
+function createOverlayDataFoundEvent(overlayData, paramName, curData, responseEventKey) {
+  return {
+    type: responseEventKey,
+    data: {
+      paramName: paramName,
+      overlayData: overlayData,
+      curData: curData
+    }
+  };
+}
+
+function overlayViewData(dataFetchRequest, paramName, curData, responseEventKey) {
+  return dispatch => {
+    dataFetchRequest().then(
+      (response) => {
+        return response.json();
+      }
+    ).then(
+      (responseJson) => {
+        dispatch(createOverlayDataFoundEvent(responseJson, paramName, curData, responseEventKey));
+      }).catch(
+      () => {
+        dispatch(getSetGlobalMessageEvent(ERROR_RETRIEVING_DATA, MESSAGE_LEVEL_DANGER));
+        dispatch(createOverlayDataFoundEvent({}, paramName, curData, responseEventKey));
+      });
+  };
+}
+
+export function overlayNetworkCallback(urlApi, postBody, paramName, curData, responseEventKey) {
+  let dataFetchRequest =
+    () => fetchRequestObj(BASE_URL + urlApi, POST,
+      POST_HEADER, JSON.stringify(postBody));
+
+
+  return dispatch => {
+    dispatch(overlayViewData(dataFetchRequest, paramName, curData, responseEventKey));
   };
 }
 
