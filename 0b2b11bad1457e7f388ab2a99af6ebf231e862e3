@@ -1,0 +1,11 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Richard von Dadelszen <richard.vondadelszen@amdocs.com>
+Code-Review+1: Dave Adams <Dave.Adams@amdocs.com>
+Code-Review+1: salma attaranasl <salma.attaran@amdocs.com>
+Code-Review+1: Francis Paquette <Francis.Paquette@amdocs.com>
+Code-Review+2: James Forsyth <jf2512@att.com>
+Submitted-by: James Forsyth <jf2512@att.com>
+Submitted-at: Thu, 29 Mar 2018 19:55:39 +0000
+Reviewed-on: https://gerrit.onap.org/r/40247
+Project: aai/sparky-fe
+Branch: refs/heads/master
