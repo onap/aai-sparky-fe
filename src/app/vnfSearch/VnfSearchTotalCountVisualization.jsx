@@ -38,7 +38,7 @@ let mapStateToProps = ({vnfSearch}) => {
   };
 };
 
-class VnfSearchTotalCountVisualization extends Component {
+export class VnfSearchTotalCountVisualization extends Component {
   static propTypes = {
     count: React.PropTypes.oneOfType([
       React.PropTypes.string,

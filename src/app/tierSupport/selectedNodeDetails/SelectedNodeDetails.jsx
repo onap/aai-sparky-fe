@@ -39,7 +39,7 @@ let mapStateToProps = ({tierSupport: {selectedNodeDetails}}) => {
   };
 };
 
-class SelectedNodeDetails extends Component {
+export class SelectedNodeDetails extends Component {
   static propTypes = {
     nodeData: React.PropTypes.object,
     nodeType: React.PropTypes.string,

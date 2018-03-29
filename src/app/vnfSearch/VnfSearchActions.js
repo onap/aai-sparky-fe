@@ -39,9 +39,6 @@ import {
 } from 'app/globalInlineMessageBar/GlobalInlineMessageBarActions.js';
 import {MESSAGE_LEVEL_WARNING} from 'utils/GlobalConstants.js';
 
-let fetch = require('node-fetch');
-fetch.Promise = require('es6-promise').Promise;
-
 const itemKeyWord = 'key';
 const countKeyWord = 'doc_count';
 

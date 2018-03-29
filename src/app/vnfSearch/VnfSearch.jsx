@@ -157,7 +157,7 @@ let mapActionToProps = (dispatch) => {
   };
 };
 
-class vnfSearch extends Component {
+export class vnfSearch extends Component {
   static propTypes = {
     feedbackMsgText: React.PropTypes.string,
     feedbackSeverity: React.PropTypes.string,

@@ -48,7 +48,7 @@ let mapStateToProps = ({vnfSearch}) => {
   };
 };
 
-class VnfSearchProvStatusVisualization extends Component {
+export class VnfSearchProvStatusVisualization extends Component {
   static propTypes = {
     processedProvStatusCountChartData: React.PropTypes.object,
     enableBusyFeedback: React.PropTypes.bool

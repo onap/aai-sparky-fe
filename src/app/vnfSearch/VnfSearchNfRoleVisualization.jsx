@@ -48,7 +48,7 @@ let mapStateToProps = ({vnfSearch}) => {
   };
 };
 
-class VnfSearchNfRoleVisualization extends Component {
+export class VnfSearchNfRoleVisualization extends Component {
   static propTypes = {
     processedNfRoleCountChartData: React.PropTypes.object,
     enableBusyFeedback: React.PropTypes.bool

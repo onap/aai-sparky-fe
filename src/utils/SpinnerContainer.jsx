@@ -47,4 +47,3 @@ SpinnerContainer.propTypes = {
 SpinnerContainer.defaultProps = {
   loading: false
 };
-
