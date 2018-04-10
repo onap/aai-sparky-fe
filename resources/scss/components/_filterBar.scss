@@ -184,7 +184,7 @@ $res-folder: $icons-folder-path + '/filter';
   left: 323px;
   transition:left 0.22s linear;
 
-  background: $background-color6 url($icons-folder-path + '/collapsible-sliding-panel-expander-icon.svg') no-repeat center;
+  background: $turquoise-blue url($icons-folder-path + '/collapsible-sliding-panel-expander-icon.svg') no-repeat center;
   background-size: 5px;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
@@ -196,7 +196,7 @@ $res-folder: $icons-folder-path + '/filter';
   left: 0px;
   transition: left 0.28s linear;
   background: url($icons-folder-path + '/collapsible-sliding-panel-expander-icon.svg') no-repeat 7px center,
-  url($icons-folder-path + '/collapsible-sliding-panel-expander-modified.svg') no-repeat 16px center $background-color6;
+  url($icons-folder-path + '/collapsible-sliding-panel-expander-modified.svg') no-repeat 16px center $turquoise-blue;
   background-size: 5px;
 }
 
