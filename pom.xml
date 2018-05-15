@@ -26,7 +26,7 @@
     <groupId>org.onap.aai</groupId>
     <artifactId>sparky-fe</artifactId>
     <packaging>war</packaging>
-    <version>1.2.1-SNAPSHOT</version>
+    <version>1.2.2-SNAPSHOT</version>
     <name>aai-sparky-fe</name>
     <url>http://maven.apache.org</url>
 
