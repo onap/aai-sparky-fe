@@ -4,9 +4,9 @@ import {Provider} from 'react-redux'
 import configureStore from 'redux-mock-store';
 import Table from 'react-bootstrap/lib/Table';
 
-import ConnectedSelectedNodeDetails, { SelectedNodeDetails } from './SelectedNodeDetails.jsx';
-import { SELECTED_NODE_TABLE_COLUMN_NAMES } from './SelectedNodeDetailsConstants.js';
-import LaunchInContext from '../launchExternalResource/LaunchExternalResource.jsx';
+import ConnectedSelectedNodeDetails, { SelectedNodeDetails } from 'app/tierSupport/selectedNodeDetails/SelectedNodeDetails.jsx';
+import { SELECTED_NODE_TABLE_COLUMN_NAMES } from 'app/tierSupport/selectedNodeDetails/SelectedNodeDetailsConstants.js';
+import LaunchInContext from 'app/tierSupport/launchExternalResource/LaunchExternalResource.jsx';
 
 describe('SelectedNodeDetails - Shallow render of component', () => {
   let wrapper;

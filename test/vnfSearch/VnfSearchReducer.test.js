@@ -1,4 +1,4 @@
-import VnfSearchReducer from './VnfSearchReducer.js';
+import VnfSearchReducer from 'app/vnfSearch/VnfSearchReducer.js';
 import {
   vnfActionTypes,
   CHART_ORCH_STATUS,
@@ -6,12 +6,12 @@ import {
   CHART_NF_ROLE,
   CHART_NF_TYPE,
   TOTAL_VNF_COUNT
-} from './VnfSearchConstants.js';
+} from 'app/vnfSearch/VnfSearchConstants.js';
 import {ERROR_RETRIEVING_DATA} from 'app/networking/NetworkConstants.js';
 import {
   filterBarActionTypes,
   MESSAGE_LEVEL_DANGER
-} from 'utils/GlobalConstants.js';
+} from 'utils/../../src/utils/GlobalConstants';
 import {
   globalAutoCompleteSearchBarActionTypes
 } from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBarConstants.js';

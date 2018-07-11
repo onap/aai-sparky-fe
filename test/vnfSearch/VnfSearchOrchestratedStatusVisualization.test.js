@@ -4,14 +4,14 @@ import {Provider} from 'react-redux'
 import configureStore from 'redux-mock-store';
 import { BarChart } from 'recharts';
 
-import ConnectedVnfSearchNfTypeVisualization,
-  { VnfSearchNfTypeVisualization } from './VnfSearchNfTypeVisualization.jsx';
-import { CHART_NF_TYPE } from './VnfSearchConstants.js';
-import Spinner from 'utils/SpinnerContainer.jsx';
+import ConnectedVnfSearchOrchStatusVisualizations,
+  { VnfSearchOrchStatusVisualizations } from 'app/vnfSearch/VnfSearchOrchestratedStatusVisualization.jsx';
+import { CHART_ORCH_STATUS } from 'app/vnfSearch/VnfSearchConstants.js';
+import Spinner from 'utils/../../src/utils/SpinnerContainer';
 
-describe('VnfSearchNfTypeVisualization - Shallow render of component', () => {
+describe('VnfSearchOrchStatusVisualizations - Shallow render of component', () => {
   let wrapper;
-  const processedNfTypeCountChartDataProp = {
+  const processedOrchStatusCountChartDataProp = {
     values: [
       {x: 'col 1', y: 3},
       {x: 'col 2', y: 7},
@@ -21,9 +21,9 @@ describe('VnfSearchNfTypeVisualization - Shallow render of component', () => {
 
   beforeEach( () => {
     wrapper = shallow(
-      <VnfSearchNfTypeVisualization
+      <VnfSearchOrchStatusVisualizations
         enableBusyFeedback={false}
-        processedNfTypeCountChartData={processedNfTypeCountChartDataProp}
+        processedOrchStatusCountChartData={processedOrchStatusCountChartDataProp}
       />
     );
   })
@@ -40,21 +40,21 @@ describe('VnfSearchNfTypeVisualization - Shallow render of component', () => {
 
   it('Verify BarChart is displayed', () => {
     expect(wrapper.find(BarChart)).toHaveLength(1);
-    expect(wrapper.find(BarChart).props().data).toEqual(processedNfTypeCountChartDataProp.values);
+    expect(wrapper.find(BarChart).props().data).toEqual(processedOrchStatusCountChartDataProp.values);
   });
 })
 
-describe('VnfSearchNfTypeVisualization - Shallow render of component with no chart data', () => {
+describe('VnfSearchOrchStatusVisualizations - Shallow render of component with no chart data', () => {
   let wrapper;
-  const processedNfTypeCountChartDataProp = {
+  const processedOrchStatusCountChartDataProp = {
     values: null
   };
 
   beforeEach( () => {
     wrapper = shallow(
-      <VnfSearchNfTypeVisualization
+      <VnfSearchOrchStatusVisualizations
         enableBusyFeedback={false}
-        processedNfTypeCountChartData={processedNfTypeCountChartDataProp}
+        processedOrchStatusCountChartData={processedOrchStatusCountChartDataProp}
       />
     );
   })
@@ -65,9 +65,9 @@ describe('VnfSearchNfTypeVisualization - Shallow render of component with no cha
   });
 })
 
-describe('VnfSearchNfTypeVisualization - Shallow render of component with busy feedback', () => {
+describe('VnfSearchOrchStatusVisualizations - Shallow render of component with busy feedback', () => {
   let wrapper;
-  const processedNfTypeCountChartDataProp = {
+  const processedOrchStatusCountChartDataProp = {
     values: [
       {x: 'col 1', y: 3},
       {x: 'col 2', y: 7},
@@ -77,9 +77,9 @@ describe('VnfSearchNfTypeVisualization - Shallow render of component with busy f
 
   beforeEach( () => {
     wrapper = shallow(
-      <VnfSearchNfTypeVisualization
+      <VnfSearchOrchStatusVisualizations
         enableBusyFeedback={true}
-        processedNfTypeCountChartData={processedNfTypeCountChartDataProp}
+        processedOrchStatusCountChartData={processedOrchStatusCountChartDataProp}
       />
     );
   })
@@ -96,14 +96,14 @@ describe('VnfSearchNfTypeVisualization - Shallow render of component with busy f
 
   it('Verify BarChart is displayed', () => {
     expect(wrapper.find(BarChart)).toHaveLength(1);
-    expect(wrapper.find(BarChart).props().data).toEqual(processedNfTypeCountChartDataProp.values);
+    expect(wrapper.find(BarChart).props().data).toEqual(processedOrchStatusCountChartDataProp.values);
   });
 })
 
-describe('VnfSearchNfTypeVisualization - Render React Component (wrapped in <Provider>)', () => {
+describe('VnfSearchOrchStatusVisualizations - Render React Component (wrapped in <Provider>)', () => {
   const initialState = {
     vnfSearch: {
-      processedNfTypeCountChartData: {
+      processedOrchStatusCountChartData: {
         values: [
           {x: 'col 1', y: 3},
           {x: 'col 2', y: 7},
@@ -118,20 +118,20 @@ describe('VnfSearchNfTypeVisualization - Render React Component (wrapped in <Pro
 
   beforeEach( () => {
     store = mockStore(initialState);
-    wrapper = mount(<Provider store={store}><ConnectedVnfSearchNfTypeVisualization /></Provider>);
+    wrapper = mount(<Provider store={store}><ConnectedVnfSearchOrchStatusVisualizations /></Provider>);
   })
 
   it('Render the connected component', () => {
-    expect(wrapper.find(ConnectedVnfSearchNfTypeVisualization).length).toEqual(1);
+    expect(wrapper.find(ConnectedVnfSearchOrchStatusVisualizations).length).toEqual(1);
   });
 
   it('Validate props from store', () => {
-    expect(wrapper.find(VnfSearchNfTypeVisualization).props().enableBusyFeedback).toEqual(initialState.vnfSearch.enableBusyFeedback);
-    expect(wrapper.find(VnfSearchNfTypeVisualization).props().processedNfTypeCountChartData).toEqual(initialState.vnfSearch.processedNfTypeCountChartData);
+    expect(wrapper.find(VnfSearchOrchStatusVisualizations).props().enableBusyFeedback).toEqual(initialState.vnfSearch.enableBusyFeedback);
+    expect(wrapper.find(VnfSearchOrchStatusVisualizations).props().processedOrchStatusCountChartData).toEqual(initialState.vnfSearch.processedOrchStatusCountChartData);
   });
 })
 
-describe('VnfSearchNfTypeVisualization - Render React Component (wrapped in <Provider>) with default props', () => {
+describe('VnfSearchOrchStatusVisualizations - Render React Component (wrapped in <Provider>) with default props', () => {
   const initialState = {
     vnfSearch: {}
   };
@@ -140,15 +140,15 @@ describe('VnfSearchNfTypeVisualization - Render React Component (wrapped in <Pro
 
   beforeEach( () => {
     store = mockStore(initialState);
-    wrapper = mount(<Provider store={store}><ConnectedVnfSearchNfTypeVisualization /></Provider>);
+    wrapper = mount(<Provider store={store}><ConnectedVnfSearchOrchStatusVisualizations /></Provider>);
   })
 
   it('Render the connected component', () => {
-    expect(wrapper.find(ConnectedVnfSearchNfTypeVisualization).length).toEqual(1);
+    expect(wrapper.find(ConnectedVnfSearchOrchStatusVisualizations).length).toEqual(1);
   });
 
   it('Validate default props loaded', () => {
-    expect(wrapper.find(VnfSearchNfTypeVisualization).props().enableBusyFeedback).toEqual(false);
-    expect(wrapper.find(VnfSearchNfTypeVisualization).props().processedNfTypeCountChartData).toEqual(CHART_NF_TYPE.emptyData);
+    expect(wrapper.find(VnfSearchOrchStatusVisualizations).props().enableBusyFeedback).toEqual(false);
+    expect(wrapper.find(VnfSearchOrchStatusVisualizations).props().processedOrchStatusCountChartData).toEqual(CHART_ORCH_STATUS.emptyData);
   });
 })

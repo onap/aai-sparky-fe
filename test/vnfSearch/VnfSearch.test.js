@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import {Provider} from 'react-redux'
+import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import ConnectedVnfSearch, { vnfSearch } from './VnfSearch.jsx';
+import ConnectedVnfSearch, { vnfSearch } from 'app/vnfSearch/VnfSearch.jsx';
 
 describe('VnfSearch - Shallow render of component', () => {
   let wrapper;

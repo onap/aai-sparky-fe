@@ -7,7 +7,7 @@ import {
   clearVnfSearchData,
   setNotificationText,
   processVnfVisualizationsOnFilterChange
-} from './VnfSearchActions.js';
+} from 'app/vnfSearch/VnfSearchActions.js';
 import {
   vnfActionTypes,
   CHART_PROV_STATUS,

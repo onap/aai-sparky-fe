@@ -2,8 +2,8 @@ import React from 'react';
 import { ClipLoader } from 'react-spinners';
 import { mount } from 'enzyme';
 
-import SpinnerContainer from './SpinnerContainer.jsx';
-import {COLOR_BLUE} from 'utils/GlobalConstants.js';
+import SpinnerContainer from '../../src/utils/SpinnerContainer.jsx';
+import {COLOR_BLUE} from 'utils/../../src/utils/GlobalConstants';
 
 describe('SpinnerContainer', () => {
   it('render spinner - visible', () => {
