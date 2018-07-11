@@ -4,14 +4,14 @@ import {Provider} from 'react-redux'
 import configureStore from 'redux-mock-store';
 import { BarChart } from 'recharts';
 
-import ConnectedVnfSearchOrchStatusVisualizations,
-  { VnfSearchOrchStatusVisualizations } from './VnfSearchOrchestratedStatusVisualization.jsx';
-import { CHART_ORCH_STATUS } from './VnfSearchConstants.js';
+import ConnectedVnfSearchNfRoleVisualization,
+  { VnfSearchNfRoleVisualization } from 'app/vnfSearch/VnfSearchNfRoleVisualization.jsx';
+import { CHART_NF_ROLE } from 'app/vnfSearch/VnfSearchConstants.js';
 import Spinner from 'utils/SpinnerContainer.jsx';
 
-describe('VnfSearchOrchStatusVisualizations - Shallow render of component', () => {
+describe('VnfSearchNfRoleVisualization - Shallow render of component', () => {
   let wrapper;
-  const processedOrchStatusCountChartDataProp = {
+  const processedNfRoleCountChartDataProp = {
     values: [
       {x: 'col 1', y: 3},
       {x: 'col 2', y: 7},
@@ -21,9 +21,9 @@ describe('VnfSearchOrchStatusVisualizations - Shallow render of component', () =
 
   beforeEach( () => {
     wrapper = shallow(
-      <VnfSearchOrchStatusVisualizations
+      <VnfSearchNfRoleVisualization
         enableBusyFeedback={false}
-        processedOrchStatusCountChartData={processedOrchStatusCountChartDataProp}
+        processedNfRoleCountChartData={processedNfRoleCountChartDataProp}
       />
     );
   })
@@ -40,21 +40,21 @@ describe('VnfSearchOrchStatusVisualizations - Shallow render of component', () =
 
   it('Verify BarChart is displayed', () => {
     expect(wrapper.find(BarChart)).toHaveLength(1);
-    expect(wrapper.find(BarChart).props().data).toEqual(processedOrchStatusCountChartDataProp.values);
+    expect(wrapper.find(BarChart).props().data).toEqual(processedNfRoleCountChartDataProp.values);
   });
 })
 
-describe('VnfSearchOrchStatusVisualizations - Shallow render of component with no chart data', () => {
+describe('VnfSearchNfRoleVisualization - Shallow render of component with no chart data', () => {
   let wrapper;
-  const processedOrchStatusCountChartDataProp = {
+  const processedNfRoleCountChartDataProp = {
     values: null
   };
 
   beforeEach( () => {
     wrapper = shallow(
-      <VnfSearchOrchStatusVisualizations
+      <VnfSearchNfRoleVisualization
         enableBusyFeedback={false}
-        processedOrchStatusCountChartData={processedOrchStatusCountChartDataProp}
+        processedNfRoleCountChartData={processedNfRoleCountChartDataProp}
       />
     );
   })
@@ -65,9 +65,9 @@ describe('VnfSearchOrchStatusVisualizations - Shallow render of component with n
   });
 })
 
-describe('VnfSearchOrchStatusVisualizations - Shallow render of component with busy feedback', () => {
+describe('VnfSearchNfRoleVisualization - Shallow render of component with busy feedback', () => {
   let wrapper;
-  const processedOrchStatusCountChartDataProp = {
+  const processedNfRoleCountChartDataProp = {
     values: [
       {x: 'col 1', y: 3},
       {x: 'col 2', y: 7},
@@ -77,9 +77,9 @@ describe('VnfSearchOrchStatusVisualizations - Shallow render of component with b
 
   beforeEach( () => {
     wrapper = shallow(
-      <VnfSearchOrchStatusVisualizations
+      <VnfSearchNfRoleVisualization
         enableBusyFeedback={true}
-        processedOrchStatusCountChartData={processedOrchStatusCountChartDataProp}
+        processedNfRoleCountChartData={processedNfRoleCountChartDataProp}
       />
     );
   })
@@ -96,14 +96,14 @@ describe('VnfSearchOrchStatusVisualizations - Shallow render of component with b
 
   it('Verify BarChart is displayed', () => {
     expect(wrapper.find(BarChart)).toHaveLength(1);
-    expect(wrapper.find(BarChart).props().data).toEqual(processedOrchStatusCountChartDataProp.values);
+    expect(wrapper.find(BarChart).props().data).toEqual(processedNfRoleCountChartDataProp.values);
   });
 })
 
-describe('VnfSearchOrchStatusVisualizations - Render React Component (wrapped in <Provider>)', () => {
+describe('VnfSearchNfRoleVisualization - Render React Component (wrapped in <Provider>)', () => {
   const initialState = {
     vnfSearch: {
-      processedOrchStatusCountChartData: {
+      processedNfRoleCountChartData: {
         values: [
           {x: 'col 1', y: 3},
           {x: 'col 2', y: 7},
@@ -118,20 +118,20 @@ describe('VnfSearchOrchStatusVisualizations - Render React Component (wrapped in
 
   beforeEach( () => {
     store = mockStore(initialState);
-    wrapper = mount(<Provider store={store}><ConnectedVnfSearchOrchStatusVisualizations /></Provider>);
+    wrapper = mount(<Provider store={store}><ConnectedVnfSearchNfRoleVisualization /></Provider>);
   })
 
   it('Render the connected component', () => {
-    expect(wrapper.find(ConnectedVnfSearchOrchStatusVisualizations).length).toEqual(1);
+    expect(wrapper.find(ConnectedVnfSearchNfRoleVisualization).length).toEqual(1);
   });
 
   it('Validate props from store', () => {
-    expect(wrapper.find(VnfSearchOrchStatusVisualizations).props().enableBusyFeedback).toEqual(initialState.vnfSearch.enableBusyFeedback);
-    expect(wrapper.find(VnfSearchOrchStatusVisualizations).props().processedOrchStatusCountChartData).toEqual(initialState.vnfSearch.processedOrchStatusCountChartData);
+    expect(wrapper.find(VnfSearchNfRoleVisualization).props().enableBusyFeedback).toEqual(initialState.vnfSearch.enableBusyFeedback);
+    expect(wrapper.find(VnfSearchNfRoleVisualization).props().processedNfRoleCountChartData).toEqual(initialState.vnfSearch.processedNfRoleCountChartData);
   });
 })
 
-describe('VnfSearchOrchStatusVisualizations - Render React Component (wrapped in <Provider>) with default props', () => {
+describe('VnfSearchNfRoleVisualization - Render React Component (wrapped in <Provider>) with default props', () => {
   const initialState = {
     vnfSearch: {}
   };
@@ -140,15 +140,15 @@ describe('VnfSearchOrchStatusVisualizations - Render React Component (wrapped in
 
   beforeEach( () => {
     store = mockStore(initialState);
-    wrapper = mount(<Provider store={store}><ConnectedVnfSearchOrchStatusVisualizations /></Provider>);
+    wrapper = mount(<Provider store={store}><ConnectedVnfSearchNfRoleVisualization /></Provider>);
   })
 
   it('Render the connected component', () => {
-    expect(wrapper.find(ConnectedVnfSearchOrchStatusVisualizations).length).toEqual(1);
+    expect(wrapper.find(ConnectedVnfSearchNfRoleVisualization).length).toEqual(1);
   });
 
   it('Validate default props loaded', () => {
-    expect(wrapper.find(VnfSearchOrchStatusVisualizations).props().enableBusyFeedback).toEqual(false);
-    expect(wrapper.find(VnfSearchOrchStatusVisualizations).props().processedOrchStatusCountChartData).toEqual(CHART_ORCH_STATUS.emptyData);
+    expect(wrapper.find(VnfSearchNfRoleVisualization).props().enableBusyFeedback).toEqual(false);
+    expect(wrapper.find(VnfSearchNfRoleVisualization).props().processedNfRoleCountChartData).toEqual(CHART_NF_ROLE.emptyData);
   });
 })

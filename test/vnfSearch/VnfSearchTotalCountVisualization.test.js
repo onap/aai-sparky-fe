@@ -4,9 +4,9 @@ import {Provider} from 'react-redux'
 import configureStore from 'redux-mock-store';
 
 import ConnectedVnfSearchTotalCountVisualization,
-  { VnfSearchTotalCountVisualization } from './VnfSearchTotalCountVisualization.jsx';
-import { TOTAL_VNF_COUNT } from './VnfSearchConstants.js';
-import Spinner from 'utils/SpinnerContainer.jsx';
+  { VnfSearchTotalCountVisualization } from 'app/vnfSearch/VnfSearchTotalCountVisualization.jsx';
+import { TOTAL_VNF_COUNT } from 'app/vnfSearch/VnfSearchConstants.js';
+import Spinner from 'utils/SpinnerContainer';
 
 describe('VnfSearchTotalCountVisualization - Shallow render of component', () => {
   let wrapper;

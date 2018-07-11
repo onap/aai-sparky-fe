@@ -5,9 +5,9 @@ import configureStore from 'redux-mock-store';
 import { BarChart } from 'recharts';
 
 import ConnectedVnfSearchNfTypeVisualization,
-  { VnfSearchNfTypeVisualization } from './VnfSearchNfTypeVisualization.jsx';
-import { CHART_NF_TYPE } from './VnfSearchConstants.js';
-import Spinner from 'utils/SpinnerContainer.jsx';
+  { VnfSearchNfTypeVisualization } from 'app/vnfSearch/VnfSearchNfTypeVisualization.jsx';
+import { CHART_NF_TYPE } from 'app/vnfSearch/VnfSearchConstants.js';
+import Spinner from 'utils/SpinnerContainer';
 
 describe('VnfSearchNfTypeVisualization - Shallow render of component', () => {
   let wrapper;

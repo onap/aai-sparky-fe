@@ -1,4 +1,4 @@
-import SelectedNodeDetailsReducer from './SelectedNodeDetailsReducer.js';
+import SelectedNodeDetailsReducer from 'app/tierSupport/selectedNodeDetails/SelectedNodeDetailsReducer.js';
 import {tierSupportActionTypes} from 'app/tierSupport/TierSupportConstants.js';
 import {
   globalAutoCompleteSearchBarActionTypes

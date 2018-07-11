@@ -4,7 +4,7 @@ import {
   dateFormatLocalTimeZoneYYYYMMDD,
   getTicks,
   getTicksData
-} from './DateTimeChartUtil.js';
+} from 'utils/DateTimeChartUtil.js';
 
 describe('DateTimeChartUtil Tests', () => {
   it('sortDataByField', () => {
