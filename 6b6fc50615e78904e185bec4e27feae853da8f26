@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_213beaec",
+        "filename": "test/utils/DateTimeChartUtil.test.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-07-13T13:46:49Z",
+      "side": 1,
+      "message": "We have an alias for \u0027utils\u0027 in Webpack.config ... cleaner and easier to move code around if you use the alias rather than specifying the full exact path.\nThis applies to many of the other changes made in this CI",
+      "revId": "6b6fc50615e78904e185bec4e27feae853da8f26",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_41407656",
+        "filename": "test/vnfSearch/VnfSearchNfRoleVisualization.test.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-07-13T13:46:49Z",
+      "side": 1,
+      "message": "not sure you can drop the .jsx extension here... did this compile and run? I\u0027ve made this change in a side branch but needed to add the following to the webpack config files to allow file references without extensions:\n\nresolve.extensions: [\"\", \".webpack.js\", \".web.js\", \".js\", \".json\", \".jsx\"]",
+      "revId": "6b6fc50615e78904e185bec4e27feae853da8f26",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
