@@ -113,7 +113,7 @@ class NodeFactory {
         for (var i = 0; i < nodeVisualElements.length; i++) {
           if (nodeVisualElements[i].type === 'button' && nodeVisualElements[i].name === 'icon_triangle_warning') {
             nodeVisualElements.splice(i, 1);
-            return;
+            break;
           }
         }
       }
