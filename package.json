@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "bundle.js",
-  "publishConfig": {
-    "registry": "http://10.247.57.144:8081/repository/npm-aee/"
-  },
   "scripts": {
     "start": "gulp",
     "build": "gulp build",
@@ -13,7 +10,7 @@
     "testReport": "jest --coverage"
   },
   "author": "",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "Apache-2.0",
   "dependencies": {
     "collapsible-sliding-panel": "1.0.0",
     "core-js": "^2.4.0",

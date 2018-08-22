@@ -10,3 +10,6 @@ test/coverage
 npm-debug.log
 .vscode
 scripts/elasticsearch/auditBulkLoad.json
+.classpath
+.project
+.settings/
