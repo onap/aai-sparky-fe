@@ -37,7 +37,7 @@ describe('DateTimeChartUtil Tests', () => {
 
   it('getTicks', () => {
     const timestamps = [
-      {timestamp: 1521691200000, date: 'Thu, 22 Mar 2018 04:00:00 GMT'},
+      {timestamp: 1521604800000, date: 'Thu, 21 Mar 2018 04:00:00 GMT'},
       {timestamp: 1521777600000, date: 'Thu, 23 Mar 2018 04:00:00 GMT'},
       {timestamp: 1521950400000, date: 'Thu, 25 Mar 2018 04:00:00 GMT'},
       {timestamp: 1522296000000, date: 'Thu, 29 Mar 2018 04:00:00 GMT'}
@@ -55,7 +55,7 @@ describe('DateTimeChartUtil Tests', () => {
 
   it('getTicksData', () => {
     const timestamps = [
-      {timestamp: 1521691200000, date: 'Thu, 22 Mar 2018 04:00:00 GMT'},
+      {timestamp: 1521604800000, date: 'Thu, 21 Mar 2018 04:00:00 GMT'},
       {timestamp: 1521777600000, date: 'Thu, 23 Mar 2018 04:00:00 GMT'},
       {timestamp: 1521950400000, date: 'Thu, 25 Mar 2018 04:00:00 GMT'},
       {timestamp: 1522296000000, date: 'Thu, 29 Mar 2018 04:00:00 GMT'}
@@ -64,9 +64,9 @@ describe('DateTimeChartUtil Tests', () => {
     let mergedData = getTicksData(timestamps, ticksPerDay, 'timestamp');
     // expect original 4 objects plus 4 additional objects for the missing days
     // (4 additional objects will only have timestamp attribute, no date attribute)
-    expect(mergedData.length).toBe(8);
-    expect(mergedData[0]['timestamp']).toBe(1521691200000);
-    expect(mergedData[0]['date']).toBe('Thu, 22 Mar 2018 04:00:00 GMT');
+    expect(mergedData.length).toBe(12);
+    expect(mergedData[0]['timestamp']).toBe(1521604800000);
+    expect(mergedData[0]['date']).toBe('Thu, 21 Mar 2018 04:00:00 GMT');
     expect(mergedData[1]['timestamp']).toBe(1521777600000);
     expect(mergedData[1]['date']).toBe('Thu, 23 Mar 2018 04:00:00 GMT');
     expect(mergedData[2]['timestamp']).toBe(1521950400000);
