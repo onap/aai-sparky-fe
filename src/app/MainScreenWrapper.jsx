@@ -25,7 +25,7 @@ import TierSupport from './tierSupport/TierSupport.jsx';
 import VnfSearch from './vnfSearch/VnfSearch.jsx';
 import MainScreenHeader from './MainScreenHeader.jsx';
 import {decryptParamsForView, changeUrlAddress} from 'utils/Routes.js';
-
+import {isEmpty} from 'lodash';
 
 import {
   Route,
@@ -94,6 +94,13 @@ class MainScreenWrapper extends Component {
 
     let customViewList = [];
     extensibleViews.forEach(function(view,key) {
+
+      let path;
+      if(isEmpty(extensibleViews[key]['routePath'])){
+        path = '/' + view.viewName + '/:extensibleViewParams?';
+      } else {
+        path = '/' + view.viewName  + view.routePath + '/:extensibleViewParams?';
+      }
       var renderComponent = (props) => {
         let viewParams = {};
         if(props.match.params.extensibleViewParams !== undefined) {
@@ -125,7 +132,7 @@ class MainScreenWrapper extends Component {
       };
 
       customViewList.push(
-          <Route key={extensibleViews[key]['viewName'] + 'Route'} path={'/' + extensibleViews[key]['viewName'] + '/:extensibleViewParams?' }
+          <Route key={extensibleViews[key]['viewName'] + 'Route'} path={path}
              render={renderComponent}/>
       );
     });
