@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_e5601da7",
+        "filename": "resources/views/extensibleViews.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 651
+      },
+      "writtenOn": "2018-08-30T19:34:03Z",
+      "side": 1,
+      "message": "Do we really need this extra line?\nIf not let\u0027s revert the change",
+      "revId": "f85c7c45673ae035fa56f4971a90b7adcddb9878",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
