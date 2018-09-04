@@ -29,7 +29,6 @@ import {postAnalyticsData} from 'app/analytics/AnalyticsActions.js';
 import GlobalInlineMessageBar from 'app/globalInlineMessageBar/GlobalInlineMessageBar.jsx';
 import {getClearGlobalMessageEvent} from 'app/globalInlineMessageBar/GlobalInlineMessageBarActions.js';
 import {externalUrlRequest, externalMessageRequest, getSubscriptionPayload} from 'app/contextHandler/ContextHandlerActions.js';
-
 import {
   filterBarActionTypes
 } from 'utils/GlobalConstants.js';
@@ -265,11 +264,19 @@ class MainScreenHeader extends Component {
 
     // add all custom view menu options
     for (let view in extensibleViews) {
-      menuOptions.push(
-        <MenuItem key={extensibleViews[view]['viewName'] + 'Menu'} to={'/' + extensibleViews[view]['viewName']}
-                  label={extensibleViews[view]['displayName']}
-                  iconClass={'button-icon ' + extensibleViews[view]['iconClass']}/>
-      );
+      let shouldDisplayIcon = false;
+      if(extensibleViews[view]['onlyRoute'] === undefined){
+        shouldDisplayIcon = true;
+      } else if(extensibleViews[view]['onlyRoute'] === false){
+        shouldDisplayIcon = true;
+      }
+      if(shouldDisplayIcon === true){
+        menuOptions.push(
+          <MenuItem key={extensibleViews[view]['viewName'] + 'Menu'} to={'/' + extensibleViews[view]['viewName']}
+                    label={extensibleViews[view]['displayName']}
+                    iconClass={'button-icon ' + extensibleViews[view]['iconClass']}/>
+        );
+      } 
     }
 
     let secondaryTitleClass = 'secondary-header';
