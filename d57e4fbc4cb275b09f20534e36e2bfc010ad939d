@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_12f78bf6",
+        "filename": "src/app/MainScreenHeader.jsx",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-09-04T21:40:18Z",
+      "side": 1,
+      "message": "the first condition in the \u0027else if\u0027 statement is redundant. If the \u0027onlyRoute\u0027 attribute is undefined, it will go into the \u0027if\u0027 portion of this statement, otherwise the attribute will always be defined, so no need to check it again (redundant)",
+      "revId": "d57e4fbc4cb275b09f20534e36e2bfc010ad939d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
