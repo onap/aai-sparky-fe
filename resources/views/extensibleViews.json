@@ -1,2 +1,21 @@
 [
+  {
+    "viewName":"helloWorld",
+    "componentName": "Hello",
+    "displayName": "Hello World",
+    "iconClass": "hello-ext-button-icon",
+    "param": "",
+    "viewParams": "/:type/:nodeId/:page",
+    "onlyRoute" : true
+  },
+  {
+    "viewName":"helloWorld",
+    "componentName": "Hello",
+    "displayName": "Hello World2",
+    "iconClass": "hello-ext-button-icon",
+    "param": "",
+    "viewParams": "/:type",
+    "isExact": true,
+    "onlyRoute" : true
+  }
 ]

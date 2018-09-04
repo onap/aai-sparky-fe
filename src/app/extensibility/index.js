@@ -19,9 +19,10 @@
  * ============LICENSE_END=========================================================
  */
 // Import section (used as anchor to add extension imports)
+import {Hello} from 'ui-hello-world';
 
 let components = {};
-
+components['Hello'] = Hello;
 // Components section (used as an anchor to add extension components)
 
 export default components;

@@ -18,6 +18,9 @@
  * limitations under the License.
  * ============LICENSE_END=========================================================
  */
+
+import {BASE_URL} from 'app/networking/NetworkConstants.js';
+
 function fetchRequest(URL, POST, POST_HEADER, BODY) {
   return fetch(URL, {
     credentials: 'same-origin',
@@ -42,13 +45,34 @@ function getRequest(URL, GET) {
   return fetch(URL, {
     credentials: 'same-origin',
     method: GET
-  });
+  }).then(
+    (response) => response.json()
+  );
 }
+
+const genericRequest = (url, relativeURL, httpMethodType) => {
+  let URL;
+  if(relativeURL){
+    URL = BASE_URL.concat(url);
+  } else {
+    URL = url;
+  }
+  switch(httpMethodType){
+    case 'GET':
+      return fetch(URL, {
+        credentials: 'same-origin',
+        method: 'GET'
+      }).then(
+        (response) => response.json()
+      );
+  }
+};
 
 module.exports = {
   fetchRequest: fetchRequest,
   fetchRequestObj: fetchRequestObj,
-  getRequest: getRequest
+  getRequest: getRequest,
+  genericRequest: genericRequest
 };
 
 

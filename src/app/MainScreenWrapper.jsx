@@ -26,7 +26,7 @@ import VnfSearch from './vnfSearch/VnfSearch.jsx';
 import MainScreenHeader from './MainScreenHeader.jsx';
 import {decryptParamsForView, changeUrlAddress} from 'utils/Routes.js';
 import {isEmpty} from 'lodash';
-
+import {genericRequest} from 'app/networking/NetworkCalls.js';
 import {
   Route,
   HashRouter as Router,
@@ -95,15 +95,20 @@ class MainScreenWrapper extends Component {
     let customViewList = [];
     extensibleViews.forEach(function(view,key) {
 
-      let path;
-      if(isEmpty(extensibleViews[key]['routePath'])){
+      let path = ''
+          , extKey = ''
+          ;
+      if(isEmpty(extensibleViews[key]['viewParams'])){
         path = '/' + view.viewName + '/:extensibleViewParams?';
+        extKey = view.viewName + 'Route';
       } else {
-        path = '/' + view.viewName  + view.routePath + '/:extensibleViewParams?';
+        path = '/' + view.viewName  + view.viewParams;
+        extKey = view.viewName + view.viewParams + 'Route'
       }
+
       var renderComponent = (props) => {
         let viewParams = {};
-        if(props.match.params.extensibleViewParams !== undefined) {
+        if(isEmpty(extensibleViews[key]['viewParams']) && props.match.params.extensibleViewParams !== undefined) {
           viewParams = decryptParamsForView(props.match.params.extensibleViewParams);
         }
 
@@ -124,17 +129,25 @@ class MainScreenWrapper extends Component {
               changeRouteCallback = {(routeParam, historyObj) => {
                 changeUrlAddress(routeParam, historyObj);
               }}
+              networkingCallbackPromise = {(url, relativeURL, httpMethodType) => {
+                return genericRequest(url, relativeURL, httpMethodType);
+              }}
               viewName={view.displayName}
               viewData={extensibleViewNetworkCallbackData}
               viewParams={viewParams}/>
           );
         }
       };
-
-      customViewList.push(
-          <Route key={extensibleViews[key]['viewName'] + 'Route'} path={path}
-             render={renderComponent}/>
+      if(isEmpty(extensibleViews[key]['isExact']) && !extensibleViews[key]['isExact']){
+        customViewList.push(
+          <Route key={extKey} path={path} render={renderComponent}/>
       );
+      } else {
+        customViewList.push(
+          <Route key={extKey} exact path={path} render={renderComponent}/>
+      );
+      }
+      
     });
 
     return (
