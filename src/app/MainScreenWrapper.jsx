@@ -95,15 +95,14 @@ class MainScreenWrapper extends Component {
     let customViewList = [];
     extensibleViews.forEach(function(view,key) {
 
-      let path = ''
-          , extKey = ''
-          ;
+      let path = '',
+        extKey = '';
       if(isEmpty(extensibleViews[key]['viewParams'])){
         path = '/' + view.viewName + '/:extensibleViewParams?';
         extKey = view.viewName + 'Route';
       } else {
         path = '/' + view.viewName  + view.viewParams;
-        extKey = view.viewName + view.viewParams + 'Route'
+        extKey = view.viewName + view.viewParams + 'Route';
       }
 
       var renderComponent = (props) => {

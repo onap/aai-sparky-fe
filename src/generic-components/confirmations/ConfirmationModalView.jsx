@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import Button from 'react-bootstrap/lib/Button.js';
 
 import i18n from 'utils/i18n/i18n.js';
@@ -35,11 +36,11 @@ let typeClass = {
 class ConfirmationModalView extends React.Component {
 		
 		static propTypes = {
-				show: React.PropTypes.bool,
-				type: React.PropTypes.oneOf(['default', 'error', 'warning', 'success']),
-				msg: React.PropTypes.node,
-				title: React.PropTypes.string,
-				confirmationDetails: React.PropTypes.object
+				show: PropTypes.bool,
+				type: PropTypes.oneOf(['default', 'error', 'warning', 'success']),
+				msg: PropTypes.node,
+				title: PropTypes.string,
+				confirmationDetails: PropTypes.object
 		};
 		
 		static defaultProps = {

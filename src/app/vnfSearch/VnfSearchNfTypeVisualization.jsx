@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 import {connect} from 'react-redux';
 import {
   BarChart,
@@ -50,8 +51,8 @@ let mapStateToProps = ({vnfSearch}) => {
 
 export class VnfSearchNfTypeVisualization extends Component {
   static propTypes = {
-    processedNfTypeCountChartData: React.PropTypes.object,
-    enableBusyFeedback: React.PropTypes.bool
+    processedNfTypeCountChartData: PropTypes.object,
+    enableBusyFeedback: PropTypes.bool
   };
 
   render() {

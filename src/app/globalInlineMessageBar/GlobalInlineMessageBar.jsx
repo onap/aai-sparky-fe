@@ -20,6 +20,7 @@
  */
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 
 import InlineMessage from 'generic-components/InlineMessage/InlineMessage.jsx';
 
@@ -37,8 +38,8 @@ let mapStateToProps = ({globalInlineMessageBar}) => {
 
 export class GlobalInlineMessageBar extends Component {
   static propTypes = {
-    feedbackMsgText: React.PropTypes.string,
-    feedbackMsgSeverity: React.PropTypes.string
+    feedbackMsgText: PropTypes.string,
+    feedbackMsgSeverity: PropTypes.string
   };
 
   render() {

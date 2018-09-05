@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 import {connect} from 'react-redux';
 
 import i18n from 'utils/i18n/i18n';
@@ -40,11 +41,11 @@ let mapStateToProps = ({vnfSearch}) => {
 
 export class VnfSearchTotalCountVisualization extends Component {
   static propTypes = {
-    count: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.number
+    count: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
     ]),
-    enableBusyFeedback: React.PropTypes.bool
+    enableBusyFeedback: PropTypes.bool
   };
 
   render() {

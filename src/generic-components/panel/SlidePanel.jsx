@@ -19,16 +19,17 @@
  * ============LICENSE_END=========================================================
  */
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import FontAwesome from 'react-fontawesome';
 import ReactDOM from 'react-dom';
 
 class SlidePanel extends React.Component {
 		
 		static PropTypes = {
-				direction: React.PropTypes.string.isRequired,
-				className: React.PropTypes.string,
-				title: React.PropTypes.string,
-				isOpen: React.PropTypes.bool
+				direction: PropTypes.string.isRequired,
+				className: PropTypes.string,
+				title: PropTypes.string,
+				isOpen: PropTypes.bool
 		};
 		
 		static defaultProps = {

@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import {connect} from 'react-redux';
+import { PropTypes } from 'prop-types';
 import React, {Component} from 'react';
 import {isEmpty} from 'lodash';
 import Button from 'react-bootstrap/lib/Button.js';
@@ -33,7 +34,7 @@ let mapStateToProps = ({tierSupport: {launchExternalResourceReducer}}) => {
 
 class LaunchExternalResource extends Component {
   static propTypes = {
-    externalResourcePayload: React.PropTypes.object
+    externalResourcePayload: PropTypes.object
   };
 
   render() {

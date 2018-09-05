@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 
 import Pagination from 'react-bootstrap/lib/Pagination';
 import Table from 'react-bootstrap/lib/Table';
@@ -28,15 +29,15 @@ const MAX_PAGE_LINKS = 5;
 export default class PaginatedTable extends Component {
 
   static propTypes = {
-    tableHeaders: React.PropTypes.object,
-    tableData: React.PropTypes.array,
-    activePage: React.PropTypes.number,
-    pageCount: React.PropTypes.number,
-    onPageIndexSelected: React.PropTypes.func,
-    paginationClass: React.PropTypes.string,
-    tableClass: React.PropTypes.string,
-    displayHeader: React.PropTypes.bool,
-    maxPaginationLinks: React.PropTypes.number
+    tableHeaders: PropTypes.object,
+    tableData: PropTypes.array,
+    activePage: PropTypes.number,
+    pageCount: PropTypes.number,
+    onPageIndexSelected: PropTypes.func,
+    paginationClass: PropTypes.string,
+    tableClass: PropTypes.string,
+    displayHeader: PropTypes.bool,
+    maxPaginationLinks: PropTypes.number
   }
 
   static defaultProps = {

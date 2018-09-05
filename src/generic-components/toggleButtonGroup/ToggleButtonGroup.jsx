@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component, PropTypes} from 'react';
+import { PropTypes } from 'prop-types';
 import {connect} from 'react-redux';
 
 import ButtonGroup from 'react-bootstrap/lib/ButtonGroup.js';

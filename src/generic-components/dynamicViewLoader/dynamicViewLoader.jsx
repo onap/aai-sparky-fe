@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 import {connect} from 'react-redux';
 
 import DateRangeSelector from 'generic-components/dateRangeSelector/DateRangeSelector.jsx';
@@ -54,8 +55,8 @@ let mapActionToProps = (dispatch) => {
 
 class DynamicViewLoader extends Component {
   static propTypes = {
-    viewTitle: React.PropTypes.string,
-    layoutSource: React.PropTypes.object
+    viewTitle: PropTypes.string,
+    layoutSource: PropTypes.object
   };
 
   componentWillMount() {

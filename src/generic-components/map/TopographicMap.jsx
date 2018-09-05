@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component, PropTypes} from 'react';
+import { PropTypes } from 'prop-types';
 import {geoAlbersUsa, geoEquirectangular, geoPath} from 'd3-geo';
 import {feature, mesh} from 'topojson';
 

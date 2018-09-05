@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 import {connect} from 'react-redux';
 import FontAwesome from 'react-fontawesome';
 import {clearFilters} from 'filter-bar-utils';
@@ -105,11 +106,11 @@ const mapActionsToProps = (dispatch) => {
 
 class MainScreenHeader extends Component {
   static propTypes = {
-    showMenu: React.PropTypes.bool,
-    toggleButtonActive: React.PropTypes.bool,
-    externalRequestFound: React.PropTypes.object,
-    secondaryTitle: React.PropTypes.string,
-    subscriptionPayload: React.PropTypes.object
+    showMenu: PropTypes.bool,
+    toggleButtonActive: PropTypes.bool,
+    externalRequestFound: PropTypes.object,
+    secondaryTitle: PropTypes.string,
+    subscriptionPayload: PropTypes.object
   };
 
   navigationLinkAndCurrentPathMatch(location, to) {

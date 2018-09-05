@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 import {Button} from 'react-bootstrap';
 import AutoSuggest from 'react-autosuggest';
 import Highlighter from 'react-highlight-words';
@@ -38,10 +39,10 @@ import {
 
 export default class AutoCompleteSearchBar extends Component {
   static propTypes = {
-    value: React.PropTypes.string,
-    suggestions: React.PropTypes.array,
-    cachedSuggestions: React.PropTypes.array,
-    suggestionName: React.PropTypes.string
+    value: PropTypes.string,
+    suggestions: PropTypes.array,
+    cachedSuggestions: PropTypes.array,
+    suggestionName: PropTypes.string
   };
 
   componentWillMount() {

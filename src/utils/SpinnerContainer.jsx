@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import { ClipLoader } from 'react-spinners';
 import {COLOR_BLUE} from 'utils/GlobalConstants.js';
 
@@ -41,7 +42,7 @@ class SpinnerContainer extends Component {
 export default SpinnerContainer;
 
 SpinnerContainer.propTypes = {
-  loading: React.PropTypes.bool
+  loading: PropTypes.bool
 };
 
 SpinnerContainer.defaultProps = {

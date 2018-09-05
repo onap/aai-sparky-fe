@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 import {connect} from 'react-redux';
 import SplitPane from 'react-split-pane';
 import Spinner from 'utils/SpinnerContainer.jsx';
@@ -125,14 +126,14 @@ let mapActionToProps = (dispatch) => {
 
 class TierSupport extends Component {
   static propTypes = {
-    forceDirectedGraphRawData: React.PropTypes.object,
-    windowWidth: React.PropTypes.number,
-    windowHeight: React.PropTypes.number,
-    graphNodeSelectedMenu: React.PropTypes.string,
-    feedbackMsgText: React.PropTypes.string,
-    feedbackMsgSeverity: React.PropTypes.string,
-    nodeData: React.PropTypes.object,
-    enableBusyFeedback: React.PropTypes.bool
+    forceDirectedGraphRawData: PropTypes.object,
+    windowWidth: PropTypes.number,
+    windowHeight: PropTypes.number,
+    graphNodeSelectedMenu: PropTypes.string,
+    feedbackMsgText: PropTypes.string,
+    feedbackMsgSeverity: PropTypes.string,
+    nodeData: PropTypes.object,
+    enableBusyFeedback: PropTypes.bool
   };
 
   componentWillReceiveProps(nextProps) {

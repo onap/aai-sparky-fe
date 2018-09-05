@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 import {connect} from 'react-redux';
 
 import {
@@ -159,14 +160,14 @@ let mapActionToProps = (dispatch) => {
 
 export class vnfSearch extends Component {
   static propTypes = {
-    feedbackMsgText: React.PropTypes.string,
-    feedbackSeverity: React.PropTypes.string,
-    vnfFilters: React.PropTypes.object,
-    selectedFilterValues: React.PropTypes.object,
-    vnfFilterValues: React.PropTypes.object,
-    vnfVisualizationPanelClass: React.PropTypes.string,
-    unifiedFilterValues: React.PropTypes.object,
-    nonConvertedFilters: React.PropTypes.object
+    feedbackMsgText: PropTypes.string,
+    feedbackSeverity: PropTypes.string,
+    vnfFilters: PropTypes.object,
+    selectedFilterValues: PropTypes.object,
+    vnfFilterValues: PropTypes.object,
+    vnfVisualizationPanelClass: PropTypes.string,
+    unifiedFilterValues: PropTypes.object,
+    nonConvertedFilters: PropTypes.object
   };
 
   componentWillMount() {

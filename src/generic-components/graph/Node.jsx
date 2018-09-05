@@ -19,15 +19,16 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 
 class Node extends Component {
 		
 		static propTypes = {
-				x: React.PropTypes.number,
-				y: React.PropTypes.number,
-				nodeClass: React.PropTypes.string,
-				visualElements: React.PropTypes.array,
-				meta: React.PropTypes.object
+				x: PropTypes.number,
+				y: PropTypes.number,
+				nodeClass: PropTypes.string,
+				visualElements: PropTypes.array,
+				meta: PropTypes.object
 		};
 		
 		static defaultProps = {

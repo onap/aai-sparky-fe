@@ -19,17 +19,18 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 
 import TempCreateAttributes from './TempCreateAttributes.js';
 
 class Link extends Component {
 		
 		static propTypes = {
-				x1: React.PropTypes.number,
-				y1: React.PropTypes.number,
-				x2: React.PropTypes.number,
-				y2: React.PropTypes.number,
-				linkAttributes: React.PropTypes.object
+				x1: PropTypes.number,
+				y1: PropTypes.number,
+				x2: PropTypes.number,
+				y2: PropTypes.number,
+				linkAttributes: PropTypes.object
 		};
 		
 		static defaultProps = {

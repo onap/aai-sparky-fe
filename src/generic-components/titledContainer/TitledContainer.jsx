@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component, PropTypes} from 'react';
+import { PropTypes } from 'prop-types';
 import Button from 'react-bootstrap/lib/Button';
 
 import i18n from 'utils/i18n/i18n';

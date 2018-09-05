@@ -19,15 +19,16 @@
  * ============LICENSE_END=========================================================
  */
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 import NodeVisualElementConstants from './NodeVisualElementConstants';
 
 class SVGShape extends Component {
 		
 		static propTypes = {
-				shapeType: React.PropTypes.string.isRequired,
-				shapeAttributes: React.PropTypes.object.isRequired,
-				shapeClass: React.PropTypes.object.isRequired,
-				textValue: React.PropTypes.string
+				shapeType: PropTypes.string.isRequired,
+				shapeAttributes: PropTypes.object.isRequired,
+				shapeClass: PropTypes.object.isRequired,
+				textValue: PropTypes.string
 		};
 		
 		static defaultProps = {

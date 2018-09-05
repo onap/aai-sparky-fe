@@ -20,6 +20,7 @@
  */
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 import Table from 'react-bootstrap/lib/Table';
 import LaunchInContext from 'app/tierSupport/launchExternalResource/LaunchExternalResource.jsx';
 import i18n from 'utils/i18n/i18n';
@@ -41,9 +42,9 @@ let mapStateToProps = ({tierSupport: {selectedNodeDetails}}) => {
 
 export class SelectedNodeDetails extends Component {
   static propTypes = {
-    nodeData: React.PropTypes.object,
-    nodeType: React.PropTypes.string,
-    uid: React.PropTypes.string
+    nodeData: PropTypes.object,
+    nodeType: PropTypes.string,
+    uid: PropTypes.string
   };
 
   render() {

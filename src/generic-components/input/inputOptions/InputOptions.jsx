@@ -19,6 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import i18n from 'utils/i18n/i18n.js';
 import classNames from 'classnames';
 import Select from 'generic-components/input/SelectInput.jsx';
@@ -28,25 +29,25 @@ export const other = {OTHER: 'Other'};
 class InputOptions extends React.Component {
 		
 		static propTypes = {
-				values: React.PropTypes.arrayOf(React.PropTypes.shape({
-						enum: React.PropTypes.string,
-						title: React.PropTypes.string
+				values: PropTypes.arrayOf(PropTypes.shape({
+						enum: PropTypes.string,
+						title: PropTypes.string
 				})),
-				isEnabledOther: React.PropTypes.bool,
-				title: React.PropTypes.string,
-				selectedValue: React.PropTypes.string,
-				multiSelectedEnum: React.PropTypes.array,
-				selectedEnum: React.PropTypes.string,
-				otherValue: React.PropTypes.string,
-				onEnumChange: React.PropTypes.func,
-				onOtherChange: React.PropTypes.func,
-				isRequired: React.PropTypes.bool,
-				isMultiSelect: React.PropTypes.bool
+				isEnabledOther: PropTypes.bool,
+				title: PropTypes.string,
+				selectedValue: PropTypes.string,
+				multiSelectedEnum: PropTypes.array,
+				selectedEnum: PropTypes.string,
+				otherValue: PropTypes.string,
+				onEnumChange: PropTypes.func,
+				onOtherChange: PropTypes.func,
+				isRequired: PropTypes.bool,
+				isMultiSelect: PropTypes.bool
 		};
 		
 		
 		static contextTypes = {
-				isReadOnlyMode: React.PropTypes.bool
+				isReadOnlyMode: PropTypes.bool
 		};
 		
 		state = {
