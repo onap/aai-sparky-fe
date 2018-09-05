@@ -33,6 +33,24 @@
       "revId": "d57e4fbc4cb275b09f20534e36e2bfc010ad939d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_83534f38",
+        "filename": "src/app/MainScreenHeader.jsx",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2018-09-05T12:55:20Z",
+      "side": 1,
+      "message": "Agreed, will remove that.",
+      "parentUuid": "1a76adc5_12f78bf6",
+      "revId": "d57e4fbc4cb275b09f20534e36e2bfc010ad939d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
