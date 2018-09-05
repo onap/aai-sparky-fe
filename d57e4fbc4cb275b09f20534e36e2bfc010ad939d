@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a76adc5_63a87320",
+        "filename": "resources/views/extensibleViews.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-09-05T12:50:58Z",
+      "side": 1,
+      "message": "Is this file meant to be empty?",
+      "revId": "d57e4fbc4cb275b09f20534e36e2bfc010ad939d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_12f78bf6",
         "filename": "src/app/MainScreenHeader.jsx",
         "patchSetId": 2
