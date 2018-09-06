@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_c12cdaae",
+        "filename": "package.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-09-06T13:45:15Z",
+      "side": 1,
+      "message": "why is this in here? This should only be when we include configurable-view",
+      "revId": "6b408bc2ea74ffbe3985c7f90211e59a2f00fad2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_7c01e903",
+        "filename": "package.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-09-06T13:45:15Z",
+      "side": 1,
+      "message": "this shouldn\u0027t be in here ... ONAP code already has a SpinnerContainer.js file (we haven\u0027t tied in spinner-container component yet)",
+      "revId": "6b408bc2ea74ffbe3985c7f90211e59a2f00fad2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_9c06451c",
+        "filename": "package.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-09-06T13:45:15Z",
+      "side": 1,
+      "message": "this is part of configurable-view ... shouldn\u0027t need it here",
+      "revId": "6b408bc2ea74ffbe3985c7f90211e59a2f00fad2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
