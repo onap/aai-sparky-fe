@@ -1,0 +1,10 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Bogumil Zebek <bogumil.zebek@nokia.com>
+Code-Review+1: Steven Thomas <steve.thomas@amdocs.com>
+Code-Review+1: Arul Nambi <arul.n.mohan@gmail.com>
+Code-Review+2: James Forsyth <jf2512@att.com>
+Submitted-by: James Forsyth <jf2512@att.com>
+Submitted-at: Fri, 07 Sep 2018 17:32:30 +0000
+Reviewed-on: https://gerrit.onap.org/r/63059
+Project: aai/sparky-fe
+Branch: refs/heads/master
