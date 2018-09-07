@@ -9,8 +9,8 @@ describe('SpinnerContainer', () => {
   it('render spinner - visible', () => {
     const spinner = mount(
       <SpinnerContainer loading={true}>
-        <div class='test-div'>Testing Spinner Child</div>
-        <div class='test-div'>Testing Spinner Child</div>
+        <div className='test-div'>Testing Spinner Child</div>
+        <div className='test-div'>Testing Spinner Child</div>
       </SpinnerContainer>
     );
     expect(spinner.props().loading).toEqual(true); // check that the props match
@@ -24,7 +24,7 @@ describe('SpinnerContainer', () => {
   it('render spinner - not visible', () => {
     const spinner = mount(
       <SpinnerContainer loading={false}>
-        <div class='test-div'>Testing Spinner</div>
+        <div className='test-div'>Testing Spinner</div>
       </SpinnerContainer>
     );
     expect(spinner.props().loading).toEqual(false);
