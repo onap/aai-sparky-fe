@@ -23,39 +23,39 @@ import { PropTypes } from 'prop-types';
 import NodeVisualElementConstants from './NodeVisualElementConstants';
 
 class SVGShape extends Component {
-		
-		static propTypes = {
-				shapeType: PropTypes.string.isRequired,
-				shapeAttributes: PropTypes.object.isRequired,
-				shapeClass: PropTypes.object.isRequired,
-				textValue: PropTypes.string
-		};
-		
-		static defaultProps = {
-				shapeType: '',
-				shapeAttributes: {},
-				shapeClass: {},
-				textValue: ''
-		};
-		
-		render() {
-				let {shapeType, shapeAttributes, shapeClass, textValue} = this.props;
-				
-				switch (shapeType) {
-						case NodeVisualElementConstants.SVG_CIRCLE:
-								return <circle {...shapeAttributes} className={shapeClass}/>;
-						
-						case NodeVisualElementConstants.SVG_LINELINE:
-								return <line {...shapeAttributes} className={shapeClass}/>;
-						
-						case NodeVisualElementConstants.TEXT:
-								return <text {...shapeAttributes}
-										className={shapeClass}>{textValue}</text>;
-						
-						default:
-								return undefined;
-				}
-		}
+
+  static propTypes = {
+    shapeType: PropTypes.string.isRequired,
+    shapeAttributes: PropTypes.object.isRequired,
+    shapeClass: PropTypes.object.isRequired,
+    textValue: PropTypes.string
+  };
+
+  static defaultProps = {
+    shapeType: '',
+    shapeAttributes: {},
+    shapeClass: {},
+    textValue: ''
+  };
+
+  render() {
+    let {shapeType, shapeAttributes, shapeClass, textValue} = this.props;
+
+    switch (shapeType) {
+      case NodeVisualElementConstants.SVG_CIRCLE:
+        return <circle {...shapeAttributes} className={shapeClass}/>;
+
+      case NodeVisualElementConstants.SVG_LINELINE:
+        return <line {...shapeAttributes} className={shapeClass}/>;
+
+      case NodeVisualElementConstants.TEXT:
+        return <text {...shapeAttributes}
+                     className={shapeClass}>{textValue}</text>;
+
+      default:
+        return undefined;
+    }
+  }
 }
 
 export default SVGShape;

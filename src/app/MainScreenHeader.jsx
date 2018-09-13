@@ -30,6 +30,7 @@ import {postAnalyticsData} from 'app/analytics/AnalyticsActions.js';
 import GlobalInlineMessageBar from 'app/globalInlineMessageBar/GlobalInlineMessageBar.jsx';
 import {getClearGlobalMessageEvent} from 'app/globalInlineMessageBar/GlobalInlineMessageBarActions.js';
 import {externalUrlRequest, externalMessageRequest, getSubscriptionPayload} from 'app/contextHandler/ContextHandlerActions.js';
+import { getConfigurableViewConfigs } from 'app/configurableViews/ConfigurableViewActions.js';
 import {
   filterBarActionTypes
 } from 'utils/GlobalConstants.js';
@@ -56,7 +57,7 @@ import {changeUrlAddress} from 'utils/Routes.js';
 import extensibleViews from 'resources/views/extensibleViews.json';
 
 
-const mapStateToProps = ({mainWrapper}) => {
+const mapStateToProps = ({mainWrapper, configurableViews}) => {
   let {
     showMenu = false,
     toggleButtonActive = false,
@@ -66,13 +67,18 @@ const mapStateToProps = ({mainWrapper}) => {
     subscriptionEnabled = false
   } = mainWrapper;
 
+  let {
+    configurableViewsConfig
+  } = configurableViews;
+
   return {
     showMenu,
     toggleButtonActive,
     externalRequestFound,
     secondaryTitle,
     subscriptionPayload,
-    subscriptionEnabled
+    subscriptionEnabled,
+    configurableViewsConfig
   };
 };
 
@@ -100,6 +106,9 @@ const mapActionsToProps = (dispatch) => {
     },
     onGetSubscriptionPayload: () => {
       dispatch(getSubscriptionPayload());
+    },
+    onFetchCustomViews: () => {
+      dispatch(getConfigurableViewConfigs());
     }
   };
 };
@@ -132,7 +141,7 @@ class MainScreenHeader extends Component {
       return false;
     }
   }
-  
+
   isValidExternalURL(url) {
     if(decodeURIComponent(url).indexOf('&') > 0 ) {
       return true;
@@ -168,7 +177,7 @@ class MainScreenHeader extends Component {
       this.props.onExternalUrlRequest(nextProps.match.params.externalUrl);
     }
     /* if the externalURL is not valid, we do not add any message as other proper
-    views will get that messages since the route will be this parameter.*/
+     views will get that messages since the route will be this parameter.*/
 
     if(this.props.externalRequestFound !== nextProps.externalRequestFound &&
       nextProps.externalRequestFound !== undefined && nextProps.externalRequestFound.suggestion !== undefined) {
@@ -216,13 +225,17 @@ class MainScreenHeader extends Component {
         $this.receiveMessage(e, $this);
       }, false);
     }
+
+    // fetch custom views
+    this.props.onFetchCustomViews();
   }
+
   componentWillUnmount() {
     if(this.props.subscriptionEnabled) {
       var $this = this;
       window.removeEventListener('message', function (e) {
-        $this.receiveMessage(e, $this);
-      }
+          $this.receiveMessage(e, $this);
+        }
       );
     }
   }
@@ -233,7 +246,8 @@ class MainScreenHeader extends Component {
       onShowMenu,
       onHideMenu,
       toggleButtonActive,
-      secondaryTitle
+      secondaryTitle,
+      configurableViewsConfig
     } = this.props;
 
     let menuOptions = [];
@@ -249,6 +263,18 @@ class MainScreenHeader extends Component {
       )}/>
     );
 
+    const ConfigurableMenuItem = ({label, to}) => (
+      <Route path={to} children={({location}) => (
+        <NavLink to={to} onClick={onHideMenu}>
+          <div className={this.navigationLinkAndCurrentPathMatch(location, to) ?
+            'main-menu-button-active' : 'main-menu-button'}>
+            <div className='button-icon configurable-view-button-icon'/>
+            <div className='button-icon'>{label}</div>
+          </div>
+        </NavLink>
+      )}/>
+    );
+
     // add Tier Support view
     menuOptions.push(
       <MenuItem key='schemaMenu' to='/schema' label={MENU_ITEM_TIER_SUPPORT}
@@ -258,9 +284,9 @@ class MainScreenHeader extends Component {
     // add VNF view
     menuOptions.push(
       <MenuItem key='vnfSearchMenu'
-        to='/vnfSearch'
-        label={MENU_ITEM_VNF_SEARCH}
-        iconClass='button-icon vnf-search-button-icon'/>
+                to='/vnfSearch'
+                label={MENU_ITEM_VNF_SEARCH}
+                iconClass='button-icon vnf-search-button-icon'/>
     );
 
     // add all custom view menu options
@@ -277,7 +303,16 @@ class MainScreenHeader extends Component {
                     label={extensibleViews[view]['displayName']}
                     iconClass={'button-icon ' + extensibleViews[view]['iconClass']}/>
         );
-      } 
+      }
+    }
+
+    if (configurableViewsConfig && configurableViewsConfig.layouts) {
+      for (let configurableView in configurableViewsConfig.layouts) {
+        menuOptions.push(
+          <ConfigurableMenuItem key={configurableViewsConfig.layouts[configurableView]['id'] + 'Menu'} to={'/' + configurableViewsConfig.layouts[configurableView]['id']}
+                                label={configurableViewsConfig.layouts[configurableView]['title']}/>
+        );
+      }
     }
 
     let secondaryTitleClass = 'secondary-header';
@@ -290,8 +325,8 @@ class MainScreenHeader extends Component {
         <div>
           <Button
             bsClass={(toggleButtonActive)
-            ? 'toggle-view-button-active'
-            : 'toggle-view-button'}
+              ? 'toggle-view-button-active'
+              : 'toggle-view-button'}
             onClick={onShowMenu}>
             <FontAwesome name='bars'/>
           </Button>

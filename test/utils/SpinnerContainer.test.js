@@ -17,8 +17,8 @@ describe('SpinnerContainer', () => {
     expect(spinner.find(ClipLoader)).toHaveLength(1); // ensure the ClipLoader is mounted
     expect(spinner.find(ClipLoader).props().color).toEqual(COLOR_BLUE); // ensure spinner is blue
     expect(spinner.find(ClipLoader).props().loading).toEqual(true); // ensure spinner is showing
-    expect(spinner.find('div.spinner-content')).toHaveLength(1); // ensure the children are grayed out
-    expect(spinner.find('div.spinner-content').children()).toHaveLength(2); // ensure number of children is accurate
+    expect(spinner.find('div.spin-content')).toHaveLength(1); // ensure the children are grayed out
+    expect(spinner.find('div.spin-content').children()).toHaveLength(2); // ensure number of children is accurate
   });
 
   it('render spinner - not visible', () => {
@@ -30,6 +30,6 @@ describe('SpinnerContainer', () => {
     expect(spinner.props().loading).toEqual(false);
     expect(spinner.find(ClipLoader)).toHaveLength(1);
     expect(spinner.find(ClipLoader).props().loading).toEqual(false); // ensure spinner is not showing
-    expect(spinner.find('div.spinner-content')).toHaveLength(0);
+    expect(spinner.find('div.spin-content')).toHaveLength(0);
   });
 })

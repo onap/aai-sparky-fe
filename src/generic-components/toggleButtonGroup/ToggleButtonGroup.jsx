@@ -18,7 +18,7 @@
  * limitations under the License.
  * ============LICENSE_END=========================================================
  */
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import { PropTypes } from 'prop-types';
 import {connect} from 'react-redux';
 
@@ -28,49 +28,49 @@ import Button from 'react-bootstrap/lib/Button.js';
 import ToggleButtonGroupActions from 'generic-components/toggleButtonGroup/ToggleButtonGroupActions.js';
 
 let mapActionToProps = (dispatch) => {
-		return {
-				onButtonToggle: (buttonName) => {
-						dispatch(ToggleButtonGroupActions.onToggle({button: buttonName}));
-				}
-		};
+  return {
+    onButtonToggle: (buttonName) => {
+      dispatch(ToggleButtonGroupActions.onToggle({button: buttonName}));
+    }
+  };
 };
 
 let mapStateToProps = ({toggleButtonGroupData}) => {
-		
-		let {selectedButton} = toggleButtonGroupData;
-		
-		return {
-				selectedButton
-		};
+
+  let {selectedButton} = toggleButtonGroupData;
+
+  return {
+    selectedButton
+  };
 };
 
 class ToggleButtonGroup extends Component {
-		
-		static propTypes = {
-				buttonDefinitions: PropTypes.object.isRequired
-		};
-		
-		onButtonSelect(buttonName) {
-				this.props.onButtonToggle(buttonName);
-		}
-		
-		render() {
-				let {selectedButton, buttonDefinitions} = this.props;
-				let buttonListElements = [];
-				Object.keys(buttonDefinitions).map(function (item) {
-						buttonListElements.push(
-								<Button id={item} active={selectedButton === item ? true : false}
-								        onClick={() => this.onButtonSelect(item)}>
-										<i className={buttonDefinitions[item]} aria-hidden='true'></i>
-								</Button>
-						);
-				}.bind(this));
-				
-				return (
-						<ButtonGroup bsClass='btn-group displayOptionButtons'>
-								{buttonListElements}
-						</ButtonGroup>
-				);
-		}
+
+  static propTypes = {
+    buttonDefinitions: PropTypes.object.isRequired
+  };
+
+  onButtonSelect(buttonName) {
+    this.props.onButtonToggle(buttonName);
+  }
+
+  render() {
+    let {selectedButton, buttonDefinitions} = this.props;
+    let buttonListElements = [];
+    Object.keys(buttonDefinitions).map(function (item) {
+      buttonListElements.push(
+        <Button id={item} active={selectedButton === item ? true : false}
+                onClick={() => this.onButtonSelect(item)}>
+          <i className={buttonDefinitions[item]} aria-hidden='true'></i>
+        </Button>
+      );
+    }.bind(this));
+
+    return (
+      <ButtonGroup bsClass='btn-group displayOptionButtons'>
+        {buttonListElements}
+      </ButtonGroup>
+    );
+  }
 }
 export default connect(mapStateToProps, mapActionToProps)(ToggleButtonGroup);

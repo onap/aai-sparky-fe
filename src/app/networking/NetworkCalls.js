@@ -32,6 +32,16 @@ function fetchRequest(URL, POST, POST_HEADER, BODY) {
   );
 }
 
+const fetchConfigurableViewRequest = (queryData) => {
+  const URL = `${BASE_URL}${queryData.api}`;
+  return fetch(URL, {
+    credentials: 'same-origin',
+    method: queryData.method,
+    headers: queryData.headers,
+    body: JSON.stringify(queryData.componentDataDescriptor)
+  });
+};
+
 function fetchRequestObj(URL, POST, POST_HEADER, BODY) {
   return fetch(URL, {
     credentials: 'same-origin',
@@ -72,25 +82,6 @@ module.exports = {
   fetchRequest: fetchRequest,
   fetchRequestObj: fetchRequestObj,
   getRequest: getRequest,
+  fetchConfigurableViewRequest: fetchConfigurableViewRequest,
   genericRequest: genericRequest
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

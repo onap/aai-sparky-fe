@@ -94,13 +94,13 @@ export default class AutoCompleteSearchBar extends Component {
 
   render() {
     const {
-            value, suggestions,
-            suggestionName, cachedSuggestions,
-            onInputChange, onInvalidSearch,
-            onClearSuggestionsTextFieldRequested,
-            onSuggestionsClearRequested,
-            dispatchAnalytics
-          } = this.props;
+      value, suggestions,
+      suggestionName, cachedSuggestions,
+      onInputChange, onInvalidSearch,
+      onClearSuggestionsTextFieldRequested,
+      onSuggestionsClearRequested,
+      dispatchAnalytics
+    } = this.props;
     const inputProps = {
       placeholder: SEARCH_PLACEHOLDER_TEXT,
       value,
@@ -201,7 +201,7 @@ export default class AutoCompleteSearchBar extends Component {
       rest.className = 'react-autosuggest__suggestions-containerCopy';
     }
     return (
-      <div {...rest}>
+      <div {...rest.containerProps} {...rest}>
         {children}
       </div>
     );

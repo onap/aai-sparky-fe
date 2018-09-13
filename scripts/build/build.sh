@@ -4,10 +4,10 @@
 #
 # UpdateFEwithExtensions
 #
-# Description:  Update files in the FE code based on the content of the 
-#               extensions.  For this to work, extensions are required to fill 
+# Description:  Update files in the FE code based on the content of the
+#               extensions.  For this to work, extensions are required to fill
 #               some files.  The current script does not care too much about
-#               their locations (other than being in the component 
+#               their locations (other than being in the component
 #               nodes-modules) but the file name must match.
 #
 ###############################################################################
@@ -39,7 +39,7 @@ UpdateFEwithExtensions(){
   # Get extensible json additions
   echo "build.sh --- Appending to resources/views/extensibleViews.json"
   extConfig=`find node_modules/ -name "extensibleViews.json"`
-  if [ ! -z "$extConfig" ]; then 
+  if [ ! -z "$extConfig" ]; then
     jq -n 'input | . +=[inputs]'  resources/views/extensibleViews.json $extConfig > tmp
     mv tmp resources/views/extensibleViews.json
   fi
@@ -58,7 +58,7 @@ UpdateFEwithExtensions(){
   # Get overlay json additions
   echo "build.sh --- Appending to resources/overlays/overlaysDetails.json"
   extConfig=`find node_modules/ -name "overlaysDetails.json"`
-  if [ ! -z "$extConfig" ]; then 
+  if [ ! -z "$extConfig" ]; then
     jq -n 'input | . +=[inputs]'  resources/overlays/overlaysDetails.json $extConfig > tmp
     mv tmp resources/overlays/overlaysDetails.json
   fi
@@ -67,11 +67,11 @@ UpdateFEwithExtensions(){
   echo "build.sh --- Appending to resources/scss/customViews.scss"
   touch resources/scss/customViews.scss
   extSCSS=`find -name "extensibility.scss"`
-  for i in $extSCSS; do 
+  for i in $extSCSS; do
     cat $i >> resources/scss/customViews.scss
   done
-  
-  
+
+
 }
 
 updateStyle()
@@ -101,8 +101,8 @@ updateStyle()
   if [ -f  tmp.style.imports ]; then
       sed -i /"import 'resources\/scss\/style\.scss';"/d src/app/main.app.jsx
   fi
-  
-  # Update bootstrap 
+
+  # Update bootstrap
   echo "build.sh --- Update resources/scss/bootstrap.scss"
   bootImports=`find extStyle/ -name "bootstrap.scss"`
   for i in $bootImports; do
@@ -113,6 +113,19 @@ updateStyle()
   if [ -f  tmp.bootstrap.import ]; then
       sed -i /"@import \"common\/typography\";"/d resources/scss/bootstrap.scss
   fi
+}
+
+UpdateFEWithCustomViews(){
+  # Append statements to src/app/configurableViews/index.js
+  echo "build.sh --- Appending to src/app/configurableViews/index.js"
+  custViewImports=`find -name "confViewIndex"`
+  for i in $custViewImports; do
+    cat $i | grep import > tmp.imports
+    cat $i | grep 'components\[' > tmp.components
+
+    sed -i '/Import section/ r tmp.imports' src/app/configurableViews/index.js
+    sed -i '/Components section/ r  tmp.components' src/app/configurableViews/index.js
+  done
 }
 
 ###############################################################################

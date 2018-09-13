@@ -26,9 +26,9 @@ import {COLOR_BLUE} from 'utils/GlobalConstants.js';
 class SpinnerContainer extends Component {
   render() {
     // if loading, show content as busy (ex: grey out)
-    const spinnerContentClass = this.props.loading ? 'spinner-content' : '';
+    const spinnerContentClass = this.props.loading ? 'spin-content' : '';
     return (
-      <div className='spinner-container'>
+      <div className='spin-container'>
         <div className='spinner'>
           <ClipLoader color={COLOR_BLUE} loading={this.props.loading} />
         </div>

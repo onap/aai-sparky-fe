@@ -22,33 +22,33 @@ import React, {Component} from 'react';
 import { PropTypes } from 'prop-types';
 
 class Node extends Component {
-		
-		static propTypes = {
-				x: PropTypes.number,
-				y: PropTypes.number,
-				nodeClass: PropTypes.string,
-				visualElements: PropTypes.array,
-				meta: PropTypes.object
-		};
-		
-		static defaultProps = {
-				x: 0,
-				y: 0,
-				nodeClass: '',
-				visualElements: [],
-				meta: {}
-		};
-		
-		render() {
-				let {x, y, nodeClass, visualElements} = this.props;
-				let translate = `translate(${x}, ${y})`;
-				
-				return (
-						<g className={nodeClass} transform={translate}>
-								{visualElements}
-						</g>
-				);
-		}
+
+  static propTypes = {
+    x: PropTypes.number,
+    y: PropTypes.number,
+    nodeClass: PropTypes.string,
+    visualElements: PropTypes.array,
+    meta: PropTypes.object
+  };
+
+  static defaultProps = {
+    x: 0,
+    y: 0,
+    nodeClass: '',
+    visualElements: [],
+    meta: {}
+  };
+
+  render() {
+    let {x, y, nodeClass, visualElements} = this.props;
+    let translate = `translate(${x}, ${y})`;
+
+    return (
+      <g className={nodeClass} transform={translate}>
+        {visualElements}
+      </g>
+    );
+  }
 }
 
 export default Node;

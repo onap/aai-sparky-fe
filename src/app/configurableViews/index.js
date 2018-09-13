@@ -1,4 +1,4 @@
-/**
+/*
  * ============LICENSE_START=======================================================
  * org.onap.aai
  * ================================================================================
@@ -18,38 +18,10 @@
  * limitations under the License.
  * ============LICENSE_END=========================================================
  */
-.hidden {
-	display: none;
-}
+// Import section (used as anchor to add extension imports)
+export function getConfiguredComponentList() {
+  let components = {};
 
-.main-app-container {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
-}
-
-.view-container {
-}
-
-.hideContainer {
-	visibility: hidden
-}
-
-.showContainer {
-}
-
-.spin-container {
-	overflow: hidden;
-	position: relative;
-}
-
-.spinner {
-	position: absolute;
-	z-index: 999;
-	left: 50%;
-	top: 49%;
-}
-
-.spin-content {
-	opacity: 0.2;
+  // Components section (used as an anchor to add extension components)
+  return components;
 }

@@ -136,7 +136,6 @@ export function extensibleViewNetworkCallback(urlApi, postBody, paramName, curVi
     () => fetchRequestObj(BASE_URL + urlApi, POST,
       POST_HEADER, postBody);
 
-
   return dispatch => {
     dispatch(extensibleViewData(dataFetchRequest, paramName, curViewData));
   };

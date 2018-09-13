@@ -19,17 +19,17 @@
  * ============LICENSE_END=========================================================
  */
 /**
-	* NotificationModal options:
-	*
-	* show: whether to show notification or not,
-	* type: the type of the notification. valid values are: 'default', 'error',
-	* 'warning', 'success' msg: the notification content. could be a string or
-	* node (React component) title: the notification title timeout: timeout for
-	* the notification to fade out. if timeout == 0 then the notification is
-	* rendered until the user closes it
-	*
-	*/
-import React, {Component, PropTypes} from 'react';
+ * NotificationModal options:
+ *
+ * show: whether to show notification or not,
+ * type: the type of the notification. valid values are: 'default', 'error',
+ * 'warning', 'success' msg: the notification content. could be a string or
+ * node (React component) title: the notification title timeout: timeout for
+ * the notification to fade out. if timeout == 0 then the notification is
+ * rendered until the user closes it
+ *
+ */
+import React, {Component} from 'react';
 import { PropTypes } from 'prop-types';
 import {connect} from 'react-redux';
 import Button from 'react-bootstrap/lib/Button.js';
@@ -39,83 +39,83 @@ import Modal from 'generic-components/modal/Modal.jsx';
 import NotificationConstants from './NotificationConstants.js';
 
 let typeClass = {
-		'default': 'primary',
-		error: 'danger',
-		warning: 'warning',
-		success: 'success'
+  'default': 'primary',
+  error: 'danger',
+  warning: 'warning',
+  success: 'success'
 };
 
 const mapActionsToProps = (dispatch) => {
-		return {
-				onCloseClick: () => dispatch({type: NotificationConstants.NOTIFY_CLOSE})
-		};
+  return {
+    onCloseClick: () => dispatch({type: NotificationConstants.NOTIFY_CLOSE})
+  };
 };
 
 const mapStateToProps = ({notification}) => {
-		
-		let show = notification !== null && notification.title !== 'Conflict';
-		let mapResult = {show};
-		if (show) {
-				mapResult = {show, ...notification};
-		}
-		
-		return mapResult;
+
+  let show = notification !== null && notification.title !== 'Conflict';
+  let mapResult = {show};
+  if (show) {
+    mapResult = {show, ...notification};
+  }
+
+  return mapResult;
 };
 
 class NotificationModal extends Component {
-		
-		static propTypes = {
-				show: PropTypes.bool,
-				type: PropTypes.oneOf(['default', 'error', 'warning', 'success']),
-				msg: PropTypes.node,
-				title: PropTypes.string,
-				timeout: PropTypes.number
-		};
-		
-		static defaultProps = {
-				show: false,
-				type: 'default',
-				title: '',
-				msg: '',
-				timeout: 0
-		};
-		
-		state = {type: undefined};
-		
-		componentWillReceiveProps(nextProps) {
-				if (this.props.show !== nextProps.show && nextProps.show === false) {
-						this.setState({type: this.props.type});
-				}
-				else {
-						this.setState({type: undefined});
-				}
-		}
-		
-		componentDidUpdate() {
-				if (this.props.timeout) {
-						setTimeout(this.props.onCloseClick, this.props.timeout);
-				}
-		}
-		
-		render() {
-				let {title, type, msg, show} = this.props;
-				if (!show) {
-						type = this.state.type;
-				}
-				return (
-						<Modal show={this.props.show}
-						       className={`notification-modal ${typeClass[type]}`}>
-								<Modal.Header>
-										<Modal.Title>{title}</Modal.Title>
-								</Modal.Header>
-								<Modal.Body>{msg}</Modal.Body>
-								<Modal.Footer>
-										<Button bsStyle={typeClass[type]}
-										        onClick={this.props.onCloseClick}>{i18n('OK')}</Button>
-								</Modal.Footer>
-						</Modal>
-				);
-		}
+
+  static propTypes = {
+    show: PropTypes.bool,
+    type: PropTypes.oneOf(['default', 'error', 'warning', 'success']),
+    msg: PropTypes.node,
+    title: PropTypes.string,
+    timeout: PropTypes.number
+  };
+
+  static defaultProps = {
+    show: false,
+    type: 'default',
+    title: '',
+    msg: '',
+    timeout: 0
+  };
+
+  state = {type: undefined};
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.show !== nextProps.show && nextProps.show === false) {
+      this.setState({type: this.props.type});
+    }
+    else {
+      this.setState({type: undefined});
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.timeout) {
+      setTimeout(this.props.onCloseClick, this.props.timeout);
+    }
+  }
+
+  render() {
+    let {title, type, msg, show} = this.props;
+    if (!show) {
+      type = this.state.type;
+    }
+    return (
+      <Modal show={this.props.show}
+             className={`notification-modal ${typeClass[type]}`}>
+        <Modal.Header>
+          <Modal.Title>{title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{msg}</Modal.Body>
+        <Modal.Footer>
+          <Button bsStyle={typeClass[type]}
+                  onClick={this.props.onCloseClick}>{i18n('OK')}</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(NotificationModal);

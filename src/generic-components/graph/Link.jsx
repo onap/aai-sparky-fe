@@ -24,39 +24,39 @@ import { PropTypes } from 'prop-types';
 import TempCreateAttributes from './TempCreateAttributes.js';
 
 class Link extends Component {
-		
-		static propTypes = {
-				x1: PropTypes.number,
-				y1: PropTypes.number,
-				x2: PropTypes.number,
-				y2: PropTypes.number,
-				linkAttributes: PropTypes.object
-		};
-		
-		static defaultProps = {
-				x1: 0,
-				y1: 0,
-				x2: 0,
-				y2: 0,
-				linkAttributes: {}
-		};
-		
-		render() {
-				let {x1, y1, x2, y2, linkAttributes} = this.props;
-				
-				let combinedAttributes = {
-						...linkAttributes,
-						x1: x1,
-						y1: y1,
-						x2: x2,
-						y2: y2
-				};
-				
-				return (
-						<line {...combinedAttributes}
-								style={TempCreateAttributes.createLineStyle()}/>
-				);
-		}
+
+  static propTypes = {
+    x1: PropTypes.number,
+    y1: PropTypes.number,
+    x2: PropTypes.number,
+    y2: PropTypes.number,
+    linkAttributes: PropTypes.object
+  };
+
+  static defaultProps = {
+    x1: 0,
+    y1: 0,
+    x2: 0,
+    y2: 0,
+    linkAttributes: {}
+  };
+
+  render() {
+    let {x1, y1, x2, y2, linkAttributes} = this.props;
+
+    let combinedAttributes = {
+      ...linkAttributes,
+      x1: x1,
+      y1: y1,
+      x2: x2,
+      y2: y2
+    };
+
+    return (
+      <line {...combinedAttributes}
+            style={TempCreateAttributes.createLineStyle()}/>
+    );
+  }
 }
 
 export default Link;

@@ -18,7 +18,7 @@
  * limitations under the License.
  * ============LICENSE_END=========================================================
  */
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import { PropTypes } from 'prop-types';
 import ButtonGroup from 'react-bootstrap/lib/ButtonGroup';
 import Button from 'react-bootstrap/lib/Button';
@@ -53,13 +53,13 @@ export default class ComponentManagerContainer extends Component {
 
   render() {
     let {
-          title,
-          actions,
-          children,
-          showHeader,
-          showTitle,
-          showBorder
-        } = this.props;
+      title,
+      actions,
+      children,
+      showHeader,
+      showTitle,
+      showBorder
+    } = this.props;
     let buttons = [];
     actions.forEach((action) => {
       switch (action.type) {

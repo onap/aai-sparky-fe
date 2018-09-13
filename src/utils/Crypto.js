@@ -23,7 +23,7 @@
  */
 import CryptoJS from 'crypto-js';
 
-var key = 'key2017';
+const key = 'key2017';
 
 function encrypt(text) {
   var encrypted = CryptoJS.AES.encrypt(text, key);
@@ -35,8 +35,17 @@ function decrypt(text) {
   return decrypted.toString(CryptoJS.enc.Utf8);
 }
 
+function encode(phrase) {
+  return CryptoJS.enc.Utf16.parse(phrase);
+}
+
+function decode(encodedPhrase) {
+  return CryptoJS.enc.Utf16.stringify(encodedPhrase);
+}
 
 module.exports = {
   encrypt: encrypt,
-  decrypt: decrypt
+  decrypt: decrypt,
+  encode: encode,
+  decode: decode
 };

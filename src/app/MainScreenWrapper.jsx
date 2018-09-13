@@ -25,6 +25,10 @@ import TierSupport from './tierSupport/TierSupport.jsx';
 import VnfSearch from './vnfSearch/VnfSearch.jsx';
 import MainScreenHeader from './MainScreenHeader.jsx';
 import {decryptParamsForView, changeUrlAddress} from 'utils/Routes.js';
+import {
+  getConfigurableViewConfigs,
+  setCustomRoutes
+} from 'app/configurableViews/ConfigurableViewActions.js';
 import {isEmpty} from 'lodash';
 import {genericRequest} from 'app/networking/NetworkCalls.js';
 import {
@@ -42,18 +46,36 @@ import {
 } from './MainScreenWrapperActionHelper.js';
 
 import extensibleViews from 'resources/views/extensibleViews.json';
+import customComponentConfig from 'resources/views/customComponents.json';
+import { newCustomComponentsEvent } from 'app/configurableViews/ConfigurableViewActions.js';
+import {
+  getConfigurableRoutes
+} from 'app/configurableViews/ConfigurableViewManager.js';
 
-const mapStateToProps = ({mainWrapper}) => {
+import {
+  getConfiguredComponentList
+} from 'app/configurableViews/index.js';
+
+const mapStateToProps = ({mainWrapper, configurableViews}) => {
   let {
     showMenu = false,
     toggleButtonActive = false,
     extensibleViewNetworkCallbackData = {}
   } = mainWrapper;
 
+  let {
+    configurableViewsConfig = {},
+    customComponents = {},
+    customRoutes = []
+  } = configurableViews;
+
   return {
     showMenu,
     toggleButtonActive,
-    extensibleViewNetworkCallbackData
+    extensibleViewNetworkCallbackData,
+    configurableViewsConfig,
+    customComponents,
+    customRoutes
   };
 };
 
@@ -68,6 +90,15 @@ const mapActionsToProps = (dispatch) => {
     },
     onOverlayNetworkCallback: (apiUrl, body, viewName, curViewData, responseEventKey) =>  {
       dispatch(overlayNetworkCallback(apiUrl, body, viewName, curViewData, responseEventKey));
+    },
+    onConfigurableViewsInitialLoad: (components) => {
+      dispatch(newCustomComponentsEvent(components));
+    },
+    onFetchCustomViews: () => {
+      dispatch(getConfigurableViewConfigs());
+    },
+    onSetCustomRoutes: (routes) => {
+      dispatch(setCustomRoutes(routes));
     }
   };
 };
@@ -82,6 +113,25 @@ class MainScreenWrapper extends Component {
 
   }
 
+  componentDidMount() {
+    // fetch custom views
+    this.props.onFetchCustomViews();
+
+    // fetch custom components
+    let components = getConfiguredComponentList(customComponentConfig);
+    this.props.onConfigurableViewsInitialLoad(components);
+  }
+
+  componentDidUpdate(prevProps) {
+    if ((Object.keys(this.props.customComponents).length > 0 &&
+      Object.keys(this.props.configurableViewsConfig).length > 0) &&
+      ((JSON.stringify(prevProps.configurableViewsConfig) !== JSON.stringify(this.props.configurableViewsConfig)) ||
+      (JSON.stringify(prevProps.customComponents) !== JSON.stringify(this.props.customComponents)))) {
+      // we have both config and components populated and one was just set
+      let customRoutes = getConfigurableRoutes(this.props.configurableViewsConfig, this.props.customComponents);
+      this.props.onSetCustomRoutes(customRoutes);
+    }
+  }
 
   render() {
 
@@ -89,14 +139,14 @@ class MainScreenWrapper extends Component {
       onExtensibleViewNetworkCallback,
       extensibleViewNetworkCallbackData,
       onExtensibleViewMessageCallback,
-      onOverlayNetworkCallback
+      onOverlayNetworkCallback,
+      customRoutes
     } = this.props;
 
     let customViewList = [];
     extensibleViews.forEach(function(view,key) {
 
-      let path = '',
-        extKey = '';
+      let path = '', extKey = '';
       if(isEmpty(extensibleViews[key]['viewParams'])){
         path = '/' + view.viewName + '/:extensibleViewParams?';
         extKey = view.viewName + 'Route';
@@ -140,13 +190,13 @@ class MainScreenWrapper extends Component {
       if(isEmpty(extensibleViews[key]['isExact']) && !extensibleViews[key]['isExact']){
         customViewList.push(
           <Route key={extKey} path={path} render={renderComponent}/>
-      );
+        );
       } else {
         customViewList.push(
           <Route key={extKey} exact path={path} render={renderComponent}/>
-      );
+        );
       }
-      
+
     });
 
     return (
@@ -159,6 +209,7 @@ class MainScreenWrapper extends Component {
           <Route key='TierSupportRoue' path='/schema/:viParam?' component={TierSupport}/>
           <Route key='VnfSearchRoute' path='/vnfSearch/:filters?' component={VnfSearch}/>
           {customViewList}
+          {customRoutes}
         </div>
       </Router>
     );
