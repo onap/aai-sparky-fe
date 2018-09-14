@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_43450441",
+        "filename": "src/app/configurableViews/ConfigurableViewActions.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 651
+      },
+      "writtenOn": "2018-09-14T11:46:36Z",
+      "side": 1,
+      "message": "Are we missing license headers in the new files?",
+      "revId": "96319fec0d2af2be5802a56d6b05a3ada939c8df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
