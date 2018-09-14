@@ -44,7 +44,7 @@ describe('DateTimeChartUtil Tests', () => {
     ];
     let ticksPerDay = getTicks(timestamps, 'timestamp');
     // expect 1 tick (timestamp) for each day between March 22 - March 29
-    expect(ticksPerDay.length).toBe(8);
+    expect(ticksPerDay.length).toBe(9);
   });
 
   it('getTicks - empty data', () => {
@@ -64,7 +64,7 @@ describe('DateTimeChartUtil Tests', () => {
     let mergedData = getTicksData(timestamps, ticksPerDay, 'timestamp');
     // expect original 4 objects plus 4 additional objects for the missing days
     // (4 additional objects will only have timestamp attribute, no date attribute)
-    expect(mergedData.length).toBe(12);
+    expect(mergedData.length).toBe(9);
     expect(mergedData[0]['timestamp']).toBe(1521604800000);
     expect(mergedData[0]['date']).toBe('Thu, 21 Mar 2018 04:00:00 GMT');
     expect(mergedData[1]['timestamp']).toBe(1521777600000);

@@ -234,9 +234,8 @@ class MainScreenHeader extends Component {
     if(this.props.subscriptionEnabled) {
       var $this = this;
       window.removeEventListener('message', function (e) {
-          $this.receiveMessage(e, $this);
-        }
-      );
+        $this.receiveMessage(e, $this);
+      });
     }
   }
 
