@@ -21,43 +21,28 @@
 import NotificationConstants from './NotificationConstants.js';
 
 export default (state = null, action) => {
-  switch (action.type) {
-    case NotificationConstants.NOTIFY_INFO:
-      return {
-        type: 'default',
-        title: action.data.title,
-        msg: action.data.msg,
-        timeout: action.data.timeout
-      };
-    
-    case NotificationConstants.NOTIFY_ERROR:
-      return {
-        type: 'error',
-        title: action.data.title,
-        msg: action.data.msg,
-        timeout: action.data.timeout
-      };
-    
-    case NotificationConstants.NOTIFY_WARNING:
-      return {
-        type: 'warning',
-        title: action.data.title,
-        msg: action.data.msg,
-        timeout: action.data.timeout
-      };
-    
-    case NotificationConstants.NOTIFY_SUCCESS:
-      return {
-        type: 'success',
-        title: action.data.title,
-        msg: action.data.msg,
-        timeout: action.data.timeout
-      };
-    case NotificationConstants.NOTIFY_CLOSE:
-      return null;
-    
-    default:
-      return state;
-  }
-  
+    switch (action.type) {
+        case NotificationConstants.NOTIFY_INFO:
+            return createStatus('default', action);
+        case NotificationConstants.NOTIFY_ERROR:
+            return createStatus('error', action);
+        case NotificationConstants.NOTIFY_WARNING:
+            return createStatus('warning', action);
+        case NotificationConstants.NOTIFY_SUCCESS:
+            return createStatus('success', action);
+        case NotificationConstants.NOTIFY_CLOSE:
+            return null;
+        default:
+            return state;
+    }
+
 };
+
+function createStatus(type, action) {
+    return {
+        type: type,
+        title: action.data.title,
+        msg: action.data.msg,
+        timeout: action.data.timeout
+    };
+}
