@@ -18,7 +18,7 @@
  * limitations under the License.
  * ============LICENSE_END=========================================================
  */
-export function createEditEntityAttributeRequestObject(uri, attributes) {
+function createEditEntityAttributeRequestObject(uri, attributes) {
   return {
     'entity-uri': uri,
     'attributes': {
@@ -26,3 +26,4 @@ export function createEditEntityAttributeRequestObject(uri, attributes) {
     }
   };
 }
+export default createEditEntityAttributeRequestObject;
