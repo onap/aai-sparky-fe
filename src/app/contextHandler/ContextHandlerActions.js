@@ -105,7 +105,10 @@ function fetchSubscriptionPayload(fetchRequestCallback) {
 
 export function getSubscriptionPayload() {
   let externalfetchRequest =
-    () => networkCall.getRequest(SUBSCRIPTION_PAYLOAD_URL, GET);
+  () => fetch(SUBSCRIPTION_PAYLOAD_URL, {
+    method: GET,
+    headers: POST_HEADER
+  });
   return dispatch => {
     dispatch(fetchSubscriptionPayload(externalfetchRequest));
   };
