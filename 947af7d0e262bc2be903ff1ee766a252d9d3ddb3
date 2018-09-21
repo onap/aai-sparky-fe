@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_f6bffefa",
+        "filename": "src/app/networking/NetworkCalls.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1061
+      },
+      "writtenOn": "2018-09-21T14:30:32Z",
+      "side": 1,
+      "message": "Does does this have a negative effect on any other get requests in the UI?",
+      "revId": "947af7d0e262bc2be903ff1ee766a252d9d3ddb3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
