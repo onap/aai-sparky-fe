@@ -88,7 +88,7 @@ function fetchSubscriptionPayload(fetchRequestCallback) {
           return Promise.reject(new Error(response.status));
         } else {
           // assume 200 status
-          return response.json();
+          return response;
         }
       }
     ).then(
@@ -105,7 +105,10 @@ function fetchSubscriptionPayload(fetchRequestCallback) {
 
 export function getSubscriptionPayload() {
   let externalfetchRequest =
-    () => networkCall.getRequest(SUBSCRIPTION_PAYLOAD_URL, GET);
+  () => fetch(SUBSCRIPTION_PAYLOAD_URL, {
+    method: GET,
+    headers: POST_HEADER
+  });
   return dispatch => {
     dispatch(fetchSubscriptionPayload(externalfetchRequest));
   };
