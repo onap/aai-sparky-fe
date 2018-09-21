@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_0f406205",
+        "filename": "test/editAttributes/networking/NetworkCalls.test.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3433
+      },
+      "writtenOn": "2018-09-21T05:58:07Z",
+      "side": 1,
+      "message": "These tests are broken ... there is no describe function before let suite",
+      "revId": "928b099adfb94f0ded739f1348cf0effdd25f0ca",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
