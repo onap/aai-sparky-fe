@@ -164,7 +164,8 @@ export default class AutoCompleteSearchBar extends Component {
                     <Highlighter key={arrayIndex + 'high'}
                                  highlightClassName='highlight'
                                  searchWords={toHighLightArray}
-                                 textToHighlight={suggestionTextArray[arrayIndex]}/>
+                                 textToHighlight={suggestionTextArray[arrayIndex]}
+                                 autoEscape={true}/>
                     { ++arrayIndex ? ' ' : ' '}
                  </span>);
 
@@ -185,7 +186,8 @@ export default class AutoCompleteSearchBar extends Component {
                       <Highlighter key={arrayIndex + 'high'}
                                    highlightClassName='highlight'
                                    searchWords={toHighLightArray}
-                                   textToHighlight={suggestionTextArray[arrayIndex]}/>
+                                   textToHighlight={suggestionTextArray[arrayIndex]}
+                                   autoEscape={true}/>
                       { ++arrayIndex ? ' ' : ' '}
                    </span>);
 
