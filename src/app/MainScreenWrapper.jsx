@@ -140,6 +140,8 @@ class MainScreenWrapper extends Component {
       extensibleViewNetworkCallbackData,
       onExtensibleViewMessageCallback,
       onOverlayNetworkCallback,
+      configurableViewsConfig,
+      customComponents,
       customRoutes
     } = this.props;
 
@@ -199,6 +201,8 @@ class MainScreenWrapper extends Component {
 
     });
 
+    let configurableViewList = getConfigurableRoutes(configurableViewsConfig, customComponents);
+
     return (
       <Router>
         <div className='main-app-container'>
@@ -210,6 +214,7 @@ class MainScreenWrapper extends Component {
           <Route key='VnfSearchRoute' path='/vnfSearch/:filters?' component={VnfSearch}/>
           {customViewList}
           {customRoutes}
+          {configurableViewList}
         </div>
       </Router>
     );

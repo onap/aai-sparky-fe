@@ -158,6 +158,12 @@
     .vnf-search-button-icon {
       background-image: url($icons-folder-path + '/vnfSearchicon.png');
     }
+
+    .configurable-view-button-icon {
+      background-image: url($icons-folder-path + '/reports.svg');
+      -webkit-filter: brightness(500);
+      filter: brightness(500);
+    }
   }
 
   .main-menu-button:hover, .main-menu-button:focus {
@@ -174,6 +180,12 @@
     .vnf-search-button-icon {
       background-image: url($icons-folder-path + '/vnfSearchicon_hover.png');
     }
+
+    .configurable-view-button-icon {
+      background-image: url($icons-folder-path + '/reports.svg');
+      -webkit-filter: brightness(1);
+      filter: brightness(1);
+    }
   }
 
   .main-menu-button-active {
@@ -185,6 +197,7 @@
     width: 100%;
     height: 90px;
     text-align: center;
+    padding-top: 5px;
 
     .view-inspect-button-icon {
       background-image: url($icons-folder-path + '/binocularicon_active.png');
@@ -196,6 +209,12 @@
 
     .vnf-search-button-icon {
       background-image: url($icons-folder-path + '/vnfSearchicon_active.png');
+    }
+
+    .configurable-view-button-icon {
+      background-image: url($icons-folder-path + '/reports.svg');
+      -webkit-filter: brightness(0.55);
+      filter: brightness(0.55);
     }
   }
 
