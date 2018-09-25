@@ -55,9 +55,7 @@ function getRequest(URL, GET) {
   return fetch(URL, {
     credentials: 'same-origin',
     method: GET
-  }).then(
-    (response) => response.json()
-  );
+  });
 }
 
 const genericRequest = (url, relativeURL, httpMethodType) => {
