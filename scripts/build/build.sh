@@ -149,6 +149,7 @@ else
   npm install --save ${extensionList}
   # copy content when there are extensions
   UpdateFEwithExtensions
+  UpdateFEWithCustomViews
 fi
 
 # Copy style
