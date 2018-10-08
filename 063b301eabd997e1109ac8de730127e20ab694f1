@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_6951d861",
+        "filename": "test/networking/NetworkCalls.test.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3433
+      },
+      "writtenOn": "2018-10-08T07:18:01Z",
+      "side": 1,
+      "message": "dana?",
+      "revId": "063b301eabd997e1109ac8de730127e20ab694f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
