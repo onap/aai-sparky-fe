@@ -26,7 +26,7 @@ import {clearFilters} from 'filter-bar-utils';
 import Button from 'react-bootstrap/lib/Button.js';
 import Modal from 'react-bootstrap/lib/Modal.js';
 import GlobalAutoCompleteSearchBar from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBar.jsx';
-import {postAnalyticsData} from 'app/analytics/AnalyticsActions.js';
+import {postAnalyticsData, getStoreAnalyticsPayload} from 'app/analytics/AnalyticsActions.js';
 import GlobalInlineMessageBar from 'app/globalInlineMessageBar/GlobalInlineMessageBar.jsx';
 import {getClearGlobalMessageEvent} from 'app/globalInlineMessageBar/GlobalInlineMessageBarActions.js';
 import {externalUrlRequest, externalMessageRequest, getSubscriptionPayload} from 'app/contextHandler/ContextHandlerActions.js';
@@ -41,7 +41,8 @@ import {
 } from 'react-router-dom';
 
 import {
-  AAI_TITLE,
+  AAI_TOP_LEFT_HEADER,
+  AAI_HTML_TITLE,
   MENU_ITEM_TIER_SUPPORT,
   MENU_ITEM_VNF_SEARCH
 } from './MainScreenWrapperConstants.js';
@@ -55,7 +56,8 @@ import {
 import {clearSuggestionsTextField} from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBarActions.js';
 import {changeUrlAddress} from 'utils/Routes.js';
 import extensibleViews from 'resources/views/extensibleViews.json';
-
+import {getPersonalizationDetails} from 'app/personlaization/PersonalizationActions.js';
+import {isEmpty} from 'lodash';
 
 const mapStateToProps = ({mainWrapper, configurableViews}) => {
   let {
@@ -64,7 +66,9 @@ const mapStateToProps = ({mainWrapper, configurableViews}) => {
     externalRequestFound = {},
     secondaryTitle = '',
     subscriptionPayload = {},
-    subscriptionEnabled = false
+    subscriptionEnabled = false,
+    aaiTopLeftPersonalizedHeader = AAI_TOP_LEFT_HEADER,
+    aaiPersonalizedHtmlDocumentTitle = AAI_HTML_TITLE
   } = mainWrapper;
 
   let {
@@ -78,7 +82,9 @@ const mapStateToProps = ({mainWrapper, configurableViews}) => {
     secondaryTitle,
     subscriptionPayload,
     subscriptionEnabled,
-    configurableViewsConfig
+    configurableViewsConfig,
+    aaiTopLeftPersonalizedHeader,
+    aaiPersonalizedHtmlDocumentTitle
   };
 };
 
@@ -90,7 +96,7 @@ const mapActionsToProps = (dispatch) => {
       dispatch(showMainMenu(false));
     },
     dispatchAnalyticsData: () => dispatch(
-      postAnalyticsData(document.documentElement.outerHTML.replace('\s+', ''))),
+      postAnalyticsData(getStoreAnalyticsPayload())),
     onRouteChange: () => {
       dispatch(getClearGlobalMessageEvent());
       dispatch(clearSuggestionsTextField());
@@ -109,6 +115,9 @@ const mapActionsToProps = (dispatch) => {
     },
     onFetchCustomViews: () => {
       dispatch(getConfigurableViewConfigs());
+    },
+    onGetPersonalizationValues: () => {
+      dispatch(getPersonalizationDetails());
     }
   };
 };
@@ -119,7 +128,9 @@ class MainScreenHeader extends Component {
     toggleButtonActive: PropTypes.bool,
     externalRequestFound: PropTypes.object,
     secondaryTitle: PropTypes.string,
-    subscriptionPayload: PropTypes.object
+    subscriptionPayload: PropTypes.object,
+    aaiTopLeftPersonalizedHeader: PropTypes.string,
+    aaiPersonalizedHtmlDocumentTitle: PropTypes.string
   };
 
   navigationLinkAndCurrentPathMatch(location, to) {
@@ -151,6 +162,7 @@ class MainScreenHeader extends Component {
   }
 
   componentWillMount() {
+    this.props.onGetPersonalizationValues();
     this.props.onGetSubscriptionPayload();
     if(this.props.match.params.externalUrl !== undefined &&
       this.isValidExternalURL(this.props.match.params.externalUrl)) {
@@ -159,6 +171,14 @@ class MainScreenHeader extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if(!isEmpty(nextProps.aaiPersonalizedHtmlDocumentTitle)) {
+      if(!sessionStorage.getItem('PAGE_TITLE') || sessionStorage.getItem('PAGE_TITLE') !== nextProps.aaiPersonalizedHtmlDocumentTitle) {
+        sessionStorage.setItem('PAGE_TITLE', nextProps.aaiPersonalizedHtmlDocumentTitle);
+      }
+      document.title = nextProps.aaiPersonalizedHtmlDocumentTitle;
+    } else {
+      document.title = AAI_HTML_TITLE;
+    }
     if (this.props.location &&
       this.props.location.pathname !==
       nextProps.location.pathname) {
@@ -246,7 +266,8 @@ class MainScreenHeader extends Component {
       onHideMenu,
       toggleButtonActive,
       secondaryTitle,
-      configurableViewsConfig
+      configurableViewsConfig,
+      aaiTopLeftPersonalizedHeader
     } = this.props;
 
     let menuOptions = [];
@@ -335,7 +356,7 @@ class MainScreenHeader extends Component {
               {menuOptions}
             </Modal.Body>
           </Modal>
-          <span className='application-title'>{AAI_TITLE}</span>
+          <span className='application-title'>{aaiTopLeftPersonalizedHeader}</span>
           <GlobalAutoCompleteSearchBar history={this.props.history}/>
         </div>
         <GlobalInlineMessageBar />

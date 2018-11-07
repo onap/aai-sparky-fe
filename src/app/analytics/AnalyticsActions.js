@@ -26,6 +26,10 @@ import {
 import {ANALYTICS_URL} from 'app/analytics/AnalyticsConstants.js';
 let fetch = require('node-fetch');
 
+export function getStoreAnalyticsPayload() {
+  var documentBody  = document.body.getElementsByTagName('*');
+  return documentBody[0].innerHTML.replace('\s+', '');
+}
 
 function getAnalyticsPostBody(payload){
   return {
@@ -36,7 +40,7 @@ function getAnalyticsPostBody(payload){
 }
 
 export function postAnalyticsData(payload){
-  
+
   return () => {
     fetch(ANALYTICS_URL, {
       method: POST,

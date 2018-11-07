@@ -35,6 +35,7 @@ export const screens = keyMirror({
   VNF_SEARCH: null
 });
 
-export const AAI_TITLE = 'A&AI';
+export const AAI_TOP_LEFT_HEADER = 'A&AI';
+export const AAI_HTML_TITLE = 'A&AI';
 export const MENU_ITEM_TIER_SUPPORT = 'View & Inspect';
 export const MENU_ITEM_VNF_SEARCH = 'VNFs';

@@ -90,7 +90,7 @@ gulp.task('prod', () => {
 		webpackProductionConfig.cache = true;
 		webpackProductionConfig.output = {
 			path: localPath.join(__dirname, 'dist'),
-			publicPath: '/services/aai/webapp/',
+			publicPath: '',
 			filename: '[name].js'
 		};
 		webpackProductionConfig.resolveLoader = {
@@ -116,13 +116,8 @@ gulp.task('prod', () => {
 		};
 		webpackProductionConfig.plugins = [
 			new webpack.DefinePlugin({
-				'process.env': {
-					// This has effect on the react lib size
-					'NODE_ENV': JSON.stringify('production')
-				},
-				DEBUG: false,
-				DEV: false
-			}),
+				'process.env.NODE_ENV': JSON.stringify('production')
+			  }),
 			new webpack.optimize.DedupePlugin(),
 			new webpack.optimize.UglifyJsPlugin()
 		];

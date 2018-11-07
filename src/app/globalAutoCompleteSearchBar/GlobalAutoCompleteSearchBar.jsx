@@ -21,7 +21,7 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import  AutoCompleteSearchBar from 'generic-components/autoCompleteSearchBar/AutoCompleteSearchBar.jsx';
-import {postAnalyticsData} from 'app/analytics/AnalyticsActions.js';
+import {postAnalyticsData, getStoreAnalyticsPayload} from 'app/analytics/AnalyticsActions.js';
 import {getClearGlobalMessageEvent} from 'app/globalInlineMessageBar/GlobalInlineMessageBarActions.js';
 import {
   queryRequestedValues,
@@ -46,7 +46,7 @@ let mapActionToProps = (dispatch) => {
     },
     onSuggestionsClearRequested: () => dispatch(onSuggestionsClearRequested()),
     dispatchAnalytics: () => dispatch(
-      postAnalyticsData(document.documentElement.outerHTML.replace('\s+', ''))),
+      postAnalyticsData(getStoreAnalyticsPayload())),
     onInvalidSearch: (searchText) => {
       dispatch(getInvalidSearchInputEvent(searchText));
     },

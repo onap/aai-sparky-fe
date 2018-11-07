@@ -25,6 +25,9 @@ import {
 import {
   contextHandlerActionTypes
 } from 'app/contextHandler/ContextHandlerConstants.js';
+import {
+  personalizationActionTypes
+} from 'app/personlaization/PersonalizationConstans.js';
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -75,6 +78,12 @@ export default (state = {}, action) => {
       return {
         ...state,
         subscriptionEnabled: false
+      };
+    case personalizationActionTypes.PERSONALIZATION_PAYLOAD_FOUND:
+      return {
+        ...state,
+        aaiTopLeftPersonalizedHeader: action.data.topLeftHeader,
+        aaiPersonalizedHtmlDocumentTitle: action.data.htmlDocumentTitle
       };
   }
   return state;
