@@ -50,6 +50,24 @@
       "revId": "4cf1d31cd49c141f4240ae2b3c830ec60190ef0d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_3bff9536",
+        "filename": "src/app/personlaization/PersonalizationActions.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-11-07T15:21:41Z",
+      "side": 1,
+      "message": "My mistake ... multitasking and this comment should not have been made",
+      "parentUuid": "9adffdf1_3b3c752f",
+      "revId": "4cf1d31cd49c141f4240ae2b3c830ec60190ef0d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
