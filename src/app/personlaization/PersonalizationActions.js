@@ -1,0 +1,59 @@
+import {
+    GET
+  } from 'app/networking/NetworkConstants.js';
+import networkCall from 'app/networking/NetworkCalls.js';
+import {
+  GET_PERSONALIZED_VALUES_URL, 
+  PERSONALIZATION_FAILED_MESSAGE,
+  personalizationActionTypes
+} from 'app/personlaization/PersonalizationConstans.js';
+import {
+  getSetGlobalMessageEvent
+} from 'app/globalInlineMessageBar/GlobalInlineMessageBarActions.js';
+
+import {  
+  STATUS_CODE_5XX_SERVER_ERROR,
+  MESSAGE_LEVEL_WARNING
+} from 'utils/GlobalConstants.js';
+
+
+function createPersonalizedValuesEvent(payload) {
+
+  let event = {
+    type: personalizationActionTypes.PERSONALIZATION_PAYLOAD_FOUND,
+    data: payload
+  };
+  return event;
+}
+
+function fetchPersonalizedValues(fetchRequestCallback) {
+  return dispatch => {
+    return fetchRequestCallback().then(
+      (response) => {
+        if (response.status >= STATUS_CODE_5XX_SERVER_ERROR) {
+          dispatch(getSetGlobalMessageEvent(PERSONALIZATION_FAILED_MESSAGE , MESSAGE_LEVEL_WARNING));
+        } else {
+          // assume 200 status
+          return response.json();
+        }
+      }
+    ).then(
+      (results)=> {
+        dispatch(createPersonalizedValuesEvent(results));
+      }
+    ).catch(
+      () => {
+        dispatch(getSetGlobalMessageEvent(PERSONALIZATION_FAILED_MESSAGE , MESSAGE_LEVEL_WARNING));
+      }
+    );
+  };
+}
+
+export function getPersonalizationDetails(){
+  let personalizationFetchRequest =
+    () => networkCall.getRequest(GET_PERSONALIZED_VALUES_URL, GET);
+    
+  return dispatch => {
+    dispatch(fetchPersonalizedValues(personalizationFetchRequest));
+  };
+}

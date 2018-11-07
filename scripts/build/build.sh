@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 ###############################################################################
 #
@@ -134,27 +134,9 @@ UpdateFEWithCustomViews(){
 #
 ###############################################################################
 
-extensionList=$@
-
-# npm install
-echo "build.sh --- Running npm install"
-npm install
-
-# npm install extensions
-echo "build.sh --- parameter provided $extensionList"
-if [ -z "$extensionList" ]; then
-  echo "build.sh --- No extension provided"
-else
-  echo "build.sh --- Running npm --save ${extensionList}"
-  npm install --save ${extensionList}
-  # copy content when there are extensions
-  UpdateFEwithExtensions
-  UpdateFEWithCustomViews
-fi
+# Copy some extension content to the core sparky
+UpdateFEwithExtensions
 
 # Copy style
 updateStyle
 
-# npm run build
-echo "build.sh --- Running npm run build"
-npm run build

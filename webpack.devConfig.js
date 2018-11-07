@@ -27,20 +27,18 @@ var devPort = process.env.PORT || 8001;
 module.exports = {
   devtool: 'eval-source-map',
   entry: {
-    'aai/bundle': [
+    bundle: [
       'app/main.app.jsx',
-      `webpack-dev-server/client?https://localhost:${devPort}`,
       'webpack/hot/only-dev-server'
     ],
     'editAttributes/editAttributesBundle': [
       'editAttributes/main.app.jsx',
-      `webpack-dev-server/client?https://localhost:${devPort}`,
       'webpack/hot/only-dev-server'
     ]
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath: `https://localhost:${devPort}/`,
+    publicPath: ``,
     filename: '[name].js'
   },
   resolve: {
@@ -57,7 +55,7 @@ module.exports = {
   devServer: {
     port: devPort,
     historyApiFallback: true,
-    publicPath: `https://localhost:${devPort}/`,
+    publicPath: ``,
     contentBase: path.join(__dirname, 'dist'),
     hot: true,
     progress: true,
@@ -74,12 +72,12 @@ module.exports = {
     ],
     loaders: [
       {test: /\.(js|jsx)$/, loaders: ['babel-loader', 'eslint-loader'], exclude: /node_modules/},
-      {test: /\.(css|scss)$/, loaders: ['style', 'css?sourceMap', 'sass?sourceMap']},
+      {test: /\.(css|scss)$/, loaders: ['style-loader', 'css-loader', 'sass-loader']},
       // required for font icons
-      {test: /\.(woff|woff2)(\?.*)?$/, loader: 'url-loader?limit=16384&mimetype=application/font-woff'},
-      {test: /\.(ttf|eot|otf)(\?.*)?$/, loader: 'file-loader'},
-      {test: /\.(png|jpg|svg)(\?.*)?$/, loader: 'url-loader?limit=16384'},
-      {test: /\.json$/, loaders: ['json']}
+      {test: /\.(woff|woff2|ttf|eot|otf)(\?.*)?$/, loader: 'url-loader?limit=163840&mimetype=application/font-woff&name=[name].[ext]'},
+      {test: /\.(png|jpg|svg)(\?.*)?$/, loader: 'url-loader?limit=163840&name=[name].[ext]'},
+      {test: /\.json$/, loaders: ['json']},
+      { test: /\.xml$/, loader: 'xml-loader' }
     ]
   },
   eslint: {

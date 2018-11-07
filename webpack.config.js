@@ -38,7 +38,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath: `http://localhost:${devPort}/services/aai/webapp`,
+    publicPath: ``,
     filename: '[name].js'
   },
   resolve: {
@@ -71,13 +71,13 @@ module.exports = {
       loader: 'source-map-loader'
     }],
     loaders: [
-      {test: /\.(js|jsx)$/, loaders: ['babel-loader', 'eslint-loader'], exclude: /node_modules/},
+      {test: /\.(js|jsx)$/, loaders: ['babel-loader', 'eslint-loader', 'source-map-loader'], exclude: /node_modules/},
       {test: /\.(css|scss)$/, loaders: ['style', 'css?sourceMap', 'sass?sourceMap']},
       // required for font icons
-      {test: /\.(woff|woff2)(\?.*)?$/, loader: 'url-loader?limit=16384&mimetype=application/font-woff'},
-      {test: /\.(ttf|eot|otf)(\?.*)?$/, loader: 'file-loader'},
-      {test: /\.(png|jpg|svg)(\?.*)?$/, loader: 'url-loader?limit=16384'},
-      {test: /\.json$/, loaders: ['json']}
+      {test: /\.(woff|woff2|ttf|eot|otf)(\?.*)?$/, loader: 'url-loader?limit=163840&mimetype=application/font-woff&name=[name].[ext]'},
+      {test: /\.(png|jpg|svg)(\?.*)?$/, loader: 'url-loader?limit=163840'},
+      {test: /\.json$/, loaders: ['json']},
+        { test: /\.xml$/, loader: 'xml-loader' }
     ]
   },
   eslint: {
