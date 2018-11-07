@@ -16,6 +16,24 @@
       "revId": "d6fba6d748db7fbfac158ba8ae1a342c89826043",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_bbf38572",
+        "filename": "src/index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2018-11-07T15:24:54Z",
+      "side": 0,
+      "message": "During starup it gets it from the backend",
+      "parentUuid": "9adffdf1_bb1705a3",
+      "revId": "d6fba6d748db7fbfac158ba8ae1a342c89826043",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
