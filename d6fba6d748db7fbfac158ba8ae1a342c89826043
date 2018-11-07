@@ -34,6 +34,24 @@
       "revId": "d6fba6d748db7fbfac158ba8ae1a342c89826043",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_fba6ed52",
+        "filename": "src/index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2018-11-07T15:28:23Z",
+      "side": 0,
+      "message": "sorry yes, I should have been  more specific ... how do we tell the browser to set the browser tab title (usually it\u0027s done via \u003ctitle\u003e tag... you\u0027ve since removed it).",
+      "parentUuid": "9adffdf1_bbf38572",
+      "revId": "d6fba6d748db7fbfac158ba8ae1a342c89826043",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
