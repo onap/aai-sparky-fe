@@ -52,6 +52,24 @@
       "revId": "d6fba6d748db7fbfac158ba8ae1a342c89826043",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_3637ace5",
+        "filename": "src/index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2018-11-07T15:53:33Z",
+      "side": 0,
+      "message": "We set this in MainScreenHeader in line\ndocument.title \u003d nextProps.aaiPersonalizedHtmlDocumentTitle;",
+      "parentUuid": "9adffdf1_fba6ed52",
+      "revId": "d6fba6d748db7fbfac158ba8ae1a342c89826043",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
