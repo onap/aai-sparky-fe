@@ -18,7 +18,7 @@
     "crypto-js": "^3.1.9-1",
     "d3": "^4.12.0",
     "es6-promise": "^3.2.1",
-    "filter-bar-utils": "1.0.1",
+    "filter-bar-utils": "1.0.2",
     "gulp-sass": "^3.0.0",
     "jquery": "^2.2.2",
     "loadable-components": "^2.2.2",
@@ -52,7 +52,7 @@
     "uuid-js": "^0.7.5",
     "validator": "^4.3.0",
     "velocity-react": "^1.4.1",
-    "vertical-filter-bar": "1.0.10"
+    "vertical-filter-bar": "1.0.11"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -105,6 +105,7 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
+    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-dev-server": "^1.14.1"
   },
   "jest": {

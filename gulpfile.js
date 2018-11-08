@@ -46,12 +46,16 @@ let path = {
 	aaiCss: dist + '/css',
 	saCss: dist + '/editAttributes/css',
 	war: [dist + '**/*.html', dist + '**/*.js', dist + '**/*.{css,png,svg,eot,ttf,woff,woff2,otf}', dist + '**/*.json', 'webapp/**'],
+	bundleSrc:[dist + '**/*.map'],
 	wardest: dist
 };
 
 taskMaker.defineTask('clean', {taskName: 'clean', src: path.output});
 taskMaker.defineTask('copy', {taskName: 'copy-aai-index.html', src: path.aaiIndex, dest: path.output, rename: 'index.html'});
 taskMaker.defineTask('copy', {taskName: 'copy-sa-index.html', src: path.saIndex, dest: path.saOutput, rename: 'index.html'});
+taskMaker.defineTask('copy', {taskName: 'copy-sa-index.html', src: path.saIndex, dest: path.saOutput, rename: 'index.html'});
+taskMaker.defineTask('copy', {taskName: 'copy-map-file', src: path.bundleSrc, dest: path.output, rename: 'mappingFile'});
+taskMaker.defineTask('clean', {taskName: 'clean-map-file', src: path.bundleSrc});
 /** Uncomment the loine below to generate a .war file with a local build */
 // taskMaker.defineTask('compress', {taskName: 'compress-war', src: path.war, filename: appName + '.war', dest: path.wardest})
 
@@ -69,7 +73,7 @@ gulp.task('dev', callback => {
 
 // Production build
 gulp.task('build', callback => {
-	return runSequence('clean', ['copy-stuff'], 'prod', callback);
+	return runSequence('clean', ['copy-stuff'], 'prod', 'copy-map-file', 'clean-map-file', callback);
 	/** Uncomment the loine below to generate a .war file with a local build */
 	//return runSequence('clean', ['copy-stuff'], 'prod', 'compress-war', callback);
 });
@@ -81,48 +85,7 @@ gulp.task('prod', () => {
 
 	return new Promise((resolve, reject)=> {
 		// configure webpack for production
-		let webpackProductionConfig = Object.create(webpackConfig);
-
-		for (let name in webpackProductionConfig.entry) {
-			webpackProductionConfig.entry[name] = webpackProductionConfig.entry[name].filter(path => !path.startsWith('webpack'));
-		}
-
-		webpackProductionConfig.cache = true;
-		webpackProductionConfig.output = {
-			path: localPath.join(__dirname, 'dist'),
-			publicPath: '',
-			filename: '[name].js'
-		};
-		webpackProductionConfig.resolveLoader = {
-			root: [localPath.resolve('.')],
-			alias: {
-				'config-json-loader': 'tools/webpack/config-json-loader/index.js'
-			}
-		};
-
-		// remove source maps
-		webpackProductionConfig.devtool = undefined;
-		webpackProductionConfig.module.preLoaders = webpackProductionConfig.module.preLoaders.filter(preLoader => preLoader.loader != 'source-map-loader');
-		webpackProductionConfig.module.loaders.forEach(loader => {
-			if (loader.loaders && loader.loaders[0] === 'style') {
-				loader.loaders = loader.loaders.map(loaderName => loaderName.replace('?sourceMap', ''));
-			}
-		});
-
-		webpackProductionConfig.module.loaders.push({test: /config.json$/, loaders: ['config-json-loader']});
-		webpackProductionConfig.eslint = {
-			configFile: './.eslintrc',
-			failOnError: true
-		};
-		webpackProductionConfig.plugins = [
-			new webpack.DefinePlugin({
-				'process.env.NODE_ENV': JSON.stringify('production')
-			  }),
-			new webpack.optimize.DedupePlugin(),
-			new webpack.optimize.UglifyJsPlugin()
-		];
-
-		// run production build
+		let webpackProductionConfig = webpackConfig;
 		webpack(webpackProductionConfig, function (err, stats) {
 			console.log('[webpack:build]', stats.toString());
 			if (err || stats.hasErrors()) {
@@ -137,7 +100,6 @@ gulp.task('prod', () => {
 	});
 
 });
-
 
 gulp.task('webpack-dev-server', () => {
 	let myConfig = Object.create(devWebpackConfig);

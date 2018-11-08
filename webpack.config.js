@@ -20,12 +20,12 @@
  */
 'use strict';
 
-var path = require('path');
 var webpack = require('webpack');
-var devPort = process.env.PORT || 8001;
+var path = require('path');
 
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
+  cache: 'true',
   entry: {
     bundle: [
       'app/main.app.jsx',
@@ -39,7 +39,8 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: ``,
-    filename: '[name].js'
+    filename: '[name].js',
+    sourceMapFilename: '[name].js.map'
   },
   resolve: {
     root: [path.resolve('.')],
@@ -52,44 +53,34 @@ module.exports = {
     },
     extensions: ["", ".webpack.js", ".web.js", ".js", ".json", ".jsx"]
   },
-  devServer: {
-    port: devPort,
-    historyApiFallback: true,
-    publicPath: `http://localhost:${devPort}/`,
-    contentBase: path.join(__dirname, 'dist'),
-    hot: true,
-    progress: true,
-    inline: true,
-    debug: true,
-    stats: {
-      colors: true
-    }
+  resolveLoader: {
+    root: [path.resolve('.')],
+    alias: {
+      'config-json-loader': 'tools/webpack/config-json-loader/index.js'
+  }
   },
   module: {
-    preLoaders: [{
-      test: /\.(js|jsx)$/,
-      loader: 'source-map-loader'
-    }],
     loaders: [
-      {test: /\.(js|jsx)$/, loaders: ['babel-loader', 'eslint-loader', 'source-map-loader'], exclude: /node_modules/},
+      {test: /\.(js|jsx)$/, loaders: ['babel-loader', 'eslint-loader'], exclude: /node_modules/},
       {test: /\.(css|scss)$/, loaders: ['style', 'css?sourceMap', 'sass?sourceMap']},
       // required for font icons
       {test: /\.(woff|woff2|ttf|eot|otf)(\?.*)?$/, loader: 'url-loader?limit=163840&mimetype=application/font-woff&name=[name].[ext]'},
       {test: /\.(png|jpg|svg)(\?.*)?$/, loader: 'url-loader?limit=163840'},
       {test: /\.json$/, loaders: ['json']},
-        { test: /\.xml$/, loader: 'xml-loader' }
+      { test: /\.xml$/, loader: 'xml-loader' }
     ]
   },
   eslint: {
     configFile: './.eslintrc',
+    failOnError: true,
     emitError: true,
     emitWarning: true
   },
   plugins: [
     new webpack.DefinePlugin({
-      DEBUG: true
-    }),
-
-    new webpack.HotModuleReplacementPlugin()
+      'process.env.NODE_ENV': JSON.stringify('production')
+      }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({ sourceMap: true })
   ]
 };

@@ -23,9 +23,10 @@
 var path = require('path');
 var webpack = require('webpack');
 var devPort = process.env.PORT || 8001;
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   entry: {
     bundle: [
       'app/main.app.jsx',
@@ -39,7 +40,8 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: ``,
-    filename: '[name].js'
+    filename: '[name].js',
+    sourceMapFilename: '[name].js.map'
   },
   resolve: {
     root: [path.resolve('.')],
@@ -67,9 +69,6 @@ module.exports = {
     }
   },
   module: {
-    preLoaders: [
-      {test: /\.(js|jsx)$/, loader: 'source-map-loader'}
-    ],
     loaders: [
       {test: /\.(js|jsx)$/, loaders: ['babel-loader', 'eslint-loader'], exclude: /node_modules/},
       {test: /\.(css|scss)$/, loaders: ['style-loader', 'css-loader', 'sass-loader']},
@@ -86,6 +85,7 @@ module.exports = {
     emitWarning: true
   },
   plugins: [
+    //new BundleAnalyzerPlugin(),
     new webpack.DefinePlugin({
       DEBUG: true
     }),
