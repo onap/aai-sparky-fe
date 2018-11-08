@@ -19,7 +19,7 @@
  * ============LICENSE_END=========================================================
  */
 
- import {
+import {
     GET
   } from 'app/networking/NetworkConstants.js';
 import networkCall from 'app/networking/NetworkCalls.js';
