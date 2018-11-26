@@ -30,10 +30,6 @@ module.exports = {
     bundle: [
       'app/main.app.jsx',
       'webpack/hot/only-dev-server'
-    ],
-    'editAttributes/editAttributesBundle': [
-      'editAttributes/main.app.jsx',
-      'webpack/hot/only-dev-server'
     ]
   },
   output: {
@@ -48,8 +44,7 @@ module.exports = {
       app: 'src/app',
       'generic-components': 'src/generic-components',
       utils: 'src/utils',
-      images: 'resources/images',
-      editAttributes: 'src/editAttributes'
+      images: 'resources/images'
     },
     extensions: ["", ".webpack.js", ".web.js", ".js", ".json", ".jsx"]
   },

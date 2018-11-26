@@ -37,14 +37,11 @@ let dist = 'dist/';
 let path = {
 	output: dist,
 	aaiOutput: dist + '/aai/',
-	saOutput: dist + '/editAttributes/',
 	assets: './resources/**/*.{css,png,svg,eot,ttf,woff,woff2,otf}',
 	json: './src/**/*.json',
 	aaiIndex: './src/index.html',
-	saIndex: './src/editAttributes/index.html',
 	scss: './resources/scss/**/*.scss',
 	aaiCss: dist + '/css',
-	saCss: dist + '/editAttributes/css',
 	war: [dist + '**/*.html', dist + '**/*.js', dist + '**/*.{css,png,svg,eot,ttf,woff,woff2,otf}', dist + '**/*.json', 'webapp/**'],
 	bundleSrc:[dist + '**/*.map'],
 	wardest: dist
@@ -52,19 +49,17 @@ let path = {
 
 taskMaker.defineTask('clean', {taskName: 'clean', src: path.output});
 taskMaker.defineTask('copy', {taskName: 'copy-aai-index.html', src: path.aaiIndex, dest: path.output, rename: 'index.html'});
-taskMaker.defineTask('copy', {taskName: 'copy-sa-index.html', src: path.saIndex, dest: path.saOutput, rename: 'index.html'});
-taskMaker.defineTask('copy', {taskName: 'copy-sa-index.html', src: path.saIndex, dest: path.saOutput, rename: 'index.html'});
 taskMaker.defineTask('copy', {taskName: 'copy-map-file', src: path.bundleSrc, dest: path.output, rename: 'mappingFile'});
 taskMaker.defineTask('clean', {taskName: 'clean-map-file', src: path.bundleSrc});
 /** Uncomment the loine below to generate a .war file with a local build */
 // taskMaker.defineTask('compress', {taskName: 'compress-war', src: path.war, filename: appName + '.war', dest: path.wardest})
 
 gulp.task('copy-dev-stuff', callback => {
-	return runSequence(['copy-aai-index.html', 'copy-sa-index.html'], callback);
+	return runSequence(['copy-aai-index.html'], callback);
 });
 
 gulp.task('copy-stuff', callback => {
-	return runSequence(['copy-aai-index.html', 'copy-sa-index.html'], callback);
+	return runSequence(['copy-aai-index.html'], callback);
 });
 
 gulp.task('dev', callback => {
