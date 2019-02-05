@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2d9c19a_29173158",
+        "filename": "src/editAttributes/networking/NetworkUtils.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 2981
+      },
+      "writtenOn": "2019-02-05T19:02:20Z",
+      "side": 1,
+      "message": "Why are we exposing this function as the default for this class??? This is a utility class and it is expected that more functions will be placed in here (and thus it would impossible to determine what the default behavior should be)",
+      "revId": "30523188baa937cd188e35d9a1c56a4302288182",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
