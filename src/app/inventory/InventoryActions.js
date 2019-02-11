@@ -111,8 +111,7 @@ function getCountByDateQueryURL() {
 }
 
 export function onLoadTotalCountByDate() {
-  return function (dispatch) {
-    fetch(getCountByDateQueryURL(), {
+  return dispatch => fetch(getCountByDateQueryURL(), {
       credentials: SAME_ORIGIN,
       method: GET,
       headers: POST_HEADER
@@ -124,12 +123,11 @@ export function onLoadTotalCountByDate() {
     ).catch(
       () => dispatch(getFailedCountByDateQueryEvent())
     );
-  };
+
 }
 
 export function onCountByTypeLoad() {
-  return function (dispatch) {
-    fetch(getCountByTypeQueryURL(), {
+  return dispatch => fetch(getCountByTypeQueryURL(), {
       credentials: SAME_ORIGIN,
       method: GET,
       headers: POST_HEADER
@@ -141,12 +139,11 @@ export function onCountByTypeLoad() {
     ).catch(
       () => dispatch(getFailedCountByTypeQueryEvent())
     );
-  };
+
 }
 
 export function onTopographicMapMounted(requestObject) {
-  return function (dispatch) {
-    fetch(getDynamicTopographicQueryURL(requestObject.entityType), {
+  return dispatch => fetch(getDynamicTopographicQueryURL(requestObject.entityType), {
       credentials: SAME_ORIGIN,
       method: GET,
       headers: POST_HEADER
@@ -160,6 +157,5 @@ export function onTopographicMapMounted(requestObject) {
         dispatch(getFailedTopographicVisualizationQueryEvent());
       }
     );
-  };
 }
 

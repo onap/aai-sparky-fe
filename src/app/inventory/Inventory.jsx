@@ -52,7 +52,7 @@ import {
 import TitledContainer from 'generic-components/titledContainer/TitledContainer.jsx';
 import {COLOR_BLUE} from 'utils/GlobalConstants.js';
 
-const mapStateToProps = ({inventoryReducer}) => {
+export const mapStateToProps = ({inventoryReducer}) => {
   let {
         mapPlotPoints   = [], countByType = [], countByDate = [],
         feedbackMsgText = '', feedbackMsgSeverity = ''
