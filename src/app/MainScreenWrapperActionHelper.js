@@ -74,8 +74,7 @@ function createOverlayDataFoundEvent(overlayData, paramName, curData, responseEv
 }
 
 function overlayViewData(dataFetchRequest, paramName, curData, responseEventKey) {
-  return dispatch => {
-    dataFetchRequest().then(
+  return dispatch => dataFetchRequest().then(
       (response) => {
         return response.json();
       }
@@ -113,8 +112,7 @@ function createViewDataFoundEvent(viewData, paramName, curViewData) {
 }
 
 function extensibleViewData(dataFetchRequest, paramName, curViewData) {
-  return dispatch => {
-    return dataFetchRequest().then(
+  return dispatch => dataFetchRequest().then(
       (response) => {
         return response.json();
       }
@@ -127,7 +125,6 @@ function extensibleViewData(dataFetchRequest, paramName, curViewData) {
         dispatch(createViewDataFoundEvent({}, paramName, curViewData));
         //To-do: If need to send a flag later on to the view, add a function to have the flag
       });
-  };
 }
 
 export function extensibleViewNetworkCallback(urlApi, postBody, paramName, curViewData) {
@@ -136,9 +133,7 @@ export function extensibleViewNetworkCallback(urlApi, postBody, paramName, curVi
     () => fetchRequestObj(BASE_URL + urlApi, POST,
       POST_HEADER, postBody);
 
-  return dispatch => {
-    dispatch(extensibleViewData(dataFetchRequest, paramName, curViewData));
-  };
+  return dispatch => dispatch(extensibleViewData(dataFetchRequest, paramName, curViewData));
 }
 
 export function extensibleViewMessageCallback(msgText, msgSeverity) {
