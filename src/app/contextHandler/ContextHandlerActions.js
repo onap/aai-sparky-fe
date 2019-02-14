@@ -81,8 +81,7 @@ function createSubscriptionPayloadEvent(payload) {
 }
 
 function fetchSubscriptionPayload(fetchRequestCallback) {
-  return dispatch => {
-    return fetchRequestCallback().then(
+  return dispatch => fetchRequestCallback().then(
       (response) => {
         if (response.status >= STATUS_CODE_3XX_REDIRECTION) {
           return Promise.reject(new Error(response.status));
@@ -100,16 +99,13 @@ function fetchSubscriptionPayload(fetchRequestCallback) {
         dispatch(getSetGlobalMessageEvent(SUBSCRIPTION_FAILED_MESSAGE , MESSAGE_LEVEL_WARNING));
       }
     );
-  };
 }
 
 export function getSubscriptionPayload() {
   let externalfetchRequest =
   () => networkCall.getRequest(SUBSCRIPTION_PAYLOAD_URL, GET);
   
-  return dispatch => {
-    dispatch(fetchSubscriptionPayload(externalfetchRequest));
-  };
+  return dispatch => dispatch(fetchSubscriptionPayload(externalfetchRequest));
 }
 
 function validateExternalParams(externalURLParams) {
@@ -129,8 +125,8 @@ function createSuggestionFoundEvent(suggestion) {
 
 
 function fetchDataForExternalRequest(fetchRequestCallback) {
-  return dispatch => {
-    return fetchRequestCallback().then(
+  return dispatch =>
+    fetchRequestCallback().then(
       (response) => {
         if (response.status === STATUS_CODE_204_NO_CONTENT || response.status >= STATUS_CODE_3XX_REDIRECTION) {
           return Promise.reject(new Error(response.status));
@@ -158,7 +154,6 @@ function fetchDataForExternalRequest(fetchRequestCallback) {
         dispatch(getSetGlobalMessageEvent(FAILED_REQUEST , MESSAGE_LEVEL_DANGER));
       }
     );
-  };
 }
 
 function validateAndFetchExternalParams(externalParams) {
@@ -172,17 +167,12 @@ function validateAndFetchExternalParams(externalParams) {
     let externalfetchRequest =
       () => networkCall.fetchRequestObj(EXTERNAL_REQ_ENTITY_SEARCH_URL, POST,
         POST_HEADER, postBody);
-    return dispatch => {
-      dispatch(fetchDataForExternalRequest(externalfetchRequest));
-    };
+    return dispatch => dispatch(fetchDataForExternalRequest(externalfetchRequest));
   }
 }
 export function externalUrlRequest(urlParams) {
   let externalURLParams = getExternalParamValues(urlParams);
-  return dispatch => {
-    dispatch(
-      validateAndFetchExternalParams(externalURLParams));
-  };
+  return dispatch => dispatch(validateAndFetchExternalParams(externalURLParams));
 }
 export function externalMessageRequest(jsonParams) {
   return dispatch => {
