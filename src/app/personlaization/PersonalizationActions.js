@@ -74,7 +74,5 @@ export function getPersonalizationDetails(){
   let personalizationFetchRequest =
     () => networkCall.getRequest(GET_PERSONALIZED_VALUES_URL, GET);
     
-  return dispatch => {
-    dispatch(fetchPersonalizedValues(personalizationFetchRequest));
-  };
+  return dispatch => dispatch(fetchPersonalizedValues(personalizationFetchRequest));
 }
