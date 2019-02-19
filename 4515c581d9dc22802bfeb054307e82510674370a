@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4469f0dc_acbb0f97",
+        "filename": "src/app/inventory/Inventory.jsx",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2019-02-19T15:21:55Z",
+      "side": 1,
+      "message": "Why are you exporting mapStateToProps, this is a redux function that is tied to this class",
+      "revId": "4515c581d9dc22802bfeb054307e82510674370a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56ae5fe9_ff607979",
+        "filename": "src/app/inventory/InventoryReducer.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2019-02-19T15:21:55Z",
+      "side": 1,
+      "message": "What is the need to remove the break statements? Source code should not be changed to match the tests, unless the logic is bad. Also did you re-test after this code change?",
+      "revId": "4515c581d9dc22802bfeb054307e82510674370a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0a0f6ae_2b9d4a3a",
+        "filename": "test/app/inventory/Inventory.test.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2019-02-19T15:21:55Z",
+      "side": 1,
+      "message": "Just curious what is the reason to use mount here, can we not use shallow rendering instead?",
+      "revId": "4515c581d9dc22802bfeb054307e82510674370a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff7e043a_531714b3",
+        "filename": "test/app/inventory/Inventory.test.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2019-02-19T15:21:55Z",
+      "side": 1,
+      "message": "It is not a good test to compare mapStateToProps. Why dont you try setting a particular value, and then shallow render the component and see if the component has the property that you have specified",
+      "revId": "4515c581d9dc22802bfeb054307e82510674370a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
