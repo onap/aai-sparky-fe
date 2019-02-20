@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "69a370e6_7653a562",
+        "filename": "src/app/inventory/Inventory.jsx",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 3433
+      },
+      "writtenOn": "2019-02-20T06:06:57Z",
+      "side": 1,
+      "message": "You have right, but I do that, because I wanted to write test to make sure that all state properties used by this component were covered by unit test.",
+      "parentUuid": "4469f0dc_acbb0f97",
+      "revId": "4515c581d9dc22802bfeb054307e82510674370a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56ae5fe9_ff607979",
         "filename": "src/app/inventory/InventoryReducer.js",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-02-19T15:21:55Z",
       "side": 1,
       "message": "What is the need to remove the break statements? Source code should not be changed to match the tests, unless the logic is bad. Also did you re-test after this code change?",
+      "revId": "4515c581d9dc22802bfeb054307e82510674370a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e870bdf_4261121c",
+        "filename": "src/app/inventory/InventoryReducer.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3433
+      },
+      "writtenOn": "2019-02-20T06:06:57Z",
+      "side": 1,
+      "message": "In switch statement when return is used then break is not required, because when return command was executed then break command will never be called.\nI wrote tests to cover this switch statement and everything works as expected.",
+      "parentUuid": "56ae5fe9_ff607979",
       "revId": "4515c581d9dc22802bfeb054307e82510674370a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2fefc907_b572642e",
+        "filename": "test/app/inventory/Inventory.test.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3433
+      },
+      "writtenOn": "2019-02-20T06:06:57Z",
+      "side": 1,
+      "message": "I\u0027m new in React world :)\nI found some article how developers are testing React components and do similar work. They used mount not shallow.",
+      "parentUuid": "f0a0f6ae_2b9d4a3a",
+      "revId": "4515c581d9dc22802bfeb054307e82510674370a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff7e043a_531714b3",
         "filename": "test/app/inventory/Inventory.test.js",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2019-02-19T15:21:55Z",
       "side": 1,
       "message": "It is not a good test to compare mapStateToProps. Why dont you try setting a particular value, and then shallow render the component and see if the component has the property that you have specified",
+      "revId": "4515c581d9dc22802bfeb054307e82510674370a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8d63ed1_1da58c37",
+        "filename": "test/app/inventory/Inventory.test.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 3433
+      },
+      "writtenOn": "2019-02-20T06:06:57Z",
+      "side": 1,
+      "message": "Do you have any example how to write tests to React components as you described in comment above?",
+      "parentUuid": "ff7e043a_531714b3",
       "revId": "4515c581d9dc22802bfeb054307e82510674370a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
