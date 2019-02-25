@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9312c7cc_5552fdfd",
+        "filename": "src/app/inventory/Inventory.jsx",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2019-02-25T15:29:57Z",
+      "side": 1,
+      "message": "I understand why you would want to do this. But I think you can perform a shallow rendering of the component and make sure that the rendering is as expected based on the properties that are defined. We should bot be exporting mapStateToProps. And I dont think this is a change justifies increasing the code coverage.",
+      "parentUuid": "69a370e6_7653a562",
+      "revId": "4515c581d9dc22802bfeb054307e82510674370a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56ae5fe9_ff607979",
         "filename": "src/app/inventory/InventoryReducer.js",
         "patchSetId": 1
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "0621efa1_8f806765",
+        "filename": "src/app/inventory/InventoryReducer.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2019-02-25T15:29:57Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "3e870bdf_4261121c",
+      "revId": "4515c581d9dc22802bfeb054307e82510674370a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0a0f6ae_2b9d4a3a",
         "filename": "test/app/inventory/Inventory.test.js",
         "patchSetId": 1
@@ -101,6 +137,24 @@
       "side": 1,
       "message": "I\u0027m new in React world :)\nI found some article how developers are testing React components and do similar work. They used mount not shallow.",
       "parentUuid": "f0a0f6ae_2b9d4a3a",
+      "revId": "4515c581d9dc22802bfeb054307e82510674370a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d552186_1f9e9158",
+        "filename": "test/app/inventory/Inventory.test.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2019-02-25T15:29:57Z",
+      "side": 1,
+      "message": "Sounds good :-)",
+      "parentUuid": "2fefc907_b572642e",
       "revId": "4515c581d9dc22802bfeb054307e82510674370a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
