@@ -28,21 +28,18 @@ export default(state = {}, action) => {
         ...state,
         mapPlotPoints: action.data.plotPoints
       };
-      break;
     
     case InventoryActionTypes.COUNT_BY_ENTITY_SUCCESS:
       return {
         ...state,
         countByType: action.data.countByType
       };
-      break;
     
     case InventoryActionTypes.COUNT_BY_DATE_SUCCESS:
       return {
         ...state,
         countByDate: action.data.countByDate
       };
-      break;
     
     case InventoryActionTypes.TOPOGRAPHIC_QUERY_FAILED:
     case InventoryActionTypes.COUNT_BY_ENTITY_FAILED:
@@ -52,7 +49,6 @@ export default(state = {}, action) => {
         feedbackMsgSeverity: action.data.severity,
         feedbackMsgText: action.data.message
       };
-      break;
     
     default:
       break;
