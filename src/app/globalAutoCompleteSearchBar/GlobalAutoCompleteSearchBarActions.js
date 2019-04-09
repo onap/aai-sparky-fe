@@ -86,13 +86,6 @@ function fetchView(selectedSuggestion) {
 
 export function populateView(
   searchRequestObject, keyWord, selectedNodeFetchRequest) {
-  if (selectedNodeFetchRequest === undefined) {
-    let postBody = JSON.stringify(searchRequestObject);
-    selectedNodeFetchRequest =
-      () => networkCall.fetchRequest('', POST,
-        POST_HEADER, postBody);
-  }
-
   return dispatch => {
     dispatch(fetchView(searchRequestObject));
   };
@@ -127,7 +120,7 @@ export function queryRequestedValues(keyWord, requestedFetchRequest) {
         postBody);
   }
   return dispatch => {
-    dispatch(fetchRequestedValues(requestedFetchRequest, keyWord), keyWord);
+    return dispatch(fetchRequestedValues(requestedFetchRequest, keyWord), keyWord);
   };
 }
 
@@ -144,7 +137,7 @@ export function onSuggestionsChange(event, value) {
     //Only fetch values if the enter key is used.
     if (event.keyCode === 13) {
       let postBody = JSON.stringify(getTSUIElasticSearchQueryString(value));
-      dispatch(fetchRequestedValues(
+      return dispatch(fetchRequestedValues(
         () => networkCall.fetchRequest(GLOBAL_SEARCH_URL, POST, POST_HEADER,
           postBody), value));
     }
