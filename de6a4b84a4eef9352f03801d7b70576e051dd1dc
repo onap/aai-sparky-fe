@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36bd593b_f8fb7f02",
+        "filename": "test/networking/NetworkCalls.test.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 3771
+      },
+      "writtenOn": "2019-04-09T11:09:51Z",
+      "side": 1,
+      "message": "Please organize this test into given, when, then sections",
+      "revId": "de6a4b84a4eef9352f03801d7b70576e051dd1dc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0226a78e_9af21921",
+        "filename": "test/networking/NetworkCalls.test.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 3771
+      },
+      "writtenOn": "2019-04-09T11:09:51Z",
+      "side": 1,
+      "message": "Please change it to expect(request).toBe(json)",
+      "revId": "de6a4b84a4eef9352f03801d7b70576e051dd1dc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
