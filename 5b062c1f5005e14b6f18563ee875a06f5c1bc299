@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f449e0a8_d93647b5",
+        "filename": "src/app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBarActions.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2019-04-09T17:38:35Z",
+      "side": 0,
+      "message": "What is the reason for removing this code?",
+      "revId": "5b062c1f5005e14b6f18563ee875a06f5c1bc299",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
