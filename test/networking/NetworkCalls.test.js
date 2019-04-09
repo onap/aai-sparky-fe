@@ -90,22 +90,20 @@ describe("Network Utils", () => {
 
   describe('#getRequest', () => {
     it("should fetch any request", () => {
-      const json = suite.sandbox.stub();
-      const fetchPromise = Promise.resolve({json});
-      global.fetch = suite.sandbox.stub();
+        global.fetch = suite.sandbox.stub();
+        const json = suite.sandbox.stub();
+        const url = "localhost";
 
-      global.fetch
-      .withArgs('URL', {
-        credentials: 'same-origin',
-        method: 'GET'
-      })
-      .returns(fetchPromise);
+        global.fetch
+            .withArgs(url, {
+                credentials: 'same-origin',
+                method: 'GET'
+            })
+            .returns(json);
 
-      NetworkCalls.getRequest("URL", "GET");
-
-      return fetchPromise.then(() => {
-        sinon.assert.calledOnce(json);
-      });
+        const request = NetworkCalls.getRequest(url, "GET");
+        expect(json).toBe(request)
+        sinon.assert.calledOnce(global.fetch);
     });
   });
 
