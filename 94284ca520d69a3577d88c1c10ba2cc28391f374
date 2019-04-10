@@ -16,6 +16,24 @@
       "revId": "94284ca520d69a3577d88c1c10ba2cc28391f374",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f811a02e_2978510a",
+        "filename": "src/app/tierSupport/TierSupportActions.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 3771
+      },
+      "writtenOn": "2019-04-10T13:41:41Z",
+      "side": 1,
+      "message": "You are right, this code may slightly change behavior.\nHere I have alternative code, which will not change behavior and work exactly the same way as original code, however it will be testable. \n\nreturn dispatch \u003d\u003e {\n  return Promise.all([\n    dispatch(setBusyFeedback()),    dispatch(fetchSelectedNodeElement(selectedNodeFetchRequest))\n    ]);\n  };\n\nPlease let me know if this solution is acceptable to you",
+      "parentUuid": "968633eb_8896946d",
+      "revId": "94284ca520d69a3577d88c1c10ba2cc28391f374",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
