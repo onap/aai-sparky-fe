@@ -90,34 +90,53 @@ describe("Network Utils", () => {
 
   describe('#getRequest', () => {
     it("should fetch any request", () => {
-      const json = suite.sandbox.stub();
-      const fetchPromise = Promise.resolve({json});
-      global.fetch = suite.sandbox.stub();
+        // given
+        global.fetch = suite.sandbox.stub();
+        const json = suite.sandbox.stub();
+        const url = "localhost";
 
-      global.fetch
-      .withArgs('URL', {
-        credentials: 'same-origin',
-        method: 'GET'
-      })
-      .returns(fetchPromise);
+        global.fetch
+            .withArgs(url, {
+                credentials: 'same-origin',
+                method: 'GET'
+            })
+            .returns(json);
 
-      NetworkCalls.getRequest("URL", "GET");
+        // when
+        const request = NetworkCalls.getRequest(url, "GET");
 
-      return fetchPromise.then(() => {
-        sinon.assert.calledOnce(json);
-      });
+        //then
+        expect(request).toBe(json)
+        sinon.assert.calledOnce(global.fetch);
     });
   });
 
   describe('#genericRequest', () => {
     it('should fetch any generic request', () => {
+      // given
       global.fetch = suite.sandbox.stub();
       const then = suite.sandbox.stub();
       fetch.returns({then});
+
+      // when
       NetworkCalls.genericRequest("localhost", "/relativeUrl", "GET");
 
+      // then
       expect(then.firstCall.args[0]({json: () => "d"})).toEqual("d");
+      sinon.assert.calledOnce(fetch);
+    });
 
+    it('should fetch any generic request - non relative', () => {
+      // given
+      global.fetch = suite.sandbox.stub();
+      const then = suite.sandbox.stub();
+      fetch.returns({then});
+
+      // when
+      NetworkCalls.genericRequest("localhost", false, "GET");
+
+      // then
+      expect(then.firstCall.args[0]({json: () => "d"})).toEqual("d");
       sinon.assert.calledOnce(fetch);
     });
   });
