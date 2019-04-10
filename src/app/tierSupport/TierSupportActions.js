@@ -182,9 +182,9 @@ export function querySelectedNodeElement(
         POST_HEADER, postBody);
   }
 
-  return dispatch => {
-    dispatch(setBusyFeedback());
-    dispatch(fetchSelectedNodeElement(selectedNodeFetchRequest));
+  return async dispatch => {
+    await dispatch(setBusyFeedback());
+    return dispatch(fetchSelectedNodeElement(selectedNodeFetchRequest));
   };
 }
 
