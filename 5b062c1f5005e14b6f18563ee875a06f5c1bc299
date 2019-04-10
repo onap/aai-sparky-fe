@@ -16,6 +16,24 @@
       "revId": "5b062c1f5005e14b6f18563ee875a06f5c1bc299",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f04e909_038fcc3d",
+        "filename": "src/app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBarActions.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 3771
+      },
+      "writtenOn": "2019-04-10T08:25:59Z",
+      "side": 0,
+      "message": "because nothing inside this if block was used outside. So it does nothing. At least in current version",
+      "parentUuid": "f449e0a8_d93647b5",
+      "revId": "5b062c1f5005e14b6f18563ee875a06f5c1bc299",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
