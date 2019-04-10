@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Adam Wudzinski <adam.wudzinski@nokia.com>
+Code-Review+2: James Forsyth <jf2512@att.com>
+Submitted-by: James Forsyth <jf2512@att.com>
+Submitted-at: Wed, 10 Apr 2019 13:36:43 +0000
+Reviewed-on: https://gerrit.onap.org/r/84645
+Project: aai/sparky-fe
+Branch: refs/heads/master
