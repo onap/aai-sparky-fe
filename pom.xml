@@ -93,6 +93,14 @@
                             <goal>npm</goal>
                         </goals>
                         <phase>generate-resources</phase>
+                        <configuration>
+                           <!-- optional: The default argument is actually
+                                "install", so unless you need to run some other npm command,
+                                you can remove this whole <configuration> section.
+                           -->
+                           <arguments>install -ddd</arguments>
+                        </configuration>
+			
                     </execution>
                     <execution>
                         <id>gulp build</id>
