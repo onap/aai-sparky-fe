@@ -73,8 +73,8 @@
                         </goals>
                         <phase>generate-resources</phase>
                         <configuration>
-                            <nodeVersion>v6.2.2</nodeVersion>
-                            <npmVersion>3.10.3</npmVersion>
+                            <nodeVersion>v9.4.0</nodeVersion>
+                            <npmVersion>6.9.0</npmVersion>
                         </configuration>
                     </execution>
                     <execution>
@@ -94,13 +94,12 @@
                         </goals>
                         <phase>generate-resources</phase>
                         <configuration>
-                           <!-- optional: The default argument is actually
-                                "install", so unless you need to run some other npm command,
-                                you can remove this whole <configuration> section.
-                           -->
-                           <arguments>install -ddd</arguments>
+                            <!-- optional: The default argument is actually
+                                 "install", so unless you need to run some other npm command,
+                                 you can remove this whole <configuration> section.
+                            -->
+                            <arguments>install -ddd</arguments>
                         </configuration>
-			
                     </execution>
                     <execution>
                         <id>gulp build</id>
