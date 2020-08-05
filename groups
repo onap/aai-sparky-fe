@@ -1,4 +1,5 @@
 # UUID                                                                        	Group Name
 #
+7ce23fb38117796cd6a783a0a93e4e85d06e00b1                                      	saml/onap-gerrit-aai-sparky-fe-committers
 daebbf523be390041a1a9c0e340a6d833aae5043                                      	GitHub Replication
 ldap:cn=onap-gerrit-aai-sparky-fe-committers,ou=Groups,dc=freestandards,dc=org	ldap/onap-gerrit-aai-sparky-fe-committers
