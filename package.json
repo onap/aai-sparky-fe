@@ -116,7 +116,8 @@
     "automock": false,
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/fileMock.js",
-      "\\.(css|scss)$": "<rootDir>/test/styleMock.js"
+      "\\.(css|scss)$": "<rootDir>/test/styleMock.js",
+      "resources/(.*)": "<rootDir>/resources/$1"
     },
     "testURL": "http://localhost",
     "moduleFileExtensions": [
@@ -141,7 +142,10 @@
       "!**/webpack.config.js",
       "!**/webpack.devConfig.js",
       "!**/coverage/**",
-      "!**/tools/**"
+      "!**/tools/**",
+      "!src/app/main.app.jsx",
+      "!src/app/configurableViews/index.js",
+      "!src/app/extensibility/index.js"
     ]
   },
   "engines": {
