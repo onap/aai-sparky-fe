@@ -31,7 +31,7 @@ To run the project:
 
     > npm start
 
-By default the local instance of the UI will be served to "https://localhost:8001/aai/#/viewInspect".
+By default the local instance of the UI will be served to "https://localhost:8001/aai/#/browse".
 
 This can be configured in the file "webpack.devConfig.js".
 

@@ -2,8 +2,7 @@
  * ============LICENSE_START=======================================================
  * org.onap.aai
  * ================================================================================
- * Copyright © 2017-2018 AT&T Intellectual Property. All rights reserved.
- * Copyright © 2017-2018 Amdocs
+ * Copyright © 2017-2021 AT&T Intellectual Property. All rights reserved.
  * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,3 +27,4 @@ export const personalizationActionTypes = keyMirror({
 
 export const GET_PERSONALIZED_VALUES_URL = BASE_URL + '/rest/getPersonalizedValues';
 export const PERSONALIZATION_FAILED_MESSAGE = 'Failed to fetch personalization values';
+//export const GET_PERSONALIZED_VALUES_URL ='https://localhost:8000/rest/getPersonalizedValues';

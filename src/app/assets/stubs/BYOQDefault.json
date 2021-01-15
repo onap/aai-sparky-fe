@@ -1,0 +1,147 @@
+{
+  "results": [
+    {
+      "id": "16632",
+      "node-type": "generic-vnf",
+      "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890",
+      "properties": {
+        "vnf-id": "generic-vnf-test-0-ABC890",
+        "vnf-name": "example-vnf-name-val-3979",
+        "vnf-type": "vnf-type-onap-sic",
+        "prov-status": "PROV",
+        "orchestration-status": "ACTIVE",
+        "ipv4-loopback0-address": "ipv4-loopback0-address-ALL-GOOD-one",
+        "in-maint": true,
+        "is-closed-loop-disabled": false,
+        "resource-version": "1559248669411"
+      },
+      "related-to": [
+        {
+          "id": "24712",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "entitlement",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/entitlements/entitlement/entitlement-test-21-ABC890/entitlement-test-22-ABC890"
+        },
+        {
+          "id": "28696",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "license",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/licenses/license/license-test-1-ABC890/license-test-2-ABC890"
+        },
+        {
+          "id": "16584",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "vserver",
+          "url": "/aai/v15/cloud-infrastructure/cloud-regions/cloud-region/cr-test-5-ABC890/cr-test-6-ABC890/tenants/tenant/tenant-test-3-ABC890/vservers/vserver/vserver-test-3-ABC890"
+        },
+        {
+          "id": "28864",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "pserver",
+          "url": "/aai/v15/cloud-infrastructure/pservers/pserver/pserver-test-1-ABC890"
+        }
+      ]
+    },
+    {
+      "id": "28696",
+      "node-type": "license",
+      "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/licenses/license/license-test-1-ABC890/license-test-2-ABC890",
+      "properties": {
+        "group-uuid": "license-test-1-ABC890",
+        "resource-uuid": "license-test-2-ABC890",
+        "resource-version": "1558031870257"
+      },
+      "related-to": [
+        {
+          "id": "16632",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "generic-vnf",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890"
+        }
+      ]
+    },
+    {
+      "id": "24712",
+      "node-type": "entitlement",
+      "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/entitlements/entitlement/entitlement-test-21-ABC890/entitlement-test-22-ABC890",
+      "properties": {
+        "group-uuid": "entitlement-test-21-ABC890",
+        "resource-uuid": "entitlement-test-22-ABC890",
+        "resource-version": "1558031901455"
+      },
+      "related-to": [
+        {
+          "id": "16632",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "generic-vnf",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890"
+        }
+      ]
+    },
+    {
+      "id": "28864",
+      "node-type": "pserver",
+      "url": "/aai/v15/cloud-infrastructure/pservers/pserver/pserver-test-1-ABC890",
+      "properties": {
+        "hostname": "pserver-test-1-ABC890",
+        "in-maint": false,
+        "resource-version": "1558031744715"
+      },
+      "related-to": [
+        {
+          "id": "16584",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "vserver",
+          "url": "/aai/v15/cloud-infrastructure/cloud-regions/cloud-region/cr-test-5-ABC890/cr-test-6-ABC890/tenants/tenant/tenant-test-3-ABC890/vservers/vserver/vserver-test-3-ABC890"
+        },
+        {
+          "id": "16632",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "generic-vnf",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890"
+        },
+        {
+          "id": "24600",
+          "relationship-label": "org.onap.relationships.inventory.LocatedIn",
+          "node-type": "complex",
+          "url": "/aai/v15/cloud-infrastructure/complexes/complex/complex-test-1-ABC890"
+        }
+      ]
+    },
+    {
+      "id": "16584",
+      "node-type": "vserver",
+      "url": "/aai/v15/cloud-infrastructure/cloud-regions/cloud-region/cr-test-5-ABC890/cr-test-6-ABC890/tenants/tenant/tenant-test-3-ABC890/vservers/vserver/vserver-test-3-ABC890",
+      "properties": {
+        "vserver-id": "vserver-test-3-ABC890",
+        "vserver-name": "example-vserver-name-val-30739",
+        "vserver-name2": "example-vserver-name2-val-67128",
+        "prov-status": "PROV",
+        "vserver-selflink": "example-vserver-selflink-val-66843",
+        "in-maint": true,
+        "is-closed-loop-disabled": false,
+        "resource-version": "1558031746466"
+      },
+      "related-to": [
+        {
+          "id": "16632",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "generic-vnf",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890"
+        },
+        {
+          "id": "20728",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "tenant",
+          "url": "/aai/v15/cloud-infrastructure/cloud-regions/cloud-region/cr-test-5-ABC890/cr-test-6-ABC890/tenants/tenant/tenant-test-3-ABC890"
+        },
+        {
+          "id": "28864",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "pserver",
+          "url": "/aai/v15/cloud-infrastructure/pservers/pserver/pserver-test-1-ABC890"
+        }
+      ]
+    }
+  ]
+}

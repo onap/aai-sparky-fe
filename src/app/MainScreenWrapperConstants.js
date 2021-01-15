@@ -39,3 +39,5 @@ export const AAI_TOP_LEFT_HEADER = 'A&AI';
 export const AAI_HTML_TITLE = 'A&AI';
 export const MENU_ITEM_TIER_SUPPORT = 'View & Inspect';
 export const MENU_ITEM_VNF_SEARCH = 'VNFs';
+export const AAI_APERTURE_SERVICE = false;
+export const AAI_LOADTEMPLATE_MAX_COUNT = 10;

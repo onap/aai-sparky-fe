@@ -2,8 +2,7 @@
  * ============LICENSE_START=======================================================
  * org.onap.aai
  * ================================================================================
- * Copyright © 2017-2018 AT&T Intellectual Property. All rights reserved.
- * Copyright © 2017-2018 Amdocs
+ * Copyright © 2017-2021 AT&T Intellectual Property. All rights reserved.
  * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,6 +54,8 @@ function fetchPersonalizedValues(fetchRequestCallback) {
           dispatch(getSetGlobalMessageEvent(PERSONALIZATION_FAILED_MESSAGE , MESSAGE_LEVEL_WARNING));
         } else {
           // assume 200 status
+          //for localonly do not commit
+          //dispatch(createPersonalizedValuesEvent(response));
           return response.json();
         }
       }
