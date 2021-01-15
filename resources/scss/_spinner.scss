@@ -1,0 +1,15 @@
+.spin-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.spinner {
+  position: absolute;
+  z-index: 999;
+  left: 50%;
+  top: 45%;
+}
+
+.spin-content {
+  opacity: 0.2;
+}

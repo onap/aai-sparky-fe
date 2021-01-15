@@ -1,0 +1,330 @@
+
+.model-card {
+	.panel {
+	  background-color: initial;
+	  box-shadow: none;
+	  margin-bottom: 0;
+	}
+  
+	.panel-default > .panel-heading {
+	  padding-left: 0;
+	  border: 0;
+	  padding: 0;
+	  color: #191919;
+	}
+	
+	.panel-default > .panel-heading + .panel-collapse > .panel-body {
+	  overflow-y: scroll;
+	  max-height: 200px;
+	  background-color: #fff;
+	  margin-top: 10px;
+	}
+  }
+
+  .aggregate-card {
+    height: 700px !important;
+    margin: 15px 0;
+
+    .aggregate-card-content {
+      overflow: hidden;
+      margin-left: 12px;
+    }
+
+    .aggregate-attribute {
+      margin-left: 24px;
+    }
+
+    .aggregate-card-content:hover {
+      overflow-y: scroll;
+    }
+
+    .label-default {
+      background-color: #5a5a5a;
+    }
+  }
+  
+  .btn-outline-primary {
+	color: #007bff;
+	background-color: transparent;
+	background-image: none;
+	border-color: #007bff;
+  }
+  
+  .btn-outline-primary:hover {
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+  }
+  
+  .btn-outline-primary:focus, .btn-outline-primary.focus {
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  }
+  
+  .btn-outline-primary.disabled, .btn-outline-primary:disabled {
+	color: #007bff;
+	background-color: transparent;
+  }
+  
+  .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+  .show > .btn-outline-primary.dropdown-toggle {
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+  }
+  
+  .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-outline-primary.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  }
+  .model-container .card{
+	height: 400px !important;
+  }
+  .table-header-view th{
+	background: #009fdb;
+	color:#ffffff;
+  }
+  .table-header-view{  
+	color:#ffffff;
+	width:auto !important;
+  }
+  .filter{
+	margin-left:0px !important;
+	margin-right:0px !important;
+  }
+  .filter:last-child {
+	margin-bottom:20px !important;
+  }
+  .react-bootstrap-table table{
+	width:100%;
+	min-width:100%;
+  }
+  .relationshipTable .label-default {
+	background-color: #5a5a5a !important;
+  }
+  .parent-expand-bar {
+	background-color: #81c784;  
+  }
+  .react-bootstrap-table {
+      width: 100%;
+      max-height: 500px;
+      overflow: auto;
+  }
+  .react-bootstrap-table table{
+	font-size:13px;
+  }
+  .react-bootstrap-table table th{
+	word-wrap: break-word;
+	white-space: nowrap;
+  }
+  .filter-label{
+	display:flex;
+	margin-bottom:0px;
+	margin-top:5px;
+  }
+  .nav-tabs > li > a {
+	margin-right: 2px;
+	line-height: 1.42857;
+	border: 1px solid #dfdfdf;
+	border-radius: 10px 10px 0 0px;
+	font-size: 14px;
+	color:#4d6069;
+  }
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+	color: #FFFFFF;
+	background-color: #009fdb;
+	border: 1px solid transparent;
+	border-bottom-color: transparent;
+	cursor: default;
+  }
+  .multipleNodes .model-container {
+	margin: 0px;
+	//width: max-content;
+  }
+  .multipleNodes .container-fluid{
+	padding-left:2px;
+  }
+  .nav-tabs {
+	padding:0px;
+	border-bottom: 4px solid #009fdb;
+  }
+  .nav-tabs > li {
+	float: left;
+	margin-bottom: -3px;
+  }
+  .table-striped > tbody > tr:nth-child(2n) > td {
+     background-color: #ffffff;
+  }
+  .table-striped > tbody > tr:nth-child(2n+1) > td {
+     background-color: #dddddd;
+  }
+  .table-striped > tbody > tr:hover td {
+    background-color: #009fdb4d;
+  }
+  .table-striped > thead > tr > th {
+      background-color: #009fdb;
+      color: #FFFFFFFF;
+  }
+  .relationshipTable{
+	background:#ffffff;
+  }
+  .relationshipTable th {
+	padding: 5px;
+  }
+  .relationshipTable ul {
+	max-height: 300px;
+	overflow-y: scroll;
+  }
+  .relationshipTable li{
+	padding:10px 0px 10px 3px;
+	border:1px solid #7c8388
+  }
+ .relationshipTable li:nth-child(2n){
+		background-color: #ffffff;
+ }
+ .relationshipTable li:nth-child(2n+1){
+		background-color: #dddddd;
+ }
+ .relationshipTable li:hover{
+	 background-color: #009fdb4d;
+ }
+ .react-bootstrap-table .table-hover tr:hover {
+   cursor: auto !important;
+}
+.react-bootstrap-table td.expand-cell {
+  cursor: pointer !important;
+}
+
+.react-bootstrap-table td{
+  white-space:pre-wrap !important;
+}
+.pre-wrap-text{
+  white-space: pre-wrap !important;
+}
+#downloadRangeForm .radio{
+  margin-top:10px;
+
+}
+#downloadRangeForm input[type='radio']{
+  margin-top:5px;
+}
+#downloadRangeForm input{
+  padding:5px 0px 0px 5px
+}
+#downloadRangeForm span{
+  margin-left:5px;
+}
+#downloadRangeForm .warning{
+  color:#ffa500;
+  font-weight:bold;
+  margin:0px !important;
+}
+#downloadRangeForm{
+  margin:10px 0px;
+}
+#downloadPagePane h2{
+  margin-bottom: 10px;
+}
+#downloadRangeForm input[type=radio]:checked:before{
+  font-size: 34px;
+  text-align: center;
+  line-height: 12px;
+}
+.modal-backdrop.in{
+  opacity:0.5 !important;
+}
+.spinner{
+  z-index:9999 !important;
+}
+.savedQueryTemplate th{
+  background:#69a8c7 !important;
+  padding:2px !important;
+}
+.tab-content .form-control{
+  height:37px !important;
+}
+.alignFormTwinElements{
+  width:48% !important;
+  float:left;
+  margin:0px 5px 0px 0px !important;
+}
+.btn-space{
+  margin: 5px !important;
+}
+#template .btn {
+  padding: 6px 16px;
+  margin: 0.2em;
+  white-space: normal;
+  box-shadow: 1px 2px #0c88d7;
+}
+#template .dropdownButton {
+  width:100%;
+}
+#template .btn-secondary {
+  background-color: #fdfdfd;
+  border: 1px solid #d7dbf6;
+}
+@media (min-width: 768px){
+  #customDslBuilderModel .modal-dialog{
+    width: 700px !important;
+    margin: 30px auto;
+  }
+}
+.dsl-panel .caret{
+    right: 0px !important;
+    top: 12px;
+    position: absolute;
+}
+.dsl-panel .inputFilter{
+  padding: 5px 5px 0px 5px !important;
+  width: 89% !important;
+  margin:3px 0px 5px 0px;
+}
+.dsl-panel .btn{
+  font-size:12px !important;
+}
+.inputBoxError{
+  border: 1px solid #ec110b;
+  padding:2px;
+  margin:1px;
+}
+.toggleSwitch .btn-success, .toggleSwitch .btn-success:hover{
+  color: #fff;
+  background-color:#aadc1f;
+  border-color: #888888 !important;
+}
+.toggleSwitch{
+  position: fixed !important;
+  float: right;
+  z-index: 999;
+  right: 10px;
+  margin:5px;
+  top:-2px;
+}
+.switch.btn {
+  min-width: 4.7rem !important;  
+}
+.switch-off.btn {
+  padding-left: 1.0rem;
+}
+.toggleSwitch .btn-danger, .toggleSwitch .btn-danger:hover{
+  color: #000;
+  background-color: #e9ecef;
+  border-color: #888888;
+}
+.switch.off .switch-group {
+  left: -100%;
+  transition: left 1s;
+}
+.switch.on .switch-group {
+  transition: left 1s;
+}
+.toggleSwitch .btn{
+  border-radius:5px;
+  width:100px;
+}
+.switch-handle {
+  border-radius:0px;
+}
+.toggleSwitch .btn-light{
+  width:0px;
+}

@@ -159,6 +159,22 @@
       background-image: url($icons-folder-path + '/vnfSearchicon.png');
     }
 
+    .browse-button-icon {
+      background-image: url($icons-folder-path + '/vnfSearchicon.png');
+    }
+
+    .byoq-ext-button-icon {
+      background-image: url($icons-folder-path + '/vnfSearchicon.png');
+    }
+
+    .custom-query-button-icon {
+      background-image: url($icons-folder-path + '/vnfSearchicon.png');
+    }
+
+    .specialized-search-button-icon {
+      background-image: url($icons-folder-path + '/vnfSearchicon.png');
+    }
+
     .configurable-view-button-icon {
       background-image: url($icons-folder-path + '/reports.svg');
       -webkit-filter: brightness(500);
@@ -178,6 +194,22 @@
     }
 
     .vnf-search-button-icon {
+      background-image: url($icons-folder-path + '/vnfSearchicon_hover.png');
+    }
+
+    .browse-button-icon {
+      background-image: url($icons-folder-path + '/vnfSearchicon_hover.png');
+    }
+
+    .byoq-ext-button-icon {
+      background-image: url($icons-folder-path + '/vnfSearchicon_hover.png');
+    }
+
+    .custom-query-button-icon {
+      background-image: url($icons-folder-path + '/vnfSearchicon_hover.png');
+    }
+
+    .specialized-search-button-icon {
       background-image: url($icons-folder-path + '/vnfSearchicon_hover.png');
     }
 
@@ -208,6 +240,22 @@
     }
 
     .vnf-search-button-icon {
+      background-image: url($icons-folder-path + '/vnfSearchicon_active.png');
+    }
+
+    .browse-button-icon {
+      background-image: url($icons-folder-path + '/vnfSearchicon_active.png');
+    }
+
+    .byoq-ext-button-icon {
+      background-image: url($icons-folder-path + '/vnfSearchicon_active.png');
+    }
+
+    .custom-query-button-icon {
+      background-image: url($icons-folder-path + '/vnfSearchicon_active.png');
+    }
+
+    .specialized-search-button-icon {
       background-image: url($icons-folder-path + '/vnfSearchicon_active.png');
     }
 

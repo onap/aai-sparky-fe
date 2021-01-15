@@ -63,7 +63,7 @@ gulp.task('copy-stuff', callback => {
 });
 
 gulp.task('dev', callback => {
-	return runSequence('clean', 'copy-dev-stuff', 'webpack-dev-server', callback);
+	return runSequence('copy-dev-stuff', 'webpack-dev-server', callback);
 });
 
 // Production build

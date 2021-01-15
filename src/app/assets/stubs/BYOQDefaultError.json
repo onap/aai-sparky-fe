@@ -1,0 +1,7 @@
+{
+  "message": "DSL Query Error:DSL Syntax Error while processing the query :line 1:0 mismatched input '<EOF>' expecting {NUM, ID}",
+  "details": "uri=/proxy/aai/v15/dsl",
+  "statusType": "NOT_FOUND",
+  "status": "404",
+  "date": "Thu 2019.08.01 at 09:14:51 PM EDT"
+}

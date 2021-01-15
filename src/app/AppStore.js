@@ -28,6 +28,7 @@ import VnfSearchReducer from './vnfSearch/VnfSearchReducer.js';
 import GlobalInlineMessageBarReducer from 'app/globalInlineMessageBar/GlobalInlineMessageBarReducer.js';
 import ExtensibilityReducer from 'app/extensibility/ExtensibilityReducer.js';
 import ConfigurableViewReducer from 'app/configurableViews/ConfigurableViewReducer.js';
+import ModelReducer from './model/modelSearch/ModelReducer.js';
 
 
 function createCompose() {
@@ -46,8 +47,9 @@ export const storeCreator = (initialState) => createStore(
     vnfSearch: VnfSearchReducer,
     globalInlineMessageBar: GlobalInlineMessageBarReducer,
     extensibility: ExtensibilityReducer,
-    configurableViews: ConfigurableViewReducer
-  }),
+    configurableViews: ConfigurableViewReducer,
+    modelReducer: ModelReducer
+    }),
   initialState,
   createCompose()
 );
