@@ -1,0 +1,231 @@
+{
+  "results": [
+    {
+      "id": "4256",
+      "node-type": "generic-vnf",
+      "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test",
+      "properties": [
+        {
+          "key": "orchestration-status",
+          "value": "good-orchestration-status",
+          "timestamp": 1558031743832,
+          "end-timestamp": 1558031777175,
+          "sot": "F-Test-ABC890",
+          "end-sot": "SO-ABC890"
+        },
+        {
+          "key": "in-maint",
+          "value": false,
+          "timestamp": 1558031743832,
+          "end-timestamp": 1559237213226,
+          "sot": "F-Test-ABC890",
+          "end-sot": "SO"
+        },
+        {
+          "key": "prov-status",
+          "value": "ACTIVE",
+          "timestamp": 1558031743832,
+          "end-timestamp": 1558031761866,
+          "sot": "F-Test-ABC890",
+          "end-sot": "RO-ABC890"
+        },
+        {
+          "key": "vnf-type",
+          "value": "FW",
+          "timestamp": 1558031743832,
+          "end-timestamp": 1558031808199,
+          "sot": "F-Test-ABC890",
+          "end-sot": "H-ABC890"
+        },
+        {
+          "key": "ipv4-loopback0-address",
+          "value": "ipv4-loopback0-address-good-one",
+          "timestamp": 1558031743832,
+          "end-timestamp": 1558031808199,
+          "sot": "F-Test-ABC890",
+          "end-sot": "H-ABC890"
+        },
+        {
+          "key": "prov-status",
+          "value": "PROV",
+          "timestamp": 1558031761866,
+          "end-timestamp": 1559240185158,
+          "sot": "RO-ABC890",
+          "end-sot": "SO"
+        },
+        {
+          "key": "orchestration-status",
+          "value": "BAD-orchestration-status",
+          "timestamp": 1558031777175,
+          "end-timestamp": 1558031792461,
+          "sot": "SO-ABC890",
+          "end-sot": "P-ABC890"
+        },
+        {
+          "key": "orchestration-status",
+          "value": "ALL-GOOD-orchestration-status",
+          "timestamp": 1558031792461,
+          "end-timestamp": 1559240185158,
+          "sot": "P-ABC890",
+          "end-sot": "SO"
+        },
+        {
+          "key": "vnf-type",
+          "value": "example-vnf-type-val-3979",
+          "timestamp": 1558031808199,
+          "end-timestamp": 1559234935335,
+          "sot": "H-ABC890",
+          "end-sot": "SO-dev"
+        },
+        {
+          "key": "ipv4-loopback0-address",
+          "value": "ipv4-loopback0-address-BAD-one",
+          "timestamp": 1558031823773,
+          "end-timestamp": 1558031839071,
+          "sot": "B-ABC890",
+          "end-sot": "M-ABC890"
+        },
+        {
+          "key": "ipv4-loopback0-address",
+          "value": "ipv4-loopback0-address-ALL-GOOD-one",
+          "timestamp": 1558031839071,
+          "sot": "M-ABC890"
+        },
+        {
+          "key": "vnf-type",
+          "value": "example-vnf-type-val-3979-type-1",
+          "timestamp": 1559234935335,
+          "end-timestamp": 1559235872827,
+          "sot": "SO-dev",
+          "end-sot": "SO-dev"
+        },
+        {
+          "key": "vnf-type",
+          "value": "example-vnf-type-val-3979-type-2",
+          "timestamp": 1559235872827,
+          "end-timestamp": 1559237141294,
+          "sot": "SO-dev",
+          "end-sot": "SO"
+        },
+        {
+          "key": "vnf-type",
+          "value": "vnf-type-onap-sic",
+          "timestamp": 1559237141294,
+          "sot": "SO"
+        },
+        {
+          "key": "in-maint",
+          "value": true,
+          "timestamp": 1559237213226,
+          "end-timestamp": 1559240185158,
+          "sot": "SO",
+          "end-sot": "SO"
+        },
+        {
+          "key": "orchestration-status",
+          "value": "INACTIVE",
+          "timestamp": 1559240185158,
+          "end-timestamp": 1559248669446,
+          "sot": "SO",
+          "end-sot": "TESTSOURCE"
+        },
+        {
+          "key": "in-maint",
+          "value": false,
+          "timestamp": 1559240185158,
+          "end-timestamp": 1559248669446,
+          "sot": "SO",
+          "end-sot": "TESTSOURCE"
+        },
+        {
+          "key": "prov-status",
+          "value": "PRE-PROV",
+          "timestamp": 1559240185158,
+          "end-timestamp": 1559248669446,
+          "sot": "SO",
+          "end-sot": "TESTSOURCE"
+        },
+        {
+          "key": "orchestration-status",
+          "value": "ACTIVE",
+          "timestamp": 1559248669446,
+          "sot": "TESTSOURCE"
+        },
+        {
+          "key": "in-maint",
+          "value": true,
+          "timestamp": 1559248669446,
+          "sot": "TESTSOURCE"
+        },
+        {
+          "key": "prov-status",
+          "value": "PROV",
+          "timestamp": 1559248669446,
+          "sot": "TESTSOURCE"
+        }
+      ],
+      "related-to": [
+        {
+          "id": "4152",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "license",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/licenses/license/license-test-1-ABC890/license-test-2-ABC890",
+          "timestamp": 1558031744142,
+          "end-timestamp": 1558031854596,
+          "sot": "F-Test-ABC890",
+          "end-sot": "M-ABC890"
+        },
+        {
+          "id": "8312",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "license",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/licenses/license/license-test-1-ABC890/license-test-2-ABC890",
+          "timestamp": 1558031870276,
+          "end-timestamp": 0,
+          "sot": "N-ABC890",
+          "end-sot": ""
+        },
+        {
+          "id": "8352",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "entitlement",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/entitlements/entitlement/entitlement-test-11-ABC890/entitlement-test-12-ABC890",
+          "timestamp": 1558031744433,
+          "end-timestamp": 1558031885834,
+          "sot": "F-Test-ABC890",
+          "end-sot": "S-ABC890"
+        },
+        {
+          "id": "12344",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "entitlement",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/entitlements/entitlement/entitlement-test-21-ABC890/entitlement-test-22-ABC890",
+          "timestamp": 1558031901473,
+          "end-timestamp": 0,
+          "sot": "R-ABC890",
+          "end-sot": ""
+        },
+        {
+          "id": "8248",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "pserver",
+          "url": "/aai/v15/cloud-infrastructure/pservers/pserver/pserver-test-1-ABC890",
+          "timestamp": 1558031744746,
+          "end-timestamp": 0,
+          "sot": "F-Test-ABC890",
+          "end-sot": ""
+        },
+        {
+          "id": "8400",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "vserver",
+          "url": "/aai/v15/cloud-infrastructure/cloud-regions/cloud-region/cr-test-5-ABC890/cr-test-6-ABC890/tenants/tenant/tenant-test-3-ABC890/vservers/vserver/vserver-test-3-ABC890",
+          "timestamp": 1558031746239,
+          "end-timestamp": 0,
+          "sot": "F-Test-ABC890",
+          "end-sot": ""
+        }
+      ]
+    }
+  ]
+}

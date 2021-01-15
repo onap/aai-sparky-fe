@@ -1,0 +1,84 @@
+/**
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright © 2017-2018 AT&T Intellectual Property. All rights reserved.
+ * Copyright © 2017-2018 Amdocs
+ * ================================================================================
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============LICENSE_END=========================================================
+ */
+.addPadding {
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+.addPaddingTop {
+  margin-top: 20px;
+}
+.addPaddingSide {
+  margin-left: 20px;
+}
+.addPaddingLeft {
+  margin-left: 5px;
+}
+.my-4 {
+  margin-top: 1.5rem !important;
+}
+.display-2 {
+  font-size: 5.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+.lead {
+  color: #191919;
+  font-family: 'Omnes-Regular';
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+  margin-top: 10px;
+  letter-spacing: -0.024rem;
+}
+.jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+}
+.cardwrap {
+  //word-wrap: break-word;
+  //overflow-wrap: break-word;
+  //word-break: break-all;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+}
+.dropdown-menu {
+  display: flow;
+  min-width: 360px;
+}
+.hidden {
+  display:none;
+}
+.show{
+  display:block;
+}
+.invalid {
+  border: 1px solid red;
+  background-color: #FDA49A;
+  color: white;
+}
+.cardWrapHeaderTxt {
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  color: blue;
+}

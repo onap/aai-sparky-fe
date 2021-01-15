@@ -183,10 +183,8 @@ export function querySelectedNodeElement(
   }
 
   return dispatch => {
-    return Promise.all([
-      dispatch(setBusyFeedback()),
-      dispatch(fetchSelectedNodeElement(selectedNodeFetchRequest))
-    ]);
+    dispatch(setBusyFeedback());
+    dispatch(fetchSelectedNodeElement(selectedNodeFetchRequest));
   };
 }
 

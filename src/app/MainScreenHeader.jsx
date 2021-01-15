@@ -25,14 +25,18 @@ import FontAwesome from 'react-fontawesome';
 import {clearFilters} from 'filter-bar-utils';
 import Button from 'react-bootstrap/lib/Button.js';
 import Modal from 'react-bootstrap/lib/Modal.js';
-import GlobalAutoCompleteSearchBar from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBar.jsx';
 import {postAnalyticsData, getStoreAnalyticsPayload} from 'app/analytics/AnalyticsActions.js';
 import GlobalInlineMessageBar from 'app/globalInlineMessageBar/GlobalInlineMessageBar.jsx';
 import {getClearGlobalMessageEvent} from 'app/globalInlineMessageBar/GlobalInlineMessageBarActions.js';
 import {externalUrlRequest, externalMessageRequest, getSubscriptionPayload} from 'app/contextHandler/ContextHandlerActions.js';
 import { getConfigurableViewConfigs } from 'app/configurableViews/ConfigurableViewActions.js';
+import {GlobalExtConstants} from 'utils/GlobalExtConstants.js';
+import axios from 'axios';
+import {BASE_URL} from 'app/networking/NetworkConstants.js';
+
 import {
-  filterBarActionTypes
+  filterBarActionTypes,
+  ENVIRONMENT
 } from 'utils/GlobalConstants.js';
 
 import {
@@ -43,8 +47,8 @@ import {
 import {
   AAI_TOP_LEFT_HEADER,
   AAI_HTML_TITLE,
-  MENU_ITEM_TIER_SUPPORT,
-  MENU_ITEM_VNF_SEARCH
+  AAI_APERTURE_SERVICE,
+  AAI_LOADTEMPLATE_MAX_COUNT
 } from './MainScreenWrapperConstants.js';
 
 import {
@@ -55,9 +59,12 @@ import {
 
 import {clearSuggestionsTextField} from 'app/globalAutoCompleteSearchBar/GlobalAutoCompleteSearchBarActions.js';
 import {changeUrlAddress} from 'utils/Routes.js';
-import extensibleViews from 'resources/views/extensibleViews.json';
+import defaultViews from 'resources/views/defaultViews.json';
+import defaultViews_onap from 'resources/views/defaultViews_onap.json';
 import {getPersonalizationDetails} from 'app/personlaization/PersonalizationActions.js';
 import {isEmpty} from 'lodash';
+
+let INVLIST = GlobalExtConstants.INVLIST;
 
 const mapStateToProps = ({mainWrapper, configurableViews}) => {
   let {
@@ -68,7 +75,9 @@ const mapStateToProps = ({mainWrapper, configurableViews}) => {
     subscriptionPayload = {},
     subscriptionEnabled = false,
     aaiTopLeftPersonalizedHeader = AAI_TOP_LEFT_HEADER,
-    aaiPersonalizedHtmlDocumentTitle = AAI_HTML_TITLE
+    aaiPersonalizedHtmlDocumentTitle = AAI_HTML_TITLE,
+    aaiPersonalizedApertureService = AAI_APERTURE_SERVICE,
+    aaiPersonalizedLoadTemplateMaxCount = AAI_LOADTEMPLATE_MAX_COUNT
   } = mainWrapper;
 
   let {
@@ -84,7 +93,9 @@ const mapStateToProps = ({mainWrapper, configurableViews}) => {
     subscriptionEnabled,
     configurableViewsConfig,
     aaiTopLeftPersonalizedHeader,
-    aaiPersonalizedHtmlDocumentTitle
+    aaiPersonalizedHtmlDocumentTitle,
+    aaiPersonalizedApertureService,
+    aaiPersonalizedLoadTemplateMaxCount
   };
 };
 
@@ -130,7 +141,9 @@ class MainScreenHeader extends Component {
     secondaryTitle: PropTypes.string,
     subscriptionPayload: PropTypes.object,
     aaiTopLeftPersonalizedHeader: PropTypes.string,
-    aaiPersonalizedHtmlDocumentTitle: PropTypes.string
+    aaiPersonalizedHtmlDocumentTitle: PropTypes.string,
+    aaiPersonalizedApertureService: PropTypes.bool,
+    aaiPersonalizedLoadTemplateMaxCount: PropTypes.string
   };
 
   navigationLinkAndCurrentPathMatch(location, to) {
@@ -168,16 +181,66 @@ class MainScreenHeader extends Component {
       this.isValidExternalURL(this.props.match.params.externalUrl)) {
       this.props.onExternalUrlRequest(this.props.match.params.externalUrl);
     }
+    sessionStorage.setItem(ENVIRONMENT + 'ENABLE_ANALYSIS', true);
+    var portalInfoPath = BASE_URL + '/portal/info';
+    //portalInfoPath = 'https://localhost:8000/portal/info';
+    axios.get(portalInfoPath).then(res => {
+      console.log('res:' + res.data);
+      var roles = [];
+      if(res.status === 200){
+        if(res.data.status && (res.data.status !== '200')){
+          this.setDefaultCredentials(res.data);
+        }else{
+          sessionStorage.setItem(ENVIRONMENT + 'userId', res.data.attuid);
+          for(var i = 0; i < res.data.role.length; i++){
+            roles.push(res.data.role[i].name);
+          }
+          sessionStorage.setItem(ENVIRONMENT + 'roles', roles);
+        }
+      }else{
+        this.setDefaultCredentials(res.data);
+      }
+    }, error=>{
+      this.setDefaultCredentials(error);
+    }).catch(error => {
+      this.setDefaultCredentials(error);
+    });
+  }
+
+  setDefaultCredentials = (error) =>{
+    console.log('MainScreenHeader.jsx :: Issue retrieving portal info from sparky backend, setting default, details - ' + JSON.stringify(error));
+    sessionStorage.setItem(ENVIRONMENT + 'userId', 'default_uid');
+    var roles = ['ui_view'];
+    sessionStorage.setItem(ENVIRONMENT + 'roles', roles);
   }
 
   componentWillReceiveProps(nextProps) {
     if(!isEmpty(nextProps.aaiPersonalizedHtmlDocumentTitle)) {
-      if(!sessionStorage.getItem('PAGE_TITLE') || sessionStorage.getItem('PAGE_TITLE') !== nextProps.aaiPersonalizedHtmlDocumentTitle) {
-        sessionStorage.setItem('PAGE_TITLE', nextProps.aaiPersonalizedHtmlDocumentTitle);
+      if(!sessionStorage.getItem(ENVIRONMENT + 'PAGE_TITLE') || sessionStorage.getItem(ENVIRONMENT + 'PAGE_TITLE') !== nextProps.aaiPersonalizedHtmlDocumentTitle) {
+        sessionStorage.setItem(ENVIRONMENT + 'PAGE_TITLE', nextProps.aaiPersonalizedHtmlDocumentTitle);
       }
       document.title = nextProps.aaiPersonalizedHtmlDocumentTitle;
     } else {
       document.title = AAI_HTML_TITLE;
+    }
+    //Added for APERTURE Service Enable/Disable
+    if(!sessionStorage.getItem(ENVIRONMENT + 'APERTURE_SERVICE') || JSON.parse(sessionStorage.getItem(ENVIRONMENT + 'APERTURE_SERVICE')) !== nextProps.aaiPersonalizedApertureService) {
+      if(JSON.parse(sessionStorage.getItem(ENVIRONMENT + 'APERTURE_SERVICE')) !== nextProps.aaiPersonalizedApertureService){
+        sessionStorage.setItem(ENVIRONMENT + 'APERTURE_SERVICE', Boolean(nextProps.aaiPersonalizedApertureService));
+        if(nextProps.aaiPersonalizedApertureService){
+          sessionStorage.setItem(ENVIRONMENT + 'ENABLE_ANALYSIS', true);
+        }else{
+          sessionStorage.setItem(ENVIRONMENT + 'ENABLE_ANALYSIS', false);
+        }
+      }else{
+        sessionStorage.setItem(ENVIRONMENT + 'APERTURE_SERVICE', Boolean(nextProps.aaiPersonalizedApertureService));
+      }     
+    }
+    if(!sessionStorage.getItem(ENVIRONMENT + 'APERTURE_SERVICE')){
+      sessionStorage.setItem(ENVIRONMENT + 'ENABLE_ANALYSIS', false);
+    }
+    if(!sessionStorage.getItem(ENVIRONMENT + 'LOADTEMPLATE_MAX_COUNT') || sessionStorage.getItem(ENVIRONMENT + 'LOADTEMPLATE_MAX_COUNT') !== nextProps.aaiPersonalizedLoadTemplateMaxCount) {
+      sessionStorage.setItem(ENVIRONMENT + 'LOADTEMPLATE_MAX_COUNT', nextProps.aaiPersonalizedLoadTemplateMaxCount);
     }
     if (this.props.location &&
       this.props.location.pathname !==
@@ -295,33 +358,24 @@ class MainScreenHeader extends Component {
       )}/>
     );
 
-    // add Tier Support view
-    menuOptions.push(
-      <MenuItem key='schemaMenu' to='/schema' label={MENU_ITEM_TIER_SUPPORT}
-                iconClass='button-icon view-inspect-button-icon'/>
-    );
+    let dv = defaultViews;
+    if(INVLIST.IS_ONAP){
+        dv = defaultViews_onap;
+    }
 
-    // add VNF view
-    menuOptions.push(
-      <MenuItem key='vnfSearchMenu'
-                to='/vnfSearch'
-                label={MENU_ITEM_VNF_SEARCH}
-                iconClass='button-icon vnf-search-button-icon'/>
-    );
-
-    // add all custom view menu options
-    for (let view in extensibleViews) {
+    // add all default view menu options
+    for (let view in dv) {
       let shouldDisplayIcon = false;
-      if(extensibleViews[view]['onlyRoute'] === undefined){
+      if(dv[view]['onlyRoute'] === undefined){
         shouldDisplayIcon = true;
-      } else if(extensibleViews[view]['onlyRoute'] === false){
+      } else if(dv[view]['onlyRoute'] === false){
         shouldDisplayIcon = true;
       }
       if(shouldDisplayIcon === true){
         menuOptions.push(
-          <MenuItem key={extensibleViews[view]['viewName'] + 'Menu'} to={'/' + extensibleViews[view]['viewName']}
-                    label={extensibleViews[view]['displayName']}
-                    iconClass={'button-icon ' + extensibleViews[view]['iconClass']}/>
+          <MenuItem key={dv[view]['viewName'] + 'Menu'} to={'/' + dv[view]['viewName']}
+                    label={dv[view]['displayName']}
+                    iconClass={'button-icon ' + dv[view]['iconClass']}/>
         );
       }
     }
@@ -357,7 +411,6 @@ class MainScreenHeader extends Component {
             </Modal.Body>
           </Modal>
           <span className='application-title'>{aaiTopLeftPersonalizedHeader}</span>
-          <GlobalAutoCompleteSearchBar history={this.props.history}/>
         </div>
         <GlobalInlineMessageBar />
         <div className={secondaryTitleClass}>

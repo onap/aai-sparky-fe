@@ -83,7 +83,9 @@ export default (state = {}, action) => {
       return {
         ...state,
         aaiTopLeftPersonalizedHeader: action.data.topLeftHeader,
-        aaiPersonalizedHtmlDocumentTitle: action.data.htmlDocumentTitle
+        aaiPersonalizedHtmlDocumentTitle: action.data.htmlDocumentTitle,
+        aaiPersonalizedApertureService: action.data.apertureService,
+        aaiPersonalizedLoadTemplateMaxCount: action.data.loadTemplateMaxCount
       };
   }
   return state;

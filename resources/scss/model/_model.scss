@@ -1,0 +1,163 @@
+.model-container {
+  margin: 30px;
+
+  i {
+    font-size: 30px;
+  }
+}
+
+.model-gallery {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  div[class^="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.model-card {
+  height: 500px !important;
+  margin: 15px 0;
+
+  .model-card-content {
+    overflow: hidden;
+    margin-left: 24px;
+  }
+  
+  .model-card-content:hover {
+    overflow-y: scroll;
+  }
+
+  .label-default {
+    background-color: #5a5a5a;
+  }
+}
+
+.d3-model-card {
+   height: 700px !important;
+   margin: 15px 0;
+
+   .model-card-header{
+     color: #FFFFFF;
+     background-color: #48a9fb;
+   }
+
+   .model-card-content {
+     overflow: hidden;
+     overflow-x: auto;
+     height: 700px !important;
+     margin-left: 24px;
+   }
+
+   .model-card-content:hover {
+     overflow-y: scroll;
+   }
+
+   .label-default {
+     background-color: #5a5a5a;
+   }
+ }
+ .template-textarea {
+    height: 300px !important
+ }
+ .model-template-card {
+   height: 500px !important;
+   margin: 15px 0;
+
+   .model-card-header{
+     color: #FFFFFF;
+     background-color: #48a9fb;
+   }
+
+   .model-card-content {
+     overflow: hidden;
+     height: 500px !important;
+     margin-left: 24px;
+   }
+
+   .model-card-content:hover {
+     overflow-y: scroll;
+   }
+
+   .label-default {
+     background-color: #5a5a5a;
+   }
+ }
+.d3-history-query-card {
+   height: 750px !important;
+   margin: 15px 0;
+
+   .history-query-card-header{
+     color: #FFFFFF;
+     background-color: #48a9fb;
+   }
+
+   .history-query-card-content {
+     overflow: hidden;
+     height: 750px !important;
+     margin-left: 24px;
+   }
+
+   .history-query-card-content:hover {
+     overflow-y: scroll;
+   }
+
+   .label-default {
+     background-color: #5a5a5a;
+   }
+ }
+
+
+.custom-accordion{
+  background-color: white !important;
+  border-radius: 8px;
+}
+
+.modal-override{
+  max-width: 1350 !important;
+  width: 1350px !important;
+}
+.tabIconChosen{
+    color:#FFFFFF !important;
+}
+.tabIconNotChosen{
+    color:#000000 !important;
+}
+.animationControlIcon{
+    font-size: 35px !important;
+}
+i.animationControlIcon:hover {
+  color: #97b0bf !important;
+}
+i.animationControlIcon:active {
+    color: #4f5b67 !important;
+}
+.animationPlayingIcon{
+    font-size: 35px !important;
+    color: #1bd645 !important;
+}
+.animationStoppedIcon{
+    font-size: 35px !important;
+    color: #ff0016 !important;
+}
+.animationPausedIcon{
+    font-size: 35px !important;
+    color: #4f5b67 !important;
+}
+
+.nodeIcon-deleted{
+ background-color: orangered !important;
+ color: white !important;
+ border-radius: 10px;
+}
+.nodeIcon-created{
+ background-color: #8ed422 !important;
+ color: white !important;
+ border-radius: 10px;
+}
+.nodeIcon-modified{
+ background-color: orange !important;
+ color: white !important;
+ border-radius: 10px;
+}

@@ -1,0 +1,317 @@
+{
+  "results": [
+    {
+      "id": "4256",
+      "node-type": "generic-vnf",
+      "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890",
+      "properties": [
+        {
+          "key": "aai-node-type",
+          "value": "generic-vnf",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "source-of-truth",
+          "value": "F-Test-ABC890",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "aai-uri",
+          "value": "/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "vnf-id",
+          "value": "generic-vnf-test-0-ABC890",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "vnf-name",
+          "value": "example-vnf-name-val-3979",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "is-closed-loop-disabled",
+          "value": false,
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "start-ts",
+          "value": 1558031743832,
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "ipv4-loopback0-address",
+          "value": "ipv4-loopback0-address-ALL-GOOD-one",
+          "timestamp": 1558031839071,
+          "sot": "M-ABC890"
+        },
+        {
+          "key": "vnf-type",
+          "value": "vnf-type-onap-sic",
+          "timestamp": 1559237141294,
+          "sot": "SO"
+        },
+        {
+          "key": "orchestration-status",
+          "value": "ACTIVE",
+          "timestamp": 1559248669446,
+          "sot": "SOURCETEST"
+        },
+        {
+          "key": "in-maint",
+          "value": true,
+          "timestamp": 1559248669446,
+          "sot": "SOURCETEST"
+        },
+        {
+          "key": "prov-status",
+          "value": "PROV",
+          "timestamp": 1559248669446,
+          "sot": "SOURCETEST"
+        }
+      ],
+      "related-to": [
+        {
+          "id": "8312",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "license",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/licenses/license/license-test-1-ABC890/license-test-2-ABC890",
+          "timestamp": 1558031870276,
+          "sot": "N-ABC890"
+        },
+        {
+          "id": "12344",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "entitlement",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/entitlements/entitlement/entitlement-test-21-ABC890/entitlement-test-22-ABC890",
+          "timestamp": 1558031901473,
+          "sot": "R-ABC890"
+        },
+        {
+          "id": "8248",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "pserver",
+          "url": "/aai/v15/cloud-infrastructure/pservers/pserver/pserver-test-1-ABC890",
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "id": "8400",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "vserver",
+          "url": "/aai/v15/cloud-infrastructure/cloud-regions/cloud-region/cr-test-5-ABC890/cr-test-6-ABC890/tenants/tenant/tenant-test-3-ABC890/vservers/vserver/vserver-test-3-ABC890",
+          "timestamp": 1558031746239,
+          "sot": "F-Test-ABC890"
+        }
+      ]
+    },
+    {
+      "id": "8248",
+      "node-type": "pserver",
+      "url": "/aai/v15/cloud-infrastructure/pservers/pserver/pserver-test-1-ABC890",
+      "properties": [
+        {
+          "key": "in-maint",
+          "value": false,
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "aai-node-type",
+          "value": "pserver",
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "source-of-truth",
+          "value": "F-Test-ABC890",
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "aai-uri",
+          "value": "/cloud-infrastructure/pservers/pserver/pserver-test-1-ABC890",
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "hostname",
+          "value": "pserver-test-1-ABC890",
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "start-ts",
+          "value": 1558031744746,
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        }
+      ],
+      "related-to": [
+        {
+          "id": "4256",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "generic-vnf",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890",
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "id": "8400",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "vserver",
+          "url": "/aai/v15/cloud-infrastructure/cloud-regions/cloud-region/cr-test-5-ABC890/cr-test-6-ABC890/tenants/tenant/tenant-test-3-ABC890/vservers/vserver/vserver-test-3-ABC890",
+          "timestamp": 1558031746491,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "id": "4216",
+          "relationship-label": "org.onap.relationships.inventory.LocatedIn",
+          "node-type": "complex",
+          "url": "/aai/v15/cloud-infrastructure/complexes/complex/complex-test-1-ABC890",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        }
+      ]
+    },
+    {
+      "id": "4216",
+      "node-type": "complex",
+      "url": "/aai/v15/cloud-infrastructure/complexes/complex/complex-test-1-ABC890",
+      "properties": [
+        {
+          "key": "aai-node-type",
+          "value": "complex",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "source-of-truth",
+          "value": "F-Test-ABC890",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "aai-uri",
+          "value": "/cloud-infrastructure/complexes/complex/complex-test-1-ABC890",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "start-ts",
+          "value": 1558031745048,
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "physical-location-id",
+          "value": "complex-test-1-ABC890",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "data-center-code",
+          "value": "lisleil-test-11",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "complex-name",
+          "value": "complex-name-lisleil-test-11",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "physical-location-type",
+          "value": "lisle-lab",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "street1",
+          "value": "4513 Western Ave",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "street2",
+          "value": "CU-211",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "city",
+          "value": "Lisle",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "state",
+          "value": "IL",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "postal-code",
+          "value": "60532",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "country",
+          "value": "USA",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "region",
+          "value": "Midwest",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "latitude",
+          "value": "example-latitude-val-2652",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "longitude",
+          "value": "example-longitude-val-2652",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "elevation",
+          "value": "95",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "lata",
+          "value": "example-lata-val-2652",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        }
+      ],
+      "related-to": [
+        {
+          "id": "8248",
+          "relationship-label": "org.onap.relationships.inventory.LocatedIn",
+          "node-type": "pserver",
+          "url": "/aai/v15/cloud-infrastructure/pservers/pserver/pserver-test-1-ABC890",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        }
+      ]
+    }
+  ]
+}

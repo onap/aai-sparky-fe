@@ -25,13 +25,16 @@ import AutoSuggest from 'react-autosuggest';
 import Highlighter from 'react-highlight-words';
 import debounce from 'lodash.debounce';
 import {ButtonGroup} from 'react-bootstrap';
+import Modal from 'react-bootstrap/lib/Modal';
 import {Link} from 'react-router-dom';
+import {genericRequest} from 'app/networking/NetworkCalls.js';
 
 import {changeUrlAddress} from 'utils/Routes.js';
 
 import {
   ICON_CLASS_SEARCH,
   ICON_CLASS_CLEAR,
+  ICON_CLASS_HELP,
   SEARCH_DEBOUNCE_TIME,
   NO_MATCHES_FOUND,
   SEARCH_PLACEHOLDER_TEXT
@@ -43,6 +46,15 @@ export default class AutoCompleteSearchBar extends Component {
     suggestions: PropTypes.array,
     cachedSuggestions: PropTypes.array,
     suggestionName: PropTypes.string
+  };
+
+  constructor(props) {
+    console.log(props);
+    super(props);
+    this.state = {
+      helpModalShow: false,
+      searchable: []
+    };
   };
 
   componentWillMount() {
@@ -107,9 +119,40 @@ export default class AutoCompleteSearchBar extends Component {
       onChange: onInputChange
     };
 
+    let closeHelpModal = () => {
+      this.setState({helpModalShow: false});
+    };
+    let showHelpModal = () => {
+      genericRequest('/schema/searchable', true, 'GET').then(res=>{
+        let searchDOM =  res.sort(function(a, b) {
+          var compareA = (a['node-type']).toLowerCase();
+          var compareB = (b['node-type']).toLowerCase();
+          if(compareA < compareB){
+            return -1;
+          };
+          if(compareA > compareB){
+            return 1;
+          };
+          return 0;
+        }).map((prop) => {
+          return (
+            <div><p><strong>{prop['node-type']}:</strong></p><p>{prop['searchable-attributes']}</p></div>
+          );
+        });
+        this.setState({searchable: searchDOM, helpModalShow: true});
+      }, error => {
+        console.log(error);
+        this.setState({searchable: 'An error occurred, please try again later.', helpModalShow: true});
+      }).catch(error => {
+        console.log(error);
+        this.setState({searchable: 'An error occurred, please try again later.', helpModalShow: true});
+      });
+    };
+
     let clearButtonClass = (value.length > 0)
       ? 'auto-complete-clear-button'
       : 'auto-complete-clear-button hidden';
+
     return (
       <div className='auto-complete-search'>
         <AutoSuggest
@@ -127,10 +170,12 @@ export default class AutoCompleteSearchBar extends Component {
           renderSuggestionsContainer={this.renderSuggestionsContainer}/>
         <ButtonGroup className='auto-complete-search-button-group'>
           <Button type='submit' className={clearButtonClass}
-                  onClick={onClearSuggestionsTextFieldRequested}>
+            onClick={onClearSuggestionsTextFieldRequested}>
             <i className={ICON_CLASS_CLEAR} aria-hidden='true'/>
           </Button>
-
+          <Button type='submit' className='auto-complete-help-button' onClick={showHelpModal}>
+            <i className={ICON_CLASS_HELP} aria-hidden='true'/>
+          </Button>
           <Button type='submit' className='auto-complete-search-button' onClick={() => {
             this.newSearchSelected(this.getSelectedSuggestionObj(value, cachedSuggestions),
               onInvalidSearch, dispatchAnalytics, value);
@@ -139,6 +184,21 @@ export default class AutoCompleteSearchBar extends Component {
             <i className={ICON_CLASS_SEARCH} aria-hidden='true'/>
           </Button>
         </ButtonGroup>
+        <div className='static-modal'>
+          <Modal show={this.state.helpModalShow} onHide={closeHelpModal}>
+            <Modal.Header>
+            	<Modal.Title>Searchable Fields</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div className='modal-searchable'>
+                {this.state.searchable}
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+            	<Button onClick={closeHelpModal}>Close</Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
       </div>
     );
   }

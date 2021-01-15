@@ -28,8 +28,7 @@ let fetch = require('node-fetch');
 
 export function getStoreAnalyticsPayload() {
   var documentBody  = document.body.getElementsByTagName('*');
-  // document.body is not available while running jest tests
-  return documentBody[0] ? documentBody[0].innerHTML.replace('\s+', '') : '';
+  return documentBody[0].innerHTML.replace('\s+', '');
 }
 
 function getAnalyticsPostBody(payload){
