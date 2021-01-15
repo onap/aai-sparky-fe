@@ -55,6 +55,8 @@ function fetchPersonalizedValues(fetchRequestCallback) {
           dispatch(getSetGlobalMessageEvent(PERSONALIZATION_FAILED_MESSAGE , MESSAGE_LEVEL_WARNING));
         } else {
           // assume 200 status
+          //for localonly do not commit
+          //dispatch(createPersonalizedValuesEvent(response));
           return response.json();
         }
       }

@@ -1,0 +1,276 @@
+{
+  "results": [
+    {
+      "id": "4256",
+      "node-type": "generic-vnf",
+      "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890",
+      "properties": [
+        {
+          "key": "orchestration-status",
+          "value": "good-orchestration-status",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "in-maint",
+          "value": false,
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "prov-status",
+          "value": "ACTIVE",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "aai-node-type",
+          "value": "generic-vnf",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "source-of-truth",
+          "value": "F-Test-ABC890",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "aai-uri",
+          "value": "/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "vnf-id",
+          "value": "generic-vnf-test-0-ABC890",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "vnf-name",
+          "value": "example-vnf-name-val-3979",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "vnf-type",
+          "value": "FW",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "ipv4-loopback0-address",
+          "value": "ipv4-loopback0-address-good-one",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "is-closed-loop-disabled",
+          "value": false,
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "start-ts",
+          "value": 1558031743832,
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        }
+      ],
+      "related-to": [
+        {
+          "id": "4152",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "license",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/licenses/license/license-test-1-ABC890/license-test-2-ABC890",
+          "timestamp": 1558031744142,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "id": "8352",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "entitlement",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/entitlements/entitlement/entitlement-test-11-ABC890/entitlement-test-12-ABC890",
+          "timestamp": 1558031744433,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "id": "8248",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "pserver",
+          "url": "/aai/v15/cloud-infrastructure/pservers/pserver/pserver-test-1-ABC890",
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        }
+      ]
+    },
+    {
+      "id": "4152",
+      "node-type": "license",
+      "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/licenses/license/license-test-1-ABC890/license-test-2-ABC890",
+      "properties": [
+        {
+          "key": "aai-node-type",
+          "value": "license",
+          "timestamp": 1558031744142,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "source-of-truth",
+          "value": "F-Test-ABC890",
+          "timestamp": 1558031744142,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "aai-uri",
+          "value": "/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/licenses/license/license-test-1-ABC890/license-test-2-ABC890",
+          "timestamp": 1558031744142,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "group-uuid",
+          "value": "license-test-1-ABC890",
+          "timestamp": 1558031744142,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "resource-uuid",
+          "value": "license-test-2-ABC890",
+          "timestamp": 1558031744142,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "start-ts",
+          "value": 1558031744142,
+          "timestamp": 1558031744142,
+          "sot": "F-Test-ABC890"
+        }
+      ],
+      "related-to": [
+        {
+          "id": "4256",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "generic-vnf",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890",
+          "timestamp": 1558031744142,
+          "sot": "F-Test-ABC890"
+        }
+      ]
+    },
+    {
+      "id": "8352",
+      "node-type": "entitlement",
+      "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/entitlements/entitlement/entitlement-test-11-ABC890/entitlement-test-12-ABC890",
+      "properties": [
+        {
+          "key": "aai-node-type",
+          "value": "entitlement",
+          "timestamp": 1558031744433,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "source-of-truth",
+          "value": "F-Test-ABC890",
+          "timestamp": 1558031744433,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "aai-uri",
+          "value": "/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890/entitlements/entitlement/entitlement-test-11-ABC890/entitlement-test-12-ABC890",
+          "timestamp": 1558031744433,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "group-uuid",
+          "value": "entitlement-test-11-ABC890",
+          "timestamp": 1558031744433,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "resource-uuid",
+          "value": "entitlement-test-12-ABC890",
+          "timestamp": 1558031744433,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "start-ts",
+          "value": 1558031744433,
+          "timestamp": 1558031744433,
+          "sot": "F-Test-ABC890"
+        }
+      ],
+      "related-to": [
+        {
+          "id": "4256",
+          "relationship-label": "org.onap.relationships.inventory.BelongsTo",
+          "node-type": "generic-vnf",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890",
+          "timestamp": 1558031744433,
+          "sot": "F-Test-ABC890"
+        }
+      ]
+    },
+    {
+      "id": "8248",
+      "node-type": "pserver",
+      "url": "/aai/v15/cloud-infrastructure/pservers/pserver/pserver-test-1-ABC890",
+      "properties": [
+        {
+          "key": "in-maint",
+          "value": false,
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "aai-node-type",
+          "value": "pserver",
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "source-of-truth",
+          "value": "F-Test-ABC890",
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "aai-uri",
+          "value": "/cloud-infrastructure/pservers/pserver/pserver-test-1-ABC890",
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "hostname",
+          "value": "pserver-test-1-ABC890",
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "start-ts",
+          "value": 1558031744746,
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        }
+      ],
+      "related-to": [
+        {
+          "id": "4256",
+          "relationship-label": "tosca.relationships.HostedOn",
+          "node-type": "generic-vnf",
+          "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890",
+          "timestamp": 1558031744746,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "id": "4216",
+          "relationship-label": "org.onap.relationships.inventory.LocatedIn",
+          "node-type": "complex",
+          "url": "/aai/v15/cloud-infrastructure/complexes/complex/complex-test-1-ABC890",
+          "timestamp": 1558031745048,
+          "sot": "F-Test-ABC890"
+        }
+      ]
+    }
+  ]
+}

@@ -26,6 +26,7 @@
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
+    overflow:auto;
 }
 
 .view-container {
@@ -38,8 +39,7 @@
 .showContainer {
 }
 
-.spin-container {
-	overflow: hidden;
+.spinner-container {
 	position: relative;
 }
 
@@ -50,6 +50,6 @@
 	top: 49%;
 }
 
-.spin-content {
+.spinner-content {
 	opacity: 0.2;
 }
