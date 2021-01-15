@@ -1,3 +1,25 @@
 .panel {
   border: none;
 }
+
+.model-card {
+  .panel {
+    background-color: initial;
+    box-shadow: none;
+    margin-bottom: 0;
+  }
+
+  .panel-default > .panel-heading {
+    padding-left: 0;
+    border: 0;
+    padding: 0;
+    color: #191919 !important;
+  }
+  
+  .panel-default > .panel-heading + .panel-collapse > .panel-body {
+    overflow-y: scroll;
+    max-height: 250px;
+    background-color: #fff;
+    margin-top: 15px;
+  }
+}

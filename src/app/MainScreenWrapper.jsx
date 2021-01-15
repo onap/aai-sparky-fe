@@ -20,7 +20,7 @@
  */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import * as Extensibility from './extensibility/index.js';
+import * as Module from './module/index.js';
 import TierSupport from './tierSupport/TierSupport.jsx';
 import VnfSearch from './vnfSearch/VnfSearch.jsx';
 import MainScreenHeader from './MainScreenHeader.jsx';
@@ -45,7 +45,7 @@ import {
   extensibleViewMessageCallback
 } from './MainScreenWrapperActionHelper.js';
 
-import extensibleViews from 'resources/views/extensibleViews.json';
+import defaultViews from 'resources/views/defaultViews.json';
 import customComponentConfig from 'resources/views/customComponents.json';
 import { newCustomComponentsEvent } from 'app/configurableViews/ConfigurableViewActions.js';
 import {
@@ -146,10 +146,10 @@ class MainScreenWrapper extends Component {
     } = this.props;
 
     let customViewList = [];
-    extensibleViews.forEach(function(view,key) {
+    defaultViews.forEach(function(view,key) {
 
       let path = '', extKey = '';
-      if(isEmpty(extensibleViews[key]['viewParams'])){
+      if(isEmpty(defaultViews[key]['viewParams'])){
         path = '/' + view.viewName + '/:extensibleViewParams?';
         extKey = view.viewName + 'Route';
       } else {
@@ -159,12 +159,12 @@ class MainScreenWrapper extends Component {
 
       var renderComponent = (props) => {
         let viewParams = {};
-        if(isEmpty(extensibleViews[key]['viewParams']) && props.match.params.extensibleViewParams !== undefined) {
+        if(isEmpty(defaultViews[key]['viewParams']) && props.match.params.extensibleViewParams !== undefined) {
           viewParams = decryptParamsForView(props.match.params.extensibleViewParams);
         }
 
-        if (Extensibility.default.hasOwnProperty(view.componentName)) {
-          let Component = Extensibility.default[view.componentName];
+        if (Module.default.hasOwnProperty(view.componentName)) {
+          let Component = Module.default[view.componentName];
           return (
             <Component
               {...props}
@@ -189,7 +189,7 @@ class MainScreenWrapper extends Component {
           );
         }
       };
-      if(isEmpty(extensibleViews[key]['isExact']) && !extensibleViews[key]['isExact']){
+      if(isEmpty(defaultViews[key]['isExact']) && !defaultViews[key]['isExact']){
         customViewList.push(
           <Route key={extKey} path={path} render={renderComponent}/>
         );
@@ -205,7 +205,7 @@ class MainScreenWrapper extends Component {
 
     return (
       <Router>
-        <div className='main-app-container'>
+        <div className='main-app-container' id='main-app-container'>
           <Switch>
             <Redirect from='/' exact to='/schema'/>
           </Switch>

@@ -1,0 +1,135 @@
+/*
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright © 2017-2021 AT&T Intellectual Property. All rights reserved.
+ * ================================================================================
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============LICENSE_END=========================================================
+ */
+
+.badgeFilter {
+    color: #31708f;
+    background-color: #fff;
+    display: inline-block;
+    white-space: nowrap;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    border-radius: 1em;
+    border-color: #009fdb;
+    margin: 0.4em 0.4em 0.4em 0em;
+    padding: 1px;
+    box-shadow: 1px 2px #abe0f5;
+    border: 1px solid #7fd6f8;
+    font-size: 0.9em;
+}
+
+.badgeFilter span{
+    float: left;
+    padding: 0.1em 0.2em;
+}
+
+.badgeFilter .close{
+    float:left;
+    color:#363434 !important
+}
+
+.leftNavSelection {
+    color:#ffffff;
+    background-color: #009fdb;
+    box-sizing : border-box;
+    border-radius: 0.2em;
+    border-color: #009fdb;
+}
+
+.leftNavSelection div:hover {
+    color:#000;
+    background-color: #ffffff;    
+}
+.leftNavSelected {
+    color:#ffffff;
+    background-color: #e99b0a;
+    box-sizing : border-box;
+    border-radius: 0.2em;
+    border-color: #f59505;
+}
+#filters {
+    margin:20px 0px 20px 20px;
+}
+.leftNavSelection header {
+    margin:20px 0px 0px 0px;
+    border-bottom:1px solid #fff;
+    font-size: 16px;
+    padding: 0.25em;    
+}
+.mainSectionSelection .panel-primary {
+    border: 1px solid transparent;
+    border-color: #009fdb;
+    border-radius: 1;
+}
+#filterPane .btn {
+    padding: 6px 16px;
+    margin: 0.2em;
+    white-space: normal;
+    box-shadow: 1px 2px #0c88d7;
+}
+#filterPane .dropdownButton {
+    width:100%;
+}
+#filterPane .btn-secondary {
+    background-color: #fdfdfd;
+    border: 1px solid #d7dbf6;
+}
+
+#filterPane .dropdown{
+    width:100%;
+}
+
+#filterPane .caret, #template .caret {
+    right: 0px;
+    top: 12px;
+    position: absolute;
+    margin: 0.2em;
+}
+#filterPane input {
+    padding:5px 5px 7px 5px;
+}
+.topBottomMargin {
+    margin:0.5em 0em;
+}
+#filterPane .label {
+    display: inline-block;
+    padding: 0.9em;
+    margin: 1em 0em;
+}
+.custom-container{
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: inherit;
+}
+.removeLeftPadding{
+    padding-left:0px !important;
+}
+.resultMessage{
+    font-size: 20px;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 5;
+    color: inherit;
+}
+.badgeFilter i{
+    font-style: italic;
+    font-size: 0.9em !important;
+}

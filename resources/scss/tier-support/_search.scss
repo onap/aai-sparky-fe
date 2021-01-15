@@ -28,8 +28,9 @@
 }
 
 .auto-complete-search-button-group {
-  position: absolute !important;
-  padding-top: 3px;
+  position: inherit !important;
+  display: inline-block !important;
+  vertical-align: bottom !important;
 }
 
 .auto-complete-search input.form-control {
@@ -38,6 +39,13 @@
 
 .auto-complete-search-button, .auto-complete-search-button:focus {
   background-color: $search-button-background-color;
+  width: 45px;
+  height: 30px;
+  border: solid 1px $search-border-color1;
+}
+
+.auto-complete-help-button, .auto-complete-help-button:focus {
+  background-color: $white;
   width: 45px;
   height: 30px;
   border: solid 1px $search-border-color1;
@@ -53,7 +61,18 @@
   background-color: $search-button-background-color;
 }
 
+.auto-complete-search .fa-question-circle {
+  font-size: 1em;
+  line-height: 1em;
+  background-color: $white;
+}
+
 .auto-complete-search button:hover .fa-search {
+  color: $primary-background-color;
+  background-color: $search-background-color1;
+}
+
+.auto-complete-search button:hover .fa-question-circle {
   color: $primary-background-color;
   background-color: $search-background-color1;
 }
@@ -188,4 +207,13 @@
   font-weight: bolder;
   background-color:inherit;
   padding: 0px;
+}
+
+.modal-searchable {
+  height: 500px !important;
+  margin: 15px 0;
+  overflow-y: scroll;
+}
+.modal-searchable:hover {
+  overflow-y: scroll;
 }
