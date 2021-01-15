@@ -41,3 +41,21 @@ export const STATUS_CODE_5XX_SERVER_ERROR = 500;
 export const filterBarActionTypes = keyMirror(FilterBarConstants.FILTER_BAR_ACTION_TYPES);
 
 export const UNIFIED_FILTERS_URL = BASE_URL + '/rest/search/unifiedFilterRequest';
+
+var url = window.location.href;
+var environment = '';
+var APP_TITLE_REGX = '\/services\/(\\w+)';
+var APP_TITLE_REGX_LOCAL = '\/(\\w+)/#';
+if(url.includes('localhost')){
+  var regTitle = new RegExp(APP_TITLE_REGX_LOCAL);
+  environment = url.match(regTitle)[1].toUpperCase() + '_LOCALHOST_';
+}else if (url.includes('ecompc_')){
+  environment = url.split('/')[3] + '_';
+}else{
+  var regTitle = new RegExp(APP_TITLE_REGX);
+  environment = url.match(regTitle)[1].toUpperCase() + '_NON_WEBJUNCTION_';
+}
+
+export const ENVIRONMENT = environment;
+
+

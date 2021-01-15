@@ -19,16 +19,16 @@
  * ============LICENSE_END=========================================================
  */
 import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
 import { ClipLoader } from 'react-spinners';
-import {COLOR_BLUE} from 'utils/GlobalConstants.js';
+import {COLOR_BLUE} from './GlobalExtConstants.js';
+import { PropTypes } from 'prop-types';
 
 class SpinnerContainer extends Component {
   render() {
     // if loading, show content as busy (ex: grey out)
-    const spinnerContentClass = this.props.loading ? 'spin-content' : '';
+    const spinnerContentClass = this.props.loading ? 'spinner-content' : '';
     return (
-      <div className='spin-container'>
+      <div className='col-lg-12 spinner-container'>
         <div className='spinner'>
           <ClipLoader color={COLOR_BLUE} loading={this.props.loading} />
         </div>

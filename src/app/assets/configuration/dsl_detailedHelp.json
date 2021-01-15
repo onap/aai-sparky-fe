@@ -1,0 +1,153 @@
+{
+  "simple": {
+    "abstract" : "Easy queries to display a node with properties",
+    "notation": [
+      {
+        "notation": "complex*('key','value')",
+        "description": "Display Complex with key=value"
+      },
+      {
+        "notation": "complex*('key1','val1')('key2','val2')",
+        "description": "Display Complex with key1=val1 AND key2=val2"
+      },
+      {
+        "notation": "complex*('key1','val1')!('key2','val2')",
+        "description": "Negation - Display Complex with key1=val1 AND key2!=val2"
+      },
+      {
+        "notation": "complex*!('key1','val1')!('key2','val2')",
+        "description": "Negation - Display Complex with key1!=val1 AND key2!=val2"
+      }
+    ]
+  },
+  "traversal":{
+    "abstract" : "Build a Query to traverse from one node to the next",
+    "notation": [
+      {
+        "notation": "complex*('country','val') > cloud-region*",
+        "description": "Traverse from Complex to Cloud-region and Display Complexes and Cloud-Regions"
+      },
+      {
+        "notation": "complex*('country','val') > cloud-region*('key1','val1')('key2''val2')",
+        "description": "Traverse from Complex to Cloud-region with filters and display Complexes and Cloud-Regions"
+      },
+      {
+        "notation": "generic-vnf*('nf-type','abc') > vserver > tenant > cloud-region*('key','val') ",
+        "description": "Chain of traversals "
+      }
+    ]
+  },
+  "union": {
+    "abstract" : "Build a Query to have a union of nodes",
+    "notation": [
+      {
+        "notation": " complex* (‘key’,’value’) > [cloud-region*, availability-zone*]",
+        "description": "Display union of nodes"
+      },
+      {
+        "notation": "generic-vnf('key','val')> [pserver*, vserver > pserver*]",
+        "description": "Traversal within a Union - Display pserver and vserver for a node"
+      }
+    ]
+  },
+  "limit": {
+    "abstract": "Build a Query to limit the display of nodes",
+    "notation": [
+      {
+        "notation": " complex*('country','USA') LIMIT 1",
+        "description": "Display the complex in USA limiting the result to 1 "
+      },
+      {
+        "notation": "generic-vnf('key','val')> [pserver*, vserver > pserver*] LIMIT 5",
+        "description": "Display the first 5 pservers in a generic-vnf"
+      }
+    ]
+  },
+  "topology": {
+    "abstract" : "Commonly used topology Queries",
+    "notation": [
+      {
+        "notation": " generic-vnf('key','val')> [vnfc*, vserver*, pnf*, pserver*, vserver > pserver*]",
+        "description": "Display the fn-topology "
+      },
+      {
+        "notation": "pnf > [complex* , p-interface* > physical-links* > p-interface >[ pserver* , pnf*]",
+        "description": "Display the pnf topology"
+      }
+    ]
+  },
+  "negation": {
+    "abstract": "Build a NOT Query ",
+    "notation": [
+      {
+        "notation": " complex*!('country','USA') LIMIT 1",
+        "description": "Display the complex NOT in USA   "
+      },
+      {
+        "notation": "complex > [cloud-region*, availability-zone*!('hypervisor-type','VMWare')]",
+        "description": "Display availability-zone which does NOT have hypervisor=VMWare"
+      }
+    ]
+  },
+  "advanced": {
+    "abstract": "Build an Advanced Query ",
+    "notation": [
+      {
+        "notation": "complex*('key',EQ('value'))",
+        "description": "EQ = equals"
+      },
+      {
+        "notation": "complex*('key',NEQ('value'))",
+        "description": "NEQ = not equals"
+      },
+      {
+        "notation": "complex*('key',GT('value'))",
+        "description": "GT = greater than"
+      },
+      {
+        "notation": "complex*('key',LT('value'))",
+        "description": "LT = less than"
+      },
+      {
+        "notation": "complex*('key',GTE('value'))",
+        "description": "GTE = greater than or equal"
+      },
+      {
+        "notation": "complex*('key',LTE('value'))",
+        "description": "LTE = less than or equal"
+      },
+      {
+        "notation": "complex*('key',REGEX('^.*value'))",
+        "description": "REGEX = Matching a given POSIX regular expressions pattern"
+      },
+      {
+        "notation": "complex*('key',NOT_REGEX('^.*value'))",
+        "description": "NOT_REGEX = Not matching a given POSIX regular expression pattern"
+      },
+      {
+        "notation": "complex*('key', CONTAINS('value'))",
+        "description": "CONTAINS = containing the string"
+      },
+      {
+        "notation": "complex*('key',NOT_CONTAINS('value'))",
+        "description": "NOT_CONTAINS = not containing the string"
+      },
+      {
+        "notation": "complex*('key',STARTS_WITH('value'))",
+        "description": "STARTS_WITH = Starting with the string"
+      },
+      {
+        "notation": "complex*('key',NOT_STARTS_WITH('value'))",
+        "description": "NOT_STARTS_WITH = Not starting with the string"
+      },
+      {
+        "notation": "complex*('key',ENDS_WITH('value'))",
+        "description": "ENDS_WITH = Ending with the string"
+      },
+      {
+        "notation": "complex*('key',NOT_ENDS_WITH('value'))",
+        "description": "NOT_ENDS_WITH = Not ending with the string"
+      }
+    ]
+  }
+}

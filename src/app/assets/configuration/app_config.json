@@ -1,0 +1,11 @@
+{
+    
+    "AAI":{
+        "TITLE": "A&AI",
+        "OXM": "oxm.xml",
+        "INVLIST": "InvList.json",
+        "CUSTQUERYLIST": "CustomQueryList.json"
+    },
+    "APP_TITLE_REGX": "\/services\/(\\w+)",
+    "APP_TITLE_REGX_LOCAL": "\/(\\w+)/#"
+}

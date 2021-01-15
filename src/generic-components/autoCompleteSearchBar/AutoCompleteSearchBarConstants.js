@@ -35,3 +35,4 @@ export const SEARCH_DEBOUNCE_TIME = 300;
 
 export const ICON_CLASS_SEARCH = 'fa fa-search fa-lg';
 export const ICON_CLASS_CLEAR = 'fa fa-times fa-lg';
+export const ICON_CLASS_HELP = 'fa fa-question-circle fa-lg';
