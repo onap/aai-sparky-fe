@@ -1,0 +1,84 @@
+{
+  "results": [
+    {
+      "id": "4256",
+      "node-type": "generic-vnf",
+      "url": "/aai/v15/network/generic-vnfs/generic-vnf/testapp1",
+      "properties": [
+        {
+          "key": "vnf-type",
+          "value": "example-vnf-type-val-3979-type-1",
+          "timestamp": 1559234935335,
+          "end-timestamp": 1559235872827,
+          "sot": "testsource-dev",
+          "end-sot": "testsource-dev"
+        },
+        {
+          "key": "vnf-type",
+          "value": "example-vnf-type-val-3979-type-2",
+          "timestamp": 1559235872827,
+          "end-timestamp": 1559237141294,
+          "sot": "testsource-dev",
+          "end-sot": "SO"
+        },
+        {
+          "key": "vnf-type",
+          "value": "vnf-type-onap-sic",
+          "timestamp": 1559237141294,
+          "sot": "SO"
+        },
+        {
+          "key": "in-maint",
+          "value": true,
+          "timestamp": 1559237213226,
+          "end-timestamp": 1559240185158,
+          "sot": "SO",
+          "end-sot": "SO"
+        },
+        {
+          "key": "orchestration-status",
+          "value": "INACTIVE",
+          "timestamp": 1559240185158,
+          "end-timestamp": 1559248669446,
+          "sot": "SO",
+          "end-sot": "TESTSOURCE"
+        },
+        {
+          "key": "in-maint",
+          "value": false,
+          "timestamp": 1559240185158,
+          "end-timestamp": 1559248669446,
+          "sot": "SO",
+          "end-sot": "TESTSOURCE"
+        },
+        {
+          "key": "prov-status",
+          "value": "PRE-PROV",
+          "timestamp": 1559240185158,
+          "end-timestamp": 1559248669446,
+          "sot": "SO",
+          "end-sot": "TESTSOURCE"
+        },
+        {
+          "key": "orchestration-status",
+          "value": "ACTIVE",
+          "timestamp": 1559248669446,
+          "sot": "TESTSOURCE"
+        },
+        {
+          "key": "in-maint",
+          "value": true,
+          "timestamp": 1559248669446,
+          "sot": "TESTSOURCE"
+        },
+        {
+          "key": "prov-status",
+          "value": "PROV",
+          "timestamp": 1559248669446,
+          "sot": "TESTSOURCE"
+        }
+      ],
+      "related-to": []
+    }
+  ]
+}

@@ -31,4 +31,11 @@ export const NO_RESULTS_FOUND = 'No Results Found';
 const BACKEND_IP_ADDRESS = document.location.hostname;
 const BACKEND_PORT_NUMBER = window.location.port;
 const PROTOCOL = window.location.protocol;
-export const BASE_URL = PROTOCOL + '//' + BACKEND_IP_ADDRESS + ':' + BACKEND_PORT_NUMBER;
+var base = '';
+var url = window.location.href;
+if(url.includes('ecompc_')){
+  base = PROTOCOL + '//' + BACKEND_IP_ADDRESS + '/' + url.split('/')[3];
+}else{
+  base = PROTOCOL + '//' + BACKEND_IP_ADDRESS + ':' + BACKEND_PORT_NUMBER;
+}
+export const BASE_URL = base;

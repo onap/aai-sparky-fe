@@ -1,0 +1,83 @@
+[
+  {
+    "viewName": "browse",
+    "componentName": "Browse",
+    "displayName": "Browse",
+    "iconClass": "fa-binoculars"
+  },
+  {
+    "viewName": "customDsl",
+    "componentName": "CustomDsl",
+    "displayName": "BYOQ",
+    "iconClass": "fa-flask",
+    "param": "",
+    "viewParams": "",
+    "isExact": true,
+    "onlyRoute": false
+  },
+  {
+    "viewName": "customDsl",
+    "componentName": "CustomDsl",
+    "displayName": "BYOQ",
+    "iconClass": "fa-flask",
+    "param": "",
+    "viewParams": "/:type/:propId/:relArray",
+    "isExact": true,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "customDsl",
+    "componentName": "CustomDsl",
+    "displayName": "BYOQ",
+    "iconClass": "fa-flask",
+    "param": "",
+    "viewParams": "/:type/:propId",
+    "isExact": true,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "customDslBuilder",
+    "componentName": "CustomDslBuilder",
+    "displayName": "BYOQ Builder",
+    "iconClass": "fa-sitemap",
+    "param": "",
+    "viewParams": "/:type/:propId",
+    "isExact": true,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "customDslBuilder",
+    "componentName": "CustomDslBuilder",
+    "displayName": "BYOQ Builder",
+    "iconClass": "fa-sitemap",
+    "param": "",
+    "isExact": true,
+    "onlyRoute": false
+  },
+  {
+    "viewName": "model",
+    "componentName": "Model",
+    "displayName": "Model",
+    "iconClass": "fa-binoculars",
+    "param": "",
+    "viewParams": "/:type",
+    "isExact": true,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "model",
+    "componentName": "Model",
+    "displayName": "Model",
+    "iconClass": "fa-binoculars",
+    "param": "",
+    "viewParams": "/:type/:nodeId/:page",
+    "isExact": false,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "specializedSearch",
+    "componentName": "SpecializedSearch",
+    "displayName": "Specialized Search",
+    "iconClass": "fa-filter"
+  }
+]

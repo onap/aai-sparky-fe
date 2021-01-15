@@ -1,0 +1,139 @@
+[
+  {
+    "viewName": "browse",
+    "componentName": "Browse",
+    "displayName": "Browse",
+    "iconClass": "browse-button-icon"
+  },
+  {
+    "viewName": "customDsl",
+    "componentName": "CustomDsl",
+    "displayName": "BYOQ",
+    "iconClass": "byoq-ext-button-icon",
+    "param": "",
+    "viewParams": "",
+    "isExact": true,
+    "onlyRoute": false
+  },
+  {
+    "viewName": "customDsl",
+    "componentName": "CustomDsl",
+    "displayName": "BYOQ",
+    "iconClass": "byoq-ext-button-icon",
+    "param": "",
+    "viewParams": "/:type/:propId/:relArray",
+    "isExact": true,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "customDsl",
+    "componentName": "CustomDsl",
+    "displayName": "BYOQ",
+    "iconClass": "byoq-ext-button-icon",
+    "param": "",
+    "viewParams": "/:type/:propId",
+    "isExact": true,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "customDslBuilder",
+    "componentName": "CustomDslBuilder",
+    "displayName": "BYOQ Builder",
+    "iconClass": "byoq-ext-button-icon",
+    "param": "",
+    "viewParams": "/:type/:propId",
+    "isExact": true,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "customDslBuilder",
+    "componentName": "CustomDslBuilder",
+    "displayName": "BYOQ Builder",
+    "iconClass": "byoq-ext-button-icon",
+    "param": "",
+    "isExact": true,
+    "onlyRoute": false
+  },
+  {
+    "viewName": "savedDsl",
+    "componentName": "CustomDsl",
+    "displayName": "Saved Queries",
+    "iconClass": "byoq-ext-button-icon",
+    "param": "",
+    "viewParams": "",
+    "isExact": true,
+    "onlyRoute": false
+  },
+  {
+    "viewName": "savedDsl",
+    "componentName": "CustomDsl",
+    "displayName": "Saved Queries",
+    "iconClass": "byoq-ext-button-icon",
+    "param": "",
+    "viewParams": "/:type/:propId/:relArray",
+    "isExact": true,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "savedDsl",
+    "componentName": "CustomDsl",
+    "displayName": "Saved Queries",
+    "iconClass": "byoq-ext-button-icon",
+    "param": "",
+    "viewParams": "/:type/:propId",
+    "isExact": true,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "customQuery",
+    "componentName": "CustomQuery",
+    "displayName": "Custom Query",
+    "iconClass": "custom-query-button-icon"
+  },
+  {
+    "viewName": "model",
+    "componentName": "Model",
+    "displayName": "Model",
+    "iconClass": "browse-button-icon",
+    "param": "",
+    "viewParams": "/:type",
+    "isExact": true,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "model",
+    "componentName": "Model",
+    "displayName": "Model",
+    "iconClass": "browse-button-icon",
+    "param": "",
+    "viewParams": "/:type/:nodeId/:page",
+    "isExact": false,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "history",
+    "componentName": "History",
+    "displayName": "History",
+    "iconClass": "browse-button-icon",
+    "param": "",
+    "viewParams": "/:type/:nodeType/:nodeUriEnc/:epochTime",
+    "isExact": false,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "historyQuery",
+    "componentName": "HistoryQuery",
+    "displayName": "History Query",
+    "iconClass": "browse-button-icon",
+    "param": "",
+    "viewParams": "/:type/:payloadEnc/:epochTime",
+    "isExact": false,
+    "onlyRoute": true
+  },
+  {
+    "viewName": "specializedSearch",
+    "componentName": "SpecializedSearch",
+    "displayName": "Specialized Search",
+    "iconClass": "specialized-search-button-icon"
+  }
+]

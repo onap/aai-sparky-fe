@@ -1,0 +1,364 @@
+{
+    "NODESERVER": false,
+    "PROXY": "proxy",
+    "PREFIX": "aai",
+    "VERSION": "v23",
+    "APERTURE": "aperture",
+    "APERTURE_SERVICENAME": "inquiry",
+    "IS_ONAP": true,
+    "USERGUIDE_URL": "",
+    "useStubs": false,
+    "TABULAR": "tabular",
+    "TABULARVERSION": "v1",
+    "animationIntervalMs": 5000,
+    "INVENTORYLIST": {               
+        "AVAILABILITYZONES": {
+            "apiPath": "nodes/availability-zones",
+            "display": "Availability Zones",
+            "modelPath": "availabilityZones",
+            "icon": "browse-fa fa fa-globe"
+        },       
+        "ACTIVITIES": {
+            "apiPath": "nodes/activities",
+            "display": "Activities",
+            "modelPath": "activities",
+            "icon": "browse-fa fa fa-server"
+        }, 
+        "AGGREGATEROUTES": {
+	        "apiPath": "nodes/aggregate-route",
+	        "display": "Aggregate Routes",
+	        "modelPath": "aggregateRoutes",
+            "icon": "browse-fa fa fa-link"
+        },
+    	"AUTONOMOUSSYSTEMS": {
+            "apiPath": "nodes/autonomous-systems",
+            "display": "Autonomous Systems",
+            "modelPath": "autonomousSystems",
+            "icon": "browse-fa fa fa-desktop"
+        },  
+        "BGPGROUPS": {
+            "apiPath": "nodes/bgp-groups",
+            "display": "Bgp Groups",
+            "modelPath": "bgpGroups",
+            "icon": "browse-fa fa fa-server"
+        },
+        "BGPNEIGHBORS": {
+            "apiPath": "nodes/bgp-neighbors",
+            "display": "Bgp Neighbors",
+            "modelPath": "bgpNeighbors",
+            "icon": "browse-fa fa fa-server"
+        },      
+        "CABLES": {
+            "apiPath": "nodes/cables",
+            "display": "Cables",
+            "modelPath": "cables",
+            "icon": "browse-fa fa fa-link"
+        },
+        "COMPLEXES": {
+            "apiPath": "nodes/complexes",
+            "display": "Complexes",
+            "modelPath": "complexes",
+            "icon": "browse-fa fa fa-building"
+        },
+        "CONFIGURATIONS": {
+            "apiPath": "nodes/configurations",
+            "display": "Configurations",
+            "modelPath": "configurations",
+            "icon": "browse-fa fa fa-list-alt"
+        },
+        "CLOUDREGIONS": {
+            "apiPath": "nodes/cloud-regions",
+            "display": "Cloud Regions",
+            "modelPath": "cloudRegions",
+            "icon": "browse-fa fa fa-cloud"
+        },
+        "CHASSIES": {
+            "apiPath": "nodes/chassies",
+            "display": "Chassies",
+            "modelPath": "chassies",
+            "icon": "browse-fa fa fa-server"
+        },        
+        "CARDS": {
+            "apiPath": "nodes/cards",
+            "display": "Cards",
+            "modelPath": "cards",
+            "icon": "browse-fa fa fa-hdd-o"
+        },        
+        "CONTACTS": {
+            "apiPath": "nodes/contacts",
+            "display": "Contacts",
+            "modelPath": "contacts",
+            "icon": "browse-fa fa fa-group"
+        },
+        "CUSTOMERS": {
+            "apiPath": "nodes/customers",
+            "display": "Customers",
+            "modelPath": "customers",
+            "icon": "browse-fa fa fa-group"
+        },
+	    "ENDPOINTS": {
+            "apiPath": "nodes/endpoints",
+            "display": "Endpoints",
+            "modelPath": "endpoints",
+            "icon": "browse-fa fa fa-dot-circle-o"
+        },        
+        "GENERICVNFS": {
+            "apiPath": "nodes/generic-vnfs",
+            "display": "Generic Virtual Network Functions",
+            "modelPath": "genericVnfs",
+            "icon": "browse-fa fa fa-server"
+        },
+        "GEOREGIONS": {
+            "apiPath": "nodes/geo-region",
+            "display": "GeoRegions",
+            "modelPath": "geoRegions",
+            "icon": "browse-fa fa fa-globe"
+        },        
+	    "HARDWARECATALOGITEMS": {
+            "apiPath": "nodes/hardware-catalog-items",
+            "display": "Hardware Catalog Items",
+            "modelPath": "hardwareCatalogItems",
+            "icon": "browse-fa fa fa-server"
+        },
+        "HOSTAGGREGATES": {
+            "apiPath": "nodes/host-aggregates",
+            "display": "Host-Aggregates",
+            "modelPath": "hostAggregates",
+            "icon": "browse-fa fa fa-cubes"
+        },
+	    "INSTANCEGROUPS": {
+            "apiPath": "nodes/instance-groups",
+            "display": "Instance Groups",
+            "modelPath": "instanceGroups",
+            "icon": "browse-fa fa fa-cubes"
+        },        
+        "LAGINTERFACES": {
+            "apiPath": "nodes/lag-interfaces",
+            "display": "Lag-Interfaces",
+            "modelPath": "lagInterfaces",
+            "icon": "browse-fa fa fa-hdd-o"
+        },         
+        "LAGLINKS": {
+            "apiPath": "network/lag-links",
+            "display": "Line Aggregation Links",
+            "modelPath": "lagLinks",
+            "icon": "browse-fa fa fa-exchange"
+        },        
+        "LINESOFBUSINESS": {
+            "apiPath": "nodes/lines-of-business",
+            "display": "Lines of Business",
+            "modelPath": "linesOfBusiness",
+            "icon": "browse-fa fa fa-server"
+        },
+        "LINTERFACES": {
+            "apiPath": "nodes/l-interfaces",
+            "display": "L-Interfaces",
+            "modelPath": "lInterfaces",
+            "icon": "browse-fa fa fa-hdd-o"
+        },
+        "LOGICALLINKS": {
+            "apiPath": "nodes/logical-links",
+            "display": "Logical Links",
+            "modelPath": "logicalLinks",
+            "icon": "browse-fa fa fa-exchange"
+        },        
+        "L3NETWORKS": {
+            "apiPath": "nodes/l3-networks",
+            "display": "L3 Networks",
+            "modelPath": "l3Networks",
+            "icon": "browse-fa fa fa-server"
+        },        
+        "MAPPINGS": {
+            "apiPath": "nodes/mappings",
+            "display": "Mappings",
+            "modelPath": "mappings",
+            "icon": "browse-fa fa fa-code-fork"
+        },       
+        "OBJECTGROUPS": {
+            "apiPath": "nodes/object-groups",
+            "display": "Object Groups",
+            "modelPath": "objectGroups",
+            "icon": "browse-fa fa fa-cubes"
+        },        
+        "OWNINGENTITIES": {
+            "apiPath": "nodes/owning-entities",
+            "display": "Owning Entities",
+            "modelPath": "owningEntities",
+            "icon": "browse-fa fa fa-sitemap"
+        },        
+        "PDUS": {
+            "apiPath": "nodes/pdus",
+            "display": "Power Distribution Units",
+            "modelPath": "pdus",
+            "icon": "browse-fa fa fa-flash"
+        },        
+        "PHYSICALLINKS": {
+            "apiPath": "nodes/physical-links",
+            "display": "Physical Links",
+            "modelPath": "physicalLinks",
+            "icon": "browse-fa fa fa-exchange"
+        },
+        "PINTERFACES": {
+            "apiPath": "nodes/p-interfaces",
+            "display": "Physical Interface",
+            "modelPath": "pInterfaces",
+            "icon": "browse-fa fa fa-hdd-o"
+        },
+        "PLUGGABLES": {
+            "apiPath": "nodes/pluggables",
+            "display": "Pluggables",
+            "modelPath": "pluggables",
+            "icon": "browse-fa fa fa-plug"
+        },        
+        "PLATFORMS": {
+            "apiPath": "business/platforms",
+            "display": "Platforms",
+            "modelPath": "platforms",
+            "icon": "browse-fa fa fa-connectdevelop"
+        },
+        "PNFS": {
+            "apiPath": "nodes/pnfs",
+            "display": "Physical Network Functions",
+            "modelPath": "pnfs",
+            "icon": "browse-fa fa fa-server"
+        },     
+        "POLICIES": {
+            "apiPath": "nodes/policies",
+            "display": "Policies",
+            "modelPath": "policies",
+            "icon": "browse-fa fa fa-list-alt"
+        },
+        "PORTS": {
+            "apiPath": "nodes/ports",
+            "display": "Ports",
+            "modelPath": "ports",
+            "icon": "browse-fa fa fa-dot-circle-o"
+        },	
+        "PROJECTS": {
+            "apiPath": "nodes/projects",
+            "display": "Projects",
+            "modelPath": "projects",
+            "icon": "browse-fa fa fa-cubes"
+        },       
+        "PROFILES": {
+            "apiPath": "nodes/profiles",
+            "display": "Profiles",
+            "modelPath": "profiles",
+            "icon": "browse-fa fa fa-list-alt"
+        },       
+        "PSERVERS": {
+            "apiPath": "nodes/pservers",
+            "display": "Physical Servers",
+            "modelPath": "pservers",
+            "icon": "browse-fa fa fa-server"
+        },
+        "RACKS": {
+            "apiPath": "nodes/racks",
+            "display": "Racks",
+            "modelPath": "racks",
+            "icon": "browse-fa fa fa-server"
+        },        
+        "RULES": {
+            "apiPath": "nodes/rules",
+            "display": "Rules",
+            "modelPath": "rules",
+            "icon": "browse-fa fa fa-list-ol"
+        },  
+        "ROUTETARGETS": {
+            "apiPath": "nodes/route-targets",
+            "display": "Route Targets",
+            "modelPath": "routeTargets",
+            "icon": "browse-fa fa fa-server"
+        },       
+        "SERVICESUBSCRIPTIONS": {
+            "apiPath": "nodes/service-subscriptions",
+            "display": "Service Subscriptions",
+            "modelPath": "serviceSubscriptions",
+            "icon": "browse-fa fa fa-newspaper-o"
+        },
+        "SERVICEINSTANCES": {
+            "apiPath": "nodes/service-instances",
+            "display": "Service Instances",
+            "modelPath": "serviceInstances",
+            "icon": "browse-fa fa fa-list-alt"
+        },        
+        "SUBNETS": {
+            "apiPath": "nodes/subnets",
+            "display": "Subnets",
+            "modelPath": "subnets",
+            "icon": "browse-fa fa fa-share-alt"
+        },
+        "TENANTS": {
+            "apiPath": "nodes/tenants",
+            "display": "Tenants",
+            "modelPath": "tenants",
+            "icon": "browse-fa fa fa-cloud"
+        },       	    
+        "VCES": {
+            "apiPath": "network/vces",
+            "display": "Virtual Customer Edge Routers",
+            "modelPath": "vces",
+            "icon": "browse-fa fa fa-cloud"
+        },          
+        "VFMODULES": {
+            "apiPath": "nodes/vf-modules",
+            "display": "Virtual Function Modules",
+            "modelPath": "vfModules",
+            "icon": "browse-fa fa fa-cloud"
+        },       
+        "VIRTUALDATACENTERS": {
+            "apiPath": "cloud-infrastructure/virtual-data-centers",
+            "display": "Virtual Data Centers",
+            "modelPath": "virtualDataCenters",
+            "icon": "browse-fa fa fa-cloud"
+        },
+        "VLANTAGS": {
+            "apiPath": "nodes/vlan-tags",
+            "display": "Vlan Tags",
+            "modelPath": "vlanTags",
+            "icon": "browse-fa fa fa-server"
+        },
+        "VLANRANGES": {
+            "apiPath": "nodes/vlan-ranges",
+            "display": "Vlan Ranges",
+            "modelPath": "vlanRanges",
+            "icon": "browse-fa fa fa-server"
+        },
+        "VNFCS": {
+            "apiPath": "network/vnfcs",
+            "display": "Virtual Network Function Components",
+            "modelPath": "vnfcs",
+            "icon": "browse-fa fa fa-server"
+        },
+        "VPLSPES": {
+            "apiPath": "network/vpls-pes",
+            "display": "VPLS-PES",
+            "modelPath": "vplsPes",
+            "icon": "browse-fa fa fa-server"
+        },
+	    "VPNBINDINGS": {
+            "apiPath": "nodes/vpn-bindings",
+            "display": "VPN Bindings",
+            "modelPath": "vpnBindings",
+            "icon": "browse-fa fa fa-exchange"
+        },
+        "VSERVERS": {
+            "apiPath": "nodes/vservers",
+            "display": "Virtual Servers",
+            "modelPath": "vservers",
+            "icon": "browse-fa fa fa-server"
+        },        
+        "VRFS": {
+            "apiPath": "nodes/vrfs",
+            "display": "VRFs",
+            "modelPath": "vrfs",
+            "icon": "browse-fa fa fa-server"
+        }, 
+        "ZONES": {
+            "apiPath": "nodes/zones",
+            "display": "Zones",
+            "modelPath": "zones",
+            "icon": "browse-fa fa fa-map-marker"
+        }
+    }
+}

@@ -28,3 +28,4 @@ export const personalizationActionTypes = keyMirror({
 
 export const GET_PERSONALIZED_VALUES_URL = BASE_URL + '/rest/getPersonalizedValues';
 export const PERSONALIZATION_FAILED_MESSAGE = 'Failed to fetch personalization values';
+//export const GET_PERSONALIZED_VALUES_URL ='https://localhost:8000/rest/getPersonalizedValues';
