@@ -1,0 +1,10 @@
+{
+  "operation-responses": [
+    {
+      "action": "patch",
+      "uri": "network/pnfs/pnf/test1/lag-interfaces/lag-interface/test1",
+      "response-status-code": 200,
+      "response-body": null
+    }
+  }
+}

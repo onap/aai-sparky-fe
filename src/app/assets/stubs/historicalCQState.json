@@ -1,0 +1,84 @@
+{
+  "results": [
+    {
+      "id": "4256",
+      "node-type": "generic-vnf",
+      "url": "/aai/v15/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890",
+      "properties": [
+        {
+          "key": "orchestration-status",
+          "value": "good-orchestration-status",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "in-maint",
+          "value": false,
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "prov-status",
+          "value": "ACTIVE",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "aai-node-type",
+          "value": "generic-vnf",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "source-of-truth",
+          "value": "F-Test-ABC890",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "aai-uri",
+          "value": "/network/generic-vnfs/generic-vnf/generic-vnf-test-0-ABC890",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "vnf-id",
+          "value": "generic-vnf-test-0-ABC890",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "vnf-name",
+          "value": "example-vnf-name-val-3979",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "vnf-type",
+          "value": "FW",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "ipv4-loopback0-address",
+          "value": "ipv4-loopback0-address-good-one",
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "is-closed-loop-disabled",
+          "value": false,
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        },
+        {
+          "key": "start-ts",
+          "value": 1558031743832,
+          "timestamp": 1558031743832,
+          "sot": "F-Test-ABC890"
+        }
+      ],
+      "related-to": []
+    }
+  ]
+}

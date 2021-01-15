@@ -18,8 +18,7 @@
  * limitations under the License.
  * ============LICENSE_END=========================================================
  */
-import {encrypt } from './Crypto.js';
-import { decrypt } from '../utils/Crypto.js';
+import {encrypt, decrypt } from './Crypto.js';
 
 
 export function changeUrlAddress(pathObj, historyObj) {

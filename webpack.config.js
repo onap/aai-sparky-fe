@@ -32,6 +32,11 @@ module.exports = {
       'webpack/hot/only-dev-server'
     ]
   },
+  externals: [
+      {
+        xmlhttprequest: 'XMLHttpRequest'
+      }
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: ``,
@@ -56,7 +61,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.(js|jsx)$/, loaders: ['babel-loader', 'eslint-loader'], exclude: /node_modules/},
+      {test: /\.(js|jsx)$/, loaders: ['babel-loader'], exclude: /node_modules/},
       {test: /\.(css|scss)$/, loaders: ['style', 'css?sourceMap', 'sass?sourceMap']},
       // required for font icons
       {test: /\.(woff|woff2|ttf|eot|otf)(\?.*)?$/, loader: 'url-loader?limit=163840&mimetype=application/font-woff&name=[name].[ext]'},
@@ -67,8 +72,8 @@ module.exports = {
   },
   eslint: {
     configFile: './.eslintrc',
-    failOnError: true,
-    emitError: true,
+    failOnError: false,
+    emitError: false,
     emitWarning: true
   },
   plugins: [

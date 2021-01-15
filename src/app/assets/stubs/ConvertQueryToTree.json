@@ -1,0 +1,142 @@
+{
+  "node-filter": [],
+  "children": [
+    {
+      "node-filter": [
+        [
+          {
+            "filter": "EQ",
+            "value": [
+              "test-physical-location-id"
+            ],
+            "key": "physical-location-id"
+          }
+        ],
+        [
+          {
+            "filter": "EQ",
+            "value": [
+              "test-physical-location-type"
+            ],
+            "key": "physical-location-type"
+          }
+        ],
+        [
+          {
+            "filter": "EQ",
+            "value": [
+              "test-street1"
+            ],
+            "key": "street1"
+          }
+        ],
+        [
+          {
+            "filter": "EQ",
+            "value": [
+              "test-city"
+            ],
+            "key": "city"
+          }
+        ],
+        [
+          {
+            "filter": "EQ",
+            "value": [
+              "12345"
+            ],
+            "key": "postal-code"
+          }
+        ],
+        [
+          {
+            "filter": "EQ",
+            "value": [
+              "Test-Country"
+            ],
+            "key": "country"
+          }
+        ],
+        [
+          {
+            "filter": "EQ",
+            "value": [
+              "Test-Region"
+            ],
+            "key": "region"
+          }
+        ]
+      ],
+      "children": [
+        {
+          "node-filter": [],
+          "children": [],
+          "node-type": "cloud-region",
+          "where-filter": [],
+          "not-where": false,
+          "id": "A2",
+          "store": true,
+          "parent-type": "complex",
+          "labels": []
+        },
+        {
+          "node-filter": [],
+          "children": [],
+          "node-type": "pnf",
+          "where-filter": [],
+          "not-where": false,
+          "id": "A3",
+          "store": true,
+          "parent-type": "complex",
+          "labels": []
+        },
+        {
+          "node-filter": [],
+          "children": [],
+          "node-type": "pserver",
+          "where-filter": [],
+          "not-where": false,
+          "id": "A4",
+          "store": true,
+          "parent-type": "complex",
+          "labels": []
+        },
+        {
+          "node-filter": [],
+          "children": [],
+          "node-type": "rack",
+          "where-filter": [],
+          "not-where": false,
+          "id": "A5",
+          "store": true,
+          "parent-type": "complex",
+          "labels": []
+        },
+        {
+          "node-filter": [],
+          "children": [],
+          "node-type": "zone",
+          "where-filter": [],
+          "not-where": false,
+          "id": "A6",
+          "store": true,
+          "parent-type": "complex",
+          "labels": []
+        }
+      ],
+      "node-type": "complex",
+      "where-filter": [],
+      "not-where": false,
+      "id": "A1",
+      "store": true,
+      "parent-type": "",
+      "labels": []
+    }
+  ],
+  "node-type": "",
+  "where-filter": [],
+  "not-where": false,
+  "id": "A0",
+  "store": false,
+  "parent-type": ""
+}

@@ -20,6 +20,7 @@
  */
 import 'resources/scss/bootstrap.scss';
 import 'resources/css/font-awesome.min.css';
+import 'resources/css/bootstrap-slider.css';
 import 'resources/css/react-datepicker.min.css';
 import 'resources/scss/customViews.scss';
 

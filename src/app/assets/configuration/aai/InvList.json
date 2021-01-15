@@ -1,0 +1,364 @@
+{
+    "NODESERVER": false,
+    "PROXY": "proxy",
+    "PREFIX": "aai",
+    "VERSION": "v23",
+    "APERTURE": "aperture",
+    "APERTURE_SERVICENAME": "inquiry",
+    "IS_ONAP": true,
+    "USERGUIDE_URL": "",
+    "useStubs": true,
+    "TABULAR": "tabular",
+    "TABULARVERSION": "v1",
+    "animationIntervalMs": 5000,
+    "INVENTORYLIST": {               
+        "AVAILABILITYZONES": {
+            "apiPath": "nodes/availability-zones",
+            "display": "Availability Zones",
+            "modelPath": "availabilityZones",
+            "icon": "icon-datanetwork-cloudL"
+        },       
+        "ACTIVITIES": {
+            "apiPath": "nodes/activities",
+            "display": "Activities",
+            "modelPath": "activities",
+            "icon": "icon-datanetwork-serverL"
+        }, 
+        "AGGREGATEROUTES": {
+	        "apiPath": "nodes/aggregate-route",
+	        "display": "Aggregate Routes",
+	        "modelPath": "aggregateRoutes",
+	        "icon": "icon-datanetwork-gatewayL"
+        },
+    	"AUTONOMOUSSYSTEMS": {
+            "apiPath": "nodes/autonomous-systems",
+            "display": "Autonomous Systems",
+            "modelPath": "autonomousSystems",
+            "icon": "icon-datanetwork-routerL"
+        },  
+        "BGPGROUPS": {
+            "apiPath": "nodes/bgp-groups",
+            "display": "Bgp Groups",
+            "modelPath": "bgpGroups",
+            "icon": "icon-datanetwork-serverL"
+        },
+        "BGPNEIGHBORS": {
+            "apiPath": "nodes/bgp-neighbors",
+            "display": "Bgp Neighbors",
+            "modelPath": "bgpNeighbors",
+            "icon": "icon-datanetwork-serverL"
+        },      
+        "CABLES": {
+            "apiPath": "nodes/cables",
+            "display": "Cables",
+            "modelPath": "cables",
+            "icon": "icon-devices-cableL"
+        },
+        "COMPLEXES": {
+            "apiPath": "nodes/complexes",
+            "display": "Complexes",
+            "modelPath": "complexes",
+            "icon": "icon-location-mapL"
+        },
+        "CONFIGURATIONS": {
+            "apiPath": "nodes/configurations",
+            "display": "Configurations",
+            "modelPath": "configurations",
+            "icon": "icon-content-gridguideL"
+        },
+        "CLOUDREGIONS": {
+            "apiPath": "nodes/cloud-regions",
+            "display": "Cloud Regions",
+            "modelPath": "cloudRegions",
+            "icon": "icon-datanetwork-cloudL"
+        },
+        "CHASSIES": {
+            "apiPath": "nodes/chassies",
+            "display": "Chassies",
+            "modelPath": "chassies",
+            "icon": "icon-datanetwork-databaseL"
+        },        
+        "CARDS": {
+            "apiPath": "nodes/cards",
+            "display": "Cards",
+            "modelPath": "cards",
+            "icon": "icon-datanetwork-datausageL"
+        },        
+        "CONTACTS": {
+            "apiPath": "nodes/contacts",
+            "display": "Contacts",
+            "modelPath": "contacts",
+            "icon": "icon-datanetwork-serverL"
+        },
+        "CUSTOMERS": {
+            "apiPath": "nodes/customers",
+            "display": "Customers",
+            "modelPath": "customers",
+            "icon": "icon-people-twopeopleL"
+        },
+	    "ENDPOINTS": {
+            "apiPath": "nodes/endpoints",
+            "display": "Endpoints",
+            "modelPath": "endpoints",
+            "icon": "icon-datanetwork-computerasserviceL"
+        },        
+        "GENERICVNFS": {
+            "apiPath": "nodes/generic-vnfs",
+            "display": "Generic Virtual Network Functions",
+            "modelPath": "genericVnfs",
+            "icon": "icon-datanetwork-contentdeliveryL"
+        },
+        "GEOREGIONS": {
+            "apiPath": "nodes/geo-region",
+            "display": "GeoRegions",
+            "modelPath": "geoRegions",
+            "icon": "icon-datanetwork-globalnetworkL"
+        },        
+	    "HARDWARECATALOGITEMS": {
+            "apiPath": "nodes/hardware-catalog-items",
+            "display": "Hardware Catalog Items",
+            "modelPath": "hardwareCatalogItems",
+            "icon": "icon-datanetwork-serverL"
+        },
+        "HOSTAGGREGATES": {
+            "apiPath": "nodes/host-aggregates",
+            "display": "Host-Aggregates",
+            "modelPath": "hostAggregates",
+            "icon": "icon-datanetwork-serverL"
+        },
+	    "INSTANCEGROUPS": {
+            "apiPath": "nodes/instance-groups",
+            "display": "Instance Groups",
+            "modelPath": "instanceGroups",
+            "icon": "icon-datanetwork-contentdeliveryL"
+        },        
+        "LAGINTERFACES": {
+            "apiPath": "nodes/lag-interfaces",
+            "display": "Lag-Interfaces",
+            "modelPath": "lagInterfaces",
+            "icon": "icon-datanetwork-serverL"
+        },         
+        "LAGLINKS": {
+            "apiPath": "network/lag-links",
+            "display": "Line Aggregation Links",
+            "modelPath": "lagLinks",
+            "icon": "icon-devices-cableL"
+        },        
+        "LINESOFBUSINESS": {
+            "apiPath": "nodes/lines-of-business",
+            "display": "Lines of Business",
+            "modelPath": "linesOfBusiness",
+            "icon": "icon-misc-businessL"
+        },
+        "LINTERFACES": {
+            "apiPath": "nodes/l-interfaces",
+            "display": "L-Interfaces",
+            "modelPath": "lInterfaces",
+            "icon": "icon-datanetwork-serverL"
+        },
+        "LOGICALLINKS": {
+            "apiPath": "nodes/logical-links",
+            "display": "Logical Links",
+            "modelPath": "logicalLinks",
+            "icon": "icon-devices-cableL"
+        },        
+        "L3NETWORKS": {
+            "apiPath": "nodes/l3-networks",
+            "display": "L3 Networks",
+            "modelPath": "l3Networks",
+            "icon": "icon-datanetwork-lanL"
+        },        
+        "MAPPINGS": {
+            "apiPath": "nodes/mappings",
+            "display": "Mappings",
+            "modelPath": "mappings",
+            "icon": "icon-datanetwork-datavisL"
+        },       
+        "OBJECTGROUPS": {
+            "apiPath": "nodes/object-groups",
+            "display": "Object Groups",
+            "modelPath": "objectGroups",
+            "icon": "icon-datanetwork-serverL"
+        },        
+        "OWNINGENTITIES": {
+            "apiPath": "nodes/owning-entities",
+            "display": "Owning Entities",
+            "modelPath": "owningEntities",
+            "icon": "icon-misc-operationsL"
+        },        
+        "PDUS": {
+            "apiPath": "nodes/pdus",
+            "display": "Power Distribution Units",
+            "modelPath": "pdus",
+            "icon": "icon-devices-pluginL"
+        },        
+        "PHYSICALLINKS": {
+            "apiPath": "nodes/physical-links",
+            "display": "Physical Links",
+            "modelPath": "physicalLinks",
+            "icon": "icon-devices-cableL"
+        },
+        "PINTERFACES": {
+            "apiPath": "nodes/p-interfaces",
+            "display": "Physical Interface",
+            "modelPath": "pInterfaces",
+            "icon": "icon-devices-multipleinstallationL"
+        },
+        "PLUGGABLES": {
+            "apiPath": "nodes/pluggables",
+            "display": "Pluggables",
+            "modelPath": "pluggables",
+            "icon": "icon-devices-usbdriveL"
+        },        
+        "PLATFORMS": {
+            "apiPath": "business/platforms",
+            "display": "Platforms",
+            "modelPath": "platforms",
+            "icon": "icon-datanetwork-globalnetworkL"
+        },
+        "PNFS": {
+            "apiPath": "nodes/pnfs",
+            "display": "Physical Network Functions",
+            "modelPath": "pnfs",
+            "icon": "icon-datanetwork-routerL"
+        },     
+        "POLICIES": {
+            "apiPath": "nodes/policies",
+            "display": "Policies",
+            "modelPath": "policies",
+            "icon": "icon-datanetwork-serverL"
+        },
+        "PORTS": {
+            "apiPath": "nodes/ports",
+            "display": "Ports",
+            "modelPath": "ports",
+            "icon": "icon-devices-multipleinstallationL"
+        },	
+        "PROJECTS": {
+            "apiPath": "nodes/projects",
+            "display": "Projects",
+            "modelPath": "projects",
+            "icon": "icon-documents-addfileL"
+        },       
+        "PROFILES": {
+            "apiPath": "nodes/profiles",
+            "display": "Profiles",
+            "modelPath": "profiles",
+            "icon": "icon-datanetwork-websiteL"
+        },       
+        "PSERVERS": {
+            "apiPath": "nodes/pservers",
+            "display": "Physical Servers",
+            "modelPath": "pservers",
+            "icon": "icon-datanetwork-serverL"
+        },
+        "RACKS": {
+            "apiPath": "nodes/racks",
+            "display": "Racks",
+            "modelPath": "racks",
+            "icon": "icon-datanetwork-databaseL"
+        },        
+        "RULES": {
+            "apiPath": "nodes/rules",
+            "display": "Rules",
+            "modelPath": "rules",
+            "icon": "icon-datanetwork-serverL"
+        },  
+        "ROUTETARGETS": {
+            "apiPath": "nodes/route-targets",
+            "display": "Route Targets",
+            "modelPath": "routeTargets",
+            "icon": "icon-datanetwork-serverL"
+        },       
+        "SERVICESUBSCRIPTIONS": {
+            "apiPath": "nodes/service-subscriptions",
+            "display": "Service Subscriptions",
+            "modelPath": "serviceSubscriptions",
+            "icon": "icon-datanetwork-serverL"
+        },
+        "SERVICEINSTANCES": {
+            "apiPath": "nodes/service-instances",
+            "display": "Service Instances",
+            "modelPath": "serviceInstances",
+            "icon": "icon-datanetwork-websiteL"
+        },        
+        "SUBNETS": {
+            "apiPath": "nodes/subnets",
+            "display": "Subnets",
+            "modelPath": "subnets",
+            "icon": "icon-datanetwork-serverL"
+        },
+        "TENANTS": {
+            "apiPath": "nodes/tenants",
+            "display": "Tenants",
+            "modelPath": "tenants",
+            "icon": "icon-datanetwork-cloudL"
+        },       	    
+        "VCES": {
+            "apiPath": "network/vces",
+            "display": "Virtual Customer Edge Routers",
+            "modelPath": "vces",
+            "icon": "icon-datanetwork-contentdeliveryL"
+        },          
+        "VFMODULES": {
+            "apiPath": "nodes/vf-modules",
+            "display": "Virtual Function Modules",
+            "modelPath": "vfModules",
+            "icon": "icon-datanetwork-clouduploadL"
+        },       
+        "VIRTUALDATACENTERS": {
+            "apiPath": "cloud-infrastructure/virtual-data-centers",
+            "display": "Virtual Data Centers",
+            "modelPath": "virtualDataCenters",
+            "icon": "icon-datanetwork-computerasserviceL"
+        },
+        "VLANTAGS": {
+            "apiPath": "nodes/vlan-tags",
+            "display": "Vlan Tags",
+            "modelPath": "vlanTags",
+            "icon": "icon-datanetwork-serverL"
+        },
+        "VLANRANGES": {
+            "apiPath": "nodes/vlan-ranges",
+            "display": "Vlan Ranges",
+            "modelPath": "vlanRanges",
+            "icon": "icon-datanetwork-serverL"
+        },
+        "VNFCS": {
+            "apiPath": "network/vnfcs",
+            "display": "Virtual Network Function Components",
+            "modelPath": "vnfcs",
+            "icon": "icon-datanetwork-softwareL"
+        },
+        "VPLSPES": {
+            "apiPath": "network/vpls-pes",
+            "display": "VPLS-PES",
+            "modelPath": "vplsPes",
+            "icon": "icon-datanetwork-routerL"
+        },
+	    "VPNBINDINGS": {
+            "apiPath": "nodes/vpn-bindings",
+            "display": "VPN Bindings",
+            "modelPath": "vpnBindings",
+            "icon": "icon-devices-cableL"
+        },
+        "VSERVERS": {
+            "apiPath": "nodes/vservers",
+            "display": "Virtual Servers",
+            "modelPath": "vservers",
+            "icon": "icon-datanetwork-softwareasaserviceL"
+        },        
+        "VRFS": {
+            "apiPath": "nodes/vrfs",
+            "display": "VRFs",
+            "modelPath": "vrfs",
+            "icon": "icon-datanetwork-serverL"
+        }, 
+        "ZONES": {
+            "apiPath": "nodes/zones",
+            "display": "Zones",
+            "modelPath": "zones",
+            "icon": "icon-datanetwork-hostingL"
+        }
+    }
+}

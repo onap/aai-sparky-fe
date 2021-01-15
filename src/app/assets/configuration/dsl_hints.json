@@ -1,0 +1,36 @@
+{
+
+  "notation01": {
+    "notation": "complex*",
+    "description": "Display Complex"
+  },
+  "notation02": {
+    "notation": "complex*(<Indexed Parameter>,<value>)",
+    "description": "Display Complex by Indexed Parameter"
+  },
+  "notation03": {
+    "notation": "complex(<Indexed Parameter>,<value>) > cloud-region*",
+    "description": "Traverse from Complex to Cloud-region"
+  },
+  "notation05": {
+    "notation": "Asterix *",
+    "description": "Select *"
+  },
+  "notation06": {
+    "notation": " complex > [cloud-region*, availability-zone*]",
+    "description": "Display union of nodes"
+  },
+  "notation07": {
+    "notation": "Negation !",
+    "description": "Negation"
+  },
+  "notation08": {
+    "notation": "LIMIT",
+    "description": "Limit the results"
+  },
+  "notation09": {
+    "notation": "Alt+H",
+    "description": "Inline Help Page"
+  }
+
+}

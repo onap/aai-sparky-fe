@@ -33,9 +33,14 @@ module.exports = {
       'webpack/hot/only-dev-server'
     ]
   },
+  externals: [
+      {
+        xmlhttprequest: 'XMLHttpRequest'
+      }
+   ],
   output: {
-    path: path.join(__dirname, 'dist'),
-    publicPath: ``,
+    path: path.join(__dirname, 'dist/aai'),
+    publicPath: 'https://localhost:8001/',
     filename: '[name].js',
     sourceMapFilename: '[name].js.map'
   },
@@ -51,6 +56,7 @@ module.exports = {
   },
   devServer: {
     port: devPort,
+    disableHostCheck: true,
     historyApiFallback: true,
     publicPath: ``,
     contentBase: path.join(__dirname, 'dist'),
@@ -65,7 +71,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.(js|jsx)$/, loaders: ['babel-loader', 'eslint-loader'], exclude: /node_modules/},
+      {test: /\.(js|jsx)$/, loaders: ['babel-loader'], exclude: /node_modules/},
       {test: /\.(css|scss)$/, loaders: ['style-loader', 'css-loader', 'sass-loader']},
       // required for font icons
       {test: /\.(woff|woff2|ttf|eot|otf)(\?.*)?$/, loader: 'url-loader?limit=163840&mimetype=application/font-woff&name=[name].[ext]'},
@@ -76,7 +82,8 @@ module.exports = {
   },
   eslint: {
     configFile: './.eslintrc',
-    emitError: true,
+    failOnError: false,
+    emitError: false,
     emitWarning: true
   },
   plugins: [
