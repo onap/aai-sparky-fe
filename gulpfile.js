@@ -22,9 +22,7 @@
 
 var localPath = require('path');
 var gulp = require('gulp');
-var gulpHelpers = require('gulp-helpers');
-var taskMaker = gulpHelpers.taskMaker(gulp);
-var runSequence = gulpHelpers.framework('run-sequence');
+const del = require('del');
 var gulpCssUsage = require('gulp-css-usage').default;
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
@@ -47,34 +45,35 @@ let path = {
 	wardest: dist
 };
 
-taskMaker.defineTask('clean', {taskName: 'clean', src: path.output});
-taskMaker.defineTask('copy', {taskName: 'copy-aai-index.html', src: path.aaiIndex, dest: path.output, rename: 'index.html'});
-taskMaker.defineTask('copy', {taskName: 'copy-map-file', src: path.bundleSrc, dest: path.output, rename: 'mappingFile'});
-taskMaker.defineTask('clean', {taskName: 'clean-map-file', src: path.bundleSrc});
-/** Uncomment the loine below to generate a .war file with a local build */
-// taskMaker.defineTask('compress', {taskName: 'compress-war', src: path.war, filename: appName + '.war', dest: path.wardest})
+gulp.task('clean', () => {
+	return del(path.output);
+})
 
-gulp.task('copy-dev-stuff', callback => {
-	return runSequence(['copy-aai-index.html'], callback);
+gulp.task('copy-aai-index.html', () => {
+    return gulp.src(path.aaiIndex)
+        .pipe(gulp.dest(path.output));
 });
 
-gulp.task('copy-stuff', callback => {
-	return runSequence(['copy-aai-index.html'], callback);
+gulp.task('copy-map-file', () => {
+    return gulp.src(path.bundleSrc)
+        .pipe(gulp.dest(path.output));
 });
 
-gulp.task('dev', callback => {
-	return runSequence('clean', 'copy-dev-stuff', 'webpack-dev-server', callback);
+gulp.task('clean-map-file', () => {
+    return del(path.bundleSrc);
 });
 
-// Production build
-gulp.task('build', callback => {
-	return runSequence('clean', ['copy-stuff'], 'prod', 'copy-map-file', 'clean-map-file', callback);
-	/** Uncomment the loine below to generate a .war file with a local build */
-	//return runSequence('clean', ['copy-stuff'], 'prod', 'compress-war', callback);
+gulp.task('webpack-dev-server', () => {
+	let myConfig = Object.create(devWebpackConfig);
+
+	// Start a webpack-dev-server
+	let server = new WebpackDevServer(webpack(myConfig), myConfig.devServer);
+	server.listen(myConfig.devServer.port, '0.0.0.0', err => {
+		if (err) {
+			throw new Error('webpack-dev-server' + err);
+		}
+	});
 });
-
-
-gulp.task('default', ['dev']);
 
 gulp.task('prod', () => {
 
@@ -96,14 +95,12 @@ gulp.task('prod', () => {
 
 });
 
-gulp.task('webpack-dev-server', () => {
-	let myConfig = Object.create(devWebpackConfig);
+gulp.task('copy-dev-stuff', gulp.series('copy-aai-index.html'));
 
-	// Start a webpack-dev-server
-	let server = new WebpackDevServer(webpack(myConfig), myConfig.devServer);
-	server.listen(myConfig.devServer.port, '0.0.0.0', err => {
-		if (err) {
-			throw new Error('webpack-dev-server' + err);
-		}
-	});
-});
+gulp.task('copy-stuff', gulp.series('copy-aai-index.html'));
+
+gulp.task('dev', gulp.series('clean', 'copy-dev-stuff', 'webpack-dev-server'));
+
+gulp.task('build', gulp.series('clean', 'copy-stuff', 'prod', 'copy-map-file', 'clean-map-file'));
+
+gulp.task('default', gulp.series('dev'));
