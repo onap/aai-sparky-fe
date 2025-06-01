@@ -1,0 +1,4 @@
+distribution_type: maven
+log_dir: aai-sparky-fe-maven-stage-master/1380/
+project: aai-sparky-fe
+version: 2.1.0
